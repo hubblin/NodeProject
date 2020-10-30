@@ -1,0 +1,36 @@
+input:-ms-input-placeholder{color:#ffbf00a2}
+input::-webkit-input-placeholder{color: #ffbf00a2}
+input::-ms-input-placeholder{color:#ffbf00a2}
+
+.search{
+    margin-top: 15px;
+    height: 40px;
+    width: 500px;
+    border: 2px solid #FFC000;
+    background: #ffffff;
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+}
+
+.input_search{
+    font-size: 16px;
+    width: 425px;
+    padding: 10px;
+    border: 0px;
+    outline: none;
+    float: left;
+}
+
+.button_search{
+    position: relative;
+    width: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 0px;
+    outline: none;
+    float: right;
+    color: transparent;
+    background: url('../images/search.png') no-repeat;
+    background-size: 28px 21px;
+}
