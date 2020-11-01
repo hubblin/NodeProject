@@ -1,20 +1,34 @@
-input:-ms-input-placeholder{color:#ffbf00a2}
-input::-webkit-input-placeholder{color: #ffbf00a2}
-input::-ms-input-placeholder{color:#ffbf00a2}
+input:-ms-input-placeholder{color:#ccc}
+input::-webkit-input-placeholder{color: #ccc}
+input::-ms-input-placeholder{color:#ccc}
+
+.search_area{
+    position: relative;
+}
+
+.search_title{
+    position: absolute;
+    top: 100px;
+    left:50%;
+    transform: translateX(-50%);
+    font-weight: 600;
+    font-size: larger;
+}
 
 .search{
-    margin-top: 15px;
+    margin-top: 8px;
     height: 40px;
     width: 500px;
     border: 2px solid #FFC000;
     background: #ffffff;
-    left: 50%;
+    position:absolute;
+    top: 125px;
+    left:50%;
     transform: translateX(-50%);
-    position: relative;
 }
 
 .input_search{
-    font-size: 16px;
+    font-size: 16.5px;
     width: 425px;
     padding: 10px;
     border: 0px;
