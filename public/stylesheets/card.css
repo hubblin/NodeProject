@@ -1,16 +1,22 @@
+.product_area{
+    display:block;
+    position: relative;
+    height: 500px;
+}
+
 .wrapper{
-    top: 160px;
     box-sizing: border-box;
     display:flex;
     position: relative;
     justify-content: space-around;
+    margin-top: 70px;
 }
 
 .card{
     width: 200px;
     height: 260px;
     padding: 2rem 1rem;
-    margin: 30px;
+    margin:0 30px;
     background: #fff;
     position: relative;
     display: flex;
@@ -87,8 +93,8 @@
 }
 
 .product_title{
-    position: relative;
-    top: 250px;
+    position: static;
+    display: block;
 }
 
 
@@ -97,14 +103,7 @@
     font-size: 40px;
     left:50%;
     transform: translateX(-50%);
-}
-
-.product_detail{
-    position: relative;
-}
-
-.product_detail li{
-    position: absolute;
-    top:50%;
-    transform: translateY(-50%);
+    display: inline-block;
+    height: 40px;
+    margin-bottom: 20px;
 }
