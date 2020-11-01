@@ -4,8 +4,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body{
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 75px;
+        }
+        #log_img{
+
+            width: 104px;
+            height: 146px;
+
+            display: block;
+            color: transparent;
+            background: url('../images/logo.png') no-repeat;
+            background-size: 104px 146px;
+        }
+        #email-logo{
+            width: 35px;
+            height: 26px;
+
+            display: block;
+            color: transparent;
+            background: url('../images/email_logo.png') no-repeat;
+            background-size: 35px 26px;
+        }
+        #pwd-logo{
+            width: 35px;
+            height: 26px;
+
+            display: block;
+            color: transparent;
+            background: url('../images/pwd_logo.png') no-repeat;
+            background-size: 35px 26px;
+        }
+        #name-logo{
+            width: 25px;
+            height: 26px;
+
+            display: block;
+            color: transparent;
+            background: url('../images/name_logo.png') no-repeat;
+            background-size: 25px 26px;
+        }
+        #phone-logo{
+            width: 18px;
+            height: 26px;
+
+            display: block;
+            color: transparent;
+            background: url('../images/phone_logo.png') no-repeat;
+            background-size: 18px 26px;
+        }
+
+        .span-left{
+            float: left;
+        }
+        .span-rigth{
+            float: right;
+        }
+    
+    </style>
 </head>
 <body>
-    <h1>ghadliwaldji</h1>
+
+
+    <div>
+        <a href="/" id="log_img">LOGO</a>
+        <form action="" method="POST"> <!-- 회원가입 post로 가기 -->
+            <div>
+                <a href="" id="email-logo" class="span-left">아이디</a>
+                <input type="text" class="span-rigth">
+            </div>
+            <div>
+                <a href="" id="pwd-logo" class="span-left">비밀번호</a>
+                <input type="password" class="span-rigth">
+            </div>
+            <div>
+                <a href="" id="name-logo" class="span-left">이름</a>
+                <input type="text" class="span-rigth">
+            </div>
+            <div>
+                <a href="" id="phone-logo" class="span-left">전화번호</a>
+                <input type="text" class="span-rigth">
+            </div>
+            <div>
+                <!-- <span><input type="submit" value="가입"></span> -->
+            </div>
+        </form>
+    </div>
+
+    <script type="text/javascript">
+
+
+
+    </script>
+
+
 </body>
 </html>
