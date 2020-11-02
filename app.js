@@ -7,7 +7,7 @@ var logger = require('morgan');
 //라우트 추가되면 여기에 넣기
 var indexRouter = require('./server/routes/index');
 var usersRouter = require('./server/routes/users');
-
+var productRouter = require('./server/routes/product');
 
 
 //라우트 설정
@@ -18,6 +18,8 @@ var app = express();
 //여기가 router 설치
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/product', productRouter);
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'server/views'));
