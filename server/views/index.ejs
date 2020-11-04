@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>CS</title>
+    <link rel='stylesheet' href='/stylesheets/searchstyle.css'/>
+    <link rel='stylesheet' href='/stylesheets/default.css'/>
+    <link rel='stylesheet' href='/stylesheets/navstyle.css' />
+    <link rel='stylesheet' href='/stylesheets/card.css'/>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    
+    <%- include("./head/nav") %>
+    <%- include("./head/search") %>
+    <%- include("./head/card") %>
   </body>
 </html>

@@ -1,0 +1,164 @@
+.product_area{
+    display:block;
+    position: relative;
+    height: 1280px;
+}
+
+.wrapper{
+    box-sizing: border-box;
+    display:flex;
+    position: relative;
+    justify-content: space-around;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.card{
+    width: 200px;
+    height: 260px;
+    padding: 2rem 1rem;
+    margin:0px 30px;
+    background: #fff;
+    position: relative;
+    display: flex;
+    align-items:flex-end;
+    border: 3px solid #FFC000;
+    box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
+    transition: 0.5s ease-in-out;
+}
+
+.card::before{
+    content: "";
+    position: absolute;
+    top:0;
+    left:0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.596);
+    z-index: 2;
+    transition: 0.5s all;
+    opacity: 0;
+}
+
+.card:hover{
+    transform: translateY(4%);
+}
+.card:hover::before{
+    opacity: 1;
+}
+
+.card img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top:0;
+    left: 0;
+}
+
+.card .info{
+    position: relative;
+    z-index: 3;
+    color: #fff;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.5s all;
+}
+
+.card:hover .info{
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+.card .info h1{
+    margin: 0;
+}
+
+.card .info p{
+    letter-spacing: 1px;
+    font-size: 15px;
+    margin-top:8px;
+    margin-bottom: 20px;
+}
+
+
+.card .info .btn{
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    background: #fff;
+    color: #000;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+}
+
+.product_title{
+    position: static;
+    display: block;
+}
+
+
+.product_title p{
+    position: absolute;
+    font-size: 30px;
+    left:30px;
+    display: inline-block;
+    margin-bottom: 20px;
+    top: -68px;
+}
+
+.product_detail a{
+    position: absolute;
+    right: 30px;
+    top: -40px;
+}
+
+.card_title_area{
+    position: relative;
+    height: 80px;
+}
+
+.card_title_area .card_title{
+    font-size: 30px;
+    font-weight: bolder;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    
+}
+
+.card_title_area .card_subtitle{
+    font-size: 15px;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    position: absolute;
+    color: #ccc;
+}
+
+.card_title_area2{
+    position: relative;
+    height: 150px;
+}
+
+.card_title_area2 .card_title{
+    font-size: 30px;
+    font-weight: bolder;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 80px;
+}
+
+.card_title_area2 .card_subtitle{
+    font-size: 15px;
+    top: 130px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    position: absolute;
+    color: #ccc;
+}
