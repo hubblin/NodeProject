@@ -6,3 +6,6 @@ var router = express.Router();
 router.get('/', function(req, res) {
     res.render('review/review_main');
 });
+
+
+module.exports = router;
