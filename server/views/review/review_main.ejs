@@ -1,42 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Review</title>
 
-    <link rel='stylesheet' href='/stylesheets/default.css'/>
+    <link rel='stylesheet' href='/stylesheets/default.css' />
     <link rel='stylesheet' href='/stylesheets/navstyle.css' />
     <style>
-        #review_body{
+        #review_body {
             width: 1000px;
             height: 0 auto;
-            
+
             margin: 0 auto;
             margin-top: 100px;
         }
 
-        .review_header{
+        .review_header {
             font-size: 32px;
             border-bottom: 2px solid #AAA;
             padding-bottom: 40px;
         }
 
-        #review_header_f{
+        #review_header_f {
             margin-right: 5px;
         }
-        #review_header_s{
+
+        #review_header_s {
             color: #868e96;
         }
 
 
-        .review_info{
+        #review_info {
+            display: flex;
+            flex-direction: row;
+            height: auto;
+            overflow: hidden;
             margin: 20px;
+
             border-bottom: 1px solid #AAA;
         }
 
-        #review_product_img{
-            float: left;
+        #review_info .item:nth-child(1) {
+            
+            flex-grow: 1;
+
+        }
+
+        #review_info .item:nth-child(2) {
+            
+            flex-grow: 8;
+        }
+
+        #review_info .item:nth-child(3) {
+            
+            flex-grow: 1;
+
+        }
+
+        .item{
+            color: #000;
+            height: 150px;
+        }
+        #item_list{
+            display: flex;
+            flex-direction: column;
+        }
+
+        #review_product_img {
             width: 50px;
             height: 50px;
             display: block;
@@ -45,23 +77,19 @@
             background-size: 50px 50px;
         }
 
-        #review_info_body{
-            float: right;
-        }
 
-        #review_user_img{
+        #review_user_img {
+
             width: 160px;
             height: 160px;
-            display: inline-block;
+            display: block;
             color: transparent;
             background: url('../images/main_page/브라이언.jpg') no-repeat;
             background-size: 160px 160px;
         }
-        
-        
-
     </style>
 </head>
+
 <body>
     <%- include("../head/nav") %>
 
@@ -71,24 +99,51 @@
             <span id="review_header_f">리뷰</span><span id="review_header_s">(리뷰수)</span>
         </div>
 
-        <div class="review_info">
-            <a href="" id="review_product_img" >상품이미지</a>
-            <div class="review_info_body">
+        <div id="review_info">
+
+            <div class="item">
+                <a href="" id="review_product_img">상품이미지</a>
+            </div>
+
+            <div class="item" id="item_list">
                 <span>상품명</span>
-                <div>
-                    <span>별점</span>
-                    <span>작성날짜</span>
-                    <span>작성자</span>
-                </div>
+                <span>별점</span>
+                <span>작성날짜</span>
+                <span>작성자</span>
                 <span>내용</span>
+            </div>
+
+            <div class="item">
                 <a href="" id="review_user_img">리뷰이미지</a>
             </div>
-            
-            
+
         </div>
 
-        
+        <div id="review_info">
+
+            <div class="item">
+                <a href="" id="review_product_img">상품이미지</a>
+            </div>
+
+            <div class="item" id="item_list">
+                <span>상품명</span>
+                <span>별점</span>
+                <span>작성날짜</span>
+                <span>작성자</span>
+                <span>내용</span>
+            </div>
+
+            <div class="item">
+                <a href="" id="review_user_img">리뷰이미지</a>
+            </div>
+
+        </div>
+
+
 
     </div>
+
+
 </body>
+
 </html>
