@@ -1,14 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>CS</title>
-    <link rel='stylesheet' href='/stylesheets/searchstyle.css'/>
-    <link rel='stylesheet' href='/stylesheets/default.css'/>
+    <link rel='stylesheet' href='/stylesheets/searchstyle.css' />
+    <link rel='stylesheet' href='/stylesheets/default.css' />
     <link rel='stylesheet' href='/stylesheets/navstyle.css' />
+    <link rel='stylesheet' href='/stylesheets/slidenav.css'/>
     <link rel='stylesheet' href='/stylesheets/card.css'/>
 
-    <script type="text/javascript">
-      
+</head>
+
+<body>
+
+    <%- include("./head/nav") %>
+    <%- include("./head/search") %>
+    <%- include("./head/slidenav")%>
+    <%- include("./head/card")%>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
     function setsub() {
         var sublnb = document.getElementById("sublnb");
         sublnb.style.display = "block";
@@ -58,12 +85,4 @@
         sublnb2.style.visibility = "hidden";
     }
 
-    </script>
-  </head>
-  <body>
-    
-    <%- include("./head/nav") %>
-    <%- include("./head/search") %>
-    <%- include("./head/card") %>
-  </body>
-</html>
+</script>
