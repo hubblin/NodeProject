@@ -84,8 +84,23 @@
             border: solid 1px  #ffA000;
         }
 
-        #signuptext{
+        #signup_button{
+            color: #fff;
+            background-color: #ffC000;
+            width: 100%;
+            height: 35px;
+            border: solid 1px  #ffC000;
+            border-radius: 3px;
+            outline: none;
+        }
+        #signup_button:active{
+            background-color: #ffA000;
+            border: solid 1px  #ffA000;
+        }
+
+        #logintext{
             text-align: center;
+
         }
 
         .span-left{
@@ -140,11 +155,8 @@
     </style>
 </head>
 <body>
-
-    <h1 id="signuptext">회원가입</h1>
-
+    <h1 id="logintext">로그인</h1>
     <br>
-
     <div>
         <a href="/" id="log_img">LOGO</a>
         <form action="/" method="get"> <!-- 회원가입 post로 가기 -->
@@ -158,18 +170,13 @@
                     <input type="password" class="span-rigth"  placeholder="비밀번호">
                 </div>
                 <div class="row">
-                    <a href="" id="name-logo" class="span-left">이름</a>
-                    <input type="text" class="span-rigth"  placeholder="이름">
-                </div>
-                <div class="row">
-                    <a href="" id="phone-logo" class="span-left">전화번호</a>
-                    <input type="text" class="span-rigth"  placeholder="전화번호">
-                </div>
-                <div class="row">
-                    <span><input type="submit" value="가입" id="submit_button"></span>
+                    <span><input type="submit" value="로그인" id="submit_button"></span>
                 </div>
             </div>
         </form>
+        <div class="row">
+            <span><input type="submit" value="회원가입" id="signup_button" onclick="location.href='sign_up'" /></span>
+        </div>
     </div>
 
     <script type="text/javascript">
