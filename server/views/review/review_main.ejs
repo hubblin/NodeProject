@@ -9,9 +9,14 @@
     <link rel='stylesheet' href='/stylesheets/default.css' />
     <link rel='stylesheet' href='/stylesheets/navstyle.css' />
     <style>
+
+        hr{
+            border: 1px solid #DDD;
+        }
+
         #review_body {
             width: 1000px;
-            height: 0 auto;
+            height:  auto;
 
             margin: 0 auto;
             margin-top: 100px;
@@ -19,7 +24,7 @@
 
         .review_header {
             font-size: 32px;
-            border-bottom: 2px solid #AAA;
+            border-bottom: 3px solid #AAA;
             padding-bottom: 40px;
         }
 
@@ -36,10 +41,8 @@
             display: flex;
             flex-direction: row;
             height: auto;
-            overflow: hidden;
+            padding: 10px;
             margin: 20px;
-
-            border-bottom: 1px solid #AAA;
         }
 
         #review_info .item:nth-child(1) {
@@ -79,13 +82,13 @@
 
 
         #review_user_img {
-
             width: 160px;
             height: 160px;
             display: block;
             color: transparent;
             background: url('../images/main_page/브라이언.jpg') no-repeat;
             background-size: 160px 160px;
+
         }
     </style>
 </head>
@@ -99,45 +102,77 @@
             <span id="review_header_f">리뷰</span><span id="review_header_s">(리뷰수)</span>
         </div>
 
-        <div id="review_info">
+        <div>
+            <div id="review_info">
 
-            <div class="item">
-                <a href="" id="review_product_img">상품이미지</a>
+                <div class="item">
+                    <a href="" id="review_product_img">상품이미지</a>
+                </div>
+    
+                <div class="item" id="item_list">
+                    <span>상품명</span>
+                    <span>별점</span>
+                    <span>작성날짜</span>
+                    <span>작성자</span>
+                    <span>내용</span>
+                </div>
+    
+                <div class="item">
+                    <a href="" id="review_user_img">리뷰이미지</a>
+                </div>
+    
             </div>
 
-            <div class="item" id="item_list">
-                <span>상품명</span>
-                <span>별점</span>
-                <span>작성날짜</span>
-                <span>작성자</span>
-                <span>내용</span>
-            </div>
-
-            <div class="item">
-                <a href="" id="review_user_img">리뷰이미지</a>
-            </div>
-
+            <hr>
         </div>
 
-        <div id="review_info">
+        <div>
+            <div id="review_info">
 
-            <div class="item">
-                <a href="" id="review_product_img">상품이미지</a>
+                <div class="item">
+                    <a href="" id="review_product_img">상품이미지</a>
+                </div>
+    
+                <div class="item" id="item_list">
+                    <span>상품명</span>
+                    <span>별점</span>
+                    <span>작성날짜</span>
+                    <span>작성자</span>
+                    <span>내용</span>
+                </div>
+    
+                <div class="item">
+                    <!-- <a href="" id="review_user_img">리뷰이미지</a> -->
+                </div>
+    
             </div>
 
-            <div class="item" id="item_list">
-                <span>상품명</span>
-                <span>별점</span>
-                <span>작성날짜</span>
-                <span>작성자</span>
-                <span>내용</span>
-            </div>
-
-            <div class="item">
-                <a href="" id="review_user_img">리뷰이미지</a>
-            </div>
-
+            <hr>
         </div>
+        <div>
+            <div id="review_info">
+
+                <div class="item">
+                    <a href="" id="review_product_img">상품이미지</a>
+                </div>
+    
+                <div class="item" id="item_list">
+                    <span>상품명</span>
+                    <span>별점</span>
+                    <span>작성날짜</span>
+                    <span>작성자</span>
+                    <span>내용</span>
+                </div>
+    
+                <div class="item">
+                    <!-- <a href="" id="review_user_img">리뷰이미지</a> -->
+                </div>
+    
+            </div>
+
+            <hr>
+        </div>
+        
 
 
 
