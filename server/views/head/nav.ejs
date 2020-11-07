@@ -7,9 +7,10 @@
 
     <nav class="lnb">
         <ul>
-            <li><a href="/product/painting" onmouseover="setsub()" onmouseout="outsub()"><span>상품 만들기<div></div></span></a></li>
-            <li><a href="/product/making" onmouseover="setsub2()" onmouseout="outsub2()"><span>제작 주문 <div></div></span></a></li>
-            <li><a href="/review"><span>리뷰<div></div></span></a></li>
+
+            <li><a href="/product/painting" class="print" onmouseover="setsub()" onmouseout="outsub()"><span>상품 만들기<div></div></span></a></li>
+            <li><a href="/product/making" class="make" onmouseover="setsub2()" onmouseout="outsub2()"><span>제작 주문 <div></div></span></a></li>
+            <li><a href="#a"><span>리뷰<div></div></span></a></li>
             
         </ul>
     </nav>
@@ -17,8 +18,8 @@
     <h2 class="hide">관련 서비스</h2>
     <nav class="spot">
         <ul>
-            <li><a href="#a">로그인</a></li>
-            <li><a href="/users">회원가입</a></li>
+            <li><a href="/users/sign_in">로그인</a></li>
+            <li><a href="/users/sign_up">회원가입</a></li>
         </ul>
     </nav>
 
@@ -50,52 +51,5 @@
 
 
 <script type="text/javascript">
-    function setsub() {
-        var sublnb = document.getElementById("sublnb");
-        sublnb.style.display = "block";
-        sublnb.style.opacity = "1";
-        sublnb.style.visibility = "visible";
-    }
-    function outsub() {
-        var sublnb = document.getElementById("sublnb");
-        sublnb.style.display = "none"
-        sublnb.style.opacity = "0";
-        sublnb.style.visibility = "hidden";
-    }
-    function lsub() {
-        var looksub = document.getElementById("sublnb");
-        sublnb.style.display = "block";
-        sublnb.style.opacity = "1";
-        sublnb.style.visibility = "visible";
-    }
-    function loutsub() {
-        var looksub = document.getElementById("sublnb");
-        sublnb.style.display = "none";
-        sublnb.style.opacity = "0";
-        sublnb.style.visibility = "hidden";
-    }
-    function setsub2() {
-        var sublnb2 = document.getElementById("sublnb2");
-        sublnb2.style.display = "block";
-        sublnb2.style.opacity = "1";
-        sublnb2.style.visibility = "visible";
-    }
-    function outsub2() {
-        var sublnb2 = document.getElementById("sublnb2");
-        sublnb2.style.display = "none";
-        sublnb2.style.opacity = "0";
-        sublnb2.style.visibility = "hidden";
-    }
-    function lsub2() {
-        var sublnb2 = document.getElementById("sublnb2");
-        sublnb2.style.display = "block";
-        sublnb2.style.opacity = "1";
-        sublnb2.style.visibility = "visible";
-    }
-    function loutsub2() {
-        var sublnb2 = document.getElementById("sublnb2");
-        sublnb2.style.display = "none";
-        sublnb2.style.opacity = "0";
-        sublnb2.style.visibility = "hidden";
-    }
+    
 </script>

@@ -103,7 +103,6 @@
 .product_title p{
     position: absolute;
     font-size: 30px;
-    left:30px;
     display: inline-block;
     margin-bottom: 20px;
     top: -68px;
@@ -115,20 +114,26 @@
     top: -40px;
 }
 
-.card_title{
-    font-size: 30px;
-    width: 400px;
-    font-weight: bolder;
-    left: 50px;
+.card_title_area{
     position: relative;
-    margin-top: 30px;
+    height: 80px;
 }
 
-.card_subtitle{
+.card_title_area .card_title{
+    font-size: 30px;
+    font-weight: bolder;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    
+}
+
+.card_title_area .card_subtitle{
     font-size: 15px;
-    left: 50px;
-    width: 300px;
-    position: relative;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    position: absolute;
     color: #ccc;
-    margin-bottom: 30px;
 }
