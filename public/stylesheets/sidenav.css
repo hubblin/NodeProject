@@ -22,23 +22,34 @@
 .btn{
     display: block;
     padding: 1rem 1.2rem;
-    background: #FCC000;
-    color:white;
     position: relative;
 }
 
 .btn::before{
     content: '';
     position: absolute;
-    width: 1rem;
-    height: 1rem;
-    background: #FCC000;
-    left: 1.5rem;
-    bottom: -0.5rem;
-    transform: rotate(45deg);
+    width: 100%;
+    height: 2px;
+    background:lightgray;
+    bottom: 0;
+    left: 0;
 }
-.btn i {
-    margin-right: 1rem;
+
+.btn button, button:focus{
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.btn button{
+    position: absolute;
+    background-color: rgba( 255, 255, 255, 0 );
+    right: 1.5rem;
+}
+
+.btn button img{
+    width: 10px;
+    height: 6px;
 }
 
 .menu-item__sub{
@@ -46,12 +57,12 @@
     transition: max-height 0.3s;
     max-height: 0;
 }
+
 .menu-item__sub a{
     display: block;
     padding: 1rem 1.6rem;
     font-size: 0.9rem;
     position: relative;
-    border-bottom: 1px solid black;
 }
 
 .menu-item__sub a::before{
@@ -62,7 +73,7 @@
     right:0;
     width: 0.4rem;
     height: 100%;
-    background: #ff8902;
+    background: #FFC000;
     transform: translateX(-0.4rem);
     transition: 0.3s;
     opacity: 0;
@@ -73,6 +84,20 @@
     transform: translateX(0);
 }
 
-.menu-item:hover .menu-item__sub{
-    max-height: 10em;
+.sub_drop{
+    max-height: 13em;
+}
+
+.sub_drop2{
+    max-height: 13em;
+}
+
+.rotate{
+    transform: rotate(180deg);
+    transition: 0.3s;
+}
+
+.rotate2{
+    transform: rotate(180deg);
+    transition: 0.3s;
 }
