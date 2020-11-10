@@ -1,0 +1,49 @@
+.item{
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    background: orange;
+}
+
+.resizer{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    border: 2px solid black;
+    z-index:2;
+}
+
+.resizer.nw{
+    top: -3px;
+    left: -3px;
+    cursor: nw-resize;
+}
+
+.resizer.ne{
+    top: -3px;
+    right: -3px;
+    cursor: ne-resize;
+}
+.resizer.sw{
+    bottom: -3px;
+    left: -3px;
+    cursor: sw-resize;
+}
+.resizer.se{
+    bottom: -3px;
+    right: -3px;
+    cursor: se-resize;
+}
+
+.rotate{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    border: 2px solid black;
+    z-index:2;
+    top : -20px;
+    left : 50%;
+    transform: translateX(-50%);
+}
