@@ -22,7 +22,6 @@
     position: relative;
     display: flex;
     align-items:flex-end;
-    border: 3px solid #FFC000;
     box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
     transition: 0.5s ease-in-out;
 }
@@ -103,7 +102,6 @@
 .product_title p{
     position: absolute;
     font-size: 30px;
-    left:30px;
     display: inline-block;
     margin-bottom: 20px;
     top: -68px;
@@ -132,30 +130,6 @@
 .card_title_area .card_subtitle{
     font-size: 15px;
     top: 50px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: auto;
-    position: absolute;
-    color: #ccc;
-}
-
-.card_title_area2{
-    position: relative;
-    height: 150px;
-}
-
-.card_title_area2 .card_title{
-    font-size: 30px;
-    font-weight: bolder;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 80px;
-}
-
-.card_title_area2 .card_subtitle{
-    font-size: 15px;
-    top: 130px;
     left: 50%;
     transform: translateX(-50%);
     width: auto;

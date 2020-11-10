@@ -8,7 +8,8 @@ var logger = require('morgan');
 var indexRouter = require('./server/routes/index');
 var usersRouter = require('./server/routes/users');
 var productRouter = require('./server/routes/product');
-
+var reviewRouter = require('./server/routes/review');
+var orderRouter = require('./server/routes/order');
 
 //라우트 설정
 let Route = require('./server/routes');
@@ -19,6 +20,8 @@ var app = express();
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/product', productRouter);
+app.use('/review', reviewRouter);
+app.use('/order', orderRouter);
 
 
 // view engine setup
