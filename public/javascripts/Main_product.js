@@ -3,6 +3,7 @@ dragElement(document.getElementById("item"));
 let isResizing = false;
 
 
+//2020.11.09 임호균
 function dragElement(elmnt) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   if (document.getElementById(elmnt.id + "header")) {
@@ -45,8 +46,8 @@ function dragElement(elmnt) {
   }
 }
 
-
-//
+//2020.11.10 임호균
+//크기조절
 const resizers = document.querySelectorAll(".resizer");
 let currentResizer;
 let el = document.getElementById("item");
@@ -94,5 +95,33 @@ for(let resizer of resizers){
             window.removeEventListener('mouseup',mouseup);
             isResizing = false;
         }
+    }
+}
+
+//2020.11.10 임호균 회전
+let ro = document.querySelector(".rotate");
+ro.addEventListener('mousedown', mousedown2);
+
+function mousedown2(){
+    window.addEventListener('mousemove', mousemove2);
+    window.addEventListener('mouseup', mouseup2);
+    
+
+    function mousemove2(){
+        isResizing = true;
+        let x = (el.getBoundingClientRect().left) + (el.clientWidth /2);
+        console.log();
+        let y = (el.getBoundingClientRect().top) + (el.clientHeight / 2);
+        console.log(x +"아아아아"+ y);
+        let radian = Math.atan2(event.pageX -x, event.pageY -y);
+        console.log(radian)
+        let rot = (radian * (180/Math.PI)*-1)+180;
+        el.style.transform = "rotate(" + rot + "deg)"
+    }
+
+    function mouseup2(){
+        window.removeEventListener('mousemove', mousemove2);
+        window.removeEventListener('mouseup', mouseup2);
+        isResizing = false;
     }
 }
