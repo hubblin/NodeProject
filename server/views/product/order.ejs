@@ -39,27 +39,18 @@
     <%- include("../head/nav") %>
     <div class="contents">
         <div class="custom_cont">
+              ​
+              <deckgo-drr unit="px" style="--width: 300px; --height: 200px; --top: 50px; --left: 50px;">
+                <img src="https://deckdeckgo.com/assets/img/deckdeckgo-logo.svg" style="display: none;" />
+                
+              </deckgo-drr>
 
-            <deckgo-drr style="--width: 20%; --height: 10%; --top: 5%; --left: 10%; --rotate: 45deg;">
-                <div style="background: red;"></div>
+              <deckgo-drr unit="px" text="true" style=" --top: 60px; --left: 60px;">
+                <div style=" background: #ffc000; font-size: 20px;" contenteditable="true">???</div>
+
               </deckgo-drr>
+
               ​
-              <deckgo-drr style="--width: 10%; --height: 20%; --top: 45%; --left: 8%;" drag="y-axis">
-                <div style="background: yellow"></div>
-              </deckgo-drr>
-              ​
-              <deckgo-drr style="--width: 10%; --height: 10%; --top: 25%; --left: 10%;" resize="false">
-                <div style="background: green"></div>
-              </deckgo-drr>
-              ​
-              ​
-              <deckgo-drr unit="px" style="--width: 34px; --height: 20px; --top: 40px; --left: 25px;">
-                <img src="https://deckdeckgo.com/assets/img/deckdeckgo-logo.svg" style="display: none;" />
-              </deckgo-drr>
-              ​
-              <deckgo-drr class="draggable hydrated selected" style="--width: 34%; --height: 20%; --top: 40%; --left: 25%;">
-                <img src="https://deckdeckgo.com/assets/img/deckdeckgo-logo.svg" style="display: none;" />
-              </deckgo-drr>
         </div>
         <div class="sale_cont">
 
@@ -72,3 +63,4 @@
 
 
 <script type="text/javascript" src="/javascripts/mainNav.js"></script>
+  
