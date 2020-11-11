@@ -1,14 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
-
+// 페인팅(파우치, 케이스, 의류)
 router.get('/painting', function(req, res) {
     res.render('product/paintingProduct');
-});
-
-router.get('/painting/pouch', function(req, res) {
-    res.render('product/paintingpouch');
 });
 
 router.get('/painting/case', function(req, res) {
@@ -19,8 +14,18 @@ router.get('/painting/clothes', function(req, res) {
     res.render('product/paintingclothes');
 });
 
+
+// 메이킹(키보드, 마우스, 이어폰)
 router.get('/making', function(req,res, next){
     res.render('product/makingProduct');
+});
+
+router.get('/making/mouse', function(req,res, next){
+    res.render('product/makingmouse');
+});
+
+router.get('/making/earphone', function(req,res, next){
+    res.render('product/makingearphone');
 });
 
 
