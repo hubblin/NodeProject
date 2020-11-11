@@ -1,1 +1,186 @@
-<h1>리뷰</h1>
+
+<style>
+
+        hr{    
+            border: 1px solid #DDD;
+        }
+
+        #review_body {
+            width: 1000px;
+            height: auto;
+
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+
+        .review_header {
+            font-size: 32px;
+            border-bottom: 3px solid #AAA;
+            padding-bottom: 30px;
+        }
+
+        .detail {
+            text-align: right;
+        
+        }
+
+        #review_header_f {
+            margin-right: 5px;
+        
+        }
+
+        #review_header_s {
+            color: #868e96;
+            font-size: 15px;
+            margin-left: 880px;
+               
+        }
+
+
+        #review_info {
+            display: flex;
+            flex-direction: row;
+            height: auto;
+            padding: 10px;
+            margin: 20px;
+        }
+
+        #review_info .item:nth-child(1) {
+
+            flex-basis: 50px;
+
+            margin-right: 30px;
+
+        }
+
+        #review_info .item:nth-child(2) {
+
+            flex-basis: 500px;
+            margin-right: 150px;
+        }
+
+        #review_info .item:nth-child(3) {
+
+
+            flex-basis: 160px;
+
+        }
+
+        .item {
+            color: #000;
+        }
+
+        #item_list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #item_list span{
+            margin-bottom: 10px;
+        }
+
+        .star_space {
+            display: inline-block;
+            width: 111px;
+            height: 20px;
+            background: url('../images/star_empty.png') no-repeat;
+            background-size: 111px 20px;
+        }
+
+        .star_space div {
+            height: 100%;
+            color: transparent;
+            background: url('../images/star_full.png') no-repeat;
+            background-size: 111px 20px;
+        }
+
+        #review_product_img {
+            width: 50px;
+            height: 50px;
+            display: block;
+            color: transparent;
+            
+        }
+
+
+        #review_user_img {
+            width: 160px;
+            height: 160px;
+            display: block;
+            color: transparent;
+            
+
+        }
+</style>
+
+<div class="product_area_mini">
+    
+    <div id="review_body">
+        <div class="review_header">
+            <span id="review_header_f">리뷰</span><a id="review_header_s" href="/review">자세히</a>
+        </div>
+        
+
+        <div>
+            <div id="review_info">
+
+                <div class="item">
+                    <a href="" id="review_product_img" style="background: url('../images/main_page/card_earphone.jpg') no-repeat; background-size: 50px 50px;"></a>
+                </div>
+
+                <div class="item" id="item_list">
+                    <span>커스텀이어폰</span>
+                    <span>별점
+                        <div class="star_space">
+                            <div style="width: 100%;"></div>
+                        </div>
+                        <span>2020-10-30</span>
+                        <span>권*비</span>
+                    </span>
+                    <span>잘 도착 했어요 프린트가 생각한것보다 더 그려진 색
+                        그대로 자연스럽게 프린트되어서 맘에 넘 들어요. 단체 주문시 가격 할인이 있었으면 좋겠어요</span>
+                </div>
+
+                <div class="item">
+                    <!-- <a href="" id="review_user_img" style="background: url('../images/main_page/card_earphone.jpg') no-repeat; background-size: 160px 160px;">리뷰이미지</a> -->
+                </div>
+
+            </div>
+
+            <hr>
+        </div>
+
+        <div>
+            <div id="review_info">
+
+                <div class="item">
+                    <a href="" id="review_product_img" style="background: url('../images/main_page/card_cloth2.jpg') no-repeat; background-size: 50px 50px;"></a>
+                </div>
+
+                <div class="item" id="item_list">
+                    <span>후드티</span>
+                    <span>별점
+                        <div class="star_space">
+                            <div style="width: 40%;"></div>
+                        </div>
+                        <span>2020-10-15</span>
+                        <span>김*주</span>
+                    </span>
+                    <span>소매가 튿어져서 왔어요.....</span>
+                </div>
+
+                <div class="item">
+                    <!-- <a href="" id="review_user_img" style="background: url('../images/main_page/card_cloth2.jpg') no-repeat; background-size: 160px 160px;">리뷰이미지</a> -->
+                </div>
+
+            </div>
+
+            <hr>
+        </div>
+
+
+
+
+
+    </div>
+</div>
