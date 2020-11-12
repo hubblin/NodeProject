@@ -11,9 +11,6 @@ var productRouter = require('./server/routes/product');
 var reviewRouter = require('./server/routes/review');
 var orderRouter = require('./server/routes/order');
 
-//라우트 설정
-let Route = require('./server/routes');
-
 var app = express();
 
 //여기가 router 설치
