@@ -1,5 +1,7 @@
 const pool = require('../config/dbconfig');
 
+const crypto = require('crypto');
+
 class UserController{
     async signUp(req, res, next){
         pool.getConnection((err, conn)=>{
@@ -7,6 +9,12 @@ class UserController{
             
             // 다 입력했는지 확인
             if(req.body.user_id && req.body.user_pw && req.body.user_name && req.body.user_phone){
+                
+                let inputPassword = req.body.user_pw;
+
+                let salt = Math.round((new Date().valueOf() * Math.random())) + "";
+                let hashPassword = crypto.createHash("sha512").update(inputPassword + salt).digest("hex");
+
                 conn.query('select * from user where user_id = ?',[
                     req.body.user_id
                 ], (err, id_result)=>{
@@ -15,8 +23,8 @@ class UserController{
 
                     // 검색값 없을때만 즉 이미 없는 아이디일때만 
                     if(id_result.length == 0){
-                        conn.query('insert into user values(?,?,?,?)',[
-                            req.body.user_id, req.body.user_pw, req.body.user_name, req.body.user_phone
+                        conn.query('insert into user values(?,?,?,?,?)',[
+                            req.body.user_id, hashPassword, req.body.user_name, req.body.user_phone, salt
                         ], (err)=>{
                             if(err) throw err;
 
@@ -42,14 +50,15 @@ class UserController{
         })
     }
 
+    // 로그인 
     async signIn(req,res,next){
         pool.getConnection((err, conn)=>{
             if(err) throw err;
 
             // 입력한 정보 맞는지 확인
             if(req.body.user_id && req.body.user_pw){
-                conn.query('select * from user where user_id = ? and user_pw = ?',[
-                    req.body.user_id, req.body.user_pw
+                conn.query('select * from user where user_id = ?',[
+                    req.body.user_id
                 ], (err, login_result)=>{
                     if(err) throw err;
 
@@ -59,9 +68,25 @@ class UserController{
                         next();
                     }
                     else{
-                        req.check = true;
-                        conn.release();
-                        next();
+                        let loginPassword = req.body.user_pw;
+
+                        let salt2 = login_result[0].salt;
+                        let nowHashPassword = crypto.createHash("sha512").update(loginPassword + salt2).digest("hex");
+
+                        console.log(nowHashPassword, login_result[0].user_pw);
+
+                        if(nowHashPassword == login_result[0].user_pw){
+                            req.check = true;
+                            req.info = login_result[0];
+                            conn.release();
+                            next();
+                        }
+                        else{
+                            req.check = false;
+                            conn.release();
+                            next();
+                        }
+                        
                     }
                 })
             }

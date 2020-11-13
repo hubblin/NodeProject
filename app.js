@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const session = require('express-session');
 
 //라우트 추가되면 여기에 넣기
 var indexRouter = require('./server/routes/index');
@@ -24,6 +25,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+  key:'sid',
+  secret:'secret',
+  resave:false,
+  saveUninitialized:true,
+  cookie:{
+    maxAge:24000*60*60
+  }
+}));
 
 //여기가 router 설치
 app.use('/', indexRouter);

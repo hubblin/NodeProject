@@ -3,11 +3,21 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/painting', function(req, res) {
-    res.render('product/paintingProduct');
+    if(req.session.user){
+        res.render('product/paintingProduct',{name:req.session.user.name});
+    }
+    else{
+        res.render('product/paintingProduct',{name:false});
+    }
 });
 
 router.get('/making', function(req,res, next){
-    res.render('product/makingProduct');
+    if(req.session.user){
+        res.render('product/makingProduct',{name:req.session.user.name});
+    }
+    else{
+        res.render('product/makingProduct',{name:false});
+    }
 });
 
 

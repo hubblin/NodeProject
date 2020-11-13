@@ -34,6 +34,10 @@ router.get('/sign_in', function (req, res, next) {
 
 router.post('/sign_in', User.signIn,function(req,res,next){
   if (req.check) {
+    req.session.user = {
+      id: req.body.user_id,
+      name: req.info.user_name
+    }
     res.send(`<script type="text/javascript">
             alert("로그인 성공"); 
               location.href='/';
@@ -45,6 +49,17 @@ router.post('/sign_in', User.signIn,function(req,res,next){
               location.href='/';
         </script>`)
   }
+});
+
+// 로그아웃
+router.get('/sign_out', (req, res, next)=>{
+  req.session.destroy();
+  res.clearCookie('sid');
+
+  res.send(`<script type="text/javascript">
+            alert("로그아웃"); 
+              location.href='/';
+        </script>`)
 })
 
 
