@@ -176,6 +176,14 @@
                     <input type="text" name="user_phone" class="span-rigth" placeholder="전화번호" name="user_phone" >
                 </div>
                 <div class="row">
+                    <a id="phone-logo" class="span-left">전화번호</a>
+                    <select name="user_category" id="">
+                        <% for(var i=0; i<category.length; i++){%>
+                            <option value="<%= i+1%>"><%= category[i].category_name%></option>
+                        <%}%>
+                    </select>
+                </div>
+                <div class="row">
                     <span><input type="submit" value="가입" id="submit_button" ></span>
                 </div>
             </form>

@@ -6,9 +6,9 @@ const User = new userController();
 
 /* GET users listing. */
 // 회원가입 렌더링
-router.get('/sign_up', function (req, res, next) {
+router.get('/sign_up', User.findCategory,function (req, res, next) {
 
-  res.render('user/sign_up');
+  res.render('user/sign_up',{category:req.category});
 });
 
 // 회원가입 post 
@@ -28,6 +28,7 @@ router.post('/sign_up',  User.signUp,function (req, res, next) {
 })
 
 router.get('/sign_in', function (req, res, next) {
+
 
   res.render('user/sign_in');
 });

@@ -1,6 +1,9 @@
 const pool = require('../config/dbconfig');
-
 const crypto = require('crypto');
+
+let moment = require('moment');
+require('moment-timezone');
+moment.tz.setDefault("Asia/Seoul");
 
 class UserController{
     async signUp(req, res, next){
@@ -15,6 +18,8 @@ class UserController{
                 let salt = Math.round((new Date().valueOf() * Math.random())) + "";
                 let hashPassword = crypto.createHash("sha512").update(inputPassword + salt).digest("hex");
 
+                var nowTime = moment().format('YYYY-MM-DD HH:mm:ss');
+
                 conn.query('select * from user where user_id = ?',[
                     req.body.user_id
                 ], (err, id_result)=>{
@@ -23,8 +28,8 @@ class UserController{
 
                     // 검색값 없을때만 즉 이미 없는 아이디일때만 
                     if(id_result.length == 0){
-                        conn.query('insert into user values(?,?,?,?,?)',[
-                            req.body.user_id, hashPassword, req.body.user_name, req.body.user_phone, salt
+                        conn.query('insert into user values(?,?,?,?,?,?,?)',[
+                            req.body.user_id, req.body.user_category,hashPassword, req.body.user_name, req.body.user_phone, salt, nowTime
                         ], (err)=>{
                             if(err) throw err;
 
@@ -95,6 +100,20 @@ class UserController{
                 conn.release();
                 next();
             }
+        })
+    }
+
+    async findCategory(req, res, next){
+        pool.getConnection((err, conn)=>{
+            if(err) throw err;
+
+            conn.query('select * from category',(err, category_result)=>{
+                if(err) throw err;
+
+                req.category = category_result;
+                conn.release();
+                next();
+            })
         })
     }
 }
