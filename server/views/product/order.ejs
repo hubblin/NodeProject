@@ -18,6 +18,7 @@
             width: 1500px;
             height: 640px;
             margin-bottom: 50px;
+            z-index: 0;
         }
 
         .custom_cont {
@@ -36,26 +37,26 @@
             border: 1px solid black;
         }
 
-        .all_btn{
+        .all_btn {
             position: absolute;
             width: 70px;
             height: 240px;
-        
+
             right: 25px;
         }
 
-        .float_btn{
+        .float_btn {
             position: relative;
             display: block;
             border-radius: 50%;
-            
+            background: white;
             height: 70px;
             width: 70px;
             margin-bottom: 10px;
             box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.2);
         }
 
-        .float_btn a{
+        .float_btn a {
             position: absolute;
             width: 100%;
             text-align: center;
@@ -64,12 +65,34 @@
             cursor: pointer;
         }
 
-        .float_btn:hover{
+        .float_btn:hover {
             background-color: #FFC000;
         }
-    
-        .float_btn:hover a{
+
+        .float_btn:hover a {
             color: white;
+        }
+
+        #first {
+            opacity: 1;
+            visibility: visible;
+            position: absolute;
+        }
+
+        #second {
+            opacity: 0;
+            visibility: none;
+            position: absolute;
+        }
+
+        .order_pro {
+            width: 100%;
+
+        }
+
+        #clear {
+            opacity: 0;
+            visibility: none;
         }
     </style>
 </head>
@@ -80,35 +103,60 @@
         <div class="custom_cont" id="custom_cont">
             ​
             <deckgo-drr unit="px" style="--width: 300px; --height: 200px; --top: 50px; --left: 50px;">
-                <img src="https://deckdeckgo.com/assets/img/deckdeckgo-logo.svg" style="display: none;" />
+                <img src="../images/main_page/브라이언.jpg" style="display: none;" />
 
             </deckgo-drr>
 
 
 
             <div class="all_btn">
-                
-                    <li>
-                        <div class="float_btn">
-                            <a class="add_picture" onclick="add_picture()">사진추가</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="float_btn">
-                            <a class="add_text_btn" onclick="add_text()">글자추가</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="float_btn">
-                            <a class="remove_text_btn" onclick="remove_text()">삭제</a>
-                        </div>
-                    </li>
-            
+
+                <li>
+                    <div class="float_btn">
+                        <a class="add_picture" onclick="add_picture()">사진추가</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="float_btn">
+                        <a class="add_text_btn" onclick="add_text()">글자추가</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="float_btn">
+                        <a class="remove_text_btn" onclick="remove_text()">삭제</a>
+                    </div>
+                </li>
+                <div id="clear" onclick="clears()">
+                    <a>완료</a>
+                </div>
             </div>
         </div>
         <div class="sale_cont">
 
+            <div id="first">
+                <div class="order_pro">
+                    <h3>주문하기</h3>
+                    <hr>
+                    <div>가격 : <sapn>1000</sapn>원</div>
+                    <div>사이즈</div>
+                    <button>주문하기</button>
+                    <button>장바구니</button>
+                </div>
+            </div>
 
+            <div id="second">
+                <div class="option">
+                    <strong>Option</strong>
+                    <div class="block">
+                        <label for="textSize" class="opt-title">Font size</label>
+                        <input class="text_con" type="range" name="textSize" min="11" max="18" value="14" data-sizing="px" />
+                    </div>
+                    <div class="block">
+                        <label for="mainColor" class="opt-title">Main Color</label>
+                        <input class="color_con" type="color" name="mainColor" value="#ffc600">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
@@ -118,16 +166,19 @@
     let text_count = 0;
     let text_id;
     function add_text() {
-
-        var div = `<div style=" font-size: 50px;" contenteditable="true">텍스트</div>`
         ++text_count;
+        let text1 = "text" + text_count;
+        var div = `<div id=` + text1 + `  class="text" onclick="recolor(this)"  style=" font-size: 14px;" contenteditable="true">텍스트</div>`
+
         text_id = "deck" + text_count;
         var newDeckgo = parent.document.createElement("deckgo-drr");
         newDeckgo.unit = "px";
         newDeckgo.text = "true";
         newDeckgo.style = "--top: 280px; --left: 460px;";
         newDeckgo.innerHTML = div;
+
         newDeckgo.id = text_id;
+
 
 
         parent.document.getElementById("custom_cont").appendChild(newDeckgo);
@@ -142,9 +193,68 @@
             text_count--;
             text_id = "deck" + text_count;
             return elem.parentNode.removeChild(elem);
-            
+
+        }
+    }
+
+</script>
+
+<script stype="text/javascript">
+    let dump;
+    function recolor(test) {
+
+        //id가지고 오기
+        console.log(document.getElementById(test.getAttribute('id')));
+        let aa = document.getElementById('first');
+        let bb = document.getElementById('second');
+        let clearbtn = document.getElementById('clear');
+        aa.style.opacity = "0";
+        aa.style.visibility = "none";
+        bb.style.opacity = "1";
+        bb.style.visibility = "visible";
+        clearbtn.style.opacity = "1";
+        clearbtn.style.visibility = "visible";
+        let form = document.getElementById(test.getAttribute('id'));
+
+        dump = form.id;
+        console.log(dump);
+        resize(form.id);
+
+
+
+    }
+    function resize(id) {
+        const inputs = document.querySelectorAll(".option input");
+        let thisId = document.getElementById(id);
+
+
+        
+        const handleUpdate = function () {
+            if (dump === id) {
+                const suffix = this.dataset.sizing || '';
+                thisId.style.fontSize = this.value + suffix;
+                thisId.style.color = this.value + suffix;
+            }
         }
 
+
+        inputs.forEach(input => {
+            input.addEventListener("change", handleUpdate);
+            input.addEventListener("mousemove", handleUpdate);
+        });
+
+    }
+
+    function clears() {
+        let aa = document.getElementById('first');
+        let bb = document.getElementById('second');
+        let clearbtn = document.getElementById('clear');
+        aa.style.opacity = "1";
+        aa.style.visibility = "visible";
+        bb.style.opacity = "0";
+        bb.style.visibility = "none";
+        clearbtn.style.opacity = "0";
+        clearbtn.style.visibility = "none";
     }
 </script>
 
