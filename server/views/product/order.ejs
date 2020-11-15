@@ -1,3 +1,4 @@
+import html2canvas from 'html2canvas';
 <!DOCTYPE html>
 <html>
 
@@ -137,18 +138,17 @@
             width: 500px;
             height: 500px;
         }
+
     </style>
 </head>
 
 <body>
     <%- include("../head/nav") %>
     <div class="contents">
+        <input type='button' value="캡쳐" id="edit" />
+        <a id="target" style="display:none"></a>
         <div class="custom_cont" id="custom_cont">
-            <img class="custom_picture" src="../../images/main_page/card_cloth1.jpg"/>
 
-            <div class="paint_area" id="paint_area">
-                
-            </div>
 
             <div class="all_btn">
 
@@ -241,6 +241,8 @@
             </div>
         </div>
     </div>
+
+	
 </body>
 
 </html>
@@ -265,7 +267,7 @@
 
 
 
-        parent.document.getElementById("paint_area").appendChild(newDeckgo);
+        parent.document.getElementById("custom_cont").appendChild(newDeckgo);
     }
 
     function showPerview(event){
@@ -279,10 +281,11 @@
             newDeckgo.style = "--width: 30%; --height: 20%; --top: 10%; --left: 40%;";
             newDeckgo.id = picture_id;
             newDeckgo.innerHTML = div;
+            newDeckgo.class="draggable hydrated selected";
 
             console.log(picture_count +" "+ picture_id);
 
-            parent.document.getElementById("paint_area").appendChild(newDeckgo);
+            parent.document.getElementById("custom_cont").appendChild(newDeckgo);
         }
     }
     function remove_text() {
@@ -407,8 +410,6 @@
     }
 
 
-
-
     function clears() {
         let aa = document.getElementById('first');
         let bb = document.getElementById('second');
@@ -422,5 +423,22 @@
         clearbtn.style.visibility = "none";
     }
 </script>
+
+<!-- <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js">
+    window.onload = function(){
+        document.getElementById("edit").addEventListener("click", functoin(e){
+            screenshot(e);
+        })
+    }
+    function screenshot(e){
+        var startX, startY;
+        var height = window.innerHeight;
+        var width = window.innerWidth;
+
+        
+    }
+</script> -->
+
+
 
 <script type="text/javascript" src="/javascripts/mainNav.js"></script>
