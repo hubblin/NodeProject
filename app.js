@@ -10,11 +10,11 @@ var indexRouter = require('./server/routes/index');
 var usersRouter = require('./server/routes/users');
 var productRouter = require('./server/routes/product');
 var reviewRouter = require('./server/routes/review');
-
-//라우트 설정
-let Route = require('./server/routes');
+var orderRouter = require('./server/routes/order');
 
 var app = express();
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'server/views'));

@@ -1,0 +1,71 @@
+.cards .img-size{
+    width:200px;
+    height:250px;
+    position: relative;
+}
+
+.cards{
+    width: 200px;
+    height: 300px;
+    box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    margin: 14px;
+}
+
+
+.cards .img-size img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top:0;
+    left: 0;
+}
+
+
+
+.cards .img-size .pop_btn{
+    pointer-events: none;
+    position: relative;
+    z-index: 3;
+    opacity: 0;
+    transition: all 0.3s ;
+    width: 170px;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    transform: translateX(-80px);
+    transition: 0.3s;
+    opacity: 0;
+}
+
+.cards:hover .img-size .pop_btn{
+    opacity: 1;
+    transform: translateX(0px);
+
+}
+
+.cards .img-size .pop_btn .cards_btn{
+    position: absolute;
+    width: 100px;
+    bottom: 30px;
+    color:#FFF;
+    margin-left: 5px;
+}
+
+.cards .img-size .pop_btn .bar{
+    position: absolute;
+    width: 100%;
+    height:2.15px;
+    background-color: #FFF;
+    bottom: 25px;
+}
+
+.cards .img-size .pop_btn .rot_bar{
+    position: absolute;
+    width: 40px;
+    bottom: 39px;
+    right: -5px;
+    height:2px;
+    background-color: #FFF;
+    transform: rotate(45deg);
+}
