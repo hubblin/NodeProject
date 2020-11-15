@@ -1,0 +1,444 @@
+import html2canvas from 'html2canvas';
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CS</title>
+    <link rel='stylesheet' href='/stylesheets/default.css' />
+    <link rel='stylesheet' href='/stylesheets/navstyle.css' />
+    <link rel='stylesheet' href='/stylesheets/Main_product.css' />
+    <script type="module"
+        src="https://unpkg.com/@deckdeckgo/drag-resize-rotate@latest/dist/deckdeckgo-drag-resize-rotate/deckdeckgo-drag-resize-rotate.esm.js"></script>
+    <style>
+        .contents {
+            margin-top: 100px;
+            display: block;
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+            width: 1500px;
+            height: 640px;
+            margin-bottom: 50px;
+            z-index: 0;
+        }
+
+        .custom_cont {
+            float: left;
+            width: 1097px;
+            height: 100%;
+            border: 1px solid black;
+            border-right: none;
+            position: relative;
+        }
+
+        .sale_cont {
+            float: right;
+            width: 400px;
+            height: 100%;
+            border: 1px solid black;
+        }
+
+        .all_btn {
+            position: absolute;
+            width: 70px;
+            height: 240px;
+
+            right: 25px;
+        }
+
+        .float_btn {
+            position: relative;
+            display: block;
+            border-radius: 50%;
+            background: white;
+            height: 70px;
+            width: 70px;
+            margin-bottom: 10px;
+            box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .float_btn a {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            line-height: 70px;
+            display: block;
+            cursor: pointer;
+        }
+
+        .float_btn label {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            line-height: 70px;
+            display: block;
+            cursor: pointer;
+        }
+
+        .add_picture {
+            opacity: 0;
+            width: 100%;
+            position: absolute;
+            line-height: 70px;
+            z-index: 2;
+        }
+
+
+        .float_btn:hover {
+            background-color: #FFC000;
+        }
+
+        .float_btn:hover a {
+            color: white;
+        }
+
+        .float_btn:hover label{
+            color: white;
+        }
+
+
+        #first {
+            opacity: 1;
+            visibility: visible;
+            position: absolute;
+        }
+
+        #second {
+            opacity: 0;
+            visibility: none;
+            position: absolute;
+        }
+
+        .order_pro {
+            width: 100%;
+
+        }
+
+        #clear {
+            opacity: 0;
+            visibility: none;
+        }
+        .paint_area{
+            position: absolute;
+            background: #00000000;
+            border: 3px solid #000000 ;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 250px;
+            height: 280px;
+            z-index: 100;
+            overflow: hidden;
+        }
+        .custom_cont .custom_picture{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate( -50%, -50%);
+            width: 500px;
+            height: 500px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <%- include("../head/nav") %>
+    <div class="contents">
+        <input type='button' value="캡쳐" id="edit" />
+        <a id="target" style="display:none"></a>
+        <div class="custom_cont" id="custom_cont">
+
+
+            <div class="all_btn">
+
+                <li>
+                    <div class="float_btn">
+                        <label for="select_pic">사진추가</label>
+                        <input name="select_pic" type="file" class="add_picture" onchange="showPerview(event)">
+                    </div>
+                </li>
+                <li>
+                    <div class="float_btn">
+                        <a class="add_text_btn" onclick="add_text()">글자추가</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="float_btn">
+                        <a class="remove_text_btn" onclick="remove_text()">글삭제</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="float_btn">
+                        <a class="remove_pic_btn" onclick="remove_pic()">사진삭제</a>
+                    </div>
+                </li>
+                <div id="clear" onclick="clears()">
+                    <a>완료</a>
+                </div>
+            </div>
+        </div>
+        <div class="sale_cont">
+
+            <div id="first">
+                <div class="order_pro">
+                    <h3>주문하기</h3>
+                    <hr>
+                    <div>가격 : <sapn>1000</sapn>원</div>
+                    <div>사이즈</div>
+                    <button>주문하기</button>
+                    <button>장바구니</button>
+                </div>
+            </div>
+
+            <div id="second">
+                <div class="option">
+                    <strong>Option</strong>
+                    <div class="block">
+                        <label for="textSize" class="opt-title">Font size</label>
+                        <input id="size_con" class="text_con" type="range" name="textSize" min="10" max="30" value="20"
+                            data-sizing="px" />
+                    </div>
+                    <div class="block">
+                        <label for="fontWeight" class="opt-title">TextStyle</label>
+                        <input id="weight_con" class="style_con" type="range" name="fontWeight" min="100" max="900"
+                            value="100" step="100" />
+                    </div>
+                    <div class="block">
+                        <label for="mainColor" class="opt-title">Main Color</label>
+                        <input id="color_con" class="color_con" type="color" name="mainColor" value="#ffc600">
+                    </div>
+                    <div class="block">
+                        <label for="backColor" class="opt-title">background Color</label>
+                        <input id="back_con" class="back_con" type="color" name="backColor" value="#000000FF" />
+                        <input type="checkbox" id="back_check" name="backColor" />
+                    </div>
+                    <div class="block">
+                        <label for="opacitys" class="opt-title">Opacity</label>
+                        <input id="opa_con" class="style_con" type="range" name="opacitys" min="0.1" max="1" value="1"
+                            step="0.1" />
+                    </div>
+                    <div class="block">
+                        <label for="bordres" class="opt-title">border</label>
+                        <select class="borders" id="border_con" name="borders">
+                            <option value="none">none</option>
+                            <option value="solid">solid</option>
+                            <option value="dotted">dotted</option>
+                            <option value="dashed">deshed</option>
+                            <option value="double">double</option>
+                            <option value="groove">groove</option>
+                            <option value="ridge">ridge</option>
+                            <option value="inset">inset</option>
+                            <option value="outset">outset</option>
+                            <option value="inherit">inherit</option>
+                        </select>
+                        <input type="range" id="border_weigth_con" class="borders" min="0" max="10" value="0" step="1"
+                            data-sizing="px" />
+                        <input type="color" id="border_color_con" class="borders" />
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+</body>
+
+</html>
+<script type="text/javascript">
+    let text_count = 0;
+    let text_id;
+    let picture_count =0;
+    let picture_id;
+    function add_text() {
+        ++text_count;
+        let text1 = "text" + text_count;
+        var div = `<div id=` + text1 + `  class="text" onclick="recolor(this)"  style=" font-size: 20px;" contenteditable="true">텍스트</div>`
+
+        text_id = "deck" + text_count;
+        var newDeckgo = parent.document.createElement("deckgo-drr");
+        newDeckgo.unit = "px";
+        newDeckgo.text = "true";
+        newDeckgo.style = "--top: 28px; --left: 46px;";
+        newDeckgo.innerHTML = div;
+
+        newDeckgo.id = text_id;
+
+
+
+        parent.document.getElementById("custom_cont").appendChild(newDeckgo);
+    }
+
+    function showPerview(event){
+        if(event.target.files.length >0){
+            var src = URL.createObjectURL(event.target.files[0]);
+            var div =`<img src="`+ src +`" style="display: none;" />`
+
+            ++picture_count;
+            picture_id = "picture" + picture_count;
+            var newDeckgo = parent.document.createElement("deckgo-drr");
+            newDeckgo.style = "--width: 30%; --height: 20%; --top: 10%; --left: 40%;";
+            newDeckgo.id = picture_id;
+            newDeckgo.innerHTML = div;
+            newDeckgo.class="draggable hydrated selected";
+
+            console.log(picture_count +" "+ picture_id);
+
+            parent.document.getElementById("custom_cont").appendChild(newDeckgo);
+        }
+    }
+    function remove_text() {
+        if (text_count >= 1) {
+            var elem = document.getElementById(text_id);
+            text_count--;
+            text_id = "deck" + text_count;
+            return elem.parentNode.removeChild(elem);
+        }
+    }
+    function remove_pic(){
+        if(picture_count >= 1){
+            var elem = document.getElementById(picture_id);
+            picture_count--;
+            picture_id = "picture" + picture_count;
+            return elem.parentNode.removeChild(elem);
+        }
+    }
+
+</script>
+
+<script stype="text/javascript">
+    let dump;
+    function recolor(test) {
+        //id가지고 오기
+        console.log(document.getElementById(test.getAttribute('id')));
+        let aa = document.getElementById('first');
+        let bb = document.getElementById('second');
+        let clearbtn = document.getElementById('clear');
+        aa.style.opacity = "0";
+        aa.style.visibility = "none";
+        bb.style.opacity = "1";
+        bb.style.visibility = "visible";
+        bb.style.pointerEvents = "auto";
+        clearbtn.style.opacity = "1";
+        clearbtn.style.visibility = "visible";
+        let form = document.getElementById(test.getAttribute('id'));
+
+        dump = form.id;
+        console.log(dump);
+        resize(form.id);
+
+
+
+    }
+    function resize(id) {
+        const inputs = document.querySelectorAll(".option input");
+        let thisId = document.getElementById(id);
+
+
+
+        const handleUpdate = function () {
+            if (dump === id) {
+                const suffix = this.dataset.sizing || '';
+                let sizeSoff;
+                let weightoff;
+                let coloroff;
+                let backoff;
+                let opaoff;
+                let borderWeigth;
+                let borderColor;
+                if (this.id == "size_con") {
+                    sizeSoff = this.dataset.sizing || '';
+                } else if (this.id == "weight_con") {
+                    weightoff = this.dataset.sizing || '';
+                } else if (this.id == "color_con") {
+                    coloroff = this.dataset.sizing || '';
+                } else if (this.id == "back_con") {
+                    backoff = this.dataset.sizing || '';
+                } else if (this.id == "opa_con") {
+                    opaoff = this.dataset.sizing || '';
+                } else if (this.id == "border_weigth_con") {
+                    borderWeigth = this.dataset.sizing || '';
+                } else if (this.id == "border_color_con") {
+                    borderColor = this.dataset.sizing || '';
+                }
+
+                thisId.style.fontSize = this.value + sizeSoff;
+                thisId.style.color = this.value + coloroff;
+                thisId.style.fontWeight = this.value + weightoff;
+                thisId.style.opacity = this.value + opaoff;
+                thisId.style.borderWidth = this.value + borderWeigth;
+                thisId.style.borderColor = this.value + borderColor;
+                if (document.getElementById("back_check").checked) {
+                    thisId.style.background = this.value + backoff;
+                } else {
+                    thisId.style.background = "none";
+                }
+
+                if (document.getElementById("border_con").options[document.getElementById("border_con").selectedIndex].value == "none") {
+                    thisId.style.borderStyle = "none";
+                } else if (document.getElementById("border_con").options[document.getElementById("border_con").selectedIndex].value == "solid") {
+                    thisId.style.borderStyle = "solid";
+                } else if (document.getElementById("border_con").options[document.getElementById("border_con").selectedIndex].value == "dotted") {
+                    thisId.style.borderStyle = "dotted";
+                } else if (document.getElementById("border_con").options[document.getElementById("border_con").selectedIndex].value == "dashed") {
+                    thisId.style.borderStyle = "dashed";
+                } else if (document.getElementById("border_con").options[document.getElementById("border_con").selectedIndex].value == "double") {
+                    thisId.style.borderStyle = "double";
+                } else if (document.getElementById("border_con").options[document.getElementById("border_con").selectedIndex].value == "groove") {
+                    thisId.style.borderStyle = "groove";
+                } else if (document.getElementById("border_con").options[document.getElementById("border_con").selectedIndex].value == "ridge") {
+                    thisId.style.borderStyle = "ridge";
+                } else if (document.getElementById("border_con").options[document.getElementById("border_con").selectedIndex].value == "inset") {
+                    thisId.style.borderStyle = "inset";
+                } else if (document.getElementById("border_con").options[document.getElementById("border_con").selectedIndex].value == "outset") {
+                    thisId.style.borderStyle = "outset";
+                } else if (document.getElementById("border_con").options[document.getElementById("border_con").selectedIndex].value == "inherit") {
+                    thisId.style.borderStyle = "inherit";
+                }
+
+
+            }
+        }
+
+
+        inputs.forEach(input => {
+            input.addEventListener("change", handleUpdate);
+            input.addEventListener("mousemove", handleUpdate);
+        });
+
+    }
+
+
+    function clears() {
+        let aa = document.getElementById('first');
+        let bb = document.getElementById('second');
+        let clearbtn = document.getElementById('clear');
+        aa.style.opacity = "1";
+        aa.style.visibility = "visible";
+        bb.style.opacity = "0";
+        bb.style.visibility = "none";
+        bb.style.pointerEvents = "none";
+        clearbtn.style.opacity = "0";
+        clearbtn.style.visibility = "none";
+    }
+</script>
+
+<!-- <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js">
+    window.onload = function(){
+        document.getElementById("edit").addEventListener("click", functoin(e){
+            screenshot(e);
+        })
+    }
+    function screenshot(e){
+        var startX, startY;
+        var height = window.innerHeight;
+        var width = window.innerWidth;
+
+        
+    }
+</script> -->
+
+
+
+<script type="text/javascript" src="/javascripts/mainNav.js"></script>

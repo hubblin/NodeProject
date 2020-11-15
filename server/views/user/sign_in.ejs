@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel='stylesheet' href='/stylesheets/default.css'/>
+    <style>
+        body{
+            position: absolute;
+            width: 350px;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 75px;
+        }
+        #log_img{
+            
+            position: relative;
+            width: 104px;
+            height: 146px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            display: block;
+            color: transparent;
+            background: url('../images/logo.png') no-repeat;
+            background-size: 104px 146px;
+        }
+        .content{
+            position: relative;
+        }
+        #email-logo{
+            width: 35px;
+            height: 26px;
+            margin-right: 10px;
+            display: block;
+            color: transparent;
+            background: url('../images/email_logo.png') no-repeat;
+            background-size: 35px 26px;
+        }
+        
+        #pwd-logo{
+            width: 35px;
+            height: 26px;
+
+            display: block;
+            color: transparent;
+            background: url('../images/pwd_logo.png') no-repeat;
+            background-size: 35px 26px;
+        }
+        
+        #name-logo{
+            width: 25px;
+            height: 26px;
+            margin-left: 5px;
+            display: block;
+            color: transparent;
+            background: url('../images/name_logo.png') no-repeat;
+            background-size: 25px 26px;
+        }
+        
+        #phone-logo{
+            width: 18px;
+            height: 26px;
+            margin-left: 7px;
+            display: block;
+            color: transparent;
+            background: url('../images/phone_logo.png') no-repeat;
+            background-size: 18px 26px;
+        }
+       
+
+        #submit_button{
+            color: #fff;
+            background-color: #ffC000;
+            width: 100%;
+            height: 35px;
+            border: solid 1px  #ffC000;
+            border-radius: 3px;
+            outline: none;
+        }
+        #submit_button:active{
+            background-color: #ffA000;
+            border: solid 1px  #ffA000;
+        }
+
+        #signup_button{
+            color: #fff;
+            background-color: #ffC000;
+            width: 100%;
+            height: 35px;
+            border: solid 1px  #ffC000;
+            border-radius: 3px;
+            outline: none;
+        }
+        #signup_button:active{
+            background-color: #ffA000;
+            border: solid 1px  #ffA000;
+        }
+
+        #logintext{
+            text-align: center;
+
+        }
+
+        .span-left{
+            float: left;
+            position: relative;
+            
+        }
+        .span-rigth{
+            float: right;
+            background-position: left;
+            outline: none;
+            border: none;
+            border-bottom: solid 1px #ffC000 ;
+            
+           
+            position: relative;
+            width: 80%;
+            height: 26px;
+            
+        }
+
+        .row{
+            width: 100%;
+            
+            margin-top: 20px;
+            margin-bottom: 15px;
+            height: 30px;
+        }
+        .span-rigth::placeholder{
+            color: #aaa;
+        }
+        .span-rigth:focus{
+            animation-name: input-focus;
+            animation-duration: 0.1s;
+            animation-fill-mode: forwards;
+           
+        }
+        @keyframes input-focus{
+            from{
+                
+            }
+            to{
+                width: 80.5%;
+                height: 27px;
+                border-bottom: solid 3px #ffA000 ;
+            }
+        }
+        input:focus::placeholder{
+            color: transparent;
+        }
+    
+    </style>
+</head>
+<body>
+    <h1 id="logintext">로그인</h1>
+    <br>
+    <div>
+        <a href="/" id="log_img">LOGO</a>
+        <form action="/" method="get"> <!-- 회원가입 post로 가기 -->
+            <div class="content">
+                <div class="row">
+                    <a href="" id="email-logo" class="span-left">아이디</a>
+                    <input type="text" class="span-rigth"  placeholder="아이디(이메일)">
+                </div>
+                <div class="row">
+                    <a href="" id="pwd-logo" class="span-left">비밀번호</a>
+                    <input type="password" class="span-rigth"  placeholder="비밀번호">
+                </div>
+                <div class="row">
+                    <span><input type="submit" value="로그인" id="submit_button"></span>
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <span><input type="submit" value="회원가입" id="signup_button" onclick="location.href='sign_up'" /></span>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+
+
+    </script>
+
+
+</body>
+</html>

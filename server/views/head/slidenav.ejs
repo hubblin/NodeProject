@@ -1,0 +1,87 @@
+
+<div class="nav_body">
+    <div class="slider">
+        <div class="slides">
+            <input type="radio" onclick="CheckInput()"  name="radio-btn" id="radio1">
+            <input type="radio" onclick="CheckInput()" name="radio-btn" id="radio2">
+            <input type="radio" onclick="CheckInput()" name="radio-btn" id="radio3">
+            <input type="radio" onclick="CheckInput()" name="radio-btn" id="radio4">
+
+            <div class="slide first">
+                <img src="/images/slide_images/귀멸의 칼날1.jpg" alt="">
+            </div>
+            <div class="slide">
+                <img src="/images/slide_images/귀멸의 칼날2.jpg" alt="">
+            </div>
+            <div class="slide">
+                <img src="/images/slide_images/귀멸의 칼날3.jpg" alt="">
+            </div>
+            <div class="slide">
+                <img src="/images/slide_images/귀멸의 칼날4.jpg" alt="">
+            </div>
+
+
+
+
+        </div>
+        <div class="navigation-manual">
+            <label id="mradio1" for="radio1" class="manual-btn"></label>
+            <label id="mradio2" for="radio2" class="manual-btn"></label>
+            <label id="mradio3" for="radio3" class="manual-btn"></label>
+            <label id="mradio4" for="radio4" class="manual-btn"></label>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script type="text/javascript">
+ function CheckInput(){
+    if(document.getElementById('radio1').checked){
+        document.getElementById('mradio1').style.background = '#FFC000'
+        document.getElementById('mradio2').style.background = 'none'
+        document.getElementById('mradio3').style.background = 'none'
+        document.getElementById('mradio4').style.background = 'none'
+    }else if(document.getElementById('radio2').checked){
+        document.getElementById('mradio1').style.background = 'none'
+        document.getElementById('mradio2').style.background = '#FFC000'
+        document.getElementById('mradio3').style.background = 'none'
+        document.getElementById('mradio4').style.background = 'none'
+    }else if(document.getElementById('radio3').checked){
+        document.getElementById('mradio1').style.background = 'none'
+        document.getElementById('mradio2').style.background = 'none'
+        document.getElementById('mradio3').style.background = '#FFC000'
+        document.getElementById('mradio4').style.background = 'none'
+    }else if(document.getElementById('radio4').checked){
+        document.getElementById('mradio1').style.background = 'none'
+        document.getElementById('mradio2').style.background = 'none'
+        document.getElementById('mradio3').style.background = 'none'
+        document.getElementById('mradio4').style.background = '#FFC000'
+    }
+}
+
+
+    var counter = 0;
+    
+    setInterval(function () {
+        if( document.getElementById('radio1').checked){
+            counter = 1;
+        }else if(document.getElementById('radio2').checked){
+
+            counter = 2;
+        }else if(document.getElementById('radio3').checked){
+
+            counter = 3;
+        }else if(document.getElementById('radio4').checked){
+            counter = 4;
+        }
+        counter++;
+        if (counter > 4) {
+            counter = 1;
+        }
+        document.getElementById('radio' + counter).checked = true;
+        CheckInput();
+    }, 5000);
+</script>

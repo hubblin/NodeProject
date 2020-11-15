@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CS</title>
+    <link rel='stylesheet' href='/stylesheets/default.css' />
+    <link rel='stylesheet' href='/stylesheets/select/select1.css' />
+    <link rel='stylesheet' href='/stylesheets/sidenav.css' />
+    <link rel='stylesheet' href='/stylesheets/product_card.css' />
+    <style>
+        .product_contents {
+            margin-top: 100px;
+            display: block;
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+            width: 1164px;
+        }
+
+        .product_contents .product_nav {
+            float: left;
+            width: 200px;
+        }
+
+        .product_contents .product_main {
+            float: right;
+
+            width: 932px;
+            height: 2200px;
+            margin-left: 32px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include("../head/nav") %>
+    <div class="product_contents">
+        <div class="product_nav">
+            <%- include("./head/sidenav")%>
+        </div>
+        <div class="product_main">
+            <a href="/order">
+                <div class="cards">
+                    <div class="img-size">
+                        <img src="../images/main_page/kakao.jpg">
+                        <div class="pop_btn">
+                            <div class="cards_btn">go to create</div>
+                            <div class="bar"></div><div class="rot_bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <p class="title">민무늬 파우치</p>
+                        <p class="price">15,000~</p>
+                    </div>
+                </div>
+            </a>
+            <a href="#a">
+                <div class="cards">
+                    <div class="img-size">
+                        <img src="../images/main_page/스폰지.jpg">
+                        <div class="pop_btn">
+                            <div class="cards_btn">go to create</div>
+                            <div class="bar"></div><div class="rot_bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <p class="title">민무늬 파우치</p>
+                        <p class="price">15,000~</p>
+                    </div>
+                </div>
+            </a>
+            <a href="#a">
+                <div class="cards">
+                    <div class="img-size">
+                        <img src="../images/main_page/스폰지.jpg">
+                        <div class="pop_btn">
+                            <div class="cards_btn">go to create</div>
+                            <div class="bar"></div><div class="rot_bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <p class="title">민무늬 파우치</p>
+                        <p class="price">15,000~</p>
+                    </div>
+                </div>
+            </a>
+            <a href="#a">
+                <div class="cards">
+                    <div class="img-size">
+                        <img src="../images/main_page/스폰지.jpg">
+                        <div class="pop_btn">
+                            <div class="cards_btn">go to create</div>
+                            <div class="bar"></div><div class="rot_bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <p class="title">민무늬 파우치</p>
+                        <p class="price">15,000~</p>
+                    </div>
+                </div>
+            </a>
+            <a href="#a">
+                <div class="cards">
+                    <div class="img-size">
+                        <img src="../images/main_page/스폰지.jpg">
+                        <div class="pop_btn">
+                            <div class="cards_btn">go to create</div>
+                            <div class="bar"></div><div class="rot_bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <p class="title">민무늬 파우치</p>
+                        <p class="price">15,000~</p>
+                    </div>
+                </div>
+            </a>
+            <a href="#a">
+                <div class="cards">
+                    <div class="img-size">
+                        <img src="../images/main_page/스폰지.jpg">
+                        <div class="pop_btn">
+                            <div class="cards_btn">go to create</div>
+                            <div class="bar"></div><div class="rot_bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <p class="title">민무늬 파우치</p>
+                        <p class="price">15,000~</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    function setsub2() {
+        var sublnb = document.getElementById("sublnb");
+        sublnb.style.display = "none"
+        sublnb.style.opacity = "0";
+        sublnb.style.visibility = "hidden";
+        var sublnb2 = document.getElementById("sublnb2");
+        sublnb2.style.display = "block";
+        sublnb2.style.opacity = "1";
+        sublnb2.style.visibility = "visible";
+    }
+    function outsub2() {
+        var sublnb = document.getElementById("sublnb");
+        sublnb.style.display = "block"
+        sublnb.style.opacity = "1";
+        sublnb.style.visibility = "visible";
+        var sublnb2 = document.getElementById("sublnb2");
+        sublnb2.style.display = "none";
+        sublnb2.style.opacity = "0";
+        sublnb2.style.visibility = "hidden";
+    }
+    function lsub2() {
+        var sublnb = document.getElementById("sublnb");
+        sublnb.style.display = "none"
+        sublnb.style.opacity = "0";
+        sublnb.style.visibility = "hidden";
+        var sublnb2 = document.getElementById("sublnb2");
+        sublnb2.style.display = "block";
+        sublnb2.style.opacity = "1";
+        sublnb2.style.visibility = "visible";
+    }
+    function loutsub2() {
+        var sublnb = document.getElementById("sublnb");
+        sublnb.style.display = "block"
+        sublnb.style.opacity = "1";
+        sublnb.style.visibility = "visible";
+        var sublnb2 = document.getElementById("sublnb2");
+        sublnb2.style.display = "none";
+        sublnb2.style.opacity = "0";
+        sublnb2.style.visibility = "hidden";
+    }
+</script>
