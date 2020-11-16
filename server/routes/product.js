@@ -11,6 +11,8 @@ router.get('/painting', function(req, res) {
     }
 });
 
+
+// 페인팅 케이스
 router.get('/painting/case', function(req, res) {
     if(req.session.user){
         res.render('product/paintingcase',{name:req.session.user.name});
@@ -21,6 +23,7 @@ router.get('/painting/case', function(req, res) {
     
 });
 
+// 페인팅 옷
 router.get('/painting/clothes', function(req, res) {
     if(req.session.user){
         res.render('product/paintingclothes',{name:req.session.user.name});
@@ -36,13 +39,15 @@ router.get('/painting/clothes', function(req, res) {
 router.get('/making', function(req,res, next){
 
     if(req.session.user){
-        res.render('product/paintingProduct',{name:req.session.user.name});
+        res.render('product/makingProduct',{name:req.session.user.name});
     }
     else{
-        res.render('product/paintingProduct',{name:false});
+        res.render('product/makingProduct',{name:false});
     }
 });
 
+
+// 메이킹 마우스
 router.get('/making/mouse', function(req,res, next){
     if(req.session.user){
         res.render('product/makingmouse',{name:req.session.user.name});
@@ -53,6 +58,8 @@ router.get('/making/mouse', function(req,res, next){
     
 });
 
+
+// 메이킹 이어폰
 router.get('/making/earphone', function(req,res, next){
     if(req.session.user){
         res.render('product/makingearphone',{name:req.session.user.name});
