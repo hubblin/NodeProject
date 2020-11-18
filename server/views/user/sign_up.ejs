@@ -165,24 +165,26 @@
 
     <div>
         <a href="/" id="log_img">LOGO</a>
-        <!-- 회원가입 post로 가기 -->
+        <!-- 회원가입 post로 가기 
+            나중에 자동완성 안되게 autocomplete="off" 추가하기
+        -->
         <div class="content">
             <form action="/users/sign_up" method="POST">
                 <div class="row">
                     <a id="email-logo" class="span-left">아이디</a>
-                    <input type="text" autocomplete="off" class="span-rigth" placeholder="아이디(이메일)" name='user_id'>
+                    <input type="text" class="span-rigth" placeholder="아이디(이메일)" name='user_id'>
                 </div>
                 <div class="row">
                     <a id="pwd-logo" class="span-left">비밀번호</a>
-                    <input type="password" autocomplete="off" class="span-rigth" placeholder="비밀번호" name="user_pw" >
+                    <input type="password" class="span-rigth" placeholder="비밀번호" name="user_pw" >
                 </div>
                 <div class="row">
                     <a id="name-logo" class="span-left">이름</a>
-                    <input type="text" autocomplete="off" name="user_name" class="span-rigth" placeholder="이름" name="user_name" >
+                    <input type="text" name="user_name" class="span-rigth" placeholder="이름" name="user_name" >
                 </div>
                 <div class="row">
                     <a id="phone-logo" class="span-left">전화번호</a>
-                    <input type="text" autocomplete="off" class="span-rigth" placeholder="전화번호" name="user_phone" >
+                    <input type="text" class="span-rigth" placeholder="전화번호" name="user_phone" >
                 </div>
                 <div class="row">
                     <a id="phone-logo" class="span-left">관심분야</a>
