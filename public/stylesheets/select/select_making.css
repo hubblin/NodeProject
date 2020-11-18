@@ -1,0 +1,76 @@
+header {position: relative; height: 81px; text-align: center; margin: 0; padding: 0;}
+header h1 {position: absolute; left:50px; top:0; padding: 14px 0 0;}
+header h1 a {display: block; width: 40px; height: 48px; color: transparent; background: url('../../images/logo.png') no-repeat;
+   background-size: 40px 48px;}
+
+
+header .lnb li {display: inline-block;}
+header .lnb li a{ display: block; height: 81px; padding: 0 35px; font-size: 17px; color: #333; line-height: 81px;}
+header .lnb li .make {color: #FFC000; font-weight: bold; }
+header .lnb li a:hover {color: #FFC000; font-weight: bold;}
+
+header .lnb li a span {position: relative;}
+
+
+header .lnb li a:hover span div {position: absolute; left: 50%; bottom: -9px; display: block;
+  width: 100%; height: 2px; background: #FFC000; transform: translateX(-50%); transition: all 0.3s;
+  transition-timing-function: linear;}
+header .lnb li a span div {position: absolute; left: 50%; bottom: -9px; display: block;
+width: 0px; height: 2px; background: none; transform: translateX(-50%); transition: all 0.25s;
+transition-timing-function: linear;}
+
+header .lnb li .make span div{
+    width: 100%; background: #FFC000;
+}
+
+
+header .bottom_line{pointer-events: none; top:80px; position: absolute; width: 95%; height: 1px; background: #D5DBE0; left: 50%; transform: translateX(-50%);}
+
+
+
+header #sublnb li {display: inline-block;}
+header #sublnb li a{display: block; height: 50px; padding: 0 20px; font-size: 15px; color: #333; line-height: 50px;}
+header #sublnb li a:hover{font-weight: bold;}
+header #sublnb li a span{position: relative;}
+
+header #sublnb{opacity: 0; visibility: hidden; display: none;}
+
+
+header #sublnb li a:hover > span > div {position: absolute; width: 100%; height: 6px; background: #ffbf0062;top:50%; transform: translateY(-50%);
+transition: all 0.5s; transition-timing-function: linear;
+}
+header #sublnb li a span div {position: absolute; width: 0px; height: 6px; top: 50%; transform: translateY(-50%);
+transition: all 0.5s; transition-timing-function: linear;
+}
+
+header #sublnb2 li{display: inline-block;}
+header #sublnb2 li a{display: block; height: 50px; padding: 0 20px; font-size: 15px; color: #333; line-height: 50px;}
+header #sublnb2 li a:hover{font-weight: bold;}
+header #sublnb2 li a span{position: relative;}
+
+header #sublnb2{opacity: 1; visibility: visible; display: block;}
+
+
+
+header #sublnb2 li a:hover > span > div {position: absolute; width: 100%; height: 6px; background: #ffbf0062;top:50%; transform: translateY(-50%);
+transition: all 0.5s; transition-timing-function: linear;
+}
+header #sublnb2 li a span div {position: absolute; width: 0px; height: 6px; top: 50%; transform: translateY(-50%);
+transition: all 0.5s; transition-timing-function: linear;
+}
+
+header .spot {position: absolute; right:50px; top:0;}
+header .spot li {position: relative; float: left; }
+header .spot li::after {content: ""; position: absolute; left: 0; top: 50%;
+width: 1px; height: 7px; background: #ccc; transform: translateY(-50%); }
+header .spot li a{display: block; height: 81px; padding: 0 10px; line-height: 81px; font-size: 11px;}
+header .spot li a:hover{color: #ccc;}
+header .spot li:last-child a{padding-right: 0;}
+header .spot li:first-child::after{display: none;}
+
+
+ul, ol, li{list-style: none;}
+.hide {position: absolute; left: -5000px;}
+.skip{position: absolute; left:0; top: -100px; width:100%; height:50px; line-height: 50px;
+background: #000; color: #fff; text-align: center; font-size: 14px; transition:all 0.5s;}
+.skip:focus {top:0;}

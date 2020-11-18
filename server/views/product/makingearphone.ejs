@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel='stylesheet' href='/stylesheets/default.css' />
+    <link rel='stylesheet' href='/stylesheets/select/select_making.css' />
+
+</head>
+<body>
+    <%- include("../head/nav",{name:name}) %>
+</body>
+</html>
+
+<script type="text/javascript">
+
+    function setsub() {
+        var sublnb = document.getElementById("sublnb");
+        sublnb.style.display = "block"
+        sublnb.style.opacity = "1";
+        sublnb.style.visibility = "visible";
+        var sublnb2 = document.getElementById("sublnb2");
+        sublnb2.style.display = "none";
+        sublnb2.style.opacity = "0";
+        sublnb2.style.visibility = "hidden";
+    }
+
+    function outsub() {
+        var sublnb = document.getElementById("sublnb");
+        sublnb.style.display = "none"
+        sublnb.style.opacity = "0";
+        sublnb.style.visibility = "hidden";
+        var sublnb2 = document.getElementById("sublnb2");
+        sublnb2.style.display = "block";
+        sublnb2.style.opacity = "1";
+        sublnb2.style.visibility = "visible";
+    }
+
+    function lsub() {
+
+        var sublnb = document.getElementById("sublnb");
+        sublnb.style.display = "block"
+        sublnb.style.opacity = "1";
+        sublnb.style.visibility = "visible";
+        var sublnb2 = document.getElementById("sublnb2");
+        sublnb2.style.display = "none";
+        sublnb2.style.opacity = "0";
+        sublnb2.style.visibility = "hidden";
+    }
+
+    function loutsub() {
+        var sublnb = document.getElementById("sublnb");
+        sublnb.style.display = "none"
+        sublnb.style.opacity = "0";
+        sublnb.style.visibility = "hidden";
+        var sublnb2 = document.getElementById("sublnb2");
+        sublnb2.style.display = "block";
+        sublnb2.style.opacity = "1";
+        sublnb2.style.visibility = "visible";
+    }
+    function setsub2(){
+
+}
+function outsub2(){
+
+}
+function lsub2(){
+
+}
+function loutsub2(){
+    
+}
+</script>
+
