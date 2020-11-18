@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mypage</title>
+
+    <link rel='stylesheet' href='/stylesheets/default.css' />
+    <link rel='stylesheet' href='/stylesheets/navstyle.css' />
+
+    <style>
+        .mypage_body {
+            width: 1000px;
+            height: auto;
+
+            margin: 0 auto;
+            margin-top: 100px;
+
+        }
+
+        #title {
+            display: flex;
+            height: 100px;
+        }
+
+        #title div {
+            color:white;
+        }
+        #my_main{
+            text-align: center;
+            line-height: 70px;
+            font-size: 25px;
+            border-right: 1px solid white;
+        }
+        #my_order_count{
+            border-right: 1px solid white;
+        }
+        .count div{
+            margin: 10px;
+        }
+
+        .count_content{
+            margin: 0 auto;
+        }
+        #tbody{
+            display: flex;
+            
+        }
+        #tbody div{
+            
+            
+        }
+    </style>
+
+</head>
+
+<body>
+    <%- include("../head/nav",{name:name}) %>
+
+    <div class="mypage_body">
+        <div id="title">
+            <div id="my_main" style="flex-basis: 150px; background-color: #FFBF00;">
+                <span>mypage</span>
+            </div>
+            <div id="my_order_count" class="count" style="flex-basis: 425px; background-color: #F7D358;">
+                <div>주문</div>
+                <div class="count_content">
+                    <span style="font-size: 35px;">0</span><span>건</span>
+                </div>
+            </div>
+            <div id="my_custom_count" class="count" style="flex-basis: 425px; background-color: #F7D358;">
+                <div>커스텀 제작</div>
+                <div class="count_content">
+                    <span style="font-size: 35px;">0</span><span>건</span>
+                </div>
+            </div>
+        </div>
+        <div id="tbody">
+            <div class="mypage_nav" style="flex-basis: 150px; height: 100px; background-color: #F5ECCE;">
+                <h3>메뉴</h3>
+                
+            </div>
+
+            <div class="mypage_content" style="flex-basis:850px; height: 200px;">
+                <h3>주문목록</h3>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script type="text/javascript">
+
+    function setsub() {
+        var sublnb = document.getElementById("sublnb");
+        sublnb.style.display = "block";
+        sublnb.style.opacity = "1";
+        sublnb.style.visibility = "visible";
+    }
+    function outsub() {
+        var sublnb = document.getElementById("sublnb");
+        sublnb.style.display = "none"
+        sublnb.style.opacity = "0";
+        sublnb.style.visibility = "hidden";
+    }
+    function lsub() {
+        var looksub = document.getElementById("sublnb");
+        sublnb.style.display = "block";
+        sublnb.style.opacity = "1";
+        sublnb.style.visibility = "visible";
+    }
+    function loutsub() {
+        var looksub = document.getElementById("sublnb");
+        sublnb.style.display = "none";
+        sublnb.style.opacity = "0";
+        sublnb.style.visibility = "hidden";
+    }
+    function setsub2() {
+        var sublnb2 = document.getElementById("sublnb2");
+        sublnb2.style.display = "block";
+        sublnb2.style.opacity = "1";
+        sublnb2.style.visibility = "visible";
+    }
+    function outsub2() {
+        var sublnb2 = document.getElementById("sublnb2");
+        sublnb2.style.display = "none";
+        sublnb2.style.opacity = "0";
+        sublnb2.style.visibility = "hidden";
+    }
+    function lsub2() {
+        var sublnb2 = document.getElementById("sublnb2");
+        sublnb2.style.display = "block";
+        sublnb2.style.opacity = "1";
+        sublnb2.style.visibility = "visible";
+    }
+    function loutsub2() {
+        var sublnb2 = document.getElementById("sublnb2");
+        sublnb2.style.display = "none";
+        sublnb2.style.opacity = "0";
+        sublnb2.style.visibility = "hidden";
+    }
+
+</script>

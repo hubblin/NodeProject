@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <title>CS</title>
-        <link rel='stylesheet' href='/stylesheets/default.css'/>
-        <link rel='stylesheet' href='/stylesheets/select/select1.css'/>
-        <link rel='stylesheet' href='/stylesheets/sidenav.css'/>
-        <link rel='stylesheet' href='/stylesheets/product_card.css'/>
-       
-        <style>
-            .product_contents{
-                margin-top: 100px;
-                position: relative;
-                left:50%;
-                transform: translateX(-50%);
-                width: 1164px;
-            }
-            .product_contents .product_nav{
-                float:left;
-                width: 200px;
-            }
-            .product_contents .product_main{
-                float: right;
-                /* border: 1px solid black; */
-                width: 934px;
-                height: 2200px;
-                margin-left: 30px;
-                margin-bottom: 20px;
-            }
-        </style>
-    </head>
-    <body>
-        <%- include("../head/nav",{name:name}) %>
-        <div class="product_contents">
-            <div class="product_nav">
+<head>
+    <title>CS</title>
+    <link rel='stylesheet' href='/stylesheets/default.css' />
+    <link rel='stylesheet' href='/stylesheets/select/select1.css' />
+    <link rel='stylesheet' href='/stylesheets/sidenav.css' />
+    <link rel='stylesheet' href='/stylesheets/product_card.css' />
+
+    <style>
+        .product_contents {
+            margin-top: 100px;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1164px;
+        }
+
+        .product_contents .product_nav {
+            float: left;
+            width: 200px;
+        }
+
+        .product_contents .product_main {
+            float: right;
+            /* border: 1px solid black; */
+            width: 934px;
+            height: 2200px;
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include("../head/nav",{name:name}) %>
+    <div class="product_contents">
+        <div class="product_nav">
 
             <%- include("./head/sidenav")%>
         </div>
@@ -44,7 +47,8 @@
                         <img src="../images/main_page/kakao.jpg">
                         <div class="pop_btn">
                             <div class="cards_btn">go to create</div>
-                            <div class="bar"></div><div class="rot_bar"></div>
+                            <div class="bar"></div>
+                            <div class="rot_bar"></div>
                         </div>
                     </div>
 
@@ -60,7 +64,8 @@
                         <img src="../images/main_page/스폰지.jpg">
                         <div class="pop_btn">
                             <div class="cards_btn">go to create</div>
-                            <div class="bar"></div><div class="rot_bar"></div>
+                            <div class="bar"></div>
+                            <div class="rot_bar"></div>
                         </div>
                     </div>
 
@@ -76,7 +81,8 @@
                         <img src="../images/main_page/스폰지.jpg">
                         <div class="pop_btn">
                             <div class="cards_btn">go to create</div>
-                            <div class="bar"></div><div class="rot_bar"></div>
+                            <div class="bar"></div>
+                            <div class="rot_bar"></div>
                         </div>
                     </div>
 
@@ -92,7 +98,8 @@
                         <img src="../images/main_page/스폰지.jpg">
                         <div class="pop_btn">
                             <div class="cards_btn">go to create</div>
-                            <div class="bar"></div><div class="rot_bar"></div>
+                            <div class="bar"></div>
+                            <div class="rot_bar"></div>
                         </div>
                     </div>
 
@@ -108,7 +115,8 @@
                         <img src="../images/main_page/스폰지.jpg">
                         <div class="pop_btn">
                             <div class="cards_btn">go to create</div>
-                            <div class="bar"></div><div class="rot_bar"></div>
+                            <div class="bar"></div>
+                            <div class="rot_bar"></div>
                         </div>
                     </div>
 
@@ -124,7 +132,8 @@
                         <img src="../images/main_page/스폰지.jpg">
                         <div class="pop_btn">
                             <div class="cards_btn">go to create</div>
-                            <div class="bar"></div><div class="rot_bar"></div>
+                            <div class="bar"></div>
+                            <div class="rot_bar"></div>
                         </div>
                     </div>
 
@@ -139,29 +148,6 @@
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -208,5 +194,17 @@
         sublnb2.style.display = "none";
         sublnb2.style.opacity = "0";
         sublnb2.style.visibility = "hidden";
+    }
+    function setsub() {
+
+    }
+    function outsub() {
+
+    }
+    function lsub() {
+
+    }
+    function loutsub() {
+
     }
 </script>

@@ -93,7 +93,7 @@
             background-size: 111px 20px;
         }
 
-        #review_product_img {
+        .review_product_img {
             width: 50px;
             height: 50px;
             display: block;
@@ -102,7 +102,7 @@
         }
 
 
-        #review_user_img {
+        .review_user_img {
             width: 160px;
             height: 160px;
             display: block;
@@ -119,39 +119,57 @@
     <div id="review_body">
 
         <div class="review_header">
-            <span id="review_header_f">리뷰</span><span id="review_header_s">(리뷰수)</span>
+            <span id="review_header_f">리뷰</span><span id="review_header_s">(<%= reviewList.length %>)</span>
         </div>
 
-        <div>
+
+            <% for(var i = 0; i<reviewList.length; i++) {%>
             <div id="review_info">
                 <div class="item">
-                    <a href="" id="review_product_img" style="background: url('../images/main_page/card_earphone.jpg') no-repeat; background-size: 50px 50px;"></a>
+                    <a href="" class="review_product_img" id="product_img<%= i%>" style="background: url('../images/main_page/card_earphone.jpg') no-repeat; background-size: 50px 50px;"></a>
+                    <script>
+                        var product_img = document.getElementById('product_img<%= i%>');
+                        if('<%= reviewList[i].product_img_path%>' == 'none'){
+                            product_img.style.backgroundImage = "url('../images/main_page/브라이언.jpg')";
+                        }
+                    </script>
                 </div>
 
                 <div class="item" id="item_list">
-                    <span>커스텀이어폰</span>
+                    <span><%= reviewList[i].product_name%></span>
                     <span>별점
                         <div class="star_space">
-                            <div style="width: 100%;"></div>
+                            <div id="score<%= i%>" style="width: 100%;"></div>
                         </div>
-                        <span>2020-10-30</span>
-                        <span>권*비</span>
+                        <script>
+                            var score = document.getElementById('score<%= i%>');
+                            score.style.width = '<%= reviewList[i].pro_score*20%>%'
+                        </script>
+                        <span><%=  reviewList[i].pro_review_date%></span>
+                        <span><%=  reviewList[i].user_user_id%></span>
                     </span>
-                    <span>잘 도착 했어요 프린트가 생각한것보다 더 그려진 색
-                        그대로 자연스럽게 프린트되어서 맘에 넘 들어요. 단체 주문시 가격 할인이 있었으면 좋겠어요</span>
+                    <span><%=  reviewList[i].pro_review_content%></span>
                 </div>
 
                 <div class="item">
-                    <!-- <a href="" id="review_user_img" style="background: url('../images/main_page/card_earphone.jpg') no-repeat; background-size: 160px 160px;">리뷰이미지</a> -->
+                    <a href="" class="review_user_img" id="review_img<%= i%>" style="background: url('../images/main_page/card_earphone.jpg') no-repeat; background-size: 160px 160px;">리뷰이미지</a>
+                    <script>
+                        var user_review_img = document.getElementById('review_img<%= i%>');
+                        if('<%= reviewList[i].pro_img_path%>' == 'none'){
+                            user_review_img.style.backgroundImage = "url('../images/main_page/card_cloth2.jpg')";
+                        }
+                    </script>
                 </div>
 
             </div>
 
             <hr>
-        </div>
 
-        <div>
-            <div id="review_info">
+            <%}%>
+        
+
+        
+            <!-- <div id="review_info">
 
                 <div class="item">
                     <a href="" id="review_product_img" style="background: url('../images/main_page/card_cloth2.jpg') no-repeat; background-size: 50px 50px;"></a>
@@ -170,13 +188,13 @@
                 </div>
 
                 <div class="item">
-                    <!-- <a href="" id="review_user_img" style="background: url('../images/main_page/card_cloth2.jpg') no-repeat; background-size: 160px 160px;">리뷰이미지</a> -->
+                    <a href="" id="review_user_img" style="background: url('../images/main_page/card_cloth2.jpg') no-repeat; background-size: 160px 160px;">리뷰이미지</a>
                 </div>
 
             </div>
 
-            <hr>
-        </div>
+            <hr> -->
+        
 
 
 
