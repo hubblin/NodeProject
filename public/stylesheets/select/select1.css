@@ -29,7 +29,7 @@ header .bottom_line{pointer-events: none; top:80px; position: absolute; width: 9
 
 
 header #sublnb li {display: inline-block;}
-header #sublnb li a{display: block; height: 50px; padding: 0 20px; font-size: 15px; color: #333; line-height: 50px;}
+header #sublnb li a{display: block; height: 50px; padding: 0 20px; font-size: 15px; color: #333; line-height: 50px; }
 header #sublnb li a:hover{font-weight: bold;}
 header #sublnb li a span{position: relative;}
 header #sublnb{opacity: 1; visibility: visible; display: block;}
