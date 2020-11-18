@@ -170,22 +170,22 @@
             <form action="/users/sign_up" method="POST">
                 <div class="row">
                     <a id="email-logo" class="span-left">아이디</a>
-                    <input type="text" class="span-rigth" placeholder="아이디(이메일)" name='user_id'>
+                    <input type="text" autocomplete="off" class="span-rigth" placeholder="아이디(이메일)" name='user_id'>
                 </div>
                 <div class="row">
                     <a id="pwd-logo" class="span-left">비밀번호</a>
-                    <input type="password" class="span-rigth" placeholder="비밀번호" name="user_pw" >
+                    <input type="password" autocomplete="off" class="span-rigth" placeholder="비밀번호" name="user_pw" >
                 </div>
                 <div class="row">
                     <a id="name-logo" class="span-left">이름</a>
-                    <input type="text" name="user_name" class="span-rigth" placeholder="이름" name="user_name" >
+                    <input type="text" autocomplete="off" name="user_name" class="span-rigth" placeholder="이름" name="user_name" >
                 </div>
                 <div class="row">
                     <a id="phone-logo" class="span-left">전화번호</a>
-                    <input type="text" class="span-rigth" placeholder="전화번호" name="user_phone" >
+                    <input type="text" autocomplete="off" class="span-rigth" placeholder="전화번호" name="user_phone" >
                 </div>
                 <div class="row">
-                    <a id="phone-logo" class="span-left">전화번호</a>
+                    <a id="phone-logo" class="span-left">관심분야</a>
                     <select name="user_category" id="category_selectBox">
                         <% for(var i=0; i<category.length; i++){%>
                             <option value="<%= i+1%>"><%= category[i].category_name%></option>

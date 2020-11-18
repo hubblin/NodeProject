@@ -1,4 +1,4 @@
-const pool = require('../config/dbconfig');
+const pool = require('../dbconfig/dbconfig');
 
 const crypto = require('crypto');
 
