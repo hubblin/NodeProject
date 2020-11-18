@@ -3,7 +3,12 @@ var router = express.Router();
 
 // 페인팅(파우치, 케이스, 의류)
 router.get('/painting', function(req, res) {
-    res.render('product/paintingProduct');
+    if(req.session.user){
+        res.render('product/paintingProduct',{name:req.session.user.name});
+    }
+    else{
+        res.render('product/paintingProduct',{name:false});
+    }
 });
 
 router.get('/painting/case', function(req, res) {
@@ -17,7 +22,12 @@ router.get('/painting/clothes', function(req, res) {
 
 // 메이킹(키보드, 마우스, 이어폰)
 router.get('/making', function(req,res, next){
-    res.render('product/makingProduct');
+    if(req.session.user){
+        res.render('product/paintingProduct',{name:req.session.user.name});
+    }
+    else{
+        res.render('product/paintingProduct',{name:false});
+    }
 });
 
 router.get('/making/mouse', function(req,res, next){

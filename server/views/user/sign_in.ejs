@@ -159,15 +159,15 @@
     <br>
     <div>
         <a href="/" id="log_img">LOGO</a>
-        <form action="/" method="get"> <!-- 회원가입 post로 가기 -->
+        <form action="/users/sign_in" method="POST"> <!-- 회원가입 post로 가기 -->
             <div class="content">
                 <div class="row">
                     <a href="" id="email-logo" class="span-left">아이디</a>
-                    <input type="text" class="span-rigth"  placeholder="아이디(이메일)">
+                    <input type="text" class="span-rigth"  placeholder="아이디(이메일)" name="user_id">
                 </div>
                 <div class="row">
                     <a href="" id="pwd-logo" class="span-left">비밀번호</a>
-                    <input type="password" class="span-rigth"  placeholder="비밀번호">
+                    <input type="password" class="span-rigth"  placeholder="비밀번호" name="user_pw">
                 </div>
                 <div class="row">
                     <span><input type="submit" value="로그인" id="submit_button"></span>
@@ -175,7 +175,8 @@
             </div>
         </form>
         <div class="row">
-            <span><input type="submit" value="회원가입" id="signup_button" onclick="location.href='sign_up'" /></span>
+           <!--<span><input type="submit" value="회원가입" id="signup_button" onclick="location.href='sign_up'" /></span>-->
+            
         </div>
     </div>
 
