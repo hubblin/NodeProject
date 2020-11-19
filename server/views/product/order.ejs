@@ -122,7 +122,7 @@
                 <li>
                     <div class="float_btn">
                         <label for="select_pic">사진추가</label>
-                        <input name="select_pic" type="file" class="add_picture" />
+                        <input name="select_pic" type="file" class="add_picture" id="imgLoader"/>
                     </div>
                 </li>
                 <li>
@@ -130,6 +130,7 @@
                         <a for="add_text_btn" onclick="addText()">글자추가</a>
                     </div>
                 </li>
+
                 <li>
                     <div class="float_btn">
                         <a for="add_text_btn" onclick="Selection_Mode()">선택하기</a>
@@ -140,6 +141,7 @@
                         <a for="add_text_btn" onclick="DrawingMode()">그리기</a>
                     </div>
                 </li>
+
                 <li>
                     <div class="float_btn">
                         <a class="remove_text_btn" onclick="delete_obj()">삭제</a>
@@ -166,47 +168,18 @@
                 <div class="option">
                     <strong>Option</strong>
                     <div class="block">
-                        <label for="textSize" class="opt-title">Font size</label>
-                        <input id="size_con" class="text_con" type="range" name="textSize" min="10" max="30" value="20"
-                            data-sizing="px" />
-                    </div>
-                    <div class="block">
                         <label for="fontWeight" class="opt-title">TextStyle</label>
                         <input id="weight_con" class="style_con" type="range" name="fontWeight" min="100" max="900"
                             value="100" step="100" />
                     </div>
                     <div class="block">
-                        <label for="mainColor" class="opt-title">Main Color</label>
-                        <input id="color_con" class="color_con" type="color" name="mainColor" value="#ffc600">
-                    </div>
-                    <div class="block">
-                        <label for="backColor" class="opt-title">background Color</label>
-                        <input id="back_con" class="back_con" type="color" name="backColor" value="#000000FF" />
-                        <input type="checkbox" id="back_check" name="backColor" />
+                        <label for="mainColor" class="opt-title">Text Color</label>
+                        <input id="fill" class="color_con" type="color" name="mainColor">
                     </div>
                     <div class="block">
                         <label for="opacitys" class="opt-title">Opacity</label>
-                        <input id="opa_con" class="style_con" type="range" name="opacitys" min="0.1" max="1" value="1"
+                        <input id="opa_con" class="style_con" type="range" name="opacitys" min="0.1" max="1" 
                             step="0.1" />
-                    </div>
-                    <div class="block">
-                        <label for="bordres" class="opt-title">border</label>
-                        <select class="borders" id="border_con" name="borders">
-                            <option value="none">none</option>
-                            <option value="solid">solid</option>
-                            <option value="dotted">dotted</option>
-                            <option value="dashed">deshed</option>
-                            <option value="double">double</option>
-                            <option value="groove">groove</option>
-                            <option value="ridge">ridge</option>
-                            <option value="inset">inset</option>
-                            <option value="outset">outset</option>
-                            <option value="inherit">inherit</option>
-                        </select>
-                        <input type="range" id="border_weigth_con" class="borders" min="0" max="10" value="0" step="1"
-                            data-sizing="px" />
-                        <input type="color" id="border_color_con" class="borders" />
-
                     </div>
                 </div>
             </div>
@@ -226,22 +199,51 @@
             top: canvCenter.top,
             originX: 'center',
             originY: 'center',
-
+            fill: '#FFC000'
         });
         canvas.add(textBox).setActiveObject(textBox);
     }
 
+    document.getElementById('imgLoader').onchange = function handleImage(e) {
+        const canvCenter = canvas.getCenter();
+    var reader = new FileReader();
+    reader.onload = function (event) { console.log('fdsf');
+        var imgObj = new Image();
+        imgObj.src = event.target.result;
+        imgObj.onload = function () {
+            // start fabricJS stuff
+            
+            var image = new fabric.Image(imgObj);
+            image.set({
+                left: canvCenter.left,
+                top: canvCenter.top,
+                originX: 'center',
+                originY: 'center',
+            })
+            //image.scale(getRandomNum(0.1, 0.25)).setCoords();
+            image.scaleToHeight(100);
+            image.scaleToWidth(200);
+            canvas.add(image);
+            
+            // end fabricJS stuff
+        }
+        
+    }
+    reader.readAsDataURL(e.target.files[0]);
+}
+
     function delete_obj() {
         var activeObject = canvas.getActiveObject();
-        
-        if(confirm('Are you sure?')){
-            if(activeObject._objects){
-                var objectsInGroup = activeObject.getObjects();
-                objectsInGroup.forEach(function(objects){
-                    canvas.remove(objects);
-                })
-            }else{
-                canvas.remove(activeObject);
+        if(activeObject != null){
+            if(confirm('정말로 삭제하시겠습니까?\n(삭제된 요소는 복구되지 않습니다.)')){
+                if(activeObject._objects){
+                    var objectsInGroup = activeObject.getObjects();
+                    objectsInGroup.forEach(function(objects){
+                        canvas.remove(objects);
+                    })
+                }else{
+                    canvas.remove(activeObject);
+                }
             }
         }
     }
@@ -254,6 +256,39 @@
         canvas.isDrawingMode = true;
     }
 
+    //텍스트 조작 부분  
+    function fillText(property) {
+        
+        var activeObject = canvas.getActiveObject();
+        document.getElementById(property).value = activeObject.fill;
+        document.getElementById(property).oninput = function() {
+        activeObject.set("fill", this.value);
+        canvas.requestRenderAll();
+        };
+    }
+
+    function opaText(property){
+        var activeObject = canvas.getActiveObject();
+        document.getElementById(property).value = activeObject.opacity;
+        document.getElementById(property).oninput = function() {
+        activeObject.set("opacity", this.value);
+        canvas.requestRenderAll();
+        };
+    }
+
+    function borderText(property) {
+        var activeObject = canvas.getActiveObject();
+        document.getElementById(property).value = activeObject.fontWeight;
+        document.getElementById(property).oninput = function() {
+            activeObject.set("fontWeight", this.value);
+            canvas.requestRenderAll();
+        };
+    }
+
+    
+
+    //여기까지 텍스 조작 함수
+
     canvas.on('mouse:down', function (e) {
 
         if (e.target) {
@@ -265,6 +300,10 @@
             bb.style.opacity = "1";
             bb.style.visibility = "visible";
             bb.style.pointerEvents = "auto";
+            fillText('fill');
+            opaText('opa_con');
+            borderText('weight_con');
+
             }
         }
         else {
@@ -277,4 +316,6 @@
             bb.style.pointerEvents = "auto";
         }
     })
+
+
 </script>
