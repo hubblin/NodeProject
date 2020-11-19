@@ -202,6 +202,14 @@
                         <label for="LineColor" class="opt-title">Text Color</label>
                         <input id="line_Color" class="color_con" type="color" name="LineColor" >
                     </div>
+                    <div class="block">
+                        <label for="line_mode" class="opt-title">Text Color</label>
+                        <select class="borders" id="line_mode" name="line_mode">
+                            <option value="Pencil">Pencil</option>
+                            <option value="Circle">Circle</option>
+                            <option value="Spray">Spray</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
@@ -284,6 +292,28 @@
         }
     };
 
+
+    document.getElementById("line_mode").onchange = function() {
+
+
+        canvas.freeDrawingBrush = new fabric[this.value + 'Brush'](canvas);
+
+        if (canvas.freeDrawingBrush) {
+        var brush = canvas.freeDrawingBrush;
+        brush.color = drawingColorEl.value;
+        if (brush.getPatternSrc) {
+            brush.source = brush.getPatternSrc.call(brush);
+        }
+        brush.width = parseInt(drawingLineWidthEl.value, 10) || 1;
+        brush.shadow = new fabric.Shadow({
+            blur: parseInt(drawingShadowWidth.value, 10) || 0,
+            offsetX: 0,
+            offsetY: 0,
+            affectStroke: true,
+            color: drawingShadowColorEl.value,
+        });
+        }
+    };
     //여기까지 드로잉
 
     function Selection_Mode() {
