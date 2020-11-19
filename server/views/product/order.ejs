@@ -196,7 +196,11 @@
                     <strong>Drwaing Option</strong>
                     <div class="block">
                         <label for="line_weight">굵기</label>
-                        <input id="line_weight" type="range" name="line_weight" min="0" max="100"/>
+                        <input id="line_weight" type="range" name="line_weight" min="0" max="100" value="3"/>
+                    </div>
+                    <div class="block">
+                        <label for="LineColor" class="opt-title">Text Color</label>
+                        <input id="line_Color" class="color_con" type="color" name="LineColor" >
                     </div>
                 </div>
             </div>
@@ -208,7 +212,7 @@
 <script>
     
     var canvas = new fabric.Canvas('c');
-
+    canvas.freeDrawingBrush.width = 3;
     function addText() {
         const canvCenter = canvas.getCenter();
         var textBox = new fabric.Textbox('텍스트', {
@@ -224,31 +228,31 @@
 
     document.getElementById('imgLoader').onchange = function handleImage(e) {
         const canvCenter = canvas.getCenter();
-    var reader = new FileReader();
-    reader.onload = function (event) { console.log('fdsf');
-        var imgObj = new Image();
-        imgObj.src = event.target.result;
-        imgObj.onload = function () {
-            // start fabricJS stuff
+        var reader = new FileReader();
+        reader.onload = function (event) { console.log('fdsf');
+            var imgObj = new Image();
+            imgObj.src = event.target.result;
+            imgObj.onload = function () {
+                // start fabricJS stuff
+                
+                var image = new fabric.Image(imgObj);
+                image.set({
+                    left: canvCenter.left,
+                    top: canvCenter.top,
+                    originX: 'center',
+                    originY: 'center',
+                })
+                //image.scale(getRandomNum(0.1, 0.25)).setCoords();
+                image.scaleToHeight(100);
+                image.scaleToWidth(200);
+                canvas.add(image);
+                
+                // end fabricJS stuff
+            }
             
-            var image = new fabric.Image(imgObj);
-            image.set({
-                left: canvCenter.left,
-                top: canvCenter.top,
-                originX: 'center',
-                originY: 'center',
-            })
-            //image.scale(getRandomNum(0.1, 0.25)).setCoords();
-            image.scaleToHeight(100);
-            image.scaleToWidth(200);
-            canvas.add(image);
-            
-            // end fabricJS stuff
         }
-        
+        reader.readAsDataURL(e.target.files[0]);
     }
-    reader.readAsDataURL(e.target.files[0]);
-}
 
     function delete_obj() {
         var activeObject = canvas.getActiveObject();
@@ -266,8 +270,25 @@
         }
     }
 
+    //드로잉 조작 부분
+    document.getElementById("line_weight").onchange = function() {
+        canvas.freeDrawingBrush.width = parseInt(this.value, 10) || 1;
+    };
+
+
+    document.getElementById("line_Color").onchange = function() {
+    var brush = canvas.freeDrawingBrush;
+        brush.color = this.value;
+        if (brush.getPatternSrc) {
+            brush.source = brush.getPatternSrc.call(brush);
+        }
+    };
+
+    //여기까지 드로잉
+
     function Selection_Mode() {
         canvas.isDrawingMode = !canvas.isDrawingMode;
+        console.log(canvas.freeDrawingBrush.width);
         if(canvas.isDrawingMode){
             document.getElementById("select_mode").innerHTML = '그리기';
             let aa = document.getElementById('first');
@@ -281,6 +302,8 @@
             cc.style.opacity = "1";
             cc.style.visibility = "visible";
             cc.style.pointerEvents = "auto";
+
+            
         }else{
             document.getElementById("select_mode").innerHTML = '선택하기';
             let aa = document.getElementById('first');
@@ -305,8 +328,8 @@
         var activeObject = canvas.getActiveObject();
         document.getElementById(property).value = activeObject.fill;
         document.getElementById(property).oninput = function() {
-        activeObject.set("fill", this.value);
-        canvas.requestRenderAll();
+            activeObject.set("fill", this.value);
+            canvas.requestRenderAll();
         };
     }
 
@@ -355,11 +378,10 @@
 
     canvas.on('mouse:down', function (e) {
 
-        if (e.target) {
+        if (e.target && !canvas.isDrawingMode) {
             let temp = document.getElementById("select_mode");
             temp.style.pointerEvents = "none";
             if(e.target.type == 'textbox'){
-                
                 let aa = document.getElementById('first');
                 let bb = document.getElementById('second');
                 aa.style.opacity = "0";
