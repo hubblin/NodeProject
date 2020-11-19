@@ -29,8 +29,8 @@ class UserController{
 
                     // 검색값 없을때만 즉 이미 없는 아이디일때만 
                     if(id_result.length == 0){
-                        conn.query('insert into user values(?,?,?,?,?,?,?)',[
-                            req.body.user_id, req.body.user_category,hashPassword, req.body.user_name, req.body.user_phone, salt, nowTime
+                        conn.query('insert into user values(?,?,?,?,?,?)',[
+                            req.body.user_id, hashPassword, req.body.user_name, req.body.user_phone, salt, nowTime
                         ], (err)=>{
                             if(err) throw err;
 
