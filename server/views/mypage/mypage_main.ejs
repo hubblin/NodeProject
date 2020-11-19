@@ -29,7 +29,7 @@
         }
         #my_main{
             text-align: center;
-            line-height: 70px;
+            line-height: 100px;
             font-size: 25px;
             border-right: 1px solid white;
         }
@@ -47,9 +47,23 @@
             display: flex;
             
         }
-        #tbody div{
-            
-            
+        .meue_list{
+            margin: 10px;
+            margin-bottom: 30px;
+            font-size: 20px;
+        }
+        .meue_list li{
+            margin: 5px;
+            margin-top: 20px;
+            font-size: 15px;
+        }
+        .mypage_content{
+           margin: 20px;
+        }
+        .painting_order_content{
+            margin: 50px;
+            height: 300px;
+            border: 1px solid black;
         }
     </style>
 
@@ -78,17 +92,37 @@
         </div>
         <div id="tbody">
             <div class="mypage_nav" style="flex-basis: 175px; height: auto; background-color: #F5ECCE;">
-                <div>주문목록</div>
-                <div>커스텀 제작 목록</div>
-                <div>내가 작성한 리뷰</div>
-                <div>나의 배송지 정보</div>
-                <div>나의 카드 정보</div>
                 
+                <div class="meue_list">나의 주문
+                    <div>
+                        <ul>
+                            <li> <a href="">페인팅 주문 목록</a></li>
+                            <li><a href="">커스텀 주문 목록</a></li>
+                        </ul>
+                    </div>
+                    
+                </div>
+
+                <div class="meue_list"> 나의 정보
+                    <div>
+                        <ul>
+                            <li> <a href="">결제카드 정보</a> </li>
+                            <li><a href="">배송지 정보</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+                
+                <div class="meue_list">
+                    <a href="">내가 작성한 리뷰</a>
+                </div>
                 
             </div>
 
-            <div class="mypage_content" style="flex-basis:850px; height: 200px;">
+            <div class="mypage_content" style="flex-basis:1304px; height: auto;">
                 <h3>주문목록</h3>
+                <div class="painting_order_content">
+                </div>
             </div>
         </div>
     </div>
