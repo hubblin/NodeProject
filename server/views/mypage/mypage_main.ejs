@@ -50,7 +50,7 @@
         .meue_list{
             margin: 10px;
             margin-bottom: 30px;
-            font-size: 20px;
+            font-size: 18px;
         }
         .meue_list li{
             margin: 5px;
@@ -62,8 +62,22 @@
         }
         .painting_order_content{
             margin: 50px;
-            height: 300px;
-            border: 1px solid black;
+            padding: 50px;
+            height: auto;
+            border: 1px solid rgb(216, 216, 216);
+            border-radius: 50px;
+            box-shadow: 2.5px 2.5px 0.2em  rgb(216, 216, 216);
+            
+        }
+        .painting_order_product{
+            margin-top: 20px;
+            width: 1022px;
+            padding: 30px;
+            height: 200px;
+            border: 1px solid rgb(216, 216, 216);
+            border-radius: 25px;
+            box-shadow: 2.5px 2.5px 0.2em  rgb(216, 216, 216);
+            display: flex;
         }
     </style>
 
@@ -91,7 +105,7 @@
             </div>
         </div>
         <div id="tbody">
-            <div class="mypage_nav" style="flex-basis: 175px; height: auto; background-color: #F5ECCE;">
+            <div class="mypage_nav" style="flex-basis: 175px; height: 400px; background-color: #F5ECCE;">
                 
                 <div class="meue_list">나의 주문
                     <div>
@@ -120,9 +134,65 @@
             </div>
 
             <div class="mypage_content" style="flex-basis:1304px; height: auto;">
-                <h3>주문목록</h3>
+                <h1>페인팅 주문 목록</h1>
                 <div class="painting_order_content">
+                    <span style="margin-right: 30px; font-weight: bold;">2020-11-20</span><span style="font-weight: bold;">배송완료</span>
+
+                    <div class="painting_order_product">
+                        <div style="flex-basis: 250px;">
+                            상품이미지
+                        </div>
+                        <div style="flex-basis: 500px;">
+                            정보
+                        </div>
+                        <div style="flex-basis: 120px;">
+                            버튼
+                        </div>
+                    </div>
+
+                    <div class="painting_order_product">
+                        <div>
+                            상품이미지
+                        </div>
+                        <div>
+                            정보
+                        </div>
+                        <div style="display: flex;">
+                            <form action="" method="get">
+                                <input type="submit">
+                            </form>
+                        </div>
+                    </div>
                 </div>
+
+                <div class="painting_order_content">
+                    <span style="margin-right: 30px; font-weight: bold;">2020-11-20</span><span style="font-weight: bold;">배송완료</span>
+
+                    <div class="painting_order_product">
+                        <div>
+                            상품이미지
+                        </div>
+                        <div>
+                            정보
+                        </div>
+                        <div>
+                            버튼
+                        </div>
+                    </div>
+
+                    <div class="painting_order_product">
+                        <div>
+                            상품이미지
+                        </div>
+                        <div>
+                            정보
+                        </div>
+                        <div>
+                            버튼
+                        </div>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </div>
