@@ -25,93 +25,73 @@
         }
 
         #title div {
-            color:white;
+            color: white;
         }
-        #my_main{
+
+        #my_main {
             text-align: center;
             line-height: 100px;
             font-size: 25px;
             border-right: 1px solid white;
         }
-        #my_order_count{
+
+        #my_order_count {
             border-right: 1px solid white;
         }
-        .count div{
+
+        .count div {
             margin: 10px;
         }
 
-        .count_content{
+        .count_content {
             margin: 0 auto;
         }
-        #tbody{
+
+        #tbody {
             display: flex;
-            
+
         }
-        .meue_list{
+
+        .meue_list {
             margin: 10px;
             margin-bottom: 30px;
             font-size: 18px;
         }
-        .meue_list li{
+
+        .meue_list li {
             margin: 5px;
             margin-top: 20px;
             font-size: 15px;
         }
-        .mypage_content{
-           margin: 20px;
+
+        .mypage_content {
+            margin: 20px;
         }
-        .painting_order_content{
+
+        .painting_order_content {
             margin: 50px;
             padding: 50px;
             height: auto;
             border: 1px solid rgb(216, 216, 216);
             border-radius: 50px;
-            box-shadow: 2.5px 2.5px 0.2em  rgb(216, 216, 216);
-            
+            box-shadow: 2.5px 2.5px 0.2em rgb(216, 216, 216);
+
         }
-        .painting_order_product{
-            margin-top: 20px;
-            width: 1022px;
+
+        .painting_order_product {
+            margin-bottom: 50px;
+            width: 1215px;
             padding: 30px;
             height: 200px;
             border: 1px solid rgb(216, 216, 216);
             border-radius: 25px;
-            box-shadow: 2.5px 2.5px 0.2em  rgb(216, 216, 216);
+            box-shadow: 2.5px 2.5px 0.2em rgb(216, 216, 216);
             display: flex;
+            flex-direction: column;
         }
-
-        .painting_order_product #img{
-            margin: 20px;
-            width: 150px;
-            height: 150px;
-            border: 1px solid black;
-        }
-
-        .painting_order_product #info span{
-            margin-bottom: 10px;
-        }
-
-        .painting_order_btn{
-            border: 1px solid rgb(216, 216, 216);
-            background: none;
-            width: 200px;
-            height: 50px;
-            margin-bottom: 30px;
-        }
-        .painting_order_btn:active{
-            border: 0;
-            background: rgb(255, 251, 0);
-            width: 200px;
-            height: 50px;
-            margin-bottom: 30px;
-        }
-        .painting_order_btn:focus{
-            outline: none;
-            border: 0;
-            background: #ffe492;
-            width: 200px;
-            height: 50px;
-            margin-bottom: 30px;
+        .painting_order_product input{
+            height: 30px;
+            margin-bottom: 20px;
         }
     </style>
 
@@ -140,127 +120,118 @@
         </div>
         <div id="tbody">
             <div class="mypage_nav" style="flex-basis: 175px; height: 400px; background-color: #F5ECCE;">
-                
+
                 <div class="meue_list">나의 주문
                     <div>
                         <ul>
-                            <li ><a href="/mypage">페인팅 주문 목록</a></li>
-                            <li style="font-weight: bold;"><a href="/mypage/custom_order" style=" color: #c99700;">커스텀 주문 목록</a></li>
+                            <li><a href="/mypage">페인팅 주문 목록</a></li>
+                            <li><a href="/mypage/custom_order">커스텀 주문 목록</a></li>
                         </ul>
                     </div>
-                    
+
                 </div>
 
                 <div class="meue_list"> 나의 정보
                     <div>
                         <ul>
                             <li> <a href="/mypage/myCard">결제카드 정보</a> </li>
-                            <li><a href="/mypage/myAdr">배송지 정보</a></li>
+                            <li style="font-weight: bold;"><a href="/mypage/myAdr" style=" color: #c99700;">배송지 정보</a></li>
                         </ul>
                     </div>
 
                 </div>
-                
+
                 <div class="meue_list">
                     <a href="/mypage/reviewList">내가 작성한 리뷰</a>
                 </div>
-                
+
             </div>
 
             <div class="mypage_content" style="flex-basis:1304px; height: auto;">
-                <h1 style="margin: 20px;">커스텀 주문 목록</h1>
-                <div class="painting_order_content">
-                    <span style="margin-right: 30px; font-weight: bold;">2020-11-20</span><span style="font-weight: bold;">배송완료</span>
+                <h1 style="margin: 20px;">배송지 추가</h1>
 
+                <form action="" method="post">
                     <div class="painting_order_product">
-                        <div id="img" style="flex-basis: 250px;">
-                            상품이미지
-                        </div>
-                        <div id="info" style="flex-basis: 500px; display: flex; flex-direction: column; margin: auto 10px auto 0px">
-                            <span>상품이름</span>
-                            <span>수량</span>
-                            <span>가격</span>
-                        </div>
-                        <div style="flex-basis: 120px; display: flex; flex-direction: column; margin: auto;">
-                            <a href=""><button class="painting_order_btn" >배송조회</button></a>
-                            <a href=""><button class="painting_order_btn" >주문취소</button></a>
-                        </div>
-                    </div>
 
-                    <div class="painting_order_product">
-                        <div id="img" style="flex-basis: 250px;">
-                            상품이미지
-                        </div>
-                        <div id="info" style="flex-basis: 500px; display: flex; flex-direction: column; margin: auto 10px auto 0px">
-                            <span>상품이름</span>
-                            <span>수량</span>
-                            <span>가격</span>
-                        </div>
-                        <div style="flex-basis: 120px; display: flex; flex-direction: column; margin: auto;">
-                            <a href=""><button class="painting_order_btn" >배송조회</button></a>
-                            <a href=""><button class="painting_order_btn" >주문취소</button></a>
-                        </div>
-                    </div>
+                        <input type="text">
+                        <input type="text">
+                        <input type="text">
+                        <input type="submit">
 
-                </div>
-                
+                    </div>
+                    
+                </form>
+
             </div>
+
+            <!-- <a href=""><button id="adr_add_btn">배송지 추가</button></a> -->
+
+
+
+
+
         </div>
     </div>
+
 
 </body>
 
 </html>
 
 <script type="text/javascript">
-
     function setsub() {
         var sublnb = document.getElementById("sublnb");
         sublnb.style.display = "block";
         sublnb.style.opacity = "1";
         sublnb.style.visibility = "visible";
     }
+
     function outsub() {
         var sublnb = document.getElementById("sublnb");
         sublnb.style.display = "none"
         sublnb.style.opacity = "0";
         sublnb.style.visibility = "hidden";
     }
+
     function lsub() {
         var looksub = document.getElementById("sublnb");
         sublnb.style.display = "block";
         sublnb.style.opacity = "1";
         sublnb.style.visibility = "visible";
     }
+
     function loutsub() {
         var looksub = document.getElementById("sublnb");
         sublnb.style.display = "none";
         sublnb.style.opacity = "0";
         sublnb.style.visibility = "hidden";
     }
+
     function setsub2() {
         var sublnb2 = document.getElementById("sublnb2");
         sublnb2.style.display = "block";
         sublnb2.style.opacity = "1";
         sublnb2.style.visibility = "visible";
     }
+
     function outsub2() {
         var sublnb2 = document.getElementById("sublnb2");
         sublnb2.style.display = "none";
         sublnb2.style.opacity = "0";
         sublnb2.style.visibility = "hidden";
     }
+
     function lsub2() {
         var sublnb2 = document.getElementById("sublnb2");
         sublnb2.style.display = "block";
         sublnb2.style.opacity = "1";
         sublnb2.style.visibility = "visible";
     }
+
     function loutsub2() {
         var sublnb2 = document.getElementById("sublnb2");
         sublnb2.style.display = "none";
         sublnb2.style.opacity = "0";
         sublnb2.style.visibility = "hidden";
     }
-
 </script>
