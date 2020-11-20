@@ -2,6 +2,7 @@ const pool = require('../dbconfig/dbconfig');
 
 class IndexController{
 
+    // 메인화면에 보여줄 꺼
     async getInfo_main(req, res, next){
         pool.getConnection((err, conn)=>{
             if(err) throw err;
