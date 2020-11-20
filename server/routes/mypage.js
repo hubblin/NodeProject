@@ -21,7 +21,13 @@ router.get('/myAdr', function(req,res,next){
     res.render('mypage/mypage_myAdress',{name:req.session.user.name})
 })
 
+// 마이페이지 사용자가 적은 리뷰 목록 렌더링
 router.get('/reviewList', function(req, res, next){
     res.render('mypage/mypage_reviewList',{name:req.session.user.name})
+})
+
+// 마이페이지 주소 추가 페이지 렌더링
+router.get('/addAdr', function(req, res, next){
+    res.render('mypage/mypage_Adress_add',{name:req.session.user.name})
 })
 module.exports = router;

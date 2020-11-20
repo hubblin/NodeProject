@@ -27,11 +27,13 @@ router.post('/sign_up', User.signUp, function (req, res, next) {
   }
 })
 
+// 로그인 렌더링
 router.get('/sign_in', function (req, res, next) {
 
   res.render('user/sign_in');
 });
 
+// 로그인 
 router.post('/sign_in', User.signIn, function (req, res, next) {
   if (req.check) {
     res.send(`<script type="text/javascript">
