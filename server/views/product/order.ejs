@@ -6,6 +6,58 @@
     <link rel='stylesheet' href='/stylesheets/default.css' />
     <link rel='stylesheet' href='/stylesheets/navstyle.css' />
     <script src='/javascripts/fabric_min.js'></script>
+    <script type="text/javascript">
+
+        function setsub() {
+            var sublnb = document.getElementById("sublnb");
+            sublnb.style.display = "block";
+            sublnb.style.opacity = "1";
+            sublnb.style.visibility = "visible";
+        }
+        function outsub() {
+            var sublnb = document.getElementById("sublnb");
+            sublnb.style.display = "none"
+            sublnb.style.opacity = "0";
+            sublnb.style.visibility = "hidden";
+        }
+        function lsub() {
+            var looksub = document.getElementById("sublnb");
+            sublnb.style.display = "block";
+            sublnb.style.opacity = "1";
+            sublnb.style.visibility = "visible";
+        }
+        function loutsub() {
+            var looksub = document.getElementById("sublnb");
+            sublnb.style.display = "none";
+            sublnb.style.opacity = "0";
+            sublnb.style.visibility = "hidden";
+        }
+        function setsub2() {
+            var sublnb2 = document.getElementById("sublnb2");
+            sublnb2.style.display = "block";
+            sublnb2.style.opacity = "1";
+            sublnb2.style.visibility = "visible";
+        }
+        function outsub2() {
+            var sublnb2 = document.getElementById("sublnb2");
+            sublnb2.style.display = "none";
+            sublnb2.style.opacity = "0";
+            sublnb2.style.visibility = "hidden";
+        }
+        function lsub2() {
+            var sublnb2 = document.getElementById("sublnb2");
+            sublnb2.style.display = "block";
+            sublnb2.style.opacity = "1";
+            sublnb2.style.visibility = "visible";
+        }
+        function loutsub2() {
+            var sublnb2 = document.getElementById("sublnb2");
+            sublnb2.style.display = "none";
+            sublnb2.style.opacity = "0";
+            sublnb2.style.visibility = "hidden";
+        }
+    
+    </script>
     <style>
         .contents {
             margin-top: 100px;
@@ -183,6 +235,8 @@
 
         #second {
             opacity: 0;
+            width: 380px;
+            height: 97%;
             visibility: none;
             position: absolute;
             pointer-events: none;
@@ -190,9 +244,64 @@
 
         #third{
             opacity: 0;
+            width: 380px;
+            height: 97%;
             visibility: none;
             position: absolute;
             pointer-events: none;
+        }
+
+        #rect{
+            opacity: 0;
+            width: 380px;
+            height: 97%;
+            visibility: none;
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .d_bottom_btn{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: #ffc000;
+            height: 45px;
+        }
+        .d_temp{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            
+        }
+
+        .d_bottom_btn .d_temp a{
+            color: white;
+            cursor: pointer;
+            position: absolute;
+            width: 100%;
+            font-weight: bolder;
+            text-align: center;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .go_back_product{
+            background: rgb(168, 168, 168);
+            width: 80px;
+            height: 30px;
+            position: relative;
+            border-radius: 5px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .go_back_product a{
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-style: bolder;
         }
     </style>
 </head>
@@ -217,17 +326,17 @@
                     </li>
                     <li>
                         <div class="float_btn">
-                            <a class="rec_btn"  >네모</a>
+                            <a class="rec_btn"  onclick="addrec()">네모</a>
                         </div>
                     </li>
                     <li>
                         <div class="float_btn">
-                            <a class="tri_btn"  >세모</a>
+                            <a class="tri_btn"  onclick="addtri()">세모</a>
                         </div>
                     </li>
                     <li>
                         <div class="float_btn">
-                            <a class="round_btn" >원</a>
+                            <a class="round_btn" onclick="addCircle()">원</a>
                         </div>
                     </li>
                     <li>
@@ -273,12 +382,16 @@
                 <div class="order_pro">
                     <h3>상품 명</h3>
                     <div class="order_line"></div>
-                    <div>가격 : <sapn>1000</sapn>원~</div>
-                    <div>사이즈</div>
-                    <div class="d_bottom_btn">
-                        <button class="d_order_btn" onclick="order()">주문하기</button>
-                        <button class="d__basket_btn">장바구니</button>
-                    </div>
+                    <div>가격 : <sapn>10000</sapn>원~</div>
+
+                    <div class="go_back_product"><a href="/product/painting">상품 변경</a></div>
+
+                        <div class="d_bottom_btn">
+                            <div class="d_temp">
+                                <a class="d_order_btn" onclick="order()">주문하기</a>
+                            </div>
+                        </div>
+
                 </div>
             </div>
             <!--여기까지가 주문하기 부분-->
@@ -311,17 +424,32 @@
                         <input id="line_weight" type="range" name="line_weight" min="0" max="100" value="3"/>
                     </div>
                     <div class="block">
-                        <label for="LineColor" class="opt-title">Text Color</label>
+                        <label for="LineColor" class="opt-title">색</label>
                         <input id="line_Color" class="color_con" type="color" name="LineColor" >
                     </div>
                     <div class="block">
-                        <label for="line_mode" class="opt-title">Text Color</label>
+                        <label for="line_mode" class="opt-title">그리기 스타일</label>
                         <select class="borders" id="line_mode" name="line_mode">
                             <option value="Pencil">Pencil</option>
                             <option value="Circle">Circle</option>
                             <option value="Spray">Spray</option>
                         </select>
                     </div>
+                </div>
+            </div>
+            <div id="rect">
+                <div class="option">
+                    <strong>Drwaing Option</strong>
+                    <div class="block">
+                        <label for="RectColor" class="opt-title">색</label>
+                        <input id="rect_Color" class="color_con" type="color" name="RectColor" >
+                    </div>
+                    <div class="block">
+                        <label for="opacitys" class="opt-title">투명도</label>
+                        <input id="rect_opa" class="style_con" type="range" name="opacitys" min="0.1" max="1" 
+                            step="0.1" />
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -344,6 +472,51 @@
             fill: '#FFC000'
         });
         canvas.add(textBox).setActiveObject(textBox);
+    }
+
+    //사각형 추가
+    function addrec(){
+        const canvCenter = canvas.getCenter();
+        var rectangle = new fabric.Rect({
+            width: 100, 
+            height: 70, 
+            fill: '#FFC000', 
+            left: canvCenter.left,
+            top: canvCenter.top,
+            originX: 'center',
+            originY: 'center',
+        });
+        canvas.add(rectangle).setActiveObject(rectangle);
+    }
+
+    //삼각형 추가
+    function addtri(){
+        const canvCenter = canvas.getCenter();
+        var rectangle = new fabric.Triangle({
+            width: 100, 
+            height: 75, 
+            fill: '#FFC000', 
+            left: canvCenter.left,
+            top: canvCenter.top,
+            originX: 'center',
+            originY: 'center',
+        });
+        canvas.add(rectangle).setActiveObject(rectangle);
+    }
+
+    //원 추가
+    function addCircle(){
+        const canvCenter = canvas.getCenter();
+        var rectangle = new fabric.Circle({
+            radius: 50,
+            fill: '#FFC000', 
+            left: canvCenter.left,
+            top: canvCenter.top,
+            originX: 'center',
+            originY: 'center',
+
+        });
+        canvas.add(rectangle).setActiveObject(rectangle);
     }
 
     document.getElementById('imgLoader').onchange = function handleImage(e) {
@@ -501,6 +674,32 @@
 
     //여기까지 텍스트 조작 함수
 
+
+
+    //여기부터 사각형 조작 함수
+
+
+    //색
+    function rect_fill(property){
+        var activeObject = canvas.getActiveObject();
+        document.getElementById(property).value = activeObject.fill;
+        document.getElementById(property).oninput = function(){
+            activeObject.set("fill", this.value);
+            canvas.requestRenderAll();
+        }
+    }
+
+    //투명도
+    function rect_opa(property){
+        var activeObject = canvas.getActiveObject();
+        document.getElementById(property).value = activeObject.opacity;
+        document.getElementById(property).oninput = function(){
+            activeObject.set("opacity", this.value);
+            canvas.requestRenderAll();
+        }
+    }
+    //여기까지 사각형 조작 함수
+
     //맨뒤로 보내기
     function send_back(){
         var activeObject = canvas.getActiveObject();
@@ -525,30 +724,51 @@
     }
 
     canvas.on('mouse:down', function (e) {
-
+        let aa = document.getElementById('first');
+        let bb = document.getElementById('second');
+        let cc = document.getElementById('third');
+        let dd = document.getElementById('rect');
         if (e.target && !canvas.isDrawingMode) {
             let temp = document.getElementById("select_mode");
             temp.style.pointerEvents = "none";
+            
             if(e.target.type == 'textbox'){
-                let aa = document.getElementById('first');
-                let bb = document.getElementById('second');
                 aa.style.opacity = "0";
                 aa.style.visibility = "none";
                 bb.style.opacity = "1";
                 bb.style.visibility = "visible";
                 bb.style.pointerEvents = "auto";
+                cc.style.opacity = "0";
+                cc.style.visibility = "none";
+                cc.style.pointerEvents = "none";
+                dd.style.opacity = "0";
+                dd.style.visibility = "none";
+                dd.style.pointerEvents = "none";
                 fillText('fill');
                 opaText('opa_con');
                 borderText('weight_con');
+            }
+            else if(e.target.type == 'rect' || e.target.type == 'triangle' || e.target.type == 'circle'){
+                console.log(e.target);
+                aa.style.opacity = "0";
+                aa.style.visibility = "none";
+                bb.style.opacity = "0";
+                bb.style.visibility = "none";
+                bb.style.pointerEvents = "none";
+                cc.style.opacity = "0";
+                cc.style.visibility = "none";
+                cc.style.pointerEvents = "none";
+                dd.style.opacity = "1";
+                dd.style.visibility = "visible";
+                dd.style.pointerEvents = "auto";
+                rect_fill('rect_Color');
+                rect_opa('rect_opa');
             }
         }
         else {
             let temp = document.getElementById("select_mode");
             temp.style.pointerEvents = "auto";
             if(canvas.isDrawingMode){
-                let aa = document.getElementById('first');
-                let bb = document.getElementById('second');
-                let cc= document.getElementById('third');
                 aa.style.opacity = "0";
                 aa.style.visibility = "none";
                 bb.style.opacity = "0";
@@ -557,11 +777,11 @@
                 cc.style.opacity = "1";
                 cc.style.visibility = "visible";
                 cc.style.pointerEvents = "auto";
+                dd.style.opacity = "0";
+                dd.style.visibility = "none";
+                dd.style.pointerEvents = "none";
             }
             else{
-                let aa = document.getElementById('first');
-                let bb = document.getElementById('second');
-                let cc= document.getElementById('third');
                 aa.style.opacity = "1";
                 aa.style.visibility = "visible";
                 bb.style.opacity = "0";
@@ -570,23 +790,28 @@
                 cc.style.opacity = "0";
                 cc.style.visibility = "none";
                 cc.style.pointerEvents = "none";
+                dd.style.opacity = "0";
+                dd.style.visibility = "none";
+                dd.style.pointerEvents = "none";
             }
         }
     })
 
 
     function order(){
-        if(window.navigator.msSaveBlob){
-            window.navigator.msSaveBlob(canvas.msToBlob(), "canvas-image.png");
-        }else{
-            const a = document.createElement("a");
+        var form = document.createElement('form');
+        form.setAttribute('method', 'post');
+        form.setAttribute('action', '/order/temp_buy');
+        document.charset="utf-8";
 
-            document.body.appendChild(a);
-            a.href = canvas.toDataURL();
-            a.download = "canvas-image.png";
-            a.click();
-            document.body.removeChild(a);
-        }
+        var hiddenField = document.createElement('input');
+        hiddenField.setAttribute('type', 'hidden');
+        hiddenField.setAttribute('name', 'imageurl');
+        hiddenField.setAttribute('value', canvas.toDataURL());
+        form.appendChild(hiddenField);
+        document.body.appendChild(form);
+        form.submit();
+
     }
 
 </script>
