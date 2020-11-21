@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mypage</title>
+
+    <link rel='stylesheet' href='/stylesheets/default.css' />
+    <link rel='stylesheet' href='/stylesheets/navstyle.css' />
+    <link rel="stylesheet" href="/stylesheets/mypage/mypage_subnav.css">
+
+    <style>
+        .mypage_body {
+            width: 1500px;
+            height: auto;
+
+            margin: 0 auto;
+            margin-top: 100px;
+
+        }
+
+        #title {
+            display: flex;
+            height: 100px;
+        }
+
+        #title div {
+            color: white;
+        }
+
+        #my_main {
+            text-align: center;
+            line-height: 100px;
+            font-size: 25px;
+            border-right: 1px solid white;
+        }
+
+        #my_order_count {
+            border-right: 1px solid white;
+        }
+
+        .count div {
+            margin: 10px;
+        }
+
+        .count_content {
+            margin: 0 auto;
+        }
+
+        #tbody {
+            display: flex;
+
+        }
+
+        .meue_list {
+            margin: 10px;
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+
+        .meue_list li {
+            margin: 5px;
+            margin-top: 20px;
+            font-size: 15px;
+        }
+
+        .mypage_content {
+            width: 1304px;
+            margin: 0 auto;
+        }
+
+
+        .painting_order_content {
+            margin: 50px;
+            padding: 50px;
+            height: auto;
+            border: 1px solid rgb(216, 216, 216);
+            border-radius: 50px;
+            box-shadow: 2.5px 2.5px 0.2em rgb(216, 216, 216);
+
+        }
+
+        .painting_order_product {
+            margin-bottom: 20px;
+            width: 610px;
+            padding: 30px;
+            height: auto;
+            border: 1px solid rgb(216, 216, 216);
+            border-radius: 25px;
+            box-shadow: 2.5px 2.5px 0.2em rgb(216, 216, 216);
+            display: flex;
+            flex-direction: column;
+        }
+
+        #adr_add_body{
+            margin: 0 auto;
+            width: 610px;
+        }
+
+        .adr_input {
+            margin-bottom: 30px;
+        }
+
+        .adr_input input {
+            width: 500px;
+            height: 30px;
+            border: none;
+            border-bottom: solid 1px #ffC000;
+        }
+
+        .adr_input input:focus {
+            outline: none;
+        }
+
+        .adr_input input:focus::placeholder {
+            color: transparent;
+        }
+
+        #find_adr_btn {
+            width: 100px;
+            color: white;
+            font-weight: 800;
+            background-color: #ffC000;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #add_adr_btn {
+            width: 670px;
+            border: none;
+            color: white;
+            font-weight: 800;
+            font-size: large;
+            border-radius: 5px;
+            background-color: #ffC000;
+            height: 50px;
+        }
+
+        .warning_msg {
+            display: none;
+            font-size: 15px;
+            color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <%- include("../../head/nav",{name:name}) %>
+
+    <div class="mypage_body">
+        <div id="title">
+            <div id="my_main" style="flex-basis: 175px; background-color: #FFBF00;">
+                <span>mypage</span>
+            </div>
+            <div id="my_order_count" class="count" style="flex-basis: 662.5px; background-color: #F7D358;">
+                <div>주문</div>
+                <div class="count_content">
+                    <span style="font-size: 35px;">0</span><span>건</span>
+                </div>
+            </div>
+            <div id="my_custom_count" class="count" style="flex-basis: 662.5px; background-color: #F7D358;">
+                <div>커스텀 제작</div>
+                <div class="count_content">
+                    <span style="font-size: 35px;">0</span><span>건</span>
+                </div>
+            </div>
+        </div>
+        <div id="tbody">
+            <div class="mypage_nav" style="flex-basis: 175px; height: 400px; background-color: #F5ECCE;">
+
+                <div class="meue_list">나의 주문
+                    <div>
+                        <ul>
+                            <li><a href="/mypage" id="painting">페인팅 주문 목록</a></li>
+                            <li><a href="/mypage/custom_order" id="custom">커스텀 주문 목록</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="meue_list"> 나의 정보
+                    <div>
+                        <ul>
+                            <li> <a href="/mypage/myCard" id="card">결제카드 정보</a> </li>
+                            <li style="font-weight: bold;"><a href="/mypage/myAdr" id="adr"
+                                    style=" color: #c99700; ">배송지 정보</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="meue_list">
+                    <a href="/mypage/reviewList" id="review">내가 작성한 리뷰</a>
+                </div>
+
+            </div>
+
+            <div class="mypage_content" style="flex-basis:1304px; height: auto;">
+
+
+                <div id="adr_add_body">
+                    <h1 style="margin: 20px;">배송지 추가</h1>
+
+
+                    <div class="painting_order_product">
+
+                        <div class="adr_input">
+                            <input type="text" id="post_num" name="post_num" placeholder="우편번호">
+                            <input type="button" id="find_adr_btn" onclick="findAdress()" value="우편번호찾기">
+                            <span class="warning_msg" id="warning_post">우편번호를 입력하세요</span>
+                        </div>
+                        <div class="adr_input">
+                            <input type="text" id="main_adr" name="main_adr" placeholder="기본주소">
+                            <br>
+                            <span class="warning_msg" id="warning_main_adr">기본주소를 입력하세요</span>
+                        </div>
+                        <div class="adr_input">
+                            <input type="text" id="detail_adr" name="detail_adr" placeholder="상세주소">
+                            <br>
+                            <span class="warning_msg" id="warning_detail_adr">상세주소를 입력하세요</span>
+                        </div>
+
+
+                    </div>
+                    <input type="submit" id="add_adr_btn" value="배송지추가" onclick="check_adr_info()">
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+        </div>
+    </div>
+
+    <script>
+        // 값 제대로 입력했는지 확인
+        function check_adr_info() {
+
+            var post_num = document.getElementById("post_num").value
+            var main_adr = document.getElementById("main_adr").value
+            var detail_adr = document.getElementById("detail_adr").value
+
+            var warning1 = document.getElementById("warning_post");
+            var warning2 = document.getElementById("warning_main_adr");
+            var warning3 = document.getElementById("warning_detail_adr");
+
+            warning1.style.display = "none";
+            warning2.style.display = "none";
+            warning3.style.display = "none";
+
+            if (post_num && main_adr && detail_adr) {
+                sendPost_adr(post_num, main_adr, detail_adr)
+            }
+            if (!post_num) {
+                warning1.style.display = "inline";
+            }
+            if (!main_adr) {
+                warning2.style.display = "inline";
+            }
+            if (!detail_adr) {
+                warning3.style.display = "inline";
+            }
+
+        }
+
+        // post로 입력한 배송지 정보 전송
+        function sendPost_adr(post_num, main_adr, detail_adr) {
+            var form = document.createElement('form');
+
+            form.setAttribute('method', 'post');
+            form.setAttribute('action', '');
+            document.charset = "utf-8";
+
+            var hidden1 = document.createElement('input');
+            hidden1.setAttribute('type', 'hidden');
+            hidden1.setAttribute('name', 'post_num');
+            hidden1.setAttribute('value', post_num);
+
+            var hidden2 = document.createElement('input');
+            hidden2.setAttribute('type', 'hidden');
+            hidden2.setAttribute('name', 'main_adr');
+            hidden2.setAttribute('value', main_adr);
+
+
+            var hidden3 = document.createElement('input');
+            hidden3.setAttribute('type', 'hidden');
+            hidden3.setAttribute('name', 'detail_adr');
+            hidden3.setAttribute('value', detail_adr);
+
+
+            form.appendChild(hidden1);
+            form.appendChild(hidden2);
+            form.appendChild(hidden3);
+
+
+            document.body.appendChild(form);
+            form.submit();
+
+
+        }
+    </script>
+
+    <form action="" method="get"></form>
+
+    <!-- 우편번호 찾기 스크립트 -->
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+        function findAdress() {
+            new daum.Postcode({
+                oncomplete: function (data) {
+                    // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                    // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                    // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                    var addr = ''; // 주소 변수
+                    var extraAddr = ''; // 참고항목 변수
+
+                    //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                    if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                        addr = data.roadAddress;
+                    } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                        addr = data.jibunAddress;
+                    }
+
+                    // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                    if (data.userSelectedType === 'R') {
+                        // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                        // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                        if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+                            extraAddr += data.bname;
+                        }
+                        // 건물명이 있고, 공동주택일 경우 추가한다.
+                        if (data.buildingName !== '' && data.apartment === 'Y') {
+                            extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                        }
+                        // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                        if (extraAddr !== '') {
+                            extraAddr = ' (' + extraAddr + ')';
+                        }
+                        // 조합된 참고항목을 해당 필드에 넣는다.
+
+                    } else {}
+
+                    // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                    document.getElementById('post_num').value = data.zonecode;
+                    document.getElementById("main_adr").value = addr;
+                    // 커서를 상세주소 필드로 이동한다.
+                    document.getElementById("detail_adr").focus();
+                }
+            }).open();
+        }
+    </script>
+
+</body>
+
+</html>
+
+<script type="text/javascript">
+    function setsub() {
+        var sublnb = document.getElementById("sublnb");
+        sublnb.style.display = "block";
+        sublnb.style.opacity = "1";
+        sublnb.style.visibility = "visible";
+    }
+
+    function outsub() {
+        var sublnb = document.getElementById("sublnb");
+        sublnb.style.display = "none"
+        sublnb.style.opacity = "0";
+        sublnb.style.visibility = "hidden";
+    }
+
+    function lsub() {
+        var looksub = document.getElementById("sublnb");
+        sublnb.style.display = "block";
+        sublnb.style.opacity = "1";
+        sublnb.style.visibility = "visible";
+    }
+
+    function loutsub() {
+        var looksub = document.getElementById("sublnb");
+        sublnb.style.display = "none";
+        sublnb.style.opacity = "0";
+        sublnb.style.visibility = "hidden";
+    }
+
+    function setsub2() {
+        var sublnb2 = document.getElementById("sublnb2");
+        sublnb2.style.display = "block";
+        sublnb2.style.opacity = "1";
+        sublnb2.style.visibility = "visible";
+    }
+
+    function outsub2() {
+        var sublnb2 = document.getElementById("sublnb2");
+        sublnb2.style.display = "none";
+        sublnb2.style.opacity = "0";
+        sublnb2.style.visibility = "hidden";
+    }
+
+    function lsub2() {
+        var sublnb2 = document.getElementById("sublnb2");
+        sublnb2.style.display = "block";
+        sublnb2.style.opacity = "1";
+        sublnb2.style.visibility = "visible";
+    }
+
+    function loutsub2() {
+        var sublnb2 = document.getElementById("sublnb2");
+        sublnb2.style.display = "none";
+        sublnb2.style.opacity = "0";
+        sublnb2.style.visibility = "hidden";
+    }
+</script>
