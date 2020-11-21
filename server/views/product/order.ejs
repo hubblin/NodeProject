@@ -6,6 +6,58 @@
     <link rel='stylesheet' href='/stylesheets/default.css' />
     <link rel='stylesheet' href='/stylesheets/navstyle.css' />
     <script src='/javascripts/fabric_min.js'></script>
+    <script type="text/javascript">
+
+        function setsub() {
+            var sublnb = document.getElementById("sublnb");
+            sublnb.style.display = "block";
+            sublnb.style.opacity = "1";
+            sublnb.style.visibility = "visible";
+        }
+        function outsub() {
+            var sublnb = document.getElementById("sublnb");
+            sublnb.style.display = "none"
+            sublnb.style.opacity = "0";
+            sublnb.style.visibility = "hidden";
+        }
+        function lsub() {
+            var looksub = document.getElementById("sublnb");
+            sublnb.style.display = "block";
+            sublnb.style.opacity = "1";
+            sublnb.style.visibility = "visible";
+        }
+        function loutsub() {
+            var looksub = document.getElementById("sublnb");
+            sublnb.style.display = "none";
+            sublnb.style.opacity = "0";
+            sublnb.style.visibility = "hidden";
+        }
+        function setsub2() {
+            var sublnb2 = document.getElementById("sublnb2");
+            sublnb2.style.display = "block";
+            sublnb2.style.opacity = "1";
+            sublnb2.style.visibility = "visible";
+        }
+        function outsub2() {
+            var sublnb2 = document.getElementById("sublnb2");
+            sublnb2.style.display = "none";
+            sublnb2.style.opacity = "0";
+            sublnb2.style.visibility = "hidden";
+        }
+        function lsub2() {
+            var sublnb2 = document.getElementById("sublnb2");
+            sublnb2.style.display = "block";
+            sublnb2.style.opacity = "1";
+            sublnb2.style.visibility = "visible";
+        }
+        function loutsub2() {
+            var sublnb2 = document.getElementById("sublnb2");
+            sublnb2.style.display = "none";
+            sublnb2.style.opacity = "0";
+            sublnb2.style.visibility = "hidden";
+        }
+    
+    </script>
     <style>
         .contents {
             margin-top: 100px;
@@ -21,7 +73,7 @@
 
         .custom_cont {
             float: left;
-            width: 1097px;
+            width: 1077px;
             height: 100%;
 
             border-right: none;
@@ -30,41 +82,111 @@
 
         .sale_cont {
             float: right;
-            width: 400px;
-            height: 100%;
-            border: 1px solid black;
+            width: 380px;
+            height: 97%;
+            padding: 10px;
+            border: 2.5px solid #FFC000;
+            position: relative;
         }
 
         #c {
             position: absolute;
-            border: 1px solid black;
+            border-radius: 5px;
+            box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .button_area{
+            position : relative;
+            width: 100%;
+            height: 50px;
+            background: #ffcd37;
+            border-radius: 10px;
+            margin-bottom: 5px;
         }
 
         .all_btn {
             position: absolute;
-            width: 70px;
-            height: 240px;
-            z-index: 10;
-            right: 25px;
-            top: 30px;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-45%);
+        }
+
+        .all_btn li{
+            display: inline-block;
         }
 
         .float_btn {
             position: relative;
             display: block;
-            border-radius: 50%;
+            border-radius: 10px;
             background: white;
-            height: 70px;
-            width: 70px;
-            margin-bottom: 10px;
-            box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.2);
+            height: 30px;
+            width: 45px;
         }
+
+        .float_btn:hover{
+            background: rgb(172, 172, 172);
+        }
+
+        .add_text_btn{
+            color: transparent; 
+            background: url('../images/order_img/글버튼.png') no-repeat;
+            background-size: 45px 30px;
+        }
+        .rec_btn{
+            color: transparent; 
+            background: url('../images/order_img/네모버튼.png') no-repeat;
+            background-size: 45px 30px;
+        }
+        .tri_btn{
+            color: transparent; 
+            background: url('../images/order_img/세모버튼.png') no-repeat;
+            background-size: 45px 30px;
+        }
+        .round_btn{
+            color: transparent; 
+            background: url('../images/order_img/원버튼.png') no-repeat;
+            background-size: 45px 30px;
+        }
+        #select_mode{
+            color: transparent; 
+            background: url('../images/order_img/선택버튼.png') no-repeat;
+            background-size: 45px 30px;
+        }
+        .remove_text_btn{
+            color: transparent; 
+            background: url('../images/order_img/지우기버튼.png') no-repeat;
+            background-size: 45px 30px;
+        }
+
+        .back_btn{
+            color: transparent; 
+            background: url('../images/order_img/뒤로버튼.png') no-repeat;
+            background-size: 45px 30px;
+        }
+        .front_btn{
+            color: transparent; 
+            background: url('../images/order_img/앞으로버튼.png') no-repeat;
+            background-size: 45px 30px;
+        }
+        .go_back_btn{
+            color: transparent; 
+            background: url('../images/order_img/맨뒤로버튼.png') no-repeat;
+            background-size: 45px 30px;
+        }
+        .go_front_btn{
+            color: transparent; 
+            background: url('../images/order_img/맨앞으로버튼.png') no-repeat;
+            background-size: 45px 30px;
+        }
+
+
 
         .float_btn a {
             position: absolute;
             width: 100%;
             text-align: center;
-            line-height: 70px;
+            line-height: 30px;
             display: block;
             cursor: pointer;
         }
@@ -73,49 +195,113 @@
             position: absolute;
             width: 100%;
             text-align: center;
-            line-height: 70px;
+            line-height: 30px;
             display: block;
             cursor: pointer;
+            color: transparent; 
+            background: url('../images/order_img/사진버튼.png') no-repeat;
+            background-size: 45px 30px;
         }
 
         .add_picture {
             opacity: 0;
             width: 100%;
             position: absolute;
-            line-height: 70px;
+            line-height: 30px;
             z-index: 2;
         }
 
 
-        .float_btn:hover {
-            background-color: #FFC000;
+        .order_pro{
+            position: relative;
+            width: 100%;
+            height: 100%;
         }
 
-        .float_btn:hover a {
-            color: white;
-        }
-
-        .float_btn:hover label {
-            color: white;
+        .order_line{
+            width: 100%;
+            height: 2px;
+            background: #CCC;
         }
 
 
         #first {
             opacity: 1;
+            width: 380px;
+            height: 97%;
             visibility: visible;
             position: absolute;
         }
 
         #second {
             opacity: 0;
+            width: 380px;
+            height: 97%;
             visibility: none;
             position: absolute;
+            pointer-events: none;
         }
 
         #third{
             opacity: 0;
+            width: 380px;
+            height: 97%;
             visibility: none;
             position: absolute;
+            pointer-events: none;
+        }
+
+        #rect{
+            opacity: 0;
+            width: 380px;
+            height: 97%;
+            visibility: none;
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .d_bottom_btn{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: #ffc000;
+            height: 45px;
+        }
+        .d_temp{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            
+        }
+
+        .d_bottom_btn .d_temp a{
+            color: white;
+            cursor: pointer;
+            position: absolute;
+            width: 100%;
+            font-weight: bolder;
+            text-align: center;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .go_back_product{
+            background: rgb(168, 168, 168);
+            width: 80px;
+            height: 30px;
+            position: relative;
+            border-radius: 5px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .go_back_product a{
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-style: bolder;
         }
     </style>
 </head>
@@ -123,47 +309,92 @@
 <body>
     <%- include("../head/nav") %>
     <div class="contents">
+        
         <div class="custom_cont" id="custom_cont">
-            <div class="all_btn">
-                <li>
-                    <div class="float_btn">
-                        <label for="select_pic">사진추가</label>
-                        <input name="select_pic" type="file" class="add_picture" id="imgLoader"/>
-                    </div>
-                </li>
-                <li>
-                    <div class="float_btn">
-                        <a for="add_text_btn" onclick="addText()">글자추가</a>
-                    </div>
-                </li>
+            <div class="button_area">
+                <div class="all_btn">
+                    <li>
+                        <div class="float_btn">
+                            <label for="select_pic">사진추가</label>
+                            <input name="select_pic" type="file" class="add_picture" id="imgLoader"/>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="float_btn">
+                            <a class="add_text_btn" for="add_text_btn" onclick="addText()">글추가</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="float_btn">
+                            <a class="rec_btn"  onclick="addrec()">네모</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="float_btn">
+                            <a class="tri_btn"  onclick="addtri()">세모</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="float_btn">
+                            <a class="round_btn" onclick="addCircle()">원</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="float_btn">
+                            <a class="back_btn" onclick="send_to_back()">뒤로보내기</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="float_btn">
+                            <a class="front_btn" onclick="bring_to_front()">앞으로보내기</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="float_btn">
+                            <a class="go_back_btn" onclick="send_back()">맨뒤로보내기</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="float_btn">
+                            <a class="go_front_btn" onclick="bring_front()">맨앞으로보내기</a>
+                        </div>
+                    </li>
 
-                <li>
-                    <div class="float_btn">
-                        <a id="select_mode" for="add_text_btn" onclick="Selection_Mode()">선택하기</a>
-                    </div>
-                </li>
+                    <li>
+                        <div class="float_btn">
+                            <a id="select_mode" for="add_text_btn" onclick="Selection_Mode()">선택하기</a>
+                        </div>
+                    </li>
 
-                <li>
-                    <div class="float_btn">
-                        <a class="remove_text_btn" onclick="delete_obj()">삭제</a>
-                    </div>
-                </li>
+                    <li>
+                        <div class="float_btn">
+                            <a class="remove_text_btn" onclick="delete_obj()">삭제</a>
+                        </div>
+                    </li>
+                </div>
             </div>
-            <canvas id="c" width="1097px" height="640px"></canvas>
+            <canvas id="c" width="1077px" height="585px"></canvas>
         </div>
 
-
+        <!--여기가 주문 부분-->
         <div class="sale_cont">
             <div id="first">
                 <div class="order_pro">
-                    <h3>주문하기</h3>
-                    <hr>
-                    <div>가격 : <sapn>1000</sapn>원</div>
-                    <div>사이즈</div>
-                    <button>주문하기</button>
-                    <button>장바구니</button>
+                    <h3>상품 명</h3>
+                    <div class="order_line"></div>
+                    <div>가격 : <sapn>10000</sapn>원~</div>
+
+                    <div class="go_back_product"><a href="/product/painting">상품 변경</a></div>
+
+                        <div class="d_bottom_btn">
+                            <div class="d_temp">
+                                <a class="d_order_btn" onclick="order()">주문하기</a>
+                            </div>
+                        </div>
+
                 </div>
             </div>
+            <!--여기까지가 주문하기 부분-->
 
             <div id="second">
                 <div class="option">
@@ -182,13 +413,7 @@
                         <input id="opa_con" class="style_con" type="range" name="opacitys" min="0.1" max="1" 
                             step="0.1" />
                     </div>
-                    <div>
-                        <label for="bring" class="opt-title">정렬</label>
-                        <button name="bring" id="send_back" onclick="send_back()">맨뒤로보내기</button>
-                        <button name="bring" id="bring_front" onclick="bring_front()">맨앞으로보내기</button>
-                        <button name="bring" id="send_to_back" onclick="send_to_back()">뒤로보내기</button>
-                        <button name="bring" id="bring_to_front" onclick="bring_to_front()">앞으로보내기</button>
-                    </div>
+
                 </div>
             </div> 
             <div id="third">
@@ -199,17 +424,32 @@
                         <input id="line_weight" type="range" name="line_weight" min="0" max="100" value="3"/>
                     </div>
                     <div class="block">
-                        <label for="LineColor" class="opt-title">Text Color</label>
+                        <label for="LineColor" class="opt-title">색</label>
                         <input id="line_Color" class="color_con" type="color" name="LineColor" >
                     </div>
                     <div class="block">
-                        <label for="line_mode" class="opt-title">Text Color</label>
+                        <label for="line_mode" class="opt-title">그리기 스타일</label>
                         <select class="borders" id="line_mode" name="line_mode">
                             <option value="Pencil">Pencil</option>
                             <option value="Circle">Circle</option>
                             <option value="Spray">Spray</option>
                         </select>
                     </div>
+                </div>
+            </div>
+            <div id="rect">
+                <div class="option">
+                    <strong>Drwaing Option</strong>
+                    <div class="block">
+                        <label for="RectColor" class="opt-title">색</label>
+                        <input id="rect_Color" class="color_con" type="color" name="RectColor" >
+                    </div>
+                    <div class="block">
+                        <label for="opacitys" class="opt-title">투명도</label>
+                        <input id="rect_opa" class="style_con" type="range" name="opacitys" min="0.1" max="1" 
+                            step="0.1" />
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -234,10 +474,55 @@
         canvas.add(textBox).setActiveObject(textBox);
     }
 
+    //사각형 추가
+    function addrec(){
+        const canvCenter = canvas.getCenter();
+        var rectangle = new fabric.Rect({
+            width: 100, 
+            height: 70, 
+            fill: '#FFC000', 
+            left: canvCenter.left,
+            top: canvCenter.top,
+            originX: 'center',
+            originY: 'center',
+        });
+        canvas.add(rectangle).setActiveObject(rectangle);
+    }
+
+    //삼각형 추가
+    function addtri(){
+        const canvCenter = canvas.getCenter();
+        var rectangle = new fabric.Triangle({
+            width: 100, 
+            height: 75, 
+            fill: '#FFC000', 
+            left: canvCenter.left,
+            top: canvCenter.top,
+            originX: 'center',
+            originY: 'center',
+        });
+        canvas.add(rectangle).setActiveObject(rectangle);
+    }
+
+    //원 추가
+    function addCircle(){
+        const canvCenter = canvas.getCenter();
+        var rectangle = new fabric.Circle({
+            radius: 50,
+            fill: '#FFC000', 
+            left: canvCenter.left,
+            top: canvCenter.top,
+            originX: 'center',
+            originY: 'center',
+
+        });
+        canvas.add(rectangle).setActiveObject(rectangle);
+    }
+
     document.getElementById('imgLoader').onchange = function handleImage(e) {
         const canvCenter = canvas.getCenter();
         var reader = new FileReader();
-        reader.onload = function (event) { console.log('fdsf');
+        reader.onload = function (event) { 
             var imgObj = new Image();
             imgObj.src = event.target.result;
             imgObj.onload = function () {
@@ -321,6 +606,9 @@
         console.log(canvas.freeDrawingBrush.width);
         if(canvas.isDrawingMode){
             document.getElementById("select_mode").innerHTML = '그리기';
+            document.getElementById("select_mode").style.color = 'transparent';
+            document.getElementById("select_mode").style.background = `url('../images/order_img/그리기.png') no-repeat`;
+            document.getElementById("select_mode").style.backgroundSize = ' 45px 30px';
             let aa = document.getElementById('first');
             let bb = document.getElementById('second');
             let cc= document.getElementById('third')
@@ -336,6 +624,9 @@
             
         }else{
             document.getElementById("select_mode").innerHTML = '선택하기';
+            document.getElementById("select_mode").style.color = 'transparent';
+            document.getElementById("select_mode").style.background = `url('../images/order_img/선택버튼.png') no-repeat`;
+            document.getElementById("select_mode").style.backgroundSize = ' 45px 30px';
             let aa = document.getElementById('first');
             let bb = document.getElementById('second');
             let cc= document.getElementById('third')
@@ -381,7 +672,33 @@
         };
     }
 
-    //여기까지 텍스 조작 함수
+    //여기까지 텍스트 조작 함수
+
+
+
+    //여기부터 사각형 조작 함수
+
+
+    //색
+    function rect_fill(property){
+        var activeObject = canvas.getActiveObject();
+        document.getElementById(property).value = activeObject.fill;
+        document.getElementById(property).oninput = function(){
+            activeObject.set("fill", this.value);
+            canvas.requestRenderAll();
+        }
+    }
+
+    //투명도
+    function rect_opa(property){
+        var activeObject = canvas.getActiveObject();
+        document.getElementById(property).value = activeObject.opacity;
+        document.getElementById(property).oninput = function(){
+            activeObject.set("opacity", this.value);
+            canvas.requestRenderAll();
+        }
+    }
+    //여기까지 사각형 조작 함수
 
     //맨뒤로 보내기
     function send_back(){
@@ -407,30 +724,51 @@
     }
 
     canvas.on('mouse:down', function (e) {
-
+        let aa = document.getElementById('first');
+        let bb = document.getElementById('second');
+        let cc = document.getElementById('third');
+        let dd = document.getElementById('rect');
         if (e.target && !canvas.isDrawingMode) {
             let temp = document.getElementById("select_mode");
             temp.style.pointerEvents = "none";
+            
             if(e.target.type == 'textbox'){
-                let aa = document.getElementById('first');
-                let bb = document.getElementById('second');
                 aa.style.opacity = "0";
                 aa.style.visibility = "none";
                 bb.style.opacity = "1";
                 bb.style.visibility = "visible";
                 bb.style.pointerEvents = "auto";
+                cc.style.opacity = "0";
+                cc.style.visibility = "none";
+                cc.style.pointerEvents = "none";
+                dd.style.opacity = "0";
+                dd.style.visibility = "none";
+                dd.style.pointerEvents = "none";
                 fillText('fill');
                 opaText('opa_con');
                 borderText('weight_con');
+            }
+            else if(e.target.type == 'rect' || e.target.type == 'triangle' || e.target.type == 'circle'){
+                console.log(e.target);
+                aa.style.opacity = "0";
+                aa.style.visibility = "none";
+                bb.style.opacity = "0";
+                bb.style.visibility = "none";
+                bb.style.pointerEvents = "none";
+                cc.style.opacity = "0";
+                cc.style.visibility = "none";
+                cc.style.pointerEvents = "none";
+                dd.style.opacity = "1";
+                dd.style.visibility = "visible";
+                dd.style.pointerEvents = "auto";
+                rect_fill('rect_Color');
+                rect_opa('rect_opa');
             }
         }
         else {
             let temp = document.getElementById("select_mode");
             temp.style.pointerEvents = "auto";
             if(canvas.isDrawingMode){
-                let aa = document.getElementById('first');
-                let bb = document.getElementById('second');
-                let cc= document.getElementById('third');
                 aa.style.opacity = "0";
                 aa.style.visibility = "none";
                 bb.style.opacity = "0";
@@ -439,11 +777,11 @@
                 cc.style.opacity = "1";
                 cc.style.visibility = "visible";
                 cc.style.pointerEvents = "auto";
+                dd.style.opacity = "0";
+                dd.style.visibility = "none";
+                dd.style.pointerEvents = "none";
             }
             else{
-                let aa = document.getElementById('first');
-                let bb = document.getElementById('second');
-                let cc= document.getElementById('third');
                 aa.style.opacity = "1";
                 aa.style.visibility = "visible";
                 bb.style.opacity = "0";
@@ -452,9 +790,28 @@
                 cc.style.opacity = "0";
                 cc.style.visibility = "none";
                 cc.style.pointerEvents = "none";
+                dd.style.opacity = "0";
+                dd.style.visibility = "none";
+                dd.style.pointerEvents = "none";
             }
         }
     })
 
+
+    function order(){
+        var form = document.createElement('form');
+        form.setAttribute('method', 'post');
+        form.setAttribute('action', '/order/temp_buy');
+        document.charset="utf-8";
+
+        var hiddenField = document.createElement('input');
+        hiddenField.setAttribute('type', 'hidden');
+        hiddenField.setAttribute('name', 'imageurl');
+        hiddenField.setAttribute('value', canvas.toDataURL());
+        form.appendChild(hiddenField);
+        document.body.appendChild(form);
+        form.submit();
+
+    }
 
 </script>
