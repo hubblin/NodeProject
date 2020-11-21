@@ -8,6 +8,7 @@
 
     <link rel='stylesheet' href='/stylesheets/default.css' />
     <link rel='stylesheet' href='/stylesheets/navstyle.css' />
+    <link rel="stylesheet" href="/stylesheets/mypage/mypage_subnav.css">
 
     <style>
         .mypage_body {
@@ -159,25 +160,26 @@
                 <div class="meue_list">나의 주문
                     <div>
                         <ul>
-                            <li><a href="/mypage">페인팅 주문 목록</a></li>
-                            <li><a href="/mypage/custom_order">커스텀 주문 목록</a></li>
+                            <li><a href="/mypage" id="painting">페인팅 주문 목록</a></li>
+                            <li><a href="/mypage/custom_order" id="custom">커스텀 주문 목록</a></li>
                         </ul>
                     </div>
-                    
+
                 </div>
 
                 <div class="meue_list"> 나의 정보
                     <div>
                         <ul>
-                            <li> <a href="/mypage/myCard">결제카드 정보</a> </li>
-                            <li style="font-weight: bold;" ><a href="/mypage/myAdr" style=" color: #c99700;">배송지 정보</a></li>
+                            <li> <a href="/mypage/myCard" id="card">결제카드 정보</a> </li>
+                            <li style="font-weight: bold;"><a href="/mypage/myAdr" id="adr"
+                                    style=" color: #c99700; ">배송지 정보</a></li>
                         </ul>
                     </div>
 
                 </div>
-                
+
                 <div class="meue_list">
-                    <a href="/mypage/reviewList">내가 작성한 리뷰</a>
+                    <a href="/mypage/reviewList" id="review">내가 작성한 리뷰</a>
                 </div>
                 
             </div>
@@ -185,18 +187,24 @@
             <div class="mypage_content" style="flex-basis:1304px; height: auto;">
                 <h1 style="margin: 20px;">배송지 관리</h1>
 
-                <div class="painting_order_product">
+                <% for(var adr of address){%>
+                    <div class="painting_order_product">
                         
-                    <div id="info" style="flex-basis: 720px; display: flex; flex-direction: column; margin: auto 10px auto 0px">
-                        <span>우편번호 : 353513</span>
-                        <span>주소 : 부산광역시 사상구 주례로 47 동서대학교</span>
-                        <span>상세주소 : 글로벌빌리지 서관 1115호</span>
+                        <div id="info" style="flex-basis: 720px; display: flex; flex-direction: column; margin: auto 10px auto 0px">
+                            <span>우편번호 : <%= adr.adr_post_num%></span>
+                            <span>주소 : <%= adr.adr_main%></span>
+                            <span>상세주소 : <%= adr.adr_detail%></span>
+                        </div>
+                        <div style="flex-basis: 250px; display: flex; flex-direction: column; margin: auto;">
+                            <a href=""><button class="painting_order_btn" >수정</button></a>
+                            <form action="/mypage/deleteAddress/<%= adr.adr_uid%>" method="post">
+                                <button class="painting_order_btn" type="submit" >삭제</button>
+                            </form>
+                        </div>
                     </div>
-                    <div style="flex-basis: 250px; display: flex; flex-direction: column; margin: auto;">
-                        <a href=""><button class="painting_order_btn" >수정</button></a>
-                        <a href=""><button class="painting_order_btn" >삭제</button></a>
-                    </div>
-                </div>
+
+                <%}%>
+
 
                 <a href="/mypage/addAdr"><button id="adr_add_btn">배송지 추가</button></a>
 
