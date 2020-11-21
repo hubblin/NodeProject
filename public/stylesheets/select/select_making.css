@@ -33,7 +33,9 @@ header #sublnb li a{display: block; height: 50px; padding: 0 20px; font-size: 15
 header #sublnb li a:hover{font-weight: bold;}
 header #sublnb li a span{position: relative;}
 
+
 header #sublnb{opacity: 0; visibility: hidden; display: none;}
+
 
 
 header #sublnb li a:hover > span > div {position: absolute; width: 100%; height: 6px; background: #ffbf0062;top:50%; transform: translateY(-50%);
@@ -48,7 +50,9 @@ header #sublnb2 li a{display: block; height: 50px; padding: 0 20px; font-size: 1
 header #sublnb2 li a:hover{font-weight: bold;}
 header #sublnb2 li a span{position: relative;}
 
+
 header #sublnb2{opacity: 1; visibility: visible; display: block;}
+
 
 
 
