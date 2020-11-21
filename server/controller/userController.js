@@ -7,6 +7,8 @@ require('moment-timezone');
 moment.tz.setDefault("Asia/Seoul");
 
 class UserController{
+
+    // 사용자 회원가입
     async signUp(req, res, next){
         pool.getConnection((err, conn)=>{
             if(err) throw err;
@@ -56,6 +58,7 @@ class UserController{
         })
     }
 
+    // 사용자 로그인
     async signIn(req,res,next){
         pool.getConnection((err, conn)=>{
             if(err) throw err;
@@ -111,6 +114,7 @@ class UserController{
         })
     }
 
+    //카테고리 찾아오기
     async findCategory(req, res, next){
         pool.getConnection((err, conn)=>{
             if(err) throw err;
