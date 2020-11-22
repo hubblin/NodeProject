@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel='stylesheet' href='/stylesheets/default.css' />
     <link rel='stylesheet' href='/stylesheets/navstyle.css' />
+    <link rel='stylesheet' href='/stylesheets/buystyle.css'/>
+    <script src='/javascripts/fabric_min.js'></script>
     <script type="text/javascript">
 
         function setsub() {
@@ -61,6 +63,99 @@
 </head>
 <body>
     <%- include("../head/nav") %>
-    <img src="<%= imageurl %>"  width="400px" height="300px"/>
+    <div class="title">
+        <h1>주문/결제</h1>
+        <div class="order_state"><span class="before">주문결제</span> <span class="middle_state">></span> <span class="done">주문완료</span></div>
+    </div>
+
+    <div class="last_image">
+        <!--이부분 제품마다 다르게 수정 필요-->
+        <img class="pruduct_img" src="../../images/products/반팔티셔츠.png">
+        <div class="canvas_div">
+            <canvas class="can" id="c" width="250px" height="280px"></canvas>
+        </div>
+    </div>
+    
+    <div class="order_man">
+        <div class="order_man_title">
+            <h2>주문자 정보</h2>
+            <div class="title_bottom_line"></div>
+        </div>
+        <div class="order_man_content_user">
+            <div class="order_man_info">
+                <div class="order_man_info_con">
+                    <h3>이름</h3>
+                </div>
+                <div class="order_man_info_con">
+                    <h3>휴대전화</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="order_man">
+        <div class="order_man_title">
+            <h2>배송지 정보</h2>
+            <div class="title_bottom_line"></div>
+        </div>
+        <div class="order_man_content_address">
+            <div class="order_man_adr_info">
+                <div class="order_man_adr_info_con">
+                    <h3>이름</h3>
+                </div>
+                <div class="order_man_adr_info_con">
+                    <h3>주소</h3>
+                </div>
+                <div class="order_man_adr_info_con"> 
+                    <h3>연락처</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+
+    <div class="order_man">
+        <div class="order_man_title">
+            <h2>졀제 정보</h2>
+            <div class="title_bottom_line"></div>
+        </div>
+        <div class="order_man_content">
+            <div class="order_man_pay_info">
+                <div class="order_man_pay_info_con">
+                    <h3>상품가격</h3>
+                </div>
+                <div class="order_man_pay_info_con">
+                    <h3>갯수</h3>
+                </div>
+                <div class="order_man_pay_info_con">
+                    <h3>총 결제금액</h3>
+                </div>
+                <div class="order_man_pay_info_con">
+                    <h3>결제 방법</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pay_button">
+        <a >결제하기</a>
+    </div>
 </body>
 </html>
+
+
+<script>
+    var canvas = new fabric.Canvas('c');
+    const canvCenter = canvas.getCenter();
+    fabric.Image.fromURL('<%= imageurl %>', function(img){
+        img.set({
+            left: canvCenter.left,
+            top: canvCenter.top,
+            originX: 'center',
+            originY: 'center',
+        })
+        img.scaleToHeight(100);
+        img.scaleToWidth(200);
+        canvas.add(img);
+    });
+</script>
