@@ -1,0 +1,187 @@
+.title{
+    width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+
+    margin-top: 200px;
+    margin-bottom: 40px;
+    position: relative;
+    height: 50px;
+}
+.title .order_state{
+    position: absolute;
+    right: 50px;
+    display: inline-block;
+    height: 20px;
+    font-size: 15px;
+    font-weight: bold;
+    bottom: 0px;
+}
+
+.title h1{
+    position: absolute;
+    left: 50px;
+}
+
+.middle_state{
+    line-height: 20px;
+}
+
+.before{
+    color: #ffc000;
+}
+
+.order_man{
+    width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.order_man_title{
+    position: relative;
+    width: 1500px;
+    height: 40px;
+}
+
+.order_man h2{
+    position: absolute;
+    left: 50px;
+}
+
+
+.title_bottom_line{
+    width: 1400px;
+    height: 2px;
+    position: absolute;
+    background: #CCC;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+}
+
+.last_image{
+    position: relative;
+    width: 1500px;
+    height: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.last_image img{
+    position: absolute;
+    left: 50%;
+    height: 600px;
+    transform: translateX(-50%);
+}
+
+.canvas_div{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.order_man_content{
+    position: relative;
+    width: 1400px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 400px;
+    box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.5);
+
+}
+
+.order_man_content_user{
+    position: relative;
+    width: 1400px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 250px;
+    box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.order_man_content_address{
+    position: relative;
+    width: 1400px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 350px;
+    box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.order_man_info{
+    position: relative;
+    width: 1300px;
+    height: 150px;
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+.order_man_adr_info{
+    position: relative;
+    width: 1300px;
+    height: 250px;
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.order_man_pay_info{
+    position: relative;
+    width: 1300px;
+    height: 300px;
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.order_man_info_con{
+    width: 100%;
+    height: 50%;
+}
+
+.order_man_adr_info_con{
+    width: 100%;
+    height: 35%;
+}
+
+.order_man_pay_info_con{
+    width: 100%;
+    height: 25%;
+}
+
+.pay_button{
+    width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 50px;
+    margin-top: 50px;
+    background: #ffc000;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.pay_button a{
+    position: absolute;
+    width:100%;
+    height: 100%;
+    line-height: 50px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    font-size: 20px;
+}
+
