@@ -94,7 +94,7 @@
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
-    height: 400px;
+    height: 350px;
     box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.5);
 
 }
@@ -105,7 +105,7 @@
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
-    height: 250px;
+    height: 200px;
     box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -115,7 +115,7 @@
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
-    height: 350px;
+    height: 250px;
     box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -132,10 +132,11 @@
 .order_man_adr_info{
     position: relative;
     width: 1300px;
-    height: 250px;
+    height: 200px;
     margin: 0 auto;
     top: 50%;
     transform: translateY(-50%);
+
 }
 
 .order_man_pay_info{
@@ -145,32 +146,83 @@
     margin: 0 auto;
     top: 50%;
     transform: translateY(-50%);
+
 }
 
 .order_man_info_con{
+    position: relative;
     width: 100%;
     height: 50%;
+    display: inline-block;
+
+}
+
+.order_man_position{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.order_man_info_con p {
+    float: left;
+}
+
+.order_man_info_con h3{
+    float: left;
+    margin-right: 10px;
+}
+
+.con_con{
+    position: absolute;
+    width: 100%;
+    height: 30px;
+    display: inline;
 }
 
 .order_man_adr_info_con{
+    display: inline-block;
     width: 100%;
-    height: 35%;
+    height: 31.5%;
+    position: relative;
+
 }
 
-.order_man_pay_info_con{
-    width: 100%;
-    height: 25%;
+.order_man_adr_info_con p {
+    float: left;
 }
+
+.order_man_adr_info_con h3{
+    float: left;
+    margin-right: 10px;
+}
+
+
+.order_man_pay_info_con{
+    display: inline-block;
+    width: 100%;
+    height: 23.5%;
+    position: relative;
+
+}
+
+.order_man_pay_info_con p {
+    float: left;
+}
+
+.order_man_pay_info_con h3{
+    float: left;
+    margin-right: 10px;
+}
+
 
 .pay_button{
     width: 1400px;
-    margin-left: auto;
-    margin-right: auto;
     height: 50px;
     margin-top: 50px;
     background: #ffc000;
     margin-bottom: 50px;
     position: relative;
+    left: 60px;
 }
 
 .pay_button a{
