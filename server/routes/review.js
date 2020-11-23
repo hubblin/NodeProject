@@ -6,8 +6,9 @@ const Review = new reviewController();
 
 
 /* GET home page. */
-router.get('/', Review.getReviewList,function(req, res) {
+router.get('/', Review.getReviewList,function(req, res, next) {
     if(req.session.user){
+        
         res.render('review/review_main',{name:req.session.user.name,reviewList:req.reviewList});
     }
     else{

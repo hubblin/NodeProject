@@ -1,4 +1,4 @@
-header {position: relative; height: 81px; text-align: center; margin: 0; padding: 0;}
+header {position: relative; width:1500px; height: 81px; text-align: center; margin: 0 auto; padding: 0;}
 header h1 {position: absolute; left:50px; top:0; padding: 14px 0 0;}
 header h1 a {display: block; width: 40px; height: 48px; color: transparent; background: url('../images/logo.png') no-repeat;
    background-size: 40px 48px;}

@@ -71,8 +71,8 @@
             
         }
         .painting_order_product{
-            margin-top: 20px;
-            width: 1022px;
+            margin-bottom: 50px;
+            width: 1215px;
             padding: 30px;
             height: 200px;
             border: 1px solid rgb(216, 216, 216);
@@ -81,39 +81,54 @@
             display: flex;
         }
 
-        .painting_order_product #img{
-            margin: 20px;
-            width: 150px;
-            height: 150px;
-            border: 1px solid black;
-        }
-
         .painting_order_product #info span{
             margin-bottom: 10px;
+            font-size: 20px;
         }
 
         .painting_order_btn{
             border: 1px solid rgb(216, 216, 216);
             background: none;
-            width: 200px;
+            width: 300px;
             height: 50px;
             margin-bottom: 30px;
         }
         .painting_order_btn:active{
             border: 0;
             background: rgb(255, 251, 0);
-            width: 200px;
-            height: 50px;
-            margin-bottom: 30px;
+            
         }
         .painting_order_btn:focus{
             outline: none;
             border: 0;
             background: #ffe492;
-            width: 200px;
-            height: 50px;
-            margin-bottom: 30px;
+            
         }
+
+        #adr_add_btn{
+            border: 1px solid rgb(216, 216, 216);
+            background: none;
+            color:#FFBF00;
+            width: 100%;
+            height: 50px;
+            font-size: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: bold;
+            
+        }
+
+        #adr_add_btn:active{
+            border: 0;
+            outline: none;
+            background: #ffe492;
+        }
+        #adr_add_btn:focus{
+            border: 0;
+            outline: none;
+            background: #ffe492;
+        }
+        
     </style>
 
 </head>
@@ -145,7 +160,7 @@
                 <div class="meue_list">나의 주문
                     <div>
                         <ul>
-                            <li style="font-weight: bold;"><a href="/mypage" id="painting" style=" color: #c99700; ">페인팅 주문 목록</a></li>
+                            <li><a href="/mypage" id="painting">페인팅 주문 목록</a></li>
                             <li><a href="/mypage/custom_order" id="custom">커스텀 주문 목록</a></li>
                         </ul>
                     </div>
@@ -155,7 +170,7 @@
                 <div class="meue_list"> 나의 정보
                     <div>
                         <ul>
-                            <li> <a href="/mypage/myCard" id="card">결제카드 정보</a> </li>
+                            <li style="font-weight: bold;"> <a href="/mypage/myCard" id="card" style=" color: #c99700; ">결제카드 정보</a> </li>
                             <li><a href="/mypage/myAdr" id="adr">배송지 정보</a></li>
                         </ul>
                     </div>
@@ -169,41 +184,31 @@
             </div>
 
             <div class="mypage_content" style="flex-basis:1304px; height: auto;">
-                <h1 style="margin: 20px;">페인팅 주문 목록</h1>
-                <div class="painting_order_content">
-                    <span style="margin-right: 30px; font-weight: bold;">2020-11-20</span><span style="font-weight: bold;">배송완료</span>
+                <h1 style="margin: 20px;">결제 카드 목록</h1>
 
+                <% for(var user_card of card){%>
                     <div class="painting_order_product">
-                        <div id="img" style="flex-basis: 250px;">
-                            상품이미지
+                        
+                        <div id="info" style="flex-basis: 720px; display: flex; flex-direction: column; margin: auto 10px auto 0px">
+                            <span>카드번호 : <%= user_card.card_num%></span>
+                            <span>카드 CVC : <%= user_card.card_CVC%></span>
+                            <span>유효기간 : <%= user_card.card_date%></span>
                         </div>
-                        <div id="info" style="flex-basis: 500px; display: flex; flex-direction: column; margin: auto 10px auto 0px">
-                            <span>상품이름</span>
-                            <span>수량</span>
-                            <span>가격</span>
-                        </div>
-                        <div style="flex-basis: 120px; display: flex; flex-direction: column; margin: auto;">
-                            <a href=""><button class="painting_order_btn" >배송조회</button></a>
-                            <a href=""><button class="painting_order_btn" >주문취소</button></a>
+                        <div style="flex-basis: 250px; display: flex; flex-direction: column; margin: auto;">
+                            <a href=""><button class="painting_order_btn" >수정</button></a>
+                            <form action="/mypage/deleteCard/<%= user_card.card_num%>" method="post">
+                                <button class="painting_order_btn" type="submit" >삭제</button>
+                            </form>
+                            
                         </div>
                     </div>
+    
+                <%}%>
+                <a href="/mypage/addCard"><button id="adr_add_btn">카드 추가</button></a>
 
-                    <div class="painting_order_product">
-                        <div id="img" style="flex-basis: 250px;">
-                            상품이미지
-                        </div>
-                        <div id="info" style="flex-basis: 500px; display: flex; flex-direction: column; margin: auto 10px auto 0px">
-                            <span>상품이름</span>
-                            <span>수량</span>
-                            <span>가격</span>
-                        </div>
-                        <div style="flex-basis: 120px; display: flex; flex-direction: column; margin: auto;">
-                            <a href=""><button class="painting_order_btn" >배송조회</button></a>
-                            <a href=""><button class="painting_order_btn" >주문취소</button></a>
-                        </div>
-                    </div>
+                
 
-                </div>
+                
                 
             </div>
         </div>

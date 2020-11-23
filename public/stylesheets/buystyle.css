@@ -1,0 +1,312 @@
+.title{
+    width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+
+    margin-top: 200px;
+    margin-bottom: 40px;
+    position: relative;
+    height: 50px;
+}
+.title .order_state{
+    position: absolute;
+    right: 50px;
+    display: inline-block;
+    height: 20px;
+    font-size: 15px;
+    font-weight: bold;
+    bottom: 0px;
+}
+
+.title h1{
+    position: absolute;
+    left: 50px;
+}
+
+.middle_state{
+    line-height: 20px;
+}
+
+.before{
+    color: #ffc000;
+}
+
+.order_man{
+    width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.order_man_title{
+    position: relative;
+    width: 1500px;
+    height: 40px;
+}
+
+.order_man h2{
+    position: absolute;
+    left: 50px;
+}
+
+
+.title_bottom_line{
+    width: 1400px;
+    height: 2px;
+    position: absolute;
+    background: #CCC;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+}
+
+.last_image{
+    position: relative;
+    width: 1500px;
+    height: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.last_image img{
+    position: absolute;
+    left: 50%;
+    height: 600px;
+    transform: translateX(-50%);
+}
+
+.canvas_div{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.order_man_content{
+    position: relative;
+    width: 1400px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 350px;
+    box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.5);
+
+}
+
+.order_man_content_user{
+    position: relative;
+    width: 1400px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 200px;
+    box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.order_man_content_address{
+    position: relative;
+    width: 1400px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 250px;
+    box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.order_man_info{
+    position: relative;
+    width: 1300px;
+    height: 150px;
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+.order_man_adr_info{
+    position: relative;
+    width: 1300px;
+    height: 200px;
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+
+.order_man_pay_info{
+    position: relative;
+    width: 1300px;
+    height: 300px;
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+
+.order_man_info_con{
+    position: relative;
+    width: 100%;
+    height: 50%;
+    display: inline-block;
+
+}
+
+.order_man_position{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.order_man_info_con p {
+    float: left;
+}
+
+.order_man_info_con h3{
+    float: left;
+    margin-right: 10px;
+}
+
+.con_con{
+    position: absolute;
+    width: 100%;
+    height: 30px;
+    display: inline;
+}
+
+.order_man_adr_info_con{
+    display: inline-block;
+    width: 100%;
+    height: 31.5%;
+    position: relative;
+
+}
+
+.order_man_adr_info_con p {
+    float: left;
+}
+
+.order_man_adr_info_con h3{
+    float: left;
+    margin-right: 10px;
+}
+
+
+.order_man_pay_info_con{
+    display: inline-block;
+    width: 100%;
+    height: 23.5%;
+    position: relative;
+
+}
+
+.order_man_pay_info_con p {
+    float: left;
+}
+
+.order_man_pay_info_con .get_count{
+    float: left;
+    
+}
+
+.order_man_pay_info_con .get_count form{
+    width: 250px;
+    text-align: center;
+
+}
+
+.value-button {
+    display: inline-block;
+    border: 1px solid #ddd;
+    margin: 0px;
+    width: 40px;
+    height: 20px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 11px 0;
+    background: #eee;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .value-button:hover {
+    cursor: pointer;
+  }
+
+  form #decrease {
+    margin-right: -4px;
+    border-radius: 8px 0 0 8px;
+  }
+  
+  form #increase {
+    margin-left: -4px;
+    border-radius: 0 8px 8px 0;
+  }
+
+  form #input-wrap {
+    margin: 0px;
+    padding: 0px;
+  }
+  
+  input#number {
+    text-align: center;
+    border: none;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    margin: 0px;
+    width: 40px;
+    height: 40px;
+    
+  }
+  
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+  }
+
+.order_man_pay_info_con h3{
+    float: left;
+    margin-right: 10px;
+}
+
+
+.pay_button{
+    width: 1400px;
+    height: 50px;
+    margin-top: 50px;
+    background: #ffc000;
+    margin-bottom: 50px;
+    position: relative;
+    left: 60px;
+}
+
+.pay_button a{
+    position: absolute;
+    width:100%;
+    height: 100%;
+    line-height: 50px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    font-size: 20px;
+}
+
+.pay_button a:active{
+    background: #ffA000;
+}
+
+.change_button:active{
+    background: rgb(143, 143, 143);
+    border-radius: 8px;
+}

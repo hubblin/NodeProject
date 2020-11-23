@@ -165,7 +165,9 @@
 
     <div>
         <a href="/" id="log_img">LOGO</a>
-        <!-- 회원가입 post로 가기 -->
+        <!-- 회원가입 post로 가기 
+            나중에 자동완성 안되게 autocomplete="off" 추가하기
+        -->
         <div class="content">
             <form action="/users/sign_up" method="POST">
                 <div class="row">
@@ -184,14 +186,14 @@
                     <a id="phone-logo" class="span-left">전화번호</a>
                     <input type="text" class="span-rigth" placeholder="전화번호" name="user_phone" >
                 </div>
-                <div class="row">
-                    <a id="phone-logo" class="span-left">전화번호</a>
+                <!-- <div class="row">
+                    <a id="phone-logo" class="span-left">관심분야</a>
                     <select name="user_category" id="category_selectBox">
                         <% for(var i=0; i<category.length; i++){%>
                             <option value="<%= i+1%>"><%= category[i].category_name%></option>
                         <%}%>
                     </select>
-                </div>
+                </div> -->
                 <div class="row">
                     <span><input type="submit" value="가입" id="submit_button" ></span>
                 </div>

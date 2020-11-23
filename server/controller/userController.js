@@ -1,4 +1,4 @@
-const pool = require('../config/dbconfig');
+const pool = require('../dbconfig/dbconfig');
 
 const crypto = require('crypto');
 
@@ -7,6 +7,8 @@ require('moment-timezone');
 moment.tz.setDefault("Asia/Seoul");
 
 class UserController{
+
+    // 사용자 회원가입
     async signUp(req, res, next){
         pool.getConnection((err, conn)=>{
             if(err) throw err;
@@ -29,8 +31,8 @@ class UserController{
 
                     // 검색값 없을때만 즉 이미 없는 아이디일때만 
                     if(id_result.length == 0){
-                        conn.query('insert into user values(?,?,?,?,?,?,?)',[
-                            req.body.user_id, req.body.user_category,hashPassword, req.body.user_name, req.body.user_phone, salt, nowTime
+                        conn.query('insert into user values(?,?,?,?,?,?)',[
+                            req.body.user_id, hashPassword, req.body.user_name, req.body.user_phone, salt, nowTime
                         ], (err)=>{
                             if(err) throw err;
 
@@ -56,6 +58,7 @@ class UserController{
         })
     }
 
+    // 사용자 로그인
     async signIn(req,res,next){
         pool.getConnection((err, conn)=>{
             if(err) throw err;
@@ -111,6 +114,7 @@ class UserController{
         })
     }
 
+    //카테고리 찾아오기
     async findCategory(req, res, next){
         pool.getConnection((err, conn)=>{
             if(err) throw err;
