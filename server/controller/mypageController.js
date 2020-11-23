@@ -7,8 +7,8 @@ class MypageController {
         pool.getConnection((err, conn) => {
             if (err) throw err;
 
-            conn.query('insert into address values(?,?,?,?,?)', [
-                null, req.body.post_num, req.body.main_adr, req.body.detail_adr, req.session.user.id
+            conn.query('insert into address values(?,?,?,?,?,?,?,?)', [
+                null, req.body.post_num, req.body.main_adr, req.body.detail_adr, req.session.user.id, req.body.user_name, req.body.user_phone, req.body.adr_name
             ], (err) => {
                 if (err) throw err;
 
@@ -23,8 +23,8 @@ class MypageController {
         pool.getConnection((err, conn)=>{
             if(err) throw err;
 
-            conn.query('insert into card values(?,?,?,?)',[
-                req.body.card_num, req.body.card_CVC, req.body.card_date, req.session.user.id
+            conn.query('insert into card values(?,?,?,?,?)',[
+                req.body.card_num, req.body.card_CVC, req.body.card_date, req.session.user.id, req.body.card_name
             ], (err)=>{
                 if(err) throw err;
 

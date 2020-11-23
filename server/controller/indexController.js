@@ -8,6 +8,7 @@ class IndexController {
             if (err) throw err;
 
             // 리뷰 최근 꺼 3개 가져오기
+            
             conn.query('SELECT * FROM product, product_review where product_review.review_product_num = product.product_num order by 6 limit 3', (err, review_list_main) => {
                 if (err) throw err;
 
