@@ -70,7 +70,7 @@
 
     <div class="last_image">
         <!--이부분 제품마다 다르게 수정 필요-->
-        <img class="pruduct_img" src="../../images/products/파우치이미지.png">
+        <img class="pruduct_img" src="../../images/products/아이폰케이스.png">
         <div class="canvas_div">
             <canvas class="can" id="c" width="250px" height="280px"></canvas>
         </div>
@@ -102,6 +102,19 @@
     <div class="order_man">
         <div class="order_man_title">
             <h2>배송지 정보</h2>
+            <div style="position: relative;
+             width: 120px; height: 30px; top: 50%; transform: translateY(-50%);
+             left: 200px;  background: #ccc; border-radius: 8px;">
+                <a class="change_button" style="position: absolute; 
+                    width: 100%;
+                    height: 100%;
+                    line-height: 30px;
+                    cursor: pointer;
+                    text-align: center;
+                    font-weight: bold;
+
+                ">배송지 변경</a>
+            </div>
             <div class="title_bottom_line"></div>
         </div>
         <div class="order_man_content_address">
@@ -144,8 +157,14 @@
                 </div>
                 <div class="order_man_pay_info_con">
                     <div class="order_man_position">
-                        <h3>갯수</h3>
-                        <p><%= name%></p>
+                        <h3 style="position: absolute; top: 50%; transform: translateY(-50%);">갯수</h3>
+                        <div class="get_count">
+                            <form>
+                                <div class="value-button" id="decrease" onclick="decreaseValue()" value="Decrease Value">-</div>
+                                <input type="number" id="number" value="0" readonly/>
+                                <div class="value-button" id="increase" onclick="increaseValue()" value="Increase Value">+</div>
+                            </form>
+                        </div>
                     </div>
                 </div>
                 <div class="order_man_pay_info_con">
@@ -169,7 +188,7 @@
     </div>
 </body>
 </html>
-
+<script src="/javascripts/spinner.js"></script>
 
 <script>
     var canvas = new fabric.Canvas('c');
@@ -186,3 +205,4 @@
         canvas.add(img);
     });
 </script>
+
