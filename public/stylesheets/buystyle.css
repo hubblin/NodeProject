@@ -3,8 +3,7 @@
     margin-left: auto;
     margin-right: auto;
     display: block;
-
-    margin-top: 200px;
+    margin-top: 50px;
     margin-bottom: 40px;
     position: relative;
     height: 50px;
@@ -309,4 +308,67 @@
 .change_button:active{
     background: rgb(143, 143, 143);
     border-radius: 8px;
+}
+
+
+/* 메이킹 css*/
+
+.making_title{
+
+    position: absolute;
+    font-size: 50px;
+    font-weight: bold;
+    width: 600px;
+    left: 575px;
+    text-align: right;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    
+}
+
+.making_image img {
+    position: absolute;
+    left: 25%;
+    height: 500px;
+    transform: translateX(-50%);
+    margin-top: 50px;
+}
+
+
+.making_bottom_line{
+    width: 700px;
+    height: 2px;
+    position: absolute;
+    background: #CCC;
+    left: 75%;
+ 
+    margin-bottom: -120px;
+    transform: translateX(-50%);
+    bottom: 0;
+}
+
+.option_box {
+    position: absolute;
+    width: 500px;
+    text-align: right;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 100px;
+
+}
+
+
+.order_making_box{
+    position: relative;
+    width: 650px;
+    left: 375px;
+    margin-top: 120px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 700px;
+    box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.5);
+
 }

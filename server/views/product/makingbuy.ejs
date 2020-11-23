@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <link rel='stylesheet' href='/stylesheets/default.css' />
+        <link rel='stylesheet' href='/stylesheets/navstyle.css' />
+        <link rel='stylesheet' href='/stylesheets/buystyle.css'/>
+        <style>
+            .product_contents {
+                margin-top: 100px;
+                display: block;
+                position: relative;
+                margin-left: auto;
+                margin-right: auto;
+                width: 1164px;
+            }
+    
+            .product_contents .product_nav {
+                float: left;
+                width: 200px;
+            }
+    
+            .product_contents .product_main {
+                float: right;
+    
+                width: 932px;
+                height: 2200px;
+                margin-left: 32px;
+                margin-bottom: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <%- include("../head/nav",{name:name}) %>
+        <div class="title">
+            <h1>주문/결제</h1>
+            <div class="order_state"><span class="before">주문결제</span> <span class="middle_state">></span> <span class="done">주문완료</span></div>
+            <br><br><br><br>
+            <div class="making_image">
+                <!--이부분 제품마다 다르게 수정 필요-->
+                <img class="pruduct_makingimg" src="../../images/products/키보드.png">       
+                </div>
+            <div class="making_title">
+                키보드 주문 제작
+            </div>
+            <div class="making_bottom_line"></div>
+            <div class="order_making_box">
+                <div class="option_box">
+                    <select>
+                        <option>청축(클릭)(+0원)</option>
+                        <option>갈축(넌클릭(+0원))</option>
+                        <option>적축(리니어)(+0원)</option>
+                        <option>흑축(리니어)(+0원)</option>
+                        <option>클리어축(넌클릭)(+35,000원)</option>
+                        <option>은축(리니어)(+35,000원)</option>
+                        <option>저소음흑축(리니어)(+35,000원)</option>
+                        <option>저소음적축(리니어)(+35,000원)</option>
+                    </select>
+                </div>
+                </div>
+        </div>
+
+   
+    
+    </body>
+</html>

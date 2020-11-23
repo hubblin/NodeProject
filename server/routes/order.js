@@ -28,4 +28,16 @@ router.get('/buy', function(req,res){
 })
 
 
+router.get('/makingbuy', function(req,res){
+
+    if(req.session.user){
+        res.render('product/makingbuy',{name:req.session.user.name, imageurl : req.session.imageurl});
+    }
+    else{
+        res.render('product/makingbuy',{name:false,imageurl : req.session.imageurl});
+    }
+
+})
+
+
 module.exports = router;
