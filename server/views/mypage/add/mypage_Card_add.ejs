@@ -196,6 +196,12 @@
                     <a href="/mypage/reviewList" id="review">내가 작성한 리뷰</a>
                 </div>
 
+                <% if(company){%>
+                    <div class="meue_list">
+                        <a href="">업체메뉴</a>
+                    </div>
+                <%}%>
+
             </div>
 
             <div class="mypage_content" style="flex-basis:1304px; height: auto;">
@@ -207,6 +213,11 @@
 
                     <div class="painting_order_product">
 
+                        <div class="adr_input">
+                            <input type="text" id="card_name" name="card_name" placeholder="카드이름">
+                            <br>
+                            <span class="warning_msg" id="warning_card_name">카드이름를 입력하세요</span>
+                        </div>
                         <div class="adr_input">
                             <input type="text" id="post_num" name="post_num" placeholder="카드번호" maxlength="19">
                             <br>
@@ -243,6 +254,7 @@
         // 값 제대로 입력했는지 확인
         function check_adr_info() {
 
+            var card_name = document.getElementById("card_name").value;
             var post_num = document.getElementById("post_num").value
             var main_adr = document.getElementById("main_adr").value
             var detail_adr = document.getElementById("detail_adr").value
@@ -250,13 +262,16 @@
             var warning1 = document.getElementById("warning_post");
             var warning2 = document.getElementById("warning_main_adr");
             var warning3 = document.getElementById("warning_detail_adr");
+            var warning4 = document.getElementById("warning_card_name");
 
             warning1.style.display = "none";
             warning2.style.display = "none";
             warning3.style.display = "none";
+            warning4.style.display = "none";
+
 
             if (post_num && main_adr && detail_adr) {
-                sendPost_adr(post_num, main_adr, detail_adr)
+                sendPost_adr(post_num, main_adr, detail_adr, card_name)
             }
             if (!post_num) {
                 warning1.style.display = "inline";
@@ -267,11 +282,14 @@
             if (!detail_adr) {
                 warning3.style.display = "inline";
             }
+            if(!card_name){
+                warning4.style.display = "inline";
+            }
 
         }
 
         // post로 입력한 배송지 정보 전송
-        function sendPost_adr(post_num, main_adr, detail_adr) {
+        function sendPost_adr(post_num, main_adr, detail_adr, card_name) {
             var form = document.createElement('form');
 
             form.setAttribute('method', 'post');
@@ -295,9 +313,16 @@
             hidden3.setAttribute('value', detail_adr);
 
 
+            var hidden4 = document.createElement('input');
+            hidden4.setAttribute('type', 'hidden');
+            hidden4.setAttribute('name', 'card_name');
+            hidden4.setAttribute('value', card_name);
+
+
             form.appendChild(hidden1);
             form.appendChild(hidden2);
             form.appendChild(hidden3);
+            form.appendChild(hidden4);
 
 
             document.body.appendChild(form);

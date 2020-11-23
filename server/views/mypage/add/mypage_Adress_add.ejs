@@ -135,6 +135,7 @@
             border-radius: 5px;
             background-color: #ffC000;
             height: 50px;
+            margin-bottom: 50px;
         }
 
         .warning_msg {
@@ -195,6 +196,12 @@
                     <a href="/mypage/reviewList" id="review">내가 작성한 리뷰</a>
                 </div>
 
+                <% if(company){%>
+                    <div class="meue_list">
+                        <a href="">업체메뉴</a>
+                    </div>
+                <%}%>
+
             </div>
 
             <div class="mypage_content" style="flex-basis:1304px; height: auto;">
@@ -205,6 +212,22 @@
 
 
                     <div class="painting_order_product">
+
+                        <div class="adr_input">
+                            <input type="text" id="adr_user_name" name="adr_user_name" placeholder="수령인">
+                            <br>
+                            <span class="warning_msg" id="warning_user_name">수령인를 입력하세요</span>
+                        </div>
+                        <div class="adr_input">
+                            <input type="text" id="adr_user_phone" name="adr_user_phone" placeholder="연락처" maxlength="13">
+                            <br>
+                            <span class="warning_msg" id="warning_user_phone">연락처를 입력하세요</span>
+                        </div>
+                        <div class="adr_input">
+                            <input type="text" id="adr_name" name="adr_name" placeholder="배송지 이름">
+                            <br>
+                            <span class="warning_msg" id="warning_adr_name">배송지를 입력하세요</span>
+                        </div>
 
                         <div class="adr_input">
                             <input type="text" id="post_num" name="post_num" placeholder="우편번호">
@@ -242,20 +265,29 @@
         // 값 제대로 입력했는지 확인
         function check_adr_info() {
 
-            var post_num = document.getElementById("post_num").value
-            var main_adr = document.getElementById("main_adr").value
-            var detail_adr = document.getElementById("detail_adr").value
+            var user_name = document.getElementById("adr_user_name").value;
+            var user_phone = document.getElementById("adr_user_phone").value;
+            var adr_name = document.getElementById("adr_name").value;
+            var post_num = document.getElementById("post_num").value;
+            var main_adr = document.getElementById("main_adr").value;
+            var detail_adr = document.getElementById("detail_adr").value;
 
             var warning1 = document.getElementById("warning_post");
             var warning2 = document.getElementById("warning_main_adr");
             var warning3 = document.getElementById("warning_detail_adr");
+            var warning4 = document.getElementById("warning_user_name")
+            var warning5 = document.getElementById("warning_user_phone")
+            var warning6 = document.getElementById("warning_adr_name")
 
             warning1.style.display = "none";
             warning2.style.display = "none";
             warning3.style.display = "none";
+            warning4.style.display = "none";
+            warning5.style.display = "none";
+            warning6.style.display = "none";
 
-            if (post_num && main_adr && detail_adr) {
-                sendPost_adr(post_num, main_adr, detail_adr)
+            if (post_num && main_adr && detail_adr && user_name && user_phone && adr_name) {
+                sendPost_adr(post_num, main_adr, detail_adr, user_name, user_phone, adr_name)
             }
             if (!post_num) {
                 warning1.style.display = "inline";
@@ -266,11 +298,20 @@
             if (!detail_adr) {
                 warning3.style.display = "inline";
             }
+            if(!user_name){
+                warning4.style.display = "inline";
+            }
+            if(!user_phone){
+                warning5.style.display = "inline";
+            }
+            if(!adr_name){
+                warning6.style.display = "inline";
+            }
 
         }
 
         // post로 입력한 배송지 정보 전송
-        function sendPost_adr(post_num, main_adr, detail_adr) {
+        function sendPost_adr(post_num, main_adr, detail_adr, user_name, user_phone, adr_name) {
             var form = document.createElement('form');
 
             form.setAttribute('method', 'post');
@@ -293,10 +334,28 @@
             hidden3.setAttribute('name', 'detail_adr');
             hidden3.setAttribute('value', detail_adr);
 
+            var hidden4 = document.createElement('input');
+            hidden3.setAttribute('type', 'hidden');
+            hidden3.setAttribute('name', 'user_name');
+            hidden3.setAttribute('value', user_name);
+
+            var hidden5 = document.createElement('input');
+            hidden3.setAttribute('type', 'hidden');
+            hidden3.setAttribute('name', 'user_phone');
+            hidden3.setAttribute('value', user_phone);
+
+            var hidden6 = document.createElement('input');
+            hidden3.setAttribute('type', 'hidden');
+            hidden3.setAttribute('name', 'adr_name');
+            hidden3.setAttribute('value', adr_name);
+
 
             form.appendChild(hidden1);
             form.appendChild(hidden2);
             form.appendChild(hidden3);
+            form.appendChild(hidden4);
+            form.appendChild(hidden5);
+            form.appendChild(hidden6);
 
 
             document.body.appendChild(form);
@@ -306,7 +365,44 @@
         }
     </script>
 
-    <form action="" method="get"></form>
+    <script>
+        var autoHypenPhone = function (str) {
+            str = str.replace(/[^0-9]/g, '');
+            var tmp = '';
+            if (str.length < 4) {
+                return str;
+            } else if (str.length < 7) {
+                tmp += str.substr(0, 3);
+                tmp += '-';
+                tmp += str.substr(3);
+                return tmp;
+            } else if (str.length < 11) {
+                tmp += str.substr(0, 3);
+                tmp += '-';
+                tmp += str.substr(3, 3);
+                tmp += '-';
+                tmp += str.substr(6);
+                return tmp;
+            } else {
+                tmp += str.substr(0, 3);
+                tmp += '-';
+                tmp += str.substr(3, 4);
+                tmp += '-';
+                tmp += str.substr(7);
+                return tmp;
+            }
+
+            return str;
+        }
+
+
+        var phoneNum = document.getElementById('adr_user_phone');
+
+        phoneNum.onkeyup = function () {
+            console.log(this.value);
+            this.value = autoHypenPhone(this.value);
+        }
+    </script>
 
     <!-- 우편번호 찾기 스크립트 -->
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

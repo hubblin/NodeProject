@@ -33,6 +33,30 @@
             position: relative;
         }
 
+        #select_sign_up {
+            text-align: center;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        #select_sign_up #user {
+            flex-basis: 175px;
+            margin-right: 30px;
+        }
+
+        #select_sign_up #company {
+            flex-basis: 175px;
+        }
+
+        #user_sign_up {
+            display: none;
+        }
+
+        #company_sign_up {
+            display:inline;
+        }
+
         #email-logo {
             width: 35px;
             height: 26px;
@@ -146,14 +170,12 @@
             color: transparent;
         }
 
-        #category_selectBox{
+        #category_selectBox {
             float: right;
             position: relative;
             width: 80%;
             height: 26px;
         }
-
-        
     </style>
 </head>
 
@@ -169,43 +191,136 @@
             나중에 자동완성 안되게 autocomplete="off" 추가하기
         -->
         <div class="content">
-            <form action="/users/sign_up" method="POST">
-                <div class="row">
-                    <a id="email-logo" class="span-left">아이디</a>
-                    <input type="text" class="span-rigth" placeholder="아이디(이메일)" name='user_id'>
-                </div>
-                <div class="row">
-                    <a id="pwd-logo" class="span-left">비밀번호</a>
-                    <input type="password" class="span-rigth" placeholder="비밀번호" name="user_pw" >
-                </div>
-                <div class="row">
-                    <a id="name-logo" class="span-left">이름</a>
-                    <input type="text" name="user_name" class="span-rigth" placeholder="이름" name="user_name" >
-                </div>
-                <div class="row">
-                    <a id="phone-logo" class="span-left">전화번호</a>
-                    <input type="text" class="span-rigth" placeholder="전화번호" name="user_phone" >
-                </div>
-                <!-- <div class="row">
-                    <a id="phone-logo" class="span-left">관심분야</a>
-                    <select name="user_category" id="category_selectBox">
-                        <% for(var i=0; i<category.length; i++){%>
-                            <option value="<%= i+1%>"><%= category[i].category_name%></option>
-                        <%}%>
-                    </select>
-                </div> -->
-                <div class="row">
-                    <span><input type="submit" value="가입" id="submit_button" ></span>
-                </div>
-            </form>
+            <div id="select_sign_up">
+                <button id="user" onclick="selectUser()">일반 회원가입</button>
+                <button id="company" onclick="selectCompany()">업체 회원가입</button>
+            </div>
+            <div id="user_sign_up">
+                <form action="/users/sign_up" method="POST">
+                    <div class="row">
+                        <a id="email-logo" class="span-left">아이디</a>
+                        <input type="text" class="span-rigth" placeholder="아이디(이메일)" name='user_id'>
+                    </div>
+                    <div class="row">
+                        <a id="pwd-logo" class="span-left">비밀번호</a>
+                        <input type="password" class="span-rigth" placeholder="비밀번호" name="user_pw">
+                    </div>
+                    <div class="row">
+                        <a id="name-logo" class="span-left">이름</a>
+                        <input type="text" name="user_name" class="span-rigth" placeholder="이름" name="user_name">
+                    </div>
+                    <div class="row">
+                        <a id="phone-logo" class="span-left">전화번호</a>
+                        <input type="text" class="span-rigth" placeholder="전화번호" name="user_phone" id="input_phone"
+                            maxlength="13">
+                    </div>
+                    <!-- <div class="row">
+                        <a id="phone-logo" class="span-left">관심분야</a>
+                        <select name="user_category" id="category_selectBox">
+                            <% for(var i=0; i<category.length; i++){%>
+                                <option value="<%= i+1%>"><%= category[i].category_name%></option>
+                            <%}%>
+                        </select>
+                    </div> -->
+                    <div class="row">
+                        <span><input type="submit" value="가입" id="submit_button"></span>
+                    </div>
+                </form>
+            </div>
+            <div id="company_sign_up">
+                <form action="/users/sign_up" method="POST">
+                    <div class="row">
+                        <a id="email-logo" class="span-left">아이디</a>
+                        <input type="text" class="span-rigth" placeholder="기존아이디(이메일)" name='user_id'>
+                    </div>
+                    <div class="row">
+                        <a id="pwd-logo" class="span-left">사업자번호</a>
+                        <input type="password" class="span-rigth" placeholder="사업자번호" name="user_pw">
+                    </div>
+                    <div class="row">
+                        <a id="name-logo" class="span-left">업체이름</a>
+                        <input type="text" name="user_name" class="span-rigth" placeholder="업체이름" name="user_name">
+                    </div>
+                    <div class="row">
+                        <a id="phone-logo" class="span-left">업체전화번호</a>
+                        <input type="text" class="span-rigth" placeholder="업체전화번호" name="user_phone" id="input_phone"
+                            maxlength="13">
+                    </div>
+                    <!-- <div class="row">
+                        <a id="phone-logo" class="span-left">관심분야</a>
+                        <select name="user_category" id="category_selectBox">
+                            <% for(var i=0; i<category.length; i++){%>
+                                <option value="<%= i+1%>"><%= category[i].category_name%></option>
+                            <%}%>
+                        </select>
+                    </div> -->
+                    <div class="row">
+                        <span><input type="submit" value="가입" id="submit_button"></span>
+                    </div>
+                </form>
+            </div>
         </div>
 
     </div>
 
+    <script>
+        // var user_btn = document.getElementById("user");
+        // var company_btn = document.getElementById("company");
+
+        function selectUser() {
+            var user_sign_up = document.getElementById("user_sign_up");
+            var company_sign_up = document.getElementById("company_sign_up");
+            
+            user_sign_up.style.display = "inline";
+            company_sign_up.style.display = "none";
+        }
+
+        function selectCompany() {
+            var user_sign_up = document.getElementById("user_sign_up");
+            var company_sign_up = document.getElementById("company_sign_up");
+            
+            user_sign_up.style.display = "none";
+            company_sign_up.style.display = "inline";
+        }
+    </script>
+
     <script type="text/javascript">
+        var autoHypenPhone = function (str) {
+            str = str.replace(/[^0-9]/g, '');
+            var tmp = '';
+            if (str.length < 4) {
+                return str;
+            } else if (str.length < 7) {
+                tmp += str.substr(0, 3);
+                tmp += '-';
+                tmp += str.substr(3);
+                return tmp;
+            } else if (str.length < 11) {
+                tmp += str.substr(0, 3);
+                tmp += '-';
+                tmp += str.substr(3, 3);
+                tmp += '-';
+                tmp += str.substr(6);
+                return tmp;
+            } else {
+                tmp += str.substr(0, 3);
+                tmp += '-';
+                tmp += str.substr(3, 4);
+                tmp += '-';
+                tmp += str.substr(7);
+                return tmp;
+            }
+
+            return str;
+        }
 
 
+        var phoneNum = document.getElementById('input_phone');
 
+        phoneNum.onkeyup = function () {
+            console.log(this.value);
+            this.value = autoHypenPhone(this.value);
+        }
     </script>
 
 </body>
