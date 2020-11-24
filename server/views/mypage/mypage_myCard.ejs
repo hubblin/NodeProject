@@ -180,6 +180,12 @@
                 <div class="meue_list">
                     <a href="/mypage/reviewList" id="review">내가 작성한 리뷰</a>
                 </div>
+
+                <% if(company){%>
+                    <div class="meue_list">
+                        <a href="">업체메뉴</a>
+                    </div>
+                <%}%>
                 
             </div>
 
@@ -190,6 +196,7 @@
                     <div class="painting_order_product">
                         
                         <div id="info" style="flex-basis: 720px; display: flex; flex-direction: column; margin: auto 10px auto 0px">
+                            <span>카드이름 : <%= user_card.card_name%></span>
                             <span>카드번호 : <%= user_card.card_num%></span>
                             <span>카드 CVC : <%= user_card.card_CVC%></span>
                             <span>유효기간 : <%= user_card.card_date%></span>

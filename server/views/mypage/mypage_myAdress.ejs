@@ -181,6 +181,12 @@
                 <div class="meue_list">
                     <a href="/mypage/reviewList" id="review">내가 작성한 리뷰</a>
                 </div>
+
+                <% if(company){%>
+                    <div class="meue_list">
+                        <a href="">업체메뉴</a>
+                    </div>
+                <%}%>
                 
             </div>
 
@@ -191,6 +197,9 @@
                     <div class="painting_order_product">
                         
                         <div id="info" style="flex-basis: 720px; display: flex; flex-direction: column; margin: auto 10px auto 0px">
+                            <span>배송지이름 : <%= adr.adr_name%></span>
+                            <span>수령인 : <%= adr.adr_get_user_name%></span>
+                            <span>연락처 : <%= adr.adr_user_phone%></span>
                             <span>우편번호 : <%= adr.adr_post_num%></span>
                             <span>주소 : <%= adr.adr_main%></span>
                             <span>상세주소 : <%= adr.adr_detail%></span>
