@@ -8,6 +8,7 @@ const Index = new indexController();
 router.get('/', Index.getInfo_main, function(req, res, next) {
   if(req.session.user){
     console.log('메인화면 이름 ',req.session.user.name);
+    console.log(req.session.user.company_num);
     
     res.render('index',{name:req.session.user.name, reviewMain: req.review_main})
   }
