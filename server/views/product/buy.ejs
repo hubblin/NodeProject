@@ -108,9 +108,9 @@
             <div class="order_man_adr_info">
                 <div class="order_man_adr_info_con">
                     <div class="order_man_position">
-                        <h3>배송지</h3><select name="" id="select_address" onchange="changeAddressInfo()">
+                        <h3>배송지</h3><select name="" id="select_address" onchange="changeAddressInfo()" onload="changeAddressInfo()">
                             <% for(var data=0; data<user_address.length; data++){%>
-                                <option value="<%= data%>">배송지 이름: <%= user_address[data].adr_name%></option>
+                                <option value="<%= data%>" <% if(data == 0){%> selected <%}%> >배송지 이름: <%= user_address[data].adr_name%></option>
                             <%}%>
                         </select>
                     </div>
@@ -189,9 +189,9 @@
                 <div class="order_man_pay_info_con">
                     <div class="order_man_position">
                         <h3>결제 카드</h3>
-                        <select name="" id="select_card" onchange="changeCardInfo()">
+                        <select name="" id="select_card" onchange="changeCardInfo()" onload="changeCardInfo()">
                             <% for(var i =0; i<user_card.length; i++){%>
-                                <option value="<%= i%>">카드이름: <%= user_card[i].card_name%></option>
+                                <option value="<%= i%>" <% if(i == 0){%> selected <%}%>>카드이름: <%= user_card[i].card_name%></option>
                             <%}%>
                         </select>
                     </div>
