@@ -68,6 +68,43 @@ class MypageController {
         })
     }
 
+    // 수정할 배송지 정보 가져오기
+    async getTagetAddress(req, res, next){
+        pool.getConnection((err, conn)=>{
+            if(err) throw err;
+
+            conn.query('select * from address where adr_uid = ? ',[
+                req.params.adr_UID
+            ], (err, taget_address)=>{
+                if(err) throw err;
+
+                req.tagetAddress = taget_address;
+                conn.release();
+                next();
+
+            })
+
+        })
+    }
+
+    //수정할 카드정보 가져오기
+    async getTagetCard(req, res, next){
+        pool.getConnection((err, conn)=>{
+            if(err) throw err;
+
+            conn.query('select * from card where card_num = ?',[
+                req.params.card_num
+            ], (err, taget_Card)=>{
+                if(err) throw err;
+
+                req.tagetCard = taget_Card;
+                conn.release();
+                next();
+            })
+
+        })
+    }
+
     // 사용자의 배송지 목록 가져오기
     async getAddress(req, res, next){
         pool.getConnection((err, conn)=>{

@@ -10,7 +10,7 @@ router.get('/sign_up', User.findCategory, function (req, res, next) {
   res.render('user/sign_up', { category: req.category });
 });
 
-// 회원가입 post 
+// 일반 회원 회원가입 post 
 router.post('/sign_up', User.signUp, function (req, res, next) {
   if (req.check) {
 
@@ -25,6 +25,23 @@ router.post('/sign_up', User.signUp, function (req, res, next) {
               location.href='/';
         </script>`)
   }
+})
+
+// 업체 회원가입 post
+router.post('/com_sign_up', User.comSigUp,function(req, res, next){
+  if(req.sign_check){
+    res.send(`<script type="text/javascript">
+            alert("회원가입 성공"); 
+              location.href='/';
+        </script>`)
+  }
+  else{
+    res.send(`<script type="text/javascript">
+            alert("회원가입 실패"); 
+              location.href='/';
+        </script>`)
+  }
+
 })
 
 // 로그인 렌더링
