@@ -1,71 +1,84 @@
 <!DOCTYPE html>
 <html lang="kr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel='stylesheet' href='/stylesheets/default.css' />
     <link rel='stylesheet' href='/stylesheets/navstyle.css' />
-    <link rel='stylesheet' href='/stylesheets/buystyle.css'/>
+    <link rel='stylesheet' href='/stylesheets/buystyle.css' />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+
+
     <script src='/javascripts/fabric_min.js'></script>
     <script type="text/javascript">
-
         function setsub() {
             var sublnb = document.getElementById("sublnb");
             sublnb.style.display = "block";
             sublnb.style.opacity = "1";
             sublnb.style.visibility = "visible";
         }
+
         function outsub() {
             var sublnb = document.getElementById("sublnb");
             sublnb.style.display = "none"
             sublnb.style.opacity = "0";
             sublnb.style.visibility = "hidden";
         }
+
         function lsub() {
             var looksub = document.getElementById("sublnb");
             sublnb.style.display = "block";
             sublnb.style.opacity = "1";
             sublnb.style.visibility = "visible";
         }
+
         function loutsub() {
             var looksub = document.getElementById("sublnb");
             sublnb.style.display = "none";
             sublnb.style.opacity = "0";
             sublnb.style.visibility = "hidden";
         }
+
         function setsub2() {
             var sublnb2 = document.getElementById("sublnb2");
             sublnb2.style.display = "block";
             sublnb2.style.opacity = "1";
             sublnb2.style.visibility = "visible";
         }
+
         function outsub2() {
             var sublnb2 = document.getElementById("sublnb2");
             sublnb2.style.display = "none";
             sublnb2.style.opacity = "0";
             sublnb2.style.visibility = "hidden";
         }
+
         function lsub2() {
             var sublnb2 = document.getElementById("sublnb2");
             sublnb2.style.display = "block";
             sublnb2.style.opacity = "1";
             sublnb2.style.visibility = "visible";
         }
+
         function loutsub2() {
             var sublnb2 = document.getElementById("sublnb2");
             sublnb2.style.display = "none";
             sublnb2.style.opacity = "0";
             sublnb2.style.visibility = "hidden";
         }
-    
     </script>
 </head>
+
 <body onload="select_box_change()">
     <%- include("../head/nav") %>
     <div class="title">
         <h1>주문/결제</h1>
-        <div class="order_state"><span class="before">주문결제</span> <span class="middle_state">></span> <span class="done">주문완료</span></div>
+        <div class="order_state"><span class="before">주문결제</span> <span class="middle_state">></span> <span
+                class="done">주문완료</span></div>
     </div>
 
     <div class="last_image">
@@ -75,7 +88,7 @@
             <canvas class="can" id="c" width="250px" height="280px"></canvas>
         </div>
     </div>
-    
+
     <div class="order_man">
         <div class="order_man_title">
             <h2>주문자 정보</h2>
@@ -110,8 +123,8 @@
                     <div class="order_man_position">
                         <h3>배송지</h3><select name="" id="select_address" onchange="changeAddressInfo()">
                             <% for(var data=0; data<user_address.length; data++){%>
-                                <option value="<%= data%>" <% if(data == 0){%> selected <%}%> >배송지 이름: <%= user_address[data].adr_name%></option>
-                            <%}%>
+                            <option value="<%= data%>" <% if(data == 0){%> selected
+                                <%}%> >배송지 이름: <%= user_address[data].adr_name%></option> <%}%>
                         </select>
                     </div>
                 </div>
@@ -155,7 +168,7 @@
 
  
 
-    <div class="order_man">
+    <div class="order_man" id="target_img">
         <div class="order_man_title">
             <h2>결제 정보</h2>
             <div class="title_bottom_line"></div>
@@ -183,16 +196,15 @@
                 <div class="order_man_pay_info_con">
                     <div class="order_man_position">
                         <h3>총 결제금액</h3>
-                        <p id="total_pay"></p>
+                        <p id="total_pay">15000</p>
                     </div>
                 </div>
                 <div class="order_man_pay_info_con">
                     <div class="order_man_position">
                         <h3>결제 카드</h3>
                         <select name="" id="select_card" onchange="changeCardInfo()">
-                            <% for(var i =0; i<user_card.length; i++){%>
-                                <option value="<%= i%>" <% if(i == 0){%> selected <%}%>>카드이름: <%= user_card[i].card_name%></option>
-                            <%}%>
+                            <% for(var i =0; i<user_card.length; i++){%> <option value="<%= i%>" <% if(i == 0){%>
+                                selected <%}%>>카드이름: <%= user_card[i].card_name%></option> <%}%>
                         </select>
                     </div>
                 </div>
@@ -223,6 +235,25 @@
             <a href="/order/finish">결제하기</a>
         </div>
     </div>
+    <div class="pay_button_area">
+        <div class="pay_button">
+            <button id="captionBtn" onclick="testImg()">awddawadwdawwda</button>
+            <a href="" id="download1">dmdkdkdk</a>
+        </div>
+    </div>
+    <div id="mom" style="background-color: brown; width: 100px; height: 100px;">
+
+    </div>
+
+    <script>
+        
+        function testImg(){
+            html2canvas(document.querySelector("#mom"),{allowTaint : true,
+useCORS : true}).then(canvas => {
+                $('body').append('<img src="'+canvas.toDataURL("image/jpeg",1)+'"/>')
+            });
+        }
+    </script>
 
     <script>
 
@@ -242,11 +273,10 @@
             var card_arr3 = []
             
 
-            "<% for(var j of user_card){%>"
-            card_arr1.push("<%= j.card_num%>")
-            card_arr2.push("<%= j.card_CVC%>")
-            card_arr3.push("<%= j.card_date%>")
-            
+            "<% for(var j of user_card){%>" 
+                card_arr1.push("<%= j.card_num%>") 
+                card_arr2.push("<%= j.card_CVC%>")
+                card_arr3.push("<%= j.card_date%>") 
             "<%}%>"
 
             card_num.innerHTML=card_arr1[selected_card]
@@ -271,12 +301,12 @@
             var adr_arr4 = []
             var adr_arr5 = []
 
-            "<% for(var j of user_address){%>"
-            adr_arr1.push("<%= j.adr_get_user_name%>")
-            adr_arr2.push("<%= j.adr_user_phone%>")
-            adr_arr3.push("<%= j.adr_post_num%>")
-            adr_arr4.push("<%= j.adr_main%>")
-            adr_arr5.push("<%= j.adr_detail%>")
+            "<% for(var j of user_address){%>" 
+                adr_arr1.push("<%= j.adr_get_user_name%>")
+                adr_arr2.push("<%= j.adr_user_phone%>") 
+                adr_arr3.push("<%= j.adr_post_num%>")
+                adr_arr4.push("<%= j.adr_main%>") 
+                adr_arr5.push("<%= j.adr_detail%>") 
             "<%}%>"
 
             
@@ -304,11 +334,12 @@
             var card_arr2 = []
             var card_arr3 = []
 
-            "<% for(var j of user_card){%>"
-            card_arr1.push("<%= j.card_num%>")
+            "<% for(var j of user_card){%>" 
+            card_arr1.push("<%= j.card_num%>") 
             card_arr2.push("<%= j.card_CVC%>")
-            card_arr3.push("<%= j.card_date%>")
-            "<%}%>"
+                                
+            card_arr3.push("<%= j.card_date%>") 
+                                "<%}%>"
 
             card_num.innerHTML=card_arr1[selected_card]
             card_CVC.innerHTML=card_arr2[selected_card]
@@ -336,13 +367,13 @@
             var adr_arr4 = []
             var adr_arr5 = []
 
-            "<% for(var j of user_address){%>"
+            "<% for(var j of user_address){%>" 
             adr_arr1.push("<%= j.adr_get_user_name%>")
-            adr_arr2.push("<%= j.adr_user_phone%>")
-            adr_arr3.push("<%= j.adr_post_num%>")
-            adr_arr4.push("<%= j.adr_main%>")
-            adr_arr5.push("<%= j.adr_detail%>")
-            "<%}%>"
+                                adr_arr2.push("<%= j.adr_user_phone%>") 
+                                adr_arr3.push("<%= j.adr_post_num%>")
+                                adr_arr4.push("<%= j.adr_main%>") 
+                                adr_arr5.push("<%= j.adr_detail%>") 
+                                "<%}%>"
 
             
 
@@ -373,4 +404,3 @@
         canvas.add(img);
     });
 </script>
-
