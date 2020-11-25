@@ -313,6 +313,19 @@
 
 /* 메이킹 css*/
 
+.making_title_info {
+
+    width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 50px;
+    margin-bottom: 40px;
+    position: relative;
+    height: 50px;
+
+}
+
 .making_title{
 
     position: absolute;
@@ -343,12 +356,42 @@
 
 }
 
-.making_image img {
+.making_image{
+    position: relative;
+    width: 1500px;
+    height: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+
+.makingimg {
     position: absolute;
     left: 25%;
     height: 500px;
     transform: translateX(-50%);
-    margin-top: 50px;
+    margin-top: 10px;
+
+}
+
+.makingimg2 {
+    position: absolute;
+    left: 25%;
+    height: 380px;
+    transform: translateX(-50%);
+    bottom: 180px;
+   
+  
+}
+
+.commment {
+
+    position: absolute;
+    font-size: 40px;
+    font-weight: bold;
+    bottom: 100px;
+
 }
 
 
@@ -398,16 +441,17 @@
     -moz-appearance: none;
     appearance: none;
     
+    
 }
 
 .order_making_box{
-    position: relative;
+    position: absolute;
     width: 650px;
-    left: 375px;
-    margin-top: 200px;
     margin-left: auto;
     margin-right: auto;
-    height: 550px;
+    height: 600px;
+    right: 60px;
+    top: 200px;
     box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.5);
 
 }
@@ -424,18 +468,52 @@
 .info_area {
     position: relative;
     width: 1500px;
-    height: 50px;
+    height: 500px;
     margin-left: auto;
     margin-right: auto;
     display: block;
-    top: 200px;
+    bottom: 100px;
 }
 
 .info_area span{
     position : absolute;
-    width: 750px;
+    width: 500px;
     left: 60%;
     font-size: 40px;
     font-weight: bolder;
+
+
+}
+
+.total_price {
+
+    position: absolute;
+    font-size: 30px;
+    font-weight: bolder;
+    right: 30px;
+    margin-top: 20px;
+
+
+}
+
+.flex {
+
+    position: absolute;
+    text-decoration: none;
+    font-size:2rem;
+    background-color:#ffc000;
+    padding:10px 20px 10px 20px;
+    border-color: white;
+    color: white;
+
+    bottom: 20px;
+    right: 75px;
+
+}
+.flex a{
+
+ 
+    color: white;
+
 
 }

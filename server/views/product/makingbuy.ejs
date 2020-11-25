@@ -30,20 +30,25 @@
     </head>
     <body>
         <%- include("../head/nav",{name:name}) %>
+     
         <div class="title">
             <h1>주문/결제</h1>
             <div class="order_state"><span class="before">주문결제</span> <span class="middle_state">></span> <span class="done">주문완료</span></div>
-            <br><br><br><br>
+            </div>
+
             <div class="making_image">
-                <!--이부분 제품마다 다르게 수정 필요-->
-                <img class="pruduct_makingimg" src="../../images/products/키보드.png">       
-                </div>
+                <!--이부분 제품마다 다르게 수정 필요-->               
+                <img class="makingimg" src="../../images/products/키보드.png">
+
+                <img class="makingimg2" src="../../images/products/키보드2.png">
+                                       
             <div class="making_title">
                 키보드 주문 제작
                 <div class="making_bottom_line_title"></div>
             </div>
-       
-            
+            <div class="commment">
+            원하는 옵션으로 키보드를 제작해보세요!
+                </div>
             <div class="making_info_title">기본 가격 : 300,000원
                 <br>
                 키보드 모델 : VARMILO VA87M CNC 알루미늄
@@ -118,18 +123,25 @@
                         <option>국문 1톤(+14,000원)</option>
                         <option>Alaska 1톤(+14,000원)</option>
                     </select>
+                    <br>
+                    <div class="total_price">총액 : 300,000원</div>
                 </div>
-                </div>
-        </div>
-        <div class="info_area">
-            <span>총액</span>
-
+             </div>
+             <button class="flex"><a href="/">구매하기</a></button>
+             
             
-
-
-
+            
+            </div>
         </div>
-   
-    
+    </div>
+
+
+
+
+
+
+
     </body>
+   
 </html>
+
