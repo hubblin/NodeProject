@@ -3,8 +3,7 @@
     margin-left: auto;
     margin-right: auto;
     display: block;
-
-    margin-top: 200px;
+    margin-top: 50px;
     margin-bottom: 40px;
     position: relative;
     height: 50px;
@@ -316,3 +315,213 @@
     background: rgb(143, 143, 143);
     border-radius: 8px;
 }
+
+
+
+/* 메이킹 css*/
+
+.making_title_info {
+
+    width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 50px;
+    margin-bottom: 40px;
+    position: relative;
+    height: 50px;
+
+}
+
+.making_title{
+
+    position: absolute;
+    font-size: 50px;
+    font-weight: bold;
+    padding-bottom: 15px;
+    width: 600px;
+    left: 54%;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+
+    
+}
+
+.making_info_title {
+
+
+    position: absolute;
+    font-weight: bolder;
+    width: 650px;
+    left: 55%;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    margin-top: 100px;
+
+
+}
+
+.making_image{
+    position: relative;
+    width: 1500px;
+    height: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+
+.makingimg {
+    position: absolute;
+    left: 25%;
+    height: 500px;
+    transform: translateX(-50%);
+    margin-top: 10px;
+
+}
+
+.makingimg2 {
+    position: absolute;
+    left: 25%;
+    height: 380px;
+    transform: translateX(-50%);
+    bottom: 180px;
+   
+  
+}
+
+.commment {
+
+    position: absolute;
+    font-size: 40px;
+    font-weight: bold;
+    bottom: 100px;
+
+}
+
+
+.making_bottom_line_title{
+    width: 650px;
+    height: 2px;
+    position: absolute;
+    background: #CCC;
+    left: 51%;
+    transform: translateX(-49.5%);
+    bottom: 0;
+}
+
+.making_bottom_line{
+    width: 650px;
+    height: 2px;
+    position: absolute;
+    background: rgb(235, 234, 234);
+    left: 44.5%;
+    transform: translateX(-49%);
+    bottom: -15px;
+}
+
+
+.option_box {
+    position: absolute;
+    width: 600px;
+    text-align: right;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 100px;
+    
+
+}
+
+.option_box select {
+
+
+    width: 450px; /* 원하는 너비설정 */
+    padding: .8em .5em; /* 여백으로 높이 설정 */
+    font-family: inherit;  /* 폰트 상속 */
+    background: url(../images/order_img/drop-down-arrow.png) no-repeat right 12px center; /* 네이티브 화살표를 커스텀 화살표로 대체 */
+    background-size: 14px;
+    border: 1px solid #999;
+    border-radius: 0px; /* iOS 둥근모서리 제거 */
+    -webkit-appearance: none; /* 네이티브 외형 감추기 */
+    -moz-appearance: none;
+    appearance: none;
+    
+    
+}
+
+.order_making_box{
+    position: absolute;
+    width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 600px;
+    right: 60px;
+    top: 200px;
+    box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.5);
+
+}
+
+.order_making_box span{
+
+    position: absolute;
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.info_area {
+    position: relative;
+    width: 1500px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    bottom: 100px;
+}
+
+.info_area span{
+    position : absolute;
+    width: 500px;
+    left: 60%;
+    font-size: 40px;
+    font-weight: bolder;
+
+
+}
+
+.total_price {
+
+    position: absolute;
+    font-size: 30px;
+    font-weight: bolder;
+    right: 30px;
+    margin-top: 20px;
+
+
+}
+
+.flex {
+
+    position: absolute;
+    text-decoration: none;
+    font-size:2rem;
+    background-color:#ffc000;
+    padding:10px 20px 10px 20px;
+    border-color: white;
+    color: white;
+
+    bottom: 20px;
+    right: 75px;
+
+}
+.flex a{
+
+ 
+    color: white;
+
+
+}
+
