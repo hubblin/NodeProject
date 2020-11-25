@@ -61,7 +61,7 @@
     
     </script>
 </head>
-<body>
+<body onload="select_box_change()">
     <%- include("../head/nav") %>
     <div class="title">
         <h1>주문/결제</h1>
@@ -108,7 +108,7 @@
             <div class="order_man_adr_info">
                 <div class="order_man_adr_info_con">
                     <div class="order_man_position">
-                        <h3>배송지</h3><select name="" id="select_address" onchange="changeAddressInfo()" onload="changeAddressInfo()">
+                        <h3>배송지</h3><select name="" id="select_address" onchange="changeAddressInfo()">
                             <% for(var data=0; data<user_address.length; data++){%>
                                 <option value="<%= data%>" <% if(data == 0){%> selected <%}%> >배송지 이름: <%= user_address[data].adr_name%></option>
                             <%}%>
@@ -189,7 +189,7 @@
                 <div class="order_man_pay_info_con">
                     <div class="order_man_position">
                         <h3>결제 카드</h3>
-                        <select name="" id="select_card" onchange="changeCardInfo()" onload="changeCardInfo()">
+                        <select name="" id="select_card" onchange="changeCardInfo()">
                             <% for(var i =0; i<user_card.length; i++){%>
                                 <option value="<%= i%>" <% if(i == 0){%> selected <%}%>>카드이름: <%= user_card[i].card_name%></option>
                             <%}%>
@@ -225,6 +225,67 @@
     </div>
 
     <script>
+
+        function select_box_change(){
+            var select_card = document.getElementById("select_card");
+
+            var selected_card = select_card.options[select_card.selectedIndex].value;
+
+
+            var card_num = document.getElementById("user_card_num");
+            var card_CVC = document.getElementById("user_card_CVC");
+            var card_date = document.getElementById("user_card_date");
+
+            var card_arr1 = []
+            var card_arr2 = []
+            var card_arr3 = []
+
+            "<% for(var j of user_card){%>"
+            card_arr1.push("<%= j.card_num%>")
+            card_arr2.push("<%= j.card_CVC%>")
+            card_arr3.push("<%= j.card_date%>")
+            "<%}%>"
+
+            card_num.innerHTML=card_arr1[selected_card]
+            card_CVC.innerHTML=card_arr2[selected_card]
+            card_date.innerHTML=card_arr3[selected_card]
+
+            var user_name = document.getElementById('get_user_name');
+            var user_phone = document.getElementById("get_user_phone");
+            var post_num = document.getElementById("get_user_post_num");
+            var address_main = document.getElementById("get_main_address");
+            var address_detail = document.getElementById("get_detail_address");
+
+            var select = document.getElementById("select_address");
+
+            var select_address = select.options[select.selectedIndex].value;
+
+           
+
+            var adr_arr1 = []
+            var adr_arr2 = []
+            var adr_arr3 = []
+            var adr_arr4 = []
+            var adr_arr5 = []
+
+            "<% for(var j of user_address){%>"
+            adr_arr1.push("<%= j.adr_get_user_name%>")
+            adr_arr2.push("<%= j.adr_user_phone%>")
+            adr_arr3.push("<%= j.adr_post_num%>")
+            adr_arr4.push("<%= j.adr_main%>")
+            adr_arr5.push("<%= j.adr_detail%>")
+            "<%}%>"
+
+            
+
+            user_name.innerHTML=adr_arr1[select_address]
+            user_phone.innerHTML=adr_arr2[select_address]
+            post_num.innerHTML=adr_arr3[select_address]
+            address_main.innerHTML=adr_arr4[select_address]
+            address_detail.innerHTML=adr_arr5[select_address]
+
+        }
+
          // select 카드 정보 바꾸는거
         function changeCardInfo(){
             var select_card = document.getElementById("select_card");
@@ -236,19 +297,19 @@
             var card_CVC = document.getElementById("user_card_CVC");
             var card_date = document.getElementById("user_card_date");
 
-            var arr1 = []
-            var arr2 = []
-            var arr3 = []
+            var card_arr1 = []
+            var card_arr2 = []
+            var card_arr3 = []
 
             "<% for(var j of user_card){%>"
-                arr1.push("<%= j.card_num%>")
-                arr2.push("<%= j.card_CVC%>")
-                arr3.push("<%= j.card_date%>")
+            card_arr1.push("<%= j.card_num%>")
+            card_arr2.push("<%= j.card_CVC%>")
+            card_arr3.push("<%= j.card_date%>")
             "<%}%>"
 
-            card_num.innerHTML=arr1[selected_card]
-            card_CVC.innerHTML=arr2[selected_card]
-            card_date.innerHTML=arr3[selected_card]
+            card_num.innerHTML=card_arr1[selected_card]
+            card_CVC.innerHTML=card_arr2[selected_card]
+            card_date.innerHTML=card_arr3[selected_card]
         }
 
 
@@ -266,27 +327,27 @@
 
            
 
-            var arr1 = []
-            var arr2 = []
-            var arr3 = []
-            var arr4 = []
-            var arr5 = []
+            var adr_arr1 = []
+            var adr_arr2 = []
+            var adr_arr3 = []
+            var adr_arr4 = []
+            var adr_arr5 = []
 
             "<% for(var j of user_address){%>"
-                arr1.push("<%= j.adr_get_user_name%>")
-                arr2.push("<%= j.adr_user_phone%>")
-                arr3.push("<%= j.adr_post_num%>")
-                arr4.push("<%= j.adr_main%>")
-                arr5.push("<%= j.adr_detail%>")
+            adr_arr1.push("<%= j.adr_get_user_name%>")
+            adr_arr2.push("<%= j.adr_user_phone%>")
+            adr_arr3.push("<%= j.adr_post_num%>")
+            adr_arr4.push("<%= j.adr_main%>")
+            adr_arr5.push("<%= j.adr_detail%>")
             "<%}%>"
 
             
 
-            user_name.innerHTML=arr1[select_address]
-            user_phone.innerHTML=arr2[select_address]
-            post_num.innerHTML=arr3[select_address]
-            address_main.innerHTML=arr4[select_address]
-            address_detail.innerHTML=arr5[select_address]
+            user_name.innerHTML=adr_arr1[select_address]
+            user_phone.innerHTML=adr_arr2[select_address]
+            post_num.innerHTML=adr_arr3[select_address]
+            address_main.innerHTML=adr_arr4[select_address]
+            address_detail.innerHTML=adr_arr5[select_address]
         }
     </script>
 </body>
