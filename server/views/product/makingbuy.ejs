@@ -27,6 +27,33 @@
                 margin-bottom: 20px;
             }
         </style>
+
+    <script type="text/javascript">
+
+
+
+        function getSelectValue(frm)
+        {
+        
+        frm.optionValue.value = frm.selectBox.options[frm.selectBox.selectedIndex].value;
+
+        }
+
+        function calculatePay() {
+
+            var price1 = document.getElementById("buttonSelect").value;
+            var price2 = document.getElementById("colorSelect").value;
+            Number(price1);
+            Number(price2);
+            document.getElementById("total_price").value = (Number(price1) + Number(price2) + 300000);
+            
+            
+        }
+
+
+
+
+    </script>
     </head>
     <body>
         <%- include("../head/nav",{name:name}) %>
@@ -60,30 +87,32 @@
             <div class="order_making_box">
                 <span>커스텀 옵션 선택</span>   
                         
-                <div class="option_box">
-                    스위치
-                    <select>
-                        <option>청축(클릭)(+0원)</option>
-                        <option>갈축(넌클릭)(+0원)</option>
-                        <option>적축(리니어)(+0원)</option>
-                        <option>흑축(리니어)(+0원)</option>
-                        <option>클리어축(넌클릭)(+35,000원)</option>
-                        <option>은축(리니어)(+35,000원)</option>
-                        <option>저소음흑축(리니어)(+35,000원)</option>
-                        <option>저소음적축(리니어)(+35,000원)</option>
+                <div class="option_box" >
+                    <form name="mypay" >
+                        스위치
+                    <select id="buttonSelect" name="switch" onChange="calculatePay();">
+                        <option value="0">청축(클릭)(+0원)</option>
+                        <option value="0">갈축(넌클릭)(+0원)</option>
+                        <option value="0">적축(리니어)(+0원)</option>
+                        <option value="0">흑축(리니어)(+0원)</option>
+                        <option value="35000">클리어축(넌클릭)(+35,000원)</option>
+                        <option value="35000">은축(리니어)(+35,000원)</option>
+                        <option value="35000">저소음흑축(리니어)(+35,000원)</option>
+                        <option value="35000">저소음적축(리니어)(+35,000원)</option>
                     </select>
+                
                     <br><br>
                     LED
-                    <select>
-                        <option>선택안함</option>
-                        <option>화이트(+5,000원)</option>
-                        <option>레드(+5,000원)</option>
-                        <option>옐로우(+5,000원)</option>
-                        <option>블루(+5,000원)</option>
-                        <option>그린(+5,000원)</option>
-                        <option>오렌지(+5,000원)</option>
-                        <option>바이올렛(+5,000원)</option>
-                        <option>아이스블루(+5,000원)</option>
+                    <select id="colorSelect" name="led" onChange="calculatePay();">
+                        <option value="0">선택안함</option>
+                        <option value="5000">화이트(+5,000원)</option>
+                        <option value="5000">레드(+5,000원)</option>
+                        <option value="5000">옐로우(+5,000원)</option>
+                        <option value="5000">블루(+5,000원)</option>
+                        <option value="5000">그린(+5,000원)</option>
+                        <option value="5000">오렌지(+5,000원)</option>
+                        <option value="5000">바이올렛(+5,000원)</option>
+                        <option value="5000">아이스블루(+5,000원)</option>
                     </select>
                     <br><br>
                     보강판
@@ -124,24 +153,28 @@
                         <option>Alaska 1톤(+14,000원)</option>
                     </select>
                     <br>
-                    <div class="total_price">총액 : 300,000원</div>
+                <div class="total_price">
+                총액: <input id="total_price" type="text" name="pay" value="300000">원
+            </div>
                 </div>
+            </form>
              </div>
              <button class="flex"><a href="/">구매하기</a></button>
              
             
             
             </div>
+        
         </div>
+    
     </div>
 
-
-
-
-
-
-
     </body>
+ 
+
+ 
    
 </html>
+
+
 
