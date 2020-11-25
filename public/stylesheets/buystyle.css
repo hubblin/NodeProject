@@ -93,7 +93,7 @@
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
-    height: 350px;
+    height: 600px;
     box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.5);
 
 }
@@ -111,10 +111,9 @@
 .order_man_content_address{
     position: relative;
     width: 1400px;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    height: 250px;
+    top: 20px;
+    margin: 0 auto;
+    height: 500px;
     box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -131,17 +130,16 @@
 .order_man_adr_info{
     position: relative;
     width: 1300px;
-    height: 200px;
+    height: 400px;
     margin: 0 auto;
     top: 50%;
     transform: translateY(-50%);
-
 }
 
 .order_man_pay_info{
     position: relative;
     width: 1300px;
-    height: 300px;
+    height: 500px;
     margin: 0 auto;
     top: 50%;
     transform: translateY(-50%);
@@ -181,9 +179,8 @@
 .order_man_adr_info_con{
     display: inline-block;
     width: 100%;
-    height: 31.5%;
+    height: 15.5%;
     position: relative;
-
 }
 
 .order_man_adr_info_con p {
@@ -199,7 +196,7 @@
 .order_man_pay_info_con{
     display: inline-block;
     width: 100%;
-    height: 23.5%;
+    height: 13.25%;
     position: relative;
 
 }
@@ -278,6 +275,13 @@
     margin-right: 10px;
 }
 
+.pay_button_area{
+    width: 1500px;
+    height: 50px;
+    position: relative;
+        margin-left: auto;
+    margin-right: auto;
+}
 
 .pay_button{
     width: 1400px;
@@ -286,7 +290,9 @@
     background: #ffc000;
     margin-bottom: 50px;
     position: relative;
-    left: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 .pay_button a{
@@ -309,6 +315,7 @@
     background: rgb(143, 143, 143);
     border-radius: 8px;
 }
+
 
 
 /* 메이킹 css*/
@@ -517,3 +524,4 @@
 
 
 }
+

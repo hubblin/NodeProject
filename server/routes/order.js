@@ -48,6 +48,7 @@ router.get('/buy', Order.getAddress_cardInfo,function(req,res){
 })
 
 
+
 router.get('/makingbuy', function(req,res){
 
     if(req.session.user){
@@ -57,6 +58,12 @@ router.get('/makingbuy', function(req,res){
         res.render('product/makingbuy',{name:false,imageurl : req.session.imageurl});
     }
 
+})
+
+
+
+router.get('/finish', function(req,res){
+    res.render('product/finish');
 })
 
 
