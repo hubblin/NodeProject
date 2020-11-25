@@ -165,7 +165,7 @@
                 <div class="order_man_pay_info_con">
                     <div class="order_man_position">
                         <h3>상품가격</h3>
-                        <p><%= name%></p>
+                        <p id="product_price">15000</p>
                     </div>
                 </div>
                 <div class="order_man_pay_info_con">
@@ -174,7 +174,7 @@
                         <div class="get_count">
                             <form>
                                 <div class="value-button" id="decrease" onclick="decreaseValue()" value="Decrease Value">-</div>
-                                <input type="number" id="number" value="0" readonly/>
+                                <input type="number" id="number" value="1" readonly/>
                                 <div class="value-button" id="increase" onclick="increaseValue()" value="Increase Value">+</div>
                             </form>
                         </div>
@@ -183,7 +183,7 @@
                 <div class="order_man_pay_info_con">
                     <div class="order_man_position">
                         <h3>총 결제금액</h3>
-                        <p><%= name%></p>
+                        <p id="total_pay"></p>
                     </div>
                 </div>
                 <div class="order_man_pay_info_con">
@@ -226,6 +226,7 @@
 
     <script>
 
+        // 페이지 로드 될때 값 미리 띄어 놓기
         function select_box_change(){
             var select_card = document.getElementById("select_card");
 
@@ -239,11 +240,13 @@
             var card_arr1 = []
             var card_arr2 = []
             var card_arr3 = []
+            
 
             "<% for(var j of user_card){%>"
             card_arr1.push("<%= j.card_num%>")
             card_arr2.push("<%= j.card_CVC%>")
             card_arr3.push("<%= j.card_date%>")
+            
             "<%}%>"
 
             card_num.innerHTML=card_arr1[selected_card]
