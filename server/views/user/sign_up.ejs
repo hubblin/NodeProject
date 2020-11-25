@@ -35,26 +35,31 @@
 
         #select_sign_up {
             text-align: center;
-            margin-top: 20px;
+            margin: 15px;
             display: flex;
             flex-direction: row;
         }
 
         #select_sign_up #user {
             flex-basis: 175px;
-            margin-right: 30px;
+            margin-right: 75px;
+            padding-bottom: 5px;
+            border-bottom: 3px solid #ffc000;
         }
 
         #select_sign_up #company {
             flex-basis: 175px;
+            padding-bottom: 5px;
+            border-bottom: none;
         }
 
         #user_sign_up {
-            display: none;
+            display:inline;
         }
 
         #company_sign_up {
-            display:inline;
+            display: none;
+
         }
 
         #email-logo {
@@ -136,10 +141,39 @@
             height: 26px;
 
         }
+        #div_post_num{
+            float: right;
+            background-position: left;
+            outline: none;
+            border: none;
+            position: relative;
+            width: 80%;
+            height: 26px;
+        }
+        #div_post_num #com_post_num{
+            background-position: left;
+            outline: none;
+            border: none;
+            border-bottom: solid 1px #ffC000;
+            margin-right: 30px;
+        }
+        
+        #div_post_num #com_post_num::placeholder{
+            color: #aaa;
+        }
+        #find_post_num_btn{
+            color: white;
+            font-weight: 800;
+            background-color: #ffC000;
+            border: none;
+            border-radius: 5px;
+        }
+        #find_post_num_btn:focus{
+            outline: none;
+        }
 
         .row {
             width: 100%;
-
             margin-top: 20px;
             margin-bottom: 15px;
             height: 30px;
@@ -192,8 +226,8 @@
         -->
         <div class="content">
             <div id="select_sign_up">
-                <button id="user" onclick="selectUser()">일반 회원가입</button>
-                <button id="company" onclick="selectCompany()">업체 회원가입</button>
+                <div id="user" onclick="selectUser()">일반 회원가입</div>
+                <div id="company" onclick="selectCompany()">업체 회원가입</div>
             </div>
             <div id="user_sign_up">
                 <form action="/users/sign_up" method="POST">
@@ -211,7 +245,7 @@
                     </div>
                     <div class="row">
                         <a id="phone-logo" class="span-left">전화번호</a>
-                        <input type="text" class="span-rigth" placeholder="전화번호" name="user_phone" id="input_phone"
+                        <input type="text" class="span-rigth" placeholder="전화번호" name="user_phone" id="user_input_phone"
                             maxlength="13">
                     </div>
                     <!-- <div class="row">
@@ -228,23 +262,38 @@
                 </form>
             </div>
             <div id="company_sign_up">
-                <form action="/users/sign_up" method="POST">
+                <form action="" method="POST">
                     <div class="row">
                         <a id="email-logo" class="span-left">아이디</a>
                         <input type="text" class="span-rigth" placeholder="기존아이디(이메일)" name='user_id'>
                     </div>
                     <div class="row">
                         <a id="pwd-logo" class="span-left">사업자번호</a>
-                        <input type="password" class="span-rigth" placeholder="사업자번호" name="user_pw">
+                        <input type="password" class="span-rigth" placeholder="사업자번호" name="com_pw">
                     </div>
                     <div class="row">
                         <a id="name-logo" class="span-left">업체이름</a>
-                        <input type="text" name="user_name" class="span-rigth" placeholder="업체이름" name="user_name">
+                        <input type="text" class="span-rigth" placeholder="업체이름" name="com_name">
                     </div>
                     <div class="row">
                         <a id="phone-logo" class="span-left">업체전화번호</a>
-                        <input type="text" class="span-rigth" placeholder="업체전화번호" name="user_phone" id="input_phone"
+                        <input type="text" class="span-rigth" placeholder="업체전화번호" name="com_phone" id="com_input_phone"
                             maxlength="13">
+                    </div>
+                    <div class="row">
+                        <a id="phone-logo" class="span-left">업체우편번호</a>
+                        <div id="div_post_num">
+                            <input type="text"  placeholder="업체우편번호"  id="com_post_num" name="com_post_num">
+                            <input type="button"  name="" id="find_post_num_btn" value="우편번호 찾기" onclick="findAdress()" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <a id="phone-logo" class="span-left">업체메인주소</a>
+                        <input type="text" class="span-rigth" placeholder="업체메인주소"  id="com_main_address" name="com_main_adr">
+                    </div>
+                    <div class="row">
+                        <a id="phone-logo" class="span-left">업체상세주소</a>
+                        <input type="text" class="span-rigth" placeholder="업체상세주소" id="com_detail_address" name="com_detail_adr">
                     </div>
                     <!-- <div class="row">
                         <a id="phone-logo" class="span-left">관심분야</a>
@@ -268,19 +317,30 @@
         // var company_btn = document.getElementById("company");
 
         function selectUser() {
+            var user_btn = document.getElementById("user");
+            var company_btn = document.getElementById("company");
             var user_sign_up = document.getElementById("user_sign_up");
             var company_sign_up = document.getElementById("company_sign_up");
             
             user_sign_up.style.display = "inline";
+            user_btn.style.borderBottom = "3px solid #ffc000";
+            
             company_sign_up.style.display = "none";
+            company_btn.style.borderBottom = "none";
+            
         }
 
         function selectCompany() {
+            var user_btn = document.getElementById("user");
+            var company_btn = document.getElementById("company");
             var user_sign_up = document.getElementById("user_sign_up");
             var company_sign_up = document.getElementById("company_sign_up");
             
             user_sign_up.style.display = "none";
+            user_btn.style.borderBottom = "none";
+            
             company_sign_up.style.display = "inline";
+            company_btn.style.borderBottom = "3px solid #ffc000";
         }
     </script>
 
@@ -315,11 +375,66 @@
         }
 
 
-        var phoneNum = document.getElementById('input_phone');
+        var phoneNum = document.getElementById('user_input_phone');
+        var comPhoneNum = document.getElementById('com_input_phone');
+
+        comPhoneNum.onkeyup = function(){
+            console.log(this.value);
+            this.value = autoHypenPhone(this.value);
+        }
 
         phoneNum.onkeyup = function () {
             console.log(this.value);
             this.value = autoHypenPhone(this.value);
+        }
+    </script>
+
+    <!-- 우편번호 찾기 스크립트 -->
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+        function findAdress() {
+            new daum.Postcode({
+                oncomplete: function (data) {
+                    // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                    // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                    // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                    var addr = ''; // 주소 변수
+                    var extraAddr = ''; // 참고항목 변수
+
+                    //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                    if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                        addr = data.roadAddress;
+                    } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                        addr = data.jibunAddress;
+                    }
+
+                    // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                    if (data.userSelectedType === 'R') {
+                        // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                        // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                        if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+                            extraAddr += data.bname;
+                        }
+                        // 건물명이 있고, 공동주택일 경우 추가한다.
+                        if (data.buildingName !== '' && data.apartment === 'Y') {
+                            extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                        }
+                        // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                        if (extraAddr !== '') {
+                            extraAddr = ' (' + extraAddr + ')';
+                        }
+                        // 조합된 참고항목을 해당 필드에 넣는다.
+
+                    } else {}
+
+                    // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                    document.getElementById('com_post_num').value = data.zonecode;
+                    document.getElementById("com_main_address").value = addr;
+                    // 커서를 상세주소 필드로 이동한다.
+                    document.getElementById("com_detail_address").focus();
+                }
+            }).open();
         }
     </script>
 
