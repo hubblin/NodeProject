@@ -48,4 +48,8 @@ router.get('/buy', Order.getAddress_cardInfo,function(req,res){
 })
 
 
+router.get('/finish', function(req,res){
+    res.render('product/finish');
+})
+
 module.exports = router;

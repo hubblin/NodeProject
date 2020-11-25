@@ -102,25 +102,10 @@
     <div class="order_man">
         <div class="order_man_title">
             <h2>배송지 정보</h2>
-            <!-- <div style="position: relative;
-             width: 120px; height: 30px; top: 50%; transform: translateY(-50%);
-             left: 200px;  background: #ccc; border-radius: 8px;">
-                <a class="change_button" style="position: absolute; 
-                    width: 100%;
-                    height: 100%;
-                    line-height: 30px;
-                    cursor: pointer;
-                    text-align: center;
-                    font-weight: bold;
-
-                ">배송지 변경</a> -->
-                
-            </div>
             <div class="title_bottom_line"></div>
         </div>
         <div class="order_man_content_address">
             <div class="order_man_adr_info">
-
                 <div class="order_man_adr_info_con">
                     <div class="order_man_position">
                         <h3>배송지</h3><select name="" id="select_address" onchange="changeAddressInfo()">
@@ -137,11 +122,11 @@
                         <p id="get_user_name"></p>
                     </div>
                 </div>
-
+    
                 <div class="order_man_adr_info_con"> 
                     <div class="order_man_position">
                         <h3>연락처</h3>
-                        <p id="get_user_phone"></p>
+                            <p id="get_user_phone"></p>
                     </div>
                 </div>
                 <div class="order_man_adr_info_con"> 
@@ -166,6 +151,8 @@
             </div>
         </div>
     </div>
+        
+
  
 
     <div class="order_man">
@@ -231,8 +218,10 @@
         </div>
     </div>
 
-    <div class="pay_button">
-        <a >결제하기</a>
+    <div class="pay_button_area">
+        <div class="pay_button">
+            <a href="/order/finish">결제하기</a>
+        </div>
     </div>
 
     <script>
