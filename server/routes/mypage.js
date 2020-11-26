@@ -5,9 +5,9 @@ const mypageController = require('../controller/mypageController');
 const Mypage = new mypageController();
 
 // 마이페이지 메인화면 렌더링(페인팅 오더 목록)
-router.get('/', function (req, res, next) {
+router.get('/', Mypage.getOrderList,function (req, res, next) {
     res.render('mypage/mypage_main', {
-        name: req.session.user.name, company:req.session.user.company_num
+        name: req.session.user.name, company:req.session.user.company_num, orderList:req.orderList
     });
 })
 

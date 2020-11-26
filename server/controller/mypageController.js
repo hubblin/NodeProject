@@ -140,6 +140,23 @@ class MypageController {
         })
     }
 
+    // 마이페이지 페인팅 주문 목록에 띄어줄 주문목록 가져오기
+    async getOrderList(req, res, next){
+        pool.getConnection((err, conn)=>{
+            if(err) throw err;
+
+            conn.query('select * order where order_user_id = ?',[
+                req.session.user.id
+            ], (err, order_list)=>{
+                
+                req.orderList = order_list;
+                conn.release();
+                next();
+
+            })
+        })
+    }
+
 }
 
 module.exports = MypageController;
