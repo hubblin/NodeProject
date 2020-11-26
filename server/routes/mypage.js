@@ -35,9 +35,9 @@ router.get('/myAdr', Mypage.getAddress,function (req, res, next) {
 })
 
 // 마이페이지 사용자가 적은 리뷰 목록 렌더링
-router.get('/reviewList', function (req, res, next) {
+router.get('/reviewList', Mypage.getMyReviewList,function (req, res, next) {
     res.render('mypage/mypage_reviewList', {
-        name: req.session.user.name, company:req.session.user.company_num
+        name: req.session.user.name, company:req.session.user.company_num, myReviewList: req.myReviewList
     })
 })
 
@@ -51,6 +51,13 @@ router.get('/addAdr', function (req, res, next) {
 // 마이페이지 카드 추가 페이지 렌더링
 router.get('/addCard', function(req, res, next){
     res.render('mypage/add/mypage_Card_add', {
+        name: req.session.user.name, company:req.session.user.company_num
+    })
+})
+
+// 마이페이지 리뷰 추가 페이지 렌더링
+router.get('/addReview', function(req, res, next){
+    res.render('mypage/add/mypage_review_add', {
         name: req.session.user.name, company:req.session.user.company_num
     })
 })
@@ -111,6 +118,14 @@ router.post('/deleteCard/:card_num', Mypage.deleteCard,function(req, res, next){
     res.send(`<script type="text/javascript">
             alert("결제카드 삭제 성공"); 
             location.href='/mypage/myCard';
+            </script>`)
+})
+
+// 리뷰 삭제 post
+router.post('/deleteReview/:review_num', Mypage.deleteMyReview,function(req, res, next){
+    res.send(`<script type="text/javascript">
+            alert("리뷰 삭제 성공"); 
+            location.href='/mypage/reviewList';
             </script>`)
 })
 module.exports = router;

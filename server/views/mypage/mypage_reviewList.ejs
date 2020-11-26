@@ -128,6 +128,20 @@
             outline: none;
             background: #ffe492;
         }
+        .star_space {
+            display: inline-block;
+            width: 111px;
+            height: 20px;
+            background: url('../images/star_empty.png') no-repeat;
+            background-size: 111px 20px;
+        }
+
+        .star_space div {
+            height: 100%;
+            color: transparent;
+            background: url('../images/star_full.png') no-repeat;
+            background-size: 111px 20px;
+        }
         
     </style>
 
@@ -192,24 +206,38 @@
             <div class="mypage_content" style="flex-basis:1304px; height: auto;">
                 <h1 style="margin: 20px;">작성 리뷰 목록</h1>
 
-                <div class="painting_order_product">
-                        
-                    <div id="info" style="flex-basis: 500px; display: flex; flex-direction: column; margin: auto 10px auto 0px">
-                        <span>상품명:BLOOM*IZ I*WAS 판</span>
-                        <span>작성일자:2020-11-20</span>
-                        <span>별점: 101점</span>
-                        <span>리뷰내용: 너무좋아요 </span>
+                <% for(var i=0; i<myReviewList.length; i++){%>
+                    <div class="painting_order_product">
+                    
+                        <div id="info" style="flex-basis: 500px; display: flex; flex-direction: column; margin: auto 10px auto 0px">
+                            <span>상품명: <%= myReviewList[i].product_name%></span>
+                            <span>작성일자: <%= myReviewList[i].pro_review_date%></span>
+                            <span>별점 
+                                <div class="star_space">
+                                    <div id="score<%= i%>" style="width: 100%;"></div>
+                                </div>
+                                <script>
+                                    var score = document.getElementById('score<%= i%>');
+                                    score.style.width = '<%= myReviewList[i].pro_score*20%>%'
+                                </script>
+                            </span>
+                            <span>리뷰내용: <%= myReviewList[i].pro_review_content%></span>
+                        </div>
+                        <div style="flex-basis: 220px; margin:auto;" >
+                            <img src="../images/slide_images/귀멸의 칼날1.jpg" alt="" width="200" height="200">
+                        </div>
+                        <div style="flex-basis: 250px; display: flex; flex-direction: column; margin: auto;">
+                            <a href=""><button class="painting_order_btn" >수정</button></a>
+                            <form action="/mypage/deleteReview/<%= myReviewList[i].review_num%>" method="post">
+                                <button type="submit" class="painting_order_btn" >삭제</button>
+                            </form>
+                            
+                        </div>
                     </div>
-                    <div style="flex-basis: 220px; margin:auto;" >
-                        <img src="../images/slide_images/귀멸의 칼날1.jpg" alt="" width="200" height="200">
-                    </div>
-                    <div style="flex-basis: 250px; display: flex; flex-direction: column; margin: auto;">
-                        <a href=""><button class="painting_order_btn" >수정</button></a>
-                        <a href=""><button class="painting_order_btn" >삭제</button></a>
-                    </div>
-                </div>
+                <%}%>
+                
 
-                <a href=""><button id="adr_add_btn">리뷰작성</button></a>
+                <a href="/mypage/addReview"><button id="adr_add_btn">리뷰작성</button></a>
 
                 
 

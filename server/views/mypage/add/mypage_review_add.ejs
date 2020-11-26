@@ -10,6 +10,8 @@
     <link rel='stylesheet' href='/stylesheets/navstyle.css' />
     <link rel="stylesheet" href="/stylesheets/mypage/mypage_subnav.css">
 
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
     <style>
         .mypage_body {
             width: 1500px;
@@ -66,8 +68,10 @@
         }
 
         .mypage_content {
-            margin: 20px;
+            width: 1304px;
+            margin: 0 auto;
         }
+
 
         .painting_order_content {
             margin: 50px;
@@ -80,57 +84,92 @@
         }
 
         .painting_order_product {
-            margin-top: 20px;
-            width: 1022px;
+            margin-bottom: 20px;
+            width: 610px;
             padding: 30px;
-            height: 200px;
+            height: auto;
             border: 1px solid rgb(216, 216, 216);
             border-radius: 25px;
             box-shadow: 2.5px 2.5px 0.2em rgb(216, 216, 216);
             display: flex;
+            flex-direction: column;
         }
 
-        .painting_order_product #img {
-            margin: 20px;
-            width: 150px;
-            height: 150px;
-            border: 1px solid black;
+        #adr_add_body {
+            margin: 0 auto;
+            width: 610px;
         }
 
-        .painting_order_product #info span {
-            margin-bottom: 10px;
-        }
-
-        .painting_order_btn {
-            border: 1px solid rgb(216, 216, 216);
-            background: none;
-            width: 200px;
-            height: 50px;
+        .adr_input {
             margin-bottom: 30px;
         }
 
-        .painting_order_btn:active {
-            border: 0;
-            background: rgb(255, 251, 0);
-            width: 200px;
-            height: 50px;
-            margin-bottom: 30px;
+        .adr_input input {
+            width: 500px;
+            height: 30px;
+            font-size: 15px;
+            border: none;
+            border-bottom: solid 1px #ffC000;
         }
 
-        .painting_order_btn:focus {
+        .adr_input input:focus {
             outline: none;
-            border: 0;
-            background: #ffe492;
-            width: 200px;
+        }
+
+        .adr_input input:focus::placeholder {
+            color: transparent;
+        }
+
+        #find_adr_btn {
+            width: 100px;
+            color: white;
+            font-weight: 800;
+            background-color: #ffC000;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #add_adr_btn {
+            width: 670px;
+            border: none;
+            color: white;
+            font-weight: 800;
+            font-size: large;
+            border-radius: 5px;
+            background-color: #ffC000;
             height: 50px;
-            margin-bottom: 30px;
+        }
+
+        .warning_msg {
+            display: none;
+            font-size: 15px;
+            color: red;
+        }
+
+        #select_order_method{
+            text-align: center;
+            margin: 15px;
+            display: flex;
+            flex-direction: row;
+        }
+        #select_order_method #custom_make {
+            flex-basis: 270px;
+            margin-right: 40px;
+            padding-bottom: 5px;
+            border-bottom: 3px solid #ffc000;
+        }
+
+        #select_order_method #painting_make {
+            flex-basis: 270px;
+            padding-bottom: 5px;
+            border-bottom: none;
         }
     </style>
 
 </head>
 
 <body>
-    <%- include("../head/nav",{name:name}) %>
+    <%- include("../../head/nav",{name:name}) %>
 
     <div class="mypage_body">
         <div id="title">
@@ -156,8 +195,7 @@
                 <div class="meue_list">나의 주문
                     <div>
                         <ul>
-                            <li style="font-weight: bold;"><a href="/mypage" id="painting" style=" color: #c99700; ">페인팅
-                                    주문 목록</a></li>
+                            <li><a href="/mypage" id="painting">페인팅 주문 목록</a></li>
                             <li><a href="/mypage/custom_order" id="custom">커스텀 주문 목록</a></li>
                         </ul>
                     </div>
@@ -175,61 +213,92 @@
                 </div>
 
                 <div class="meue_list">
-                    <a href="/mypage/reviewList" id="review">내가 작성한 리뷰</a>
+                    <a href="/mypage/reviewList" id="review" style="font-weight: bold; color: #c99700;">내가 작성한 리뷰</a>
                 </div>
 
                 <% if(company){%>
-                <div class="meue_list">
-                    <a href="/company">업체메뉴</a>
-                </div>
+                    <div class="meue_list">
+                        <a href="">업체메뉴</a>
+                    </div>
                 <%}%>
+
             </div>
 
             <div class="mypage_content" style="flex-basis:1304px; height: auto;">
-                <h1 style="margin: 20px;">페인팅 주문 목록</h1>
 
-                <% if(orderList.length <= 0) {%>
-                <h2 style="margin: 20px;">주문내역이 없습니다..</h2>
-                <%}%>
-                <% for(var data of orderList){ %>
-                <div class="painting_order_content">
-                    <span style="margin-right: 30px; font-weight: bold;"> <%= data.order_date%> </span><span
-                        style="font-weight: bold;"> <%= data.order_state%> </span>
+
+                <div id="adr_add_body">
+                    <h1 style="margin: 20px;">리뷰 추가</h1>
+                    
 
                     <div class="painting_order_product">
-                        <div id="img" style="flex-basis: 250px;">
-                            페인팅 이미지
-                        </div>
-                        <div id="info"
-                            style="flex-basis: 500px; display: flex; flex-direction: column; margin: auto 10px auto 0px">
-                            <span>상품이름: <%= data.order_product_name%> </span>
-                            <span>주문수량: <%= data.order_product_count%> </span>
-                            <span>총 주문 가격: <%= data.order_money%> </span>
-                        </div>
-                        <div style="flex-basis: 120px; display: flex; flex-direction: column; margin: auto;">
-                            <% if( data.order_state == '주문완료'){ %>
-                                    <a href=""><button class="painting_order_btn" >상세정보</button></a>
-                                    <a href=""><button class="painting_order_btn" >주문취소</button></a>
-                            <%} else if(data.order_state == '배송중'){%>
-                                    <a href=""><button class="painting_order_btn" >배송조회</button></a>
-                                    <a href=""><button class="painting_order_btn" >상세정보</button></a>
-                            <%} else{%>
-                                    <a href=""><button class="painting_order_btn" >상세정보</button></a>
-                            <%}%>
 
-
+                        <div id="select_order_method">
+                            <div id="custom_make">커스텀 제작</div>
+                            <div id="painting_make">페인팅 제작</div>
                         </div>
+
+                        <div>
+                            <select name="" id="">
+                                <option value="">aaaa</option>
+                                <option value="">aaaa</option>
+                                <option value="">aaaa</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <select name="" id="">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+
+                        <div class="adr_input">
+                            <input type="text" id="card_name" name="card_name" placeholder="리뷰내용">
+                            <br>
+                            <span class="warning_msg" id="warning_card_name">카드이름를 입력하세요</span>
+                        </div>
+                       
+
                     </div>
-
+                    <input type="submit" id="add_adr_btn" value="리뷰 작성 완료" >
                 </div>
-                
-                <%}%>
-
 
 
             </div>
+
+
+
+
+
+
         </div>
     </div>
+
+    <script>
+       $('#custom_make').click((e)=>{
+        $('#custom_make').css({
+            "border-bottom":"3px solid #ffc000"
+        })
+        $('#painting_make').css({
+            "border-bottom":"none"
+        })
+       })
+
+       $('#painting_make').click((e)=>{
+        $('#custom_make').css({
+            "border-bottom":"none"
+        })
+        $('#painting_make').css({
+            "border-bottom":"3px solid #ffc000"
+        })
+       })
+    </script>
+
+
 
 </body>
 

@@ -145,14 +145,49 @@ class MypageController {
         pool.getConnection((err, conn)=>{
             if(err) throw err;
 
-            conn.query('select * order where order_user_id = ?',[
+            conn.query('select * from product_order where order_user_id = ?',[
                 req.session.user.id
             ], (err, order_list)=>{
-                
+                if(err) throw err;
+
                 req.orderList = order_list;
                 conn.release();
                 next();
 
+            })
+        })
+    }
+
+    // 마이페이지 자신이 적은 리뷰 가져오기
+    async getMyReviewList(req, res, next){
+        pool.getConnection((err, conn)=>{
+            if(err) throw err;
+
+            conn.query('SELECT * FROM product_review, product where product_review.review_user_id = ? and review_product_num = product.product_num',[
+                req.session.user.id
+            ], (err, review_list)=>{
+                if(err) throw err;
+
+                req.myReviewList = review_list;
+                conn.release();
+                next();
+
+            })
+        })
+    }
+
+    // 선택한 리뷰 삭제
+    async deleteMyReview(req, res, next){
+        pool.getConnection((err, conn)=>{
+            if(err) throw err;
+
+            conn.query('delete from product_review where review_num = ?',[
+                req.params.review_num
+            ], (err)=>{
+                if(err) throw err;
+
+                conn.release();
+                next();
             })
         })
     }
