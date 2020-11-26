@@ -56,9 +56,9 @@ router.get('/addCard', function(req, res, next){
 })
 
 // 마이페이지 리뷰 추가 페이지 렌더링
-router.get('/addReview', function(req, res, next){
+router.get('/addReview', Mypage.getProductList,function(req, res, next){
     res.render('mypage/add/mypage_review_add', {
-        name: req.session.user.name, company:req.session.user.company_num
+        name: req.session.user.name, company:req.session.user.company_num, custom_list: req.custom_product_list, product_list: req.product_list
     })
 })
 

@@ -176,6 +176,26 @@ class MypageController {
         })
     }
 
+    async getProductList(req, res, next){
+        pool.getConnection((err, conn)=>{
+            if(err) throw err;
+
+            conn.query('select * from product',(err, product_list)=>{
+                if(err) throw err;
+
+                conn.query('select * from custom_product',(err, custom_product_list)=>{
+                    if(err) throw err;
+
+                    req.custom_product_list = custom_product_list;
+                    req.product_list = product_list;
+                    conn.release();
+                    next();
+
+                })
+            })
+        })
+    }
+
     // 선택한 리뷰 삭제
     async deleteMyReview(req, res, next){
         pool.getConnection((err, conn)=>{

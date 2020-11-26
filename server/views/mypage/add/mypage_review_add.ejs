@@ -101,7 +101,7 @@
         }
 
         .adr_input {
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         .adr_input input {
@@ -163,6 +163,16 @@
             flex-basis: 270px;
             padding-bottom: 5px;
             border-bottom: none;
+        }
+        .reivew_row{
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        #custom_select{
+            display: inline;
+        }
+        #painting_select{
+            display: none;
         }
     </style>
 
@@ -238,15 +248,22 @@
                             <div id="painting_make">페인팅 제작</div>
                         </div>
 
-                        <div>
-                            <select name="" id="">
-                                <option value="">aaaa</option>
-                                <option value="">aaaa</option>
-                                <option value="">aaaa</option>
+                        <div class="reivew_row">
+                            <select name="" id="custom_select">
+                                <% for(var i =0; i<custom_list.length; i++){%>
+                                    <option value="<%= custom_list[i].c_product_num%>"><%= custom_list[i].c_product_name%></option>
+                                <%}%>
+                                
+                            </select>
+                            <select name="" id="painting_select">
+                                <% for(var i =0; i<product_list.length; i++){%>
+                                    <option value="<%= product_list[i].product_num%>"><%= product_list[i].product_name%></option>
+                                <%}%>
+                                
                             </select>
                         </div>
 
-                        <div>
+                        <div class="reivew_row">
                             <select name="" id="">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -257,11 +274,15 @@
                         </div>
 
                         <div class="adr_input">
-                            <input type="text" id="card_name" name="card_name" placeholder="리뷰내용">
+                            <input type="text" id="review_text" name="card_name" placeholder="리뷰내용">
                             <br>
-                            <span class="warning_msg" id="warning_card_name">카드이름를 입력하세요</span>
+                            <span class="warning_msg" id="warning_card_name">리뷰를 입력하세요</span>
                         </div>
-                       
+
+                       <div class="reivew_row">
+                            <input type="file" id="card_name" name="file">
+                            <br>
+                        </div>
 
                     </div>
                     <input type="submit" id="add_adr_btn" value="리뷰 작성 완료" >
@@ -283,17 +304,36 @@
         $('#custom_make').css({
             "border-bottom":"3px solid #ffc000"
         })
+
         $('#painting_make').css({
             "border-bottom":"none"
         })
+
+        $('#custom_select').css({
+            "display":"inline"
+        })
+
+        $('#painting_select').css({
+            "display":"none"
+        })
+
        })
 
        $('#painting_make').click((e)=>{
         $('#custom_make').css({
             "border-bottom":"none"
         })
+
         $('#painting_make').css({
             "border-bottom":"3px solid #ffc000"
+        })
+
+        $('#custom_select').css({
+            "display":"none"
+        })
+
+        $('#painting_select').css({
+            "display":"inline"
         })
        })
     </script>
