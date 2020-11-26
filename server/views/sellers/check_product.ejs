@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/sidenav.css' />
+    <title>Document</title>
+    <style>
+        .product_con{
+            width: 1500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .product_contents {
+            margin-top: 100px;
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+            width: 1164px;
+        }
+
+        .product_contents .product_nav {
+            float: left;
+            width: 200px;
+        }
+
+        .product_contents .product_main {
+            float: right;
+            /* border: 1px solid black; */
+            width: 934px;
+            height: 1250px;
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+        .check_new_order{
+            position: relative;
+            width: 100%;
+            height: 1200px;
+            box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.5);
+        }
+         
+        .check_area{
+            position: absolute;
+            width: 98%;
+            height: 98%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .content_area{
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .check__delivery{
+            width: 100%;
+            height: 600px;
+            box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        a{color:#000;text-decoration: none;}
+        a:link, a:hover, a:active{text-decoration: none;}
+
+
+        .seller_title{
+            width: 1500px;
+            margin: 0 auto;
+            height: 60px;
+            position: relative;
+        }
+
+        .seller_title a{
+            display: block; width: 40px; height: 48px; color: transparent; background: url('../images/logo.png') no-repeat;
+            background-size: 40px 48px; margin: 0 auto;
+        }
+
+        .bottom_line{
+            position:absolute;
+            width: 1400px;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 2px;
+            background: #CCC;
+            bottom: 0;
+        }
+
+        .content_title{
+            font-size: 20px;
+            height: 40px;
+            position: relative;
+        }
+
+
+        .fixed_headers {
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+        th, td {
+            padding: 5px;
+            text-align: left;
+            
+        }
+
+        td{
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        .fixed_headers thead{
+            border: 3px solid #ffc000;
+        }
+        
+        tbody tr:nth-child(even)  { background-color: rgb(236, 236, 236); }
+        .fixed_headers tbody tr{
+            cursor: pointer;
+        }
+        .fixed_headers tbody tr:hover {
+            background: #ddd;
+        
+        }
+    </style>
+</head>
+<body>
+    <div class="seller_title">
+        <a href="/seller">업체 페이지</a>
+        <div class="bottom_line"></div>
+    </div>
+    <div class="product_con">
+        <div class="product_contents">
+            <div class="product_nav">
+                <div class="menu">
+                    <div style="font-size: 25px; font-weight: bold;">관리하기</div>
+                    <li class="menu-item">
+                        <div class="btn select">
+                            상품관리
+                            <button id="dropdown_btn" onclick="slidedown()"><img src="/images/font/down.png"/></button>
+                        </div>
+                        <div class="menu-item__sub " id="sub_drop">
+                            <a  href="/seller/upProduct">상품 등록</a>
+                            <a class="thisPage" href="checkProduct">상품 확인</a>
+                        </div>
+                    </li>
+                    <li class="menu-item">
+                        <div class="btn">
+                            주문관리
+                            <button id="dropdown_btn2" onclick="slidedown2()"><img src="/images/font/down.png"/></button>
+                        </div>
+                        <div class="menu-item__sub" id="sub_drop2">
+                            <a href="/seller/order_check_product">주문 확인</a>
+                            <a href="/seller/order_product">주문 상태</a>
+                        </div>
+                    </li>
+                    <li class="menu-item">
+                        <div class="btn">
+                            <a href="/users/sign_out">로그아웃</a>
+                        </div>
+                    </li>
+
+                </div>
+                
+                
+                <script type="text/javascript">
+                    var dropdown =  document.getElementById("dropdown_btn");
+                    var dropdown2 = document.getElementById("dropdown_btn2");
+                    var drop = document.getElementById('sub_drop');
+                    var drop2 = document.getElementById('sub_drop2');
+                    function slidedown(){
+                        if(drop.classList[1]=='sub_drop'){
+                            drop.classList.remove('sub_drop');
+                            dropdown.classList.remove('rotate');
+                        }else{
+                            drop.classList.add('sub_drop');
+                            dropdown.classList.add('rotate');
+                        }
+                    }
+                    function slidedown2(){
+                        if(drop2.classList[1]=='sub_drop2'){
+                            drop2.classList.remove('sub_drop2');
+                            dropdown2.classList.remove('rotate2');
+                        }else{
+                            drop2.classList.add('sub_drop2');
+                            dropdown2.classList.add('rotate2');
+                        }
+                    }
+                
+                </script>
+            </div>
+            <div class="product_main">
+                <div class="content_title">내 상품 확인<div></div></div>
+                <div class="check_new_order">
+                    <div class="check_area">
+                        <div class="content_area">
+                            <table class="fixed_headers">
+                                <thead>
+                                    
+                                    <tr>
+                                        <th>제품번호</th>
+                                        <th>제품이름</th>
+                                        <th>제품가격</th>
+                                        <th>재고량</th>
+                                        <th>제품상세</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for(var j of p_list){%>
+                                    <tr onclick="location.href='/seller/detail/<%= j.product_num %>'">
+                                        <td><%= j.product_num %></td>
+                                        <td><%= j.product_name %></td>
+                                        <td><%= j.product_price %></td>
+                                        <td><%= j.product_stock %></td>
+                                        <td><%= j.product_detail %></td>
+                                    </tr>
+                                    <% }%>
+
+                                </tbody>
+                            </table>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

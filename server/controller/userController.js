@@ -101,7 +101,7 @@ class UserController {
     async signIn(req, res, next) {
         pool.getConnection((err, conn) => {
             if (err) throw err;
-
+            req.company_check = false;
             // 입력한 정보 맞는지 확인
             if (req.body.user_id && req.body.user_pw) {
                 let input_id = req.body.user_id;
@@ -144,6 +144,7 @@ class UserController {
                                         company_num: row[0].company_num
                                     }
                                     req.check = true;
+                                    req.company_check = true;
                                     conn.release();
                                     next();
                                 }
