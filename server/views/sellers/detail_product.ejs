@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/sidenav.css' />
+    <title>Document</title>
+    <style>
+        .product_con{
+            width: 1500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .product_contents {
+            margin-top: 100px;
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+            width: 1164px;
+        }
+
+        .product_contents .product_nav {
+            float: left;
+            width: 200px;
+        }
+
+        .product_contents .product_main {
+            float: right;
+            /* border: 1px solid black; */
+            width: 934px;
+
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+        .check_new_order{
+            position: relative;
+            width: 100%;
+            box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .check_area{
+            position: absolute;
+            width: 98%;
+            height: 98%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .content_area{
+            position: relative;
+            width: 100%;
+            height: 100%;
+
+        }
+
+        .check__delivery{
+            width: 100%;
+            height: 600px;
+            padding: 10px;
+        }
+
+        a{color:#000;text-decoration: none;}
+        a:link, a:hover, a:active{text-decoration: none;}
+
+
+        .seller_title{
+            width: 1500px;
+            margin: 0 auto;
+            height: 60px;
+            position: relative;
+        }
+
+        .seller_title a{
+            display: block; width: 40px; height: 48px; color: transparent; background: url('../../images/logo.png') no-repeat;
+            background-size: 40px 48px; margin: 0 auto;
+        }
+
+        .bottom_line{
+            position:absolute;
+            width: 1400px;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 2px;
+            background: #CCC;
+            bottom: 0;
+        }
+
+        .content_title{
+            font-size: 20px;
+            height: 40px;
+            position: relative;
+        }
+
+        .detail_img_con{
+            width: 100%;
+            height: 400px;
+            position: relative;
+        }
+
+        .detail_img{
+            width: 350px;
+            height: 100%;
+            position: absolute;
+            
+        }
+
+        .detail_con{
+            position: absolute;
+            width: 530px;
+            height: 100%;
+            border: 3px solid #ffc000;
+            right: 0;
+            padding-left: 10px;
+        }
+
+        .d_img{
+            width: 95%;
+            height: 95%;
+            object-fit: cover;
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+        }
+
+        .block1{
+            position: relative;
+            width: 100%;
+            height: 100px;
+            line-height: 30px;
+        }
+
+        .block2{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .detail_content_of_product{
+            width: 100%;
+            border: 3px solid #ddd;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="seller_title">
+        <a href="/seller">업체 페이지</a>
+        <div class="bottom_line"></div>
+    </div>
+    <div class="product_con">
+        <div class="product_contents">
+            <div class="product_nav">
+                <div class="menu">
+                    <div style="font-size: 25px; font-weight: bold;">관리하기</div>
+                    <li class="menu-item">
+                        <div class="btn select">
+                            상품관리
+                            <button id="dropdown_btn" onclick="slidedown()"><img src="/images/font/down.png"/></button>
+                        </div>
+                        <div class="menu-item__sub " id="sub_drop">
+                            <a href="/seller/upProduct">상품 등록</a>
+                            <a href="/seller/checkProduct">상품 확인</a>
+                        </div>
+                    </li>
+                    <li class="menu-item">
+                        <div class="btn">
+                            주문관리
+                            <button id="dropdown_btn2" onclick="slidedown2()"><img src="/images/font/down.png"/></button>
+                        </div>
+                        <div class="menu-item__sub" id="sub_drop2">
+                            <a href="/seller/order_check_product">주문 확인</a>
+                            <a href="/seller/order_product">주문 상태</a>
+                        </div>
+                    </li>
+                    <li class="menu-item">
+                        <div class="btn">
+                            <a href="/users/sign_out">로그아웃</a>
+                        </div>
+                    </li>
+
+                </div>
+                
+                
+                <script type="text/javascript">
+                    var dropdown =  document.getElementById("dropdown_btn");
+                    var dropdown2 = document.getElementById("dropdown_btn2");
+                    var drop = document.getElementById('sub_drop');
+                    var drop2 = document.getElementById('sub_drop2');
+                    function slidedown(){
+                        if(drop.classList[1]=='sub_drop'){
+                            drop.classList.remove('sub_drop');
+                            dropdown.classList.remove('rotate');
+                        }else{
+                            drop.classList.add('sub_drop');
+                            dropdown.classList.add('rotate');
+                        }
+                    }
+                    function slidedown2(){
+                        if(drop2.classList[1]=='sub_drop2'){
+                            drop2.classList.remove('sub_drop2');
+                            dropdown2.classList.remove('rotate2');
+                        }else{
+                            drop2.classList.add('sub_drop2');
+                            dropdown2.classList.add('rotate2');
+                        }
+                    }
+                
+                </script>
+            </div>
+            <div class="product_main">
+                <div class="content_title"><%= pd[0].product_name %><div></div></div>
+                <div class="check_new_order">
+                    <div class="check_area">
+                        <div class="content_area">
+                            <div class="detail_img_con">
+                                <div class="detail_img">
+                                    <img class="d_img" src="../../../images/products/<%= pd[0].product_img_path %>"/>
+                                </div>
+                                <div class="detail_con">
+                                    <div style="width: 100%; height: 100%; position: relative;">
+                                        <div class="block1">
+                                            <div class="block2">
+                                                <h3 style="float:left; margin-right: 10px">상품 번호</h3>
+                                                <p style="float: left;"><%= pd[0].product_num %></p>
+                                            </div>
+                                        </div>
+                                        <div class="block1">
+                                            <div class="block2">
+                                                <h3 style="float:left; margin-right: 10px">상품 이름</h3>
+                                                <p style="float: left;"><%= pd[0].product_name %></p>
+                                            </div>
+                                        </div>
+                                        <div class="block1">
+                                            <div class="block2">
+                                                <h3 style="float:left; margin-right: 10px">상품 가격</h3>
+                                                <p style="float: left;"><%= pd[0].product_price %></p>
+                                            </div>
+                                        </div>
+                                        <div class="block1">
+                                            <div class="block2">
+                                                <h3 style="float:left; margin-right: 10px">재고량</h3>
+                                                <p style="float: left;"><%= pd[0].product_stock %></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="margin-top: 20px; font-weight: bolder;">상세 내용</div>
+                            <div class="detail_content_of_product">
+                                <%= pd[0].product_detail %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

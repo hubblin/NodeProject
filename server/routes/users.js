@@ -53,10 +53,17 @@ router.get('/sign_in', function (req, res, next) {
 // 로그인 
 router.post('/sign_in', User.signIn, function (req, res, next) {
   if (req.check) {
-    res.send(`<script type="text/javascript">
-            alert("로그인 성공"); 
-              location.href='/';
-        </script>`)
+    if(req.company_check){
+      res.send(`<script type="text/javascript">
+              alert("로그인 성공"); 
+                location.href='/seller';
+          </script>`)
+    }else{
+      res.send(`<script type="text/javascript">
+              alert("로그인 성공"); 
+                location.href='/';
+          </script>`)
+    }
   }
   else {
     res.send(`<script type="text/javascript">
