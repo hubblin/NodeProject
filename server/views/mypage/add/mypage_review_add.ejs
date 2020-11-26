@@ -236,6 +236,7 @@
 
             <div class="mypage_content" style="flex-basis:1304px; height: auto;">
 
+                <form action="/mypage/addReview" method="post" enctype="multipart/form-data">
 
                 <div id="adr_add_body">
                     <h1 style="margin: 20px;">리뷰 추가</h1>
@@ -248,14 +249,16 @@
                             <div id="painting_make">페인팅 제작</div>
                         </div>
 
-                        <div class="reivew_row">
-                            <select name="" id="custom_select">
+                        <div class="reivew_row">상품
+                            <select name="custom" id="custom_select">
+                                <option value="0" selected>선택안함</option>
                                 <% for(var i =0; i<custom_list.length; i++){%>
                                     <option value="<%= custom_list[i].c_product_num%>"><%= custom_list[i].c_product_name%></option>
                                 <%}%>
                                 
                             </select>
-                            <select name="" id="painting_select">
+                            <select name="painting" id="painting_select">
+                                <option value="0" selected>선택안함</option>
                                 <% for(var i =0; i<product_list.length; i++){%>
                                     <option value="<%= product_list[i].product_num%>"><%= product_list[i].product_name%></option>
                                 <%}%>
@@ -263,8 +266,8 @@
                             </select>
                         </div>
 
-                        <div class="reivew_row">
-                            <select name="" id="">
+                        <div class="reivew_row">점수
+                            <select name="give_score" id="">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -274,20 +277,21 @@
                         </div>
 
                         <div class="adr_input">
-                            <input type="text" id="review_text" name="card_name" placeholder="리뷰내용">
+                            <input type="text" id="review_text" name="review_text" placeholder="리뷰내용">
                             <br>
                             <span class="warning_msg" id="warning_card_name">리뷰를 입력하세요</span>
                         </div>
 
                        <div class="reivew_row">
-                            <input type="file" id="card_name" name="file">
+                            <input type="file" id="card_name" name="review_img">
                             <br>
                         </div>
 
                     </div>
                     <input type="submit" id="add_adr_btn" value="리뷰 작성 완료" >
                 </div>
-
+                
+            </form>
 
             </div>
 

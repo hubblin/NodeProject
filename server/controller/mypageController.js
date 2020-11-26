@@ -1,6 +1,11 @@
 const pool = require('../dbconfig/dbconfig');
+let moment = require('moment');
+require('moment-timezone');
+moment.tz.setDefault("Asia/Seoul");
 
 class MypageController {
+
+    
 
     //  배송지 추가 
     async addAddress(req, res, next) {
@@ -145,7 +150,7 @@ class MypageController {
         pool.getConnection((err, conn)=>{
             if(err) throw err;
 
-            conn.query('select * from product_order where order_user_id = ?',[
+            conn.query('select * from product_order, product where order_user_id = ? and product_order.order_product_num = product.product_num',[
                 req.session.user.id
             ], (err, order_list)=>{
                 if(err) throw err;
@@ -176,11 +181,14 @@ class MypageController {
         })
     }
 
+    // 리뷰적을때 자신이 주문한 상품에 리뷰를 적지 않은 것 가져오기
     async getProductList(req, res, next){
         pool.getConnection((err, conn)=>{
             if(err) throw err;
 
-            conn.query('select * from product',(err, product_list)=>{
+            conn.query('select * from product where product_num in (select order_product_num from product_order where not order_product_num in (select review_product_num from product_review where review_user_id = ?))',[
+                req.session.user.id
+            ],(err, product_list)=>{
                 if(err) throw err;
 
                 conn.query('select * from custom_product',(err, custom_product_list)=>{

@@ -4,6 +4,8 @@ var router = express.Router();
 const mypageController = require('../controller/mypageController');
 const Mypage = new mypageController();
 
+const multerController = require('../controller/multerController');
+
 // 마이페이지 메인화면 렌더링(페인팅 오더 목록)
 router.get('/', Mypage.getOrderList,function (req, res, next) {
     res.render('mypage/mypage_main', {
@@ -88,6 +90,15 @@ router.post('/addCard',Mypage.addCard,function(req,res,next){
             location.href='/mypage/myCard';
             </script>`)
 })
+
+// 리뷰 추가 post
+router.post('/addReview', multerController.send,function(req, res, next){
+    res.send(`<script type="text/javascript">
+            alert("리뷰 추가 성공"); 
+            location.href='/mypage/reviewList';
+            </script>`)
+})
+
 
 // 카드 업데이트 post
 router.post('/updateCard/:card_num', function(req, res, next){
