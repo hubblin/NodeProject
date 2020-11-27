@@ -33,7 +33,6 @@ module.exports.send = (req, res, next) =>{
     
             var nowTime = moment().format('YYYY-MM-DD');
     
-            next();
     
             if(req.file){
                 if(req.body.custom == 0){
