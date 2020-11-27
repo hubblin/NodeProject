@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='/stylesheets/sidenav.css' />
+    <script src="/javascripts/ckeditor.js"></script>
     <title>Document</title>
     <style>
-        .product_con{
+        .product_con {
             width: 1500px;
             margin-left: auto;
             margin-right: auto;
@@ -29,18 +31,19 @@
             float: right;
             /* border: 1px solid black; */
             width: 934px;
-            height: 2200px;
+            height: 1250px;
             margin-left: 30px;
             margin-bottom: 20px;
         }
-        .check_new_order{
+
+        .check_new_order {
             position: relative;
             width: 100%;
             height: 1200px;
             box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.5);
         }
 
-        .check_area{
+        .check_area {
             position: absolute;
             width: 98%;
             height: 98%;
@@ -49,38 +52,50 @@
             transform: translate(-50%, -50%);
         }
 
-        .content_area{
+        .content_area {
             position: relative;
             width: 100%;
             height: 100%;
-            border: 1px solid black;
         }
 
-        .check__delivery{
+        .check__delivery {
             width: 100%;
             height: 600px;
             box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.5);
             padding: 10px;
         }
 
-        a{color:#000;text-decoration: none;}
-        a:link, a:hover, a:active{text-decoration: none;}
+        a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        a:link,
+        a:hover,
+        a:active {
+            text-decoration: none;
+        }
 
 
-        .seller_title{
+        .seller_title {
             width: 1500px;
             margin: 0 auto;
             height: 60px;
             position: relative;
         }
 
-        .seller_title a{
-            display: block; width: 40px; height: 48px; color: transparent; background: url('../images/logo.png') no-repeat;
-            background-size: 40px 48px; margin: 0 auto;
+        .seller_title a {
+            display: block;
+            width: 40px;
+            height: 48px;
+            color: transparent;
+            background: url('../images/logo.png') no-repeat;
+            background-size: 40px 48px;
+            margin: 0 auto;
         }
 
-        .bottom_line{
-            position:absolute;
+        .bottom_line {
+            position: absolute;
             width: 1400px;
             left: 50%;
             transform: translateX(-50%);
@@ -89,13 +104,154 @@
             bottom: 0;
         }
 
-        .content_title{
+        .content_title {
             font-size: 20px;
             height: 40px;
             position: relative;
         }
+
+        .group {
+            position: relative;
+            margin-bottom: 45px;
+        }
+
+        label {
+            color: #999;
+            font-size: 18px;
+            font-weight: normal;
+            position: absolute;
+            pointer-events: none;
+            left: 5px;
+            top: 10px;
+            transition: 0.2s ease all;
+            -moz-transition: 0.2s ease all;
+            -webkit-transition: 0.2s ease all;
+        }
+
+        input {
+            font-size: 18px;
+            padding: 10px 10px 10px 5px;
+            display: block;
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #757575;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        /* active state */
+        input:focus~label,
+        input:valid~label {
+            top: -20px;
+            font-size: 14px;
+            color: #5264AE;
+        }
+
+        /* BOTTOM BARS ================================= */
+        .bar {
+            position: relative;
+            display: block;
+            width: 100%;
+        }
+
+        .bar:before,
+        .bar:after {
+            content: '';
+            height: 2px;
+            width: 0;
+            bottom: 1px;
+            position: absolute;
+            background: #5264AE;
+            transition: 0.2s ease all;
+            -moz-transition: 0.2s ease all;
+            -webkit-transition: 0.2s ease all;
+        }
+
+        .bar:before {
+            left: 50%;
+        }
+
+        .bar:after {
+            right: 50%;
+        }
+
+        /* active state */
+        input:focus~.bar:before,
+        input:focus~.bar:after {
+            width: 50%;
+        }
+
+        /* HIGHLIGHTER ================================== */
+        .highlight {
+            position: absolute;
+            height: 60%;
+            width: 100px;
+            top: 25%;
+            left: 0;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        /* active state */
+        input:focus~.highlight {
+            -webkit-animation: inputHighlighter 0.3s ease;
+            -moz-animation: inputHighlighter 0.3s ease;
+            animation: inputHighlighter 0.3s ease;
+        }
+
+        /* ANIMATIONS ================ */
+        @-webkit-keyframes inputHighlighter {
+            from {
+                background: #5264AE;
+            }
+
+            to {
+                width: 0;
+                background: transparent;
+            }
+        }
+
+        @-moz-keyframes inputHighlighter {
+            from {
+                background: #5264AE;
+            }
+
+            to {
+                width: 0;
+                background: transparent;
+            }
+        }
+
+        @keyframes inputHighlighter {
+            from {
+                background: #5264AE;
+            }
+
+            to {
+                width: 0;
+                background: transparent;
+            }
+        }
+
+        .container {
+            font-family: 'Roboto';
+            width: 100%;
+            margin: 30px auto 0;
+            display: block;
+            background: #FFF;
+            padding: 10px 50px 50px;
+        }
+
+
+        .ck-editor__editable {
+            min-height: 550px;
+            max-height: 550px;
+        }
     </style>
 </head>
+
 <body>
     <div class="seller_title">
         <a href="/seller">업체 페이지</a>
@@ -109,7 +265,7 @@
                     <li class="menu-item">
                         <div class="btn select">
                             상품관리
-                            <button id="dropdown_btn" onclick="slidedown()"><img src="/images/font/down.png"/></button>
+                            <button id="dropdown_btn" onclick="slidedown()"><img src="/images/font/down.png" /></button>
                         </div>
                         <div class="menu-item__sub " id="sub_drop">
                             <a class="thisPage" href="/seller/upProduct">상품 등록</a>
@@ -119,7 +275,8 @@
                     <li class="menu-item">
                         <div class="btn">
                             주문관리
-                            <button id="dropdown_btn2" onclick="slidedown2()"><img src="/images/font/down.png"/></button>
+                            <button id="dropdown_btn2" onclick="slidedown2()"><img
+                                    src="/images/font/down.png" /></button>
                         </div>
                         <div class="menu-item__sub" id="sub_drop2">
                             <a href="/seller/order_check_product">주문 확인</a>
@@ -133,41 +290,75 @@
                     </li>
 
                 </div>
-                
-                
+
+
                 <script type="text/javascript">
-                    var dropdown =  document.getElementById("dropdown_btn");
+                    var dropdown = document.getElementById("dropdown_btn");
                     var dropdown2 = document.getElementById("dropdown_btn2");
                     var drop = document.getElementById('sub_drop');
                     var drop2 = document.getElementById('sub_drop2');
-                    function slidedown(){
-                        if(drop.classList[1]=='sub_drop'){
+                    function slidedown() {
+                        if (drop.classList[1] == 'sub_drop') {
                             drop.classList.remove('sub_drop');
                             dropdown.classList.remove('rotate');
-                        }else{
+                        } else {
                             drop.classList.add('sub_drop');
                             dropdown.classList.add('rotate');
                         }
                     }
-                    function slidedown2(){
-                        if(drop2.classList[1]=='sub_drop2'){
+                    function slidedown2() {
+                        if (drop2.classList[1] == 'sub_drop2') {
                             drop2.classList.remove('sub_drop2');
                             dropdown2.classList.remove('rotate2');
-                        }else{
+                        } else {
                             drop2.classList.add('sub_drop2');
                             dropdown2.classList.add('rotate2');
                         }
                     }
-                
+
                 </script>
             </div>
             <div class="product_main">
-                <div class="content_title">상품 등록<div></div></div>
+                <div class="content_title">상품 등록<div></div>
+                </div>
                 <div class="check_new_order">
                     <div class="check_area">
                         <div class="content_area">
-                            상품 사진 등록
-                            
+                            <div class="container">
+
+                                <div class="group">
+                                    <input id="name" type="text" required name="product_name">
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>제품명</label>
+                                </div>
+                                <div class="group">
+                                    <input id="price" type="number" required name="product_price">
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>제품가격</label>
+                                </div>
+                                <div class="group">
+                                    <input id="stock" type="number" required name="product_stock">
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>재고량</label>
+                                </div>
+                                <input id="img" type="file" name="file" style="border-bottom: none;" />
+                                <select id="category" name="category"
+                                    style="width: 100%; margin-top: 30px; margin-bottom: 30px; height: 30px; font-size: 18px;">
+                                    <option value="1">파우치</option>
+                                    <option value="2">케이스</option>
+                                    <option value="3">의류</option>
+                                </select>
+                                <textarea id="editor">
+                                    <p>상품에 대한 설명을 적어주세요</p>
+                                </textarea>
+                                <script>
+
+                                </script>
+                                <input type="submit" style="border-bottom: none; margin-top: 30px;" onclick="UP()" />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -175,4 +366,57 @@
         </div>
     </div>
 </body>
+
 </html>
+
+<script>
+    var myEditor;
+
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .then(editor => {
+            myEditor = editor;
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+    function UP() {
+
+        var form = document.createElement('form');
+        form.setAttribute('method', 'post');
+        form.setAttribute('enctype','multipart/form-data');
+        form.setAttribute('action', '/seller/upProduct');
+        document.charset = "utf-8";
+
+        console.log(CKEDITOR.instances.content.getData());
+
+        var hiddennum = document.createElement('input');
+        var hiddenname = document.createElement('input');
+        var hiddenprice = document.createElement('input');
+        var hiddenstock = document.createElement('input');
+        var hiddencategory = document.createElement('input');
+        var hiddendetail = document.createElement('input');
+        hiddennum.setAttribute('type', 'hidden');
+        hiddennum.setAttribute('name', 'product_num');
+        hiddennum.setAttribute('value', document.getElementById('name').value);
+        hiddenname.setAttribute('type', 'hidden');
+        hiddenname.setAttribute('name', 'product_num');
+        hiddenname.setAttribute('value', document.getElementById('price').value);
+        hiddenprice.setAttribute('type', 'hidden');
+        hiddenprice.setAttribute('name', 'product_num');
+        hiddenprice.setAttribute('value', document.getElementById('stock').value);
+        hiddenstock.setAttribute('type', 'hidden');
+        hiddenstock.setAttribute('name', 'product_num');
+        hiddenstock.setAttribute('value', document.getElementById('img').value);
+        hiddencategory.setAttribute('type', 'hidden');
+        hiddencategory.setAttribute('name', 'product_num');
+        hiddencategory.setAttribute('value', document.getElementById('category').value);
+        hiddendetail.setAttribute('type', 'hidden');
+        hiddendetail.setAttribute('name', 'product_num');
+        hiddendetail.setAttribute('value', CKEDITOR.instances.content.getData());
+        form.appendChild(hiddenField);
+        document.body.appendChild(form);
+        form.submit();
+    }
+</script>

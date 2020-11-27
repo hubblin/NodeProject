@@ -4,11 +4,17 @@ var router = express.Router();
 const sellerController = require('../controller/sellerController');
 const Seller = new sellerController();
 
+
 router.get('/', function(req, res, next) {
     res.render('seller');
 });
 
 router.get('/upProduct', function(req,res){
+    res.render('sellers/up_product');
+})
+
+router.post ('/upProduct',function(req,res){
+    console.log(req.body);
     res.render('sellers/up_product');
 })
 
