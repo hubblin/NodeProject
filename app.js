@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session');
 
+
 //라우트 추가되면 여기에 넣기
 var indexRouter = require('./server/routes/index');
 var usersRouter = require('./server/routes/users');
