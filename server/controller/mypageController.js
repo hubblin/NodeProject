@@ -130,8 +130,6 @@ class MypageController {
         pool.getConnection((err, conn) => {
             if (err) throw err;
 
-
-
             conn.query('update address set adr_post_num = ?, adr_main = ?, adr_detail = ?, adr_get_user_name = ?, adr_user_phone = ?, adr_name = ? where adr_uid = ?', [
                 req.body.post_num, req.body.main_adr, req.body.detail_adr, req.body.user_name, req.body.user_phone, req.body.user_phone, req.body.adr_name, req.params.adr_UID
             ], (err) => {
@@ -262,6 +260,68 @@ class MypageController {
                 req.params.review_num
             ], (err) => {
                 if (err) throw err;
+
+                conn.release();
+                next();
+            })
+        })
+    }
+
+    // 커스텀제품 주문정보 가져오기
+    async getCustomOrderList(req, res, next){
+        pool.getConnection((err, conn)=>{
+            if(err) throw err;
+
+            conn.query('select * from custom_order, custom_product where custom_order.user_user_id = ? and custom_order.c_custom_product_num = custom_product.c_product_num',[
+                req.session.user.id
+            ], (err, custom_order_list)=>{
+                if(err) throw err;
+
+                req.customOrderList = custom_order_list
+
+                conn.release();
+                next();
+            })
+        })
+    }
+
+    async getCustomDetail(req, res, next){
+        pool.getConnection((err, conn)=>{
+            if(err) throw err;
+
+            conn.query('select * from custom_order, custom_product where custom_order_num = ?',[
+                req.params.custom_order_num
+            ], (err, custom_info)=>{
+                if(err) throw err;
+
+                conn.query('select * from custom_order_detail where detail_custom_order_num = ?',[
+                    req.params.custom_order_num
+                ], (err, custom_detail_info)=>{
+                    if(err) throw err;
+
+                    req.customInfo = custom_info;
+                    req.customDeatilInfo = custom_detail_info;
+
+                    
+                    conn.release();
+                    next();
+                })
+            })
+        })
+    }
+
+
+    // 상세주문 정보 가져오기
+    async getOrderDetail(req, res, next){
+        pool.getConnection((err, conn)=>{
+            if(err) throw err;
+
+            conn.query('SELECT * FROM product_order, product where product_order.order_num  = ? and product_order.order_product_num = product.product_num',[
+                req.params.order_num
+            ], (err, order_detail_list)=>{
+                if(err) throw err;
+
+                req.orderDetail = order_detail_list;
 
                 conn.release();
                 next();
