@@ -26,87 +26,98 @@
         }
 
         #title div {
-            color:white;
+            color: white;
         }
-        #my_main{
+
+        #my_main {
             text-align: center;
             line-height: 100px;
             font-size: 25px;
             border-right: 1px solid white;
         }
-        #my_order_count{
+
+        #my_order_count {
             border-right: 1px solid white;
         }
-        .count div{
+
+        .count div {
             margin: 10px;
         }
 
-        .count_content{
+        .count_content {
             margin: 0 auto;
         }
-        #tbody{
+
+        #tbody {
             display: flex;
-            
+
         }
-        .meue_list{
+
+        .meue_list {
             margin: 10px;
             margin-bottom: 30px;
             font-size: 18px;
         }
-        .meue_list li{
+
+        .meue_list li {
             margin: 5px;
             margin-top: 20px;
             font-size: 15px;
         }
-        .mypage_content{
-           margin: 20px;
+
+        .mypage_content {
+            margin: 20px;
         }
-        .painting_order_content{
+
+        .painting_order_content {
             margin: 50px;
             padding: 50px;
             height: auto;
             border: 1px solid rgb(216, 216, 216);
             border-radius: 50px;
-            box-shadow: 2.5px 2.5px 0.2em  rgb(216, 216, 216);
-            
+            box-shadow: 2.5px 2.5px 0.2em rgb(216, 216, 216);
+
         }
-        .painting_order_product{
+
+        .painting_order_product {
             margin-top: 20px;
             width: 1022px;
             padding: 30px;
             height: 200px;
             border: 1px solid rgb(216, 216, 216);
             border-radius: 25px;
-            box-shadow: 2.5px 2.5px 0.2em  rgb(216, 216, 216);
+            box-shadow: 2.5px 2.5px 0.2em rgb(216, 216, 216);
             display: flex;
         }
 
-        .painting_order_product #img{
+        .painting_order_product #img {
             margin: 20px;
             width: 150px;
             height: 150px;
             border: 1px solid black;
         }
 
-        .painting_order_product #info span{
+        .painting_order_product #info span {
             margin-bottom: 10px;
         }
 
-        .painting_order_btn{
+        .painting_order_btn {
             border: 1px solid rgb(216, 216, 216);
             background: none;
             width: 200px;
             height: 50px;
             margin-bottom: 30px;
         }
-        .painting_order_btn:active{
+
+        .painting_order_btn:active {
             border: 0;
             background: rgb(255, 251, 0);
             width: 200px;
             height: 50px;
             margin-bottom: 30px;
         }
-        .painting_order_btn:focus{
+
+        .painting_order_btn:focus {
             outline: none;
             border: 0;
             background: #ffe492;
@@ -129,23 +140,24 @@
             <div id="my_order_count" class="count" style="flex-basis: 662.5px; background-color: #F7D358;">
                 <div>주문</div>
                 <div class="count_content">
-                    <span style="font-size: 35px;">0</span><span>건</span>
+                    <span style="font-size: 35px;"><%= paintingCount%></span><span>건</span>
                 </div>
             </div>
             <div id="my_custom_count" class="count" style="flex-basis: 662.5px; background-color: #F7D358;">
                 <div>커스텀 제작</div>
                 <div class="count_content">
-                    <span style="font-size: 35px;">0</span><span>건</span>
+                    <span style="font-size: 35px;"><%= customCount%></span><span>건</span>
                 </div>
             </div>
         </div>
         <div id="tbody">
             <div class="mypage_nav" style="flex-basis: 175px; height: 400px; background-color: #F5ECCE;">
-                
+
                 <div class="meue_list">나의 주문
                     <div>
                         <ul>
-                            <li style="font-weight: bold;"><a href="/mypage" id="painting" style=" color: #c99700; ">페인팅 주문 목록</a></li>
+                            <li style="font-weight: bold;"><a href="/mypage" id="painting" style=" color: #c99700; ">페인팅
+                                    주문 목록</a></li>
                             <li><a href="/mypage/custom_order" id="custom">커스텀 주문 목록</a></li>
                         </ul>
                     </div>
@@ -167,49 +179,54 @@
                 </div>
 
                 <% if(company){%>
-                    <div class="meue_list">
-                        <a href="/company">업체메뉴</a>
-                    </div>
+                <div class="meue_list">
+                    <a href="/company">업체메뉴</a>
+                </div>
                 <%}%>
             </div>
 
             <div class="mypage_content" style="flex-basis:1304px; height: auto;">
                 <h1 style="margin: 20px;">페인팅 주문 목록</h1>
+
+                <% if(orderList.length <= 0) {%>
+                <h2 style="margin: 20px;">주문내역이 없습니다..</h2>
+                <%}%>
+                <% for(var data of orderList){ %>
                 <div class="painting_order_content">
-                    <span style="margin-right: 30px; font-weight: bold;">2020-11-20</span><span style="font-weight: bold;">배송완료</span>
+                    <span style="margin-right: 30px; font-weight: bold;"> <%= data.order_date%> </span><span
+                        style="font-weight: bold;"> <%= data.order_state%> </span>
 
                     <div class="painting_order_product">
                         <div id="img" style="flex-basis: 250px;">
-                            상품이미지
+                            페인팅 이미지
                         </div>
-                        <div id="info" style="flex-basis: 500px; display: flex; flex-direction: column; margin: auto 10px auto 0px">
-                            <span>상품이름</span>
-                            <span>수량</span>
-                            <span>가격</span>
+                        <div id="info"
+                            style="flex-basis: 500px; display: flex; flex-direction: column; margin: auto 10px auto 0px">
+                            <span>상품이름: <%= data.product_name%> </span>
+                            <span>주문수량: <%= data.order_product_count%> </span>
+                            <span>총 주문 가격: <%= data.order_money%> </span>
                         </div>
                         <div style="flex-basis: 120px; display: flex; flex-direction: column; margin: auto;">
-                            <a href=""><button class="painting_order_btn" >배송조회</button></a>
-                            <a href=""><button class="painting_order_btn" >주문취소</button></a>
-                        </div>
-                    </div>
+                            <% if( data.order_state == '주문완료'){ %>
+                                    <a href=""><button class="painting_order_btn" >상세정보</button></a>
+                                    <a href=""><button class="painting_order_btn" >주문취소</button></a>
+                            <%} else if(data.order_state == '배송중'){%>
+                                    <a href=""><button class="painting_order_btn" >배송조회</button></a>
+                                    <a href=""><button class="painting_order_btn" >상세정보</button></a>
+                            <%} else{%>
+                                    <a href=""><button class="painting_order_btn" >상세정보</button></a>
+                            <%}%>
 
-                    <div class="painting_order_product">
-                        <div id="img" style="flex-basis: 250px;">
-                            상품이미지
-                        </div>
-                        <div id="info" style="flex-basis: 500px; display: flex; flex-direction: column; margin: auto 10px auto 0px">
-                            <span>상품이름</span>
-                            <span>수량</span>
-                            <span>가격</span>
-                        </div>
-                        <div style="flex-basis: 120px; display: flex; flex-direction: column; margin: auto;">
-                            <a href=""><button class="painting_order_btn" >배송조회</button></a>
-                            <a href=""><button class="painting_order_btn" >주문취소</button></a>
+
                         </div>
                     </div>
 
                 </div>
                 
+                <%}%>
+
+
+
             </div>
         </div>
     </div>
@@ -219,54 +236,59 @@
 </html>
 
 <script type="text/javascript">
-
     function setsub() {
         var sublnb = document.getElementById("sublnb");
         sublnb.style.display = "block";
         sublnb.style.opacity = "1";
         sublnb.style.visibility = "visible";
     }
+
     function outsub() {
         var sublnb = document.getElementById("sublnb");
         sublnb.style.display = "none"
         sublnb.style.opacity = "0";
         sublnb.style.visibility = "hidden";
     }
+
     function lsub() {
         var looksub = document.getElementById("sublnb");
         sublnb.style.display = "block";
         sublnb.style.opacity = "1";
         sublnb.style.visibility = "visible";
     }
+
     function loutsub() {
         var looksub = document.getElementById("sublnb");
         sublnb.style.display = "none";
         sublnb.style.opacity = "0";
         sublnb.style.visibility = "hidden";
     }
+
     function setsub2() {
         var sublnb2 = document.getElementById("sublnb2");
         sublnb2.style.display = "block";
         sublnb2.style.opacity = "1";
         sublnb2.style.visibility = "visible";
     }
+
     function outsub2() {
         var sublnb2 = document.getElementById("sublnb2");
         sublnb2.style.display = "none";
         sublnb2.style.opacity = "0";
         sublnb2.style.visibility = "hidden";
     }
+
     function lsub2() {
         var sublnb2 = document.getElementById("sublnb2");
         sublnb2.style.display = "block";
         sublnb2.style.opacity = "1";
         sublnb2.style.visibility = "visible";
     }
+
     function loutsub2() {
         var sublnb2 = document.getElementById("sublnb2");
         sublnb2.style.display = "none";
         sublnb2.style.opacity = "0";
         sublnb2.style.visibility = "hidden";
     }
-
 </script>

@@ -47,6 +47,11 @@ router.get('/buy', Order.getAddress_cardInfo,function(req,res){
 
 })
 
+router.post('/order_buy', function(req, res, next){
+    console.log('주문성공');
+    res.redirect('/order/finish');
+})
+
 
 
 router.get('/makingbuy', function(req,res){

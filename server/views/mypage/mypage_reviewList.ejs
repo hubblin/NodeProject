@@ -14,17 +14,13 @@
         .mypage_body {
             width: 1500px;
             height: auto;
-
             margin: 0 auto;
             margin-top: 100px;
-
         }
-
         #title {
             display: flex;
             height: 100px;
         }
-
         #title div {
             color:white;
         }
@@ -40,7 +36,6 @@
         .count div{
             margin: 10px;
         }
-
         .count_content{
             margin: 0 auto;
         }
@@ -80,12 +75,10 @@
             box-shadow: 2.5px 2.5px 0.2em  rgb(216, 216, 216);
             display: flex;
         }
-
         .painting_order_product #info span{
             margin-bottom: 10px;
             font-size: 20px;
         }
-
         .painting_order_btn{
             border: 1px solid rgb(216, 216, 216);
             background: none;
@@ -104,7 +97,6 @@
             background: #ffe492;
             
         }
-
         #adr_add_btn{
             border: 1px solid rgb(216, 216, 216);
             background: none;
@@ -117,7 +109,6 @@
             font-weight: bold;
             
         }
-
         #adr_add_btn:active{
             border: 0;
             outline: none;
@@ -127,6 +118,19 @@
             border: 0;
             outline: none;
             background: #ffe492;
+        }
+        .star_space {
+            display: inline-block;
+            width: 111px;
+            height: 20px;
+            background: url('../images/star_empty.png') no-repeat;
+            background-size: 111px 20px;
+        }
+        .star_space div {
+            height: 100%;
+            color: transparent;
+            background: url('../images/star_full.png') no-repeat;
+            background-size: 111px 20px;
         }
         
     </style>
@@ -144,13 +148,13 @@
             <div id="my_order_count" class="count" style="flex-basis: 662.5px; background-color: #F7D358;">
                 <div>주문</div>
                 <div class="count_content">
-                    <span style="font-size: 35px;">0</span><span>건</span>
+                    <span style="font-size: 35px;"><%= paintingCount%></span><span>건</span>
                 </div>
             </div>
             <div id="my_custom_count" class="count" style="flex-basis: 662.5px; background-color: #F7D358;">
                 <div>커스텀 제작</div>
                 <div class="count_content">
-                    <span style="font-size: 35px;">0</span><span>건</span>
+                    <span style="font-size: 35px;"><%= customCount%></span><span>건</span>
                 </div>
             </div>
         </div>
@@ -192,24 +196,43 @@
             <div class="mypage_content" style="flex-basis:1304px; height: auto;">
                 <h1 style="margin: 20px;">작성 리뷰 목록</h1>
 
-                <div class="painting_order_product">
-                        
-                    <div id="info" style="flex-basis: 500px; display: flex; flex-direction: column; margin: auto 10px auto 0px">
-                        <span>상품명:BLOOM*IZ I*WAS 판</span>
-                        <span>작성일자:2020-11-20</span>
-                        <span>별점: 101점</span>
-                        <span>리뷰내용: 너무좋아요 </span>
+                <% for(var i=0; i<myReviewList.length; i++){%>
+                    <div class="painting_order_product">
+                    
+                        <div id="info" style="flex-basis: 500px; display: flex; flex-direction: column; margin: auto 10px auto 0px">
+                            <span>상품명: <%= myReviewList[i].product_name%></span>
+                            <span>작성일자: <%= myReviewList[i].pro_review_date%></span>
+                            <span>별점 
+                                <div class="star_space">
+                                    <div id="score<%= i%>" style="width: 100%;"></div>
+                                </div>
+                                <script>
+                                    var score = document.getElementById('score<%= i%>');
+                                    score.style.width = '<%= myReviewList[i].pro_score*20%>%'
+                                </script>
+                            </span>
+                            <span>리뷰내용: <%= myReviewList[i].pro_review_content%></span>
+                        </div>
+                        <div style="flex-basis: 220px; margin:auto;" >
+                            <% if(myReviewList[i].pro_img_path == 'none'){%>
+                                
+                            <%}else{%>
+                                <img src="../images/review/<%= myReviewList[i].pro_img_path%>" alt="" width="200" height="200">
+                            <%}%>
+                            
+                        </div>
+                        <div style="flex-basis: 250px; display: flex; flex-direction: column; margin: auto;">
+                            <a href=""><button class="painting_order_btn" >수정</button></a>
+                            <form action="/mypage/deleteReview/<%= myReviewList[i].review_num%>" method="post">
+                                <button type="submit" class="painting_order_btn" >삭제</button>
+                            </form>
+                            
+                        </div>
                     </div>
-                    <div style="flex-basis: 220px; margin:auto;" >
-                        <img src="../images/slide_images/귀멸의 칼날1.jpg" alt="" width="200" height="200">
-                    </div>
-                    <div style="flex-basis: 250px; display: flex; flex-direction: column; margin: auto;">
-                        <a href=""><button class="painting_order_btn" >수정</button></a>
-                        <a href=""><button class="painting_order_btn" >삭제</button></a>
-                    </div>
-                </div>
+                <%}%>
+                
 
-                <a href=""><button id="adr_add_btn">리뷰작성</button></a>
+                <a href="/mypage/addReview"><button id="adr_add_btn">리뷰작성</button></a>
 
                 
 
@@ -224,7 +247,6 @@
 </html>
 
 <script type="text/javascript">
-
     function setsub() {
         var sublnb = document.getElementById("sublnb");
         sublnb.style.display = "block";
@@ -273,5 +295,4 @@
         sublnb2.style.opacity = "0";
         sublnb2.style.visibility = "hidden";
     }
-
 </script>

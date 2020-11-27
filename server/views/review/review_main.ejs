@@ -126,11 +126,12 @@
             <% for(var i = 0; i<reviewList.length; i++) {%>
             <div id="review_info">
                 <div class="item">
-                    <a href="" class="review_product_img" id="product_img<%= i%>" style="background: url('../images/main_page/card_earphone.jpg') no-repeat; background-size: 50px 50px;"></a>
+                    <img class="review_product_img" id="product_img<%= i%>"
+                    src="../images/products/<%= reviewList[i].product_img_path%>"></img>
                     <script>
                         var product_img = document.getElementById('product_img<%= i%>');
                         if('<%= reviewList[i].product_img_path%>' == 'none'){
-                            product_img.style.backgroundImage = "url('../images/main_page/브라이언.jpg')";
+                            product_img.src = "../images/main_page/브라이언.jpg";
                         }
                     </script>
                 </div>
@@ -152,13 +153,22 @@
                 </div>
 
                 <div class="item">
-                    <a href="" class="review_user_img" id="review_img<%= i%>" style="background: url('../images/main_page/card_earphone.jpg') no-repeat; background-size: 160px 160px;">리뷰이미지</a>
-                    <script>
+                    <% if(reviewList[i].pro_img_path == 'none'){%>
+                        <img class="review_user_img" id="review_img<%= i%>" 
+                    src="../images/main_page/브라이언.jpg"></img>
+                    <%}else{%>
+                        <img class="review_user_img" id="review_img<%= i%>" 
+                    src="../images/review/<%= reviewList[i].pro_img_path%>"></img>
+                    <%}%>
+                    <!-- <script>
                         var user_review_img = document.getElementById('review_img<%= i%>');
                         if('<%= reviewList[i].pro_img_path%>' == 'none'){
-                            user_review_img.style.backgroundImage = "url('../images/main_page/card_cloth2.jpg')";
+                            user_review_img.src = "../images/main_page/브라이언.jpg";
                         }
-                    </script>
+                        else{
+                            user_review_img.src = "../images/review/'<%= reviewList[i].pro_img_path%>'";
+                        }
+                    </script> -->
                 </div>
 
             </div>
