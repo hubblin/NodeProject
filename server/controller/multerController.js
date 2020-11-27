@@ -42,18 +42,28 @@ module.exports.send = (req, res, next) =>{
                     ], (err)=>{
                         if(err) throw err;
     
-                        conn.release();
-                        next();
+                        conn.query('update product set product_review_score = (select avg(pro_score) from product_review where review_product_num = ?) where product_num = ?',[
+                            paintingNum, paintingNum
+                        ], (err)=>{
+                            if(err) throw err;
+                            conn.release();
+                            next();
+                        })
                     })
                 }
                 else{
-                    conn.query('insert into product_review values(?,?,?,?,?,?,?)',[
+                    conn.query('insert into custom_order_review values(?,?,?,?,?,?,?)',[
                         null, customNum, req.session.user.id, req.body.give_score, req.body.review_text, nowTime, req.file.filename
                     ], (err)=>{
                         if(err) throw err;
     
-                        conn.release();
-                        next();
+                        conn.query('update custom_product set c_product_review_score = (select avg(review_score) from custom_order_review where review_c_product_num = 1) where c_product_num = 1',[
+                            paintingNum, paintingNum
+                        ], (err)=>{
+                            if(err) throw err;
+                            conn.release();
+                            next();
+                        })
                     })
                 }
             }
@@ -69,13 +79,18 @@ module.exports.send = (req, res, next) =>{
                     })
                 }
                 else{
-                    conn.query('insert into product_review values(?,?,?,?,?,?,?)',[
+                    conn.query('insert into custom_order_review values(?,?,?,?,?,?,?)',[
                         null, customNum, req.session.user.id, req.body.give_score, req.body.review_text, nowTime, 'none'
                     ], (err)=>{
                         if(err) throw err;
     
-                        conn.release();
-                        next();
+                        conn.query('update custom_product set c_product_review_score = (select avg(review_score) from custom_order_review where review_c_product_num = 1) where c_product_num = 1',[
+                            paintingNum, paintingNum
+                        ], (err)=>{
+                            if(err) throw err;
+                            conn.release();
+                            next();
+                        })
                     })
                 }
             }

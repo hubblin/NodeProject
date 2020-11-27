@@ -9,6 +9,9 @@ input::-ms-input-placeholder{color:#ccc}
     margin-bottom: 100px;
     width: 100%;
     height: 100px;
+    margin-left: 0;
+    margin-right: 0;
+    width: 1500px;
 }
 
 .search_title{

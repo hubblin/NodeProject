@@ -26,109 +26,116 @@
         }
 
         #title div {
-            color:white;
+            color: white;
         }
-        #my_main{
+
+        #my_main {
             text-align: center;
             line-height: 100px;
             font-size: 25px;
             border-right: 1px solid white;
         }
-        #my_order_count{
+
+        #my_order_count {
             border-right: 1px solid white;
         }
-        .count div{
+
+        .count div {
             margin: 10px;
         }
 
-        .count_content{
+        .count_content {
             margin: 0 auto;
         }
-        #tbody{
+
+        #tbody {
             display: flex;
-            
+
         }
-        .meue_list{
+
+        .meue_list {
             margin: 10px;
             margin-bottom: 30px;
             font-size: 18px;
         }
-        .meue_list li{
+
+        .meue_list li {
             margin: 5px;
             margin-top: 20px;
             font-size: 15px;
         }
-        .mypage_content{
-           margin: 20px;
+
+        .mypage_content {
+            margin: 20px;
         }
-        .painting_order_content{
+
+        .painting_order_content {
             margin: 50px;
             padding: 50px;
             height: auto;
             border: 1px solid rgb(216, 216, 216);
             border-radius: 50px;
-            box-shadow: 2.5px 2.5px 0.2em  rgb(216, 216, 216);
-            
+            box-shadow: 2.5px 2.5px 0.2em rgb(216, 216, 216);
+
         }
-        .painting_order_product{
-            margin-bottom: 50px;
-            width: 1215px;
+
+        .painting_order_product {
+            margin-top: 20px;
+            width: 1022px;
             padding: 30px;
             height: 200px;
             border: 1px solid rgb(216, 216, 216);
             border-radius: 25px;
-            box-shadow: 2.5px 2.5px 0.2em  rgb(216, 216, 216);
+            box-shadow: 2.5px 2.5px 0.2em rgb(216, 216, 216);
             display: flex;
         }
 
-        .painting_order_product #info span{
-            margin-bottom: 10px;
-            font-size: 20px;
+        .painting_order_product #img {
+            margin: 20px;
+            width: 150px;
+            height: 150px;
+            border: 1px solid black;
         }
 
-        .painting_order_btn{
+        .painting_order_product #info span {
+            margin-bottom: 10px;
+        }
+
+        .painting_order_btn {
             border: 1px solid rgb(216, 216, 216);
             background: none;
-            width: 300px;
+            width: 200px;
             height: 50px;
             margin-bottom: 30px;
         }
-        .painting_order_btn:active{
+
+        .painting_order_btn:active {
             border: 0;
             background: rgb(255, 251, 0);
-            
-        }
-        .painting_order_btn:focus{
-            outline: none;
-            border: 0;
-            background: #ffe492;
-            
-        }
-
-        #adr_add_btn{
-            border: 1px solid rgb(216, 216, 216);
-            background: none;
-            color:#FFBF00;
-            width: 100%;
+            width: 200px;
             height: 50px;
-            font-size: 20px;
-            margin-left: auto;
-            margin-right: auto;
-            font-weight: bold;
-            
+            margin-bottom: 30px;
         }
 
-        #adr_add_btn:active{
-            border: 0;
+        .painting_order_btn:focus {
             outline: none;
-            background: #ffe492;
-        }
-        #adr_add_btn:focus{
             border: 0;
-            outline: none;
             background: #ffe492;
+            width: 200px;
+            height: 50px;
+            margin-bottom: 30px;
         }
-        
+        #mypage_back_btn{
+            margin: 50px;
+            margin-left: 80px;
+            border-radius: 5px;
+            padding: 10px;
+            padding-left: 500px;
+            padding-right: 550px;
+            background-color: #FFC000;
+            color: white;
+            font-weight: bold;
+        }
     </style>
 
 </head>
@@ -156,11 +163,12 @@
         </div>
         <div id="tbody">
             <div class="mypage_nav" style="flex-basis: 175px; height: 400px; background-color: #F5ECCE;">
-                
+
                 <div class="meue_list">나의 주문
                     <div>
                         <ul>
-                            <li><a href="/mypage" id="painting">페인팅 주문 목록</a></li>
+                            <li style="font-weight: bold;"><a href="/mypage" id="painting" style=" color: #c99700; ">페인팅
+                                    주문 목록</a></li>
                             <li><a href="/mypage/custom_order" id="custom">커스텀 주문 목록</a></li>
                         </ul>
                     </div>
@@ -170,7 +178,7 @@
                 <div class="meue_list"> 나의 정보
                     <div>
                         <ul>
-                            <li style="font-weight: bold;"> <a href="/mypage/myCard" id="card" style=" color: #c99700; ">결제카드 정보</a> </li>
+                            <li> <a href="/mypage/myCard" id="card">결제카드 정보</a> </li>
                             <li><a href="/mypage/myAdr" id="adr">배송지 정보</a></li>
                         </ul>
                     </div>
@@ -182,41 +190,46 @@
                 </div>
 
                 <% if(company){%>
-                    <div class="meue_list">
-                        <a href="">업체메뉴</a>
-                    </div>
+                <div class="meue_list">
+                    <a href="/company">업체메뉴</a>
+                </div>
                 <%}%>
-                
             </div>
 
             <div class="mypage_content" style="flex-basis:1304px; height: auto;">
-                <h1 style="margin: 20px;">결제 카드 목록</h1>
+                <h1 style="margin: 20px;">페인팅 주문 상세정보</h1>
 
-                <% for(var user_card of card){%>
+                <div class="painting_order_content">
+                    <span style="margin-right: 30px; font-weight: bold;"> <%= orderDetail[0].order_date%> </span><span
+                        style="font-weight: bold;"> <%= orderDetail[0].order_state%> </span>
+
                     <div class="painting_order_product">
-                        
-                        <div id="info" style="flex-basis: 720px; display: flex; flex-direction: column; margin: auto 10px auto 0px">
-                            <span>카드이름 : <%= user_card.card_name%></span>
-                            <span>카드번호 : <%= user_card.card_num%></span>
-                            <span>카드 CVC : <%= user_card.card_CVC%></span>
-                            <span>유효기간 : <%= user_card.card_date%></span>
+                        <div id="img" style="flex-basis: 250px;">
+                            페인팅 이미지
                         </div>
-                        <div style="flex-basis: 250px; display: flex; flex-direction: column; margin: auto;">
-                            <a href="/mypage/updateCard/<%= user_card.card_num %>"><button class="painting_order_btn" >수정</button></a>
-                            <form action="/mypage/deleteCard/<%= user_card.card_num%>" method="post">
-                                <button class="painting_order_btn" type="submit" >삭제</button>
-                            </form>
-                            
+                        <div id="info"
+                            style="flex-basis: 300px; display: flex; flex-direction: column; margin: auto 10px auto 0px">
+                            <span>상품이름:  <%= orderDetail[0].product_name%></span>
+                            <span>주문수량: <%= orderDetail[0].order_product_count%></span>
+                            <span>총 주문 가격: <%= orderDetail[0].order_money%></span>
+                        </div>
+                        <div style="flex-basis: 320px; display: flex; flex-direction: column; margin: auto;">
+                            <span>결제카드번호: <%= orderDetail[0].order_card_num%></span>
+                            <span>배송지 우편번호: <%= orderDetail[0].order_post_num%></span>
+                            <span>메인주소: <%= orderDetail[0].order_post_main%></span>
+                            <span>상세주소: <%= orderDetail[0].order_post_detail%></span>
+                            <span>수령인: <%= orderDetail[0].order_get_user_name%></span>
+                            <span>전화번호: <%= orderDetail[0].order_user_phone%></span>
+
                         </div>
                     </div>
-    
-                <%}%>
-                <a href="/mypage/addCard"><button id="adr_add_btn">카드 추가</button></a>
 
+                </div>
                 
+                <a href="/mypage/" id="mypage_back_btn">주문목록으로</a>
 
-                
-                
+
+
             </div>
         </div>
     </div>
@@ -226,54 +239,59 @@
 </html>
 
 <script type="text/javascript">
-
     function setsub() {
         var sublnb = document.getElementById("sublnb");
         sublnb.style.display = "block";
         sublnb.style.opacity = "1";
         sublnb.style.visibility = "visible";
     }
+
     function outsub() {
         var sublnb = document.getElementById("sublnb");
         sublnb.style.display = "none"
         sublnb.style.opacity = "0";
         sublnb.style.visibility = "hidden";
     }
+
     function lsub() {
         var looksub = document.getElementById("sublnb");
         sublnb.style.display = "block";
         sublnb.style.opacity = "1";
         sublnb.style.visibility = "visible";
     }
+
     function loutsub() {
         var looksub = document.getElementById("sublnb");
         sublnb.style.display = "none";
         sublnb.style.opacity = "0";
         sublnb.style.visibility = "hidden";
     }
+
     function setsub2() {
         var sublnb2 = document.getElementById("sublnb2");
         sublnb2.style.display = "block";
         sublnb2.style.opacity = "1";
         sublnb2.style.visibility = "visible";
     }
+
     function outsub2() {
         var sublnb2 = document.getElementById("sublnb2");
         sublnb2.style.display = "none";
         sublnb2.style.opacity = "0";
         sublnb2.style.visibility = "hidden";
     }
+
     function lsub2() {
         var sublnb2 = document.getElementById("sublnb2");
         sublnb2.style.display = "block";
         sublnb2.style.opacity = "1";
         sublnb2.style.visibility = "visible";
     }
+
     function loutsub2() {
         var sublnb2 = document.getElementById("sublnb2");
         sublnb2.style.display = "none";
         sublnb2.style.opacity = "0";
         sublnb2.style.visibility = "hidden";
     }
-
 </script>

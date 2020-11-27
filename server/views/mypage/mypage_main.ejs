@@ -140,13 +140,13 @@
             <div id="my_order_count" class="count" style="flex-basis: 662.5px; background-color: #F7D358;">
                 <div>주문</div>
                 <div class="count_content">
-                    <span style="font-size: 35px;">0</span><span>건</span>
+                    <span style="font-size: 35px;"><%= paintingCount%></span><span>건</span>
                 </div>
             </div>
             <div id="my_custom_count" class="count" style="flex-basis: 662.5px; background-color: #F7D358;">
                 <div>커스텀 제작</div>
                 <div class="count_content">
-                    <span style="font-size: 35px;">0</span><span>건</span>
+                    <span style="font-size: 35px;"><%= customCount%></span><span>건</span>
                 </div>
             </div>
         </div>
@@ -208,13 +208,13 @@
                         </div>
                         <div style="flex-basis: 120px; display: flex; flex-direction: column; margin: auto;">
                             <% if( data.order_state == '주문완료'){ %>
-                                    <a href=""><button class="painting_order_btn" >상세정보</button></a>
+                                    <a href="/mypage/detailOrder/<%= data.order_num%>"><button class="painting_order_btn" >상세정보</button></a>
                                     <a href=""><button class="painting_order_btn" >주문취소</button></a>
                             <%} else if(data.order_state == '배송중'){%>
                                     <a href=""><button class="painting_order_btn" >배송조회</button></a>
-                                    <a href=""><button class="painting_order_btn" >상세정보</button></a>
+                                    <a href="/mypage/detailOrder/<%= data.order_num%>"><button class="painting_order_btn" >상세정보</button></a>
                             <%} else{%>
-                                    <a href=""><button class="painting_order_btn" >상세정보</button></a>
+                                    <a href="/mypage/detailOrder/<%= data.order_num%>"><button class="painting_order_btn" >상세정보</button></a>
                             <%}%>
 
 

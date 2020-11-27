@@ -153,14 +153,22 @@
                 </div>
 
                 <div class="item">
-                    <img class="review_user_img" id="review_img<%= i%>" 
+                    <% if(reviewList[i].pro_img_path == 'none'){%>
+                        <img class="review_user_img" id="review_img<%= i%>" 
                     src="../images/main_page/브라이언.jpg"></img>
-                    <script>
+                    <%}else{%>
+                        <img class="review_user_img" id="review_img<%= i%>" 
+                    src="../images/review/<%= reviewList[i].pro_img_path%>"></img>
+                    <%}%>
+                    <!-- <script>
                         var user_review_img = document.getElementById('review_img<%= i%>');
                         if('<%= reviewList[i].pro_img_path%>' == 'none'){
                             user_review_img.src = "../images/main_page/브라이언.jpg";
                         }
-                    </script>
+                        else{
+                            user_review_img.src = "../images/review/'<%= reviewList[i].pro_img_path%>'";
+                        }
+                    </script> -->
                 </div>
 
             </div>
