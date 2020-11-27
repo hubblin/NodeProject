@@ -125,6 +125,17 @@
             height: 50px;
             margin-bottom: 30px;
         }
+        #mypage_back_btn{
+            margin: 50px;
+            margin-left: 80px;
+            border-radius: 5px;
+            padding: 10px;
+            padding-left: 500px;
+            padding-right: 550px;
+            background-color: #FFC000;
+            color: white;
+            font-weight: bold;
+        }
     </style>
 
 </head>
@@ -186,44 +197,36 @@
             </div>
 
             <div class="mypage_content" style="flex-basis:1304px; height: auto;">
-                <h1 style="margin: 20px;">페인팅 주문 목록</h1>
+                <h1 style="margin: 20px;">페인팅 주문 상세정보</h1>
 
-                <% if(orderList.length <= 0) {%>
-                <h2 style="margin: 20px;">주문내역이 없습니다..</h2>
-                <%}%>
-                <% for(var data of orderList){ %>
                 <div class="painting_order_content">
-                    <span style="margin-right: 30px; font-weight: bold;"> <%= data.order_date%> </span><span
-                        style="font-weight: bold;"> <%= data.order_state%> </span>
+                    <span style="margin-right: 30px; font-weight: bold;"> <%= orderDetail[0].order_date%> </span><span
+                        style="font-weight: bold;"> <%= orderDetail[0].order_state%> </span>
 
                     <div class="painting_order_product">
                         <div id="img" style="flex-basis: 250px;">
                             페인팅 이미지
                         </div>
                         <div id="info"
-                            style="flex-basis: 500px; display: flex; flex-direction: column; margin: auto 10px auto 0px">
-                            <span>상품이름: <%= data.product_name%> </span>
-                            <span>주문수량: <%= data.order_product_count%> </span>
-                            <span>총 주문 가격: <%= data.order_money%> </span>
+                            style="flex-basis: 300px; display: flex; flex-direction: column; margin: auto 10px auto 0px">
+                            <span>상품이름:  <%= orderDetail[0].product_name%></span>
+                            <span>주문수량: <%= orderDetail[0].order_product_count%></span>
+                            <span>총 주문 가격: <%= orderDetail[0].order_money%></span>
                         </div>
-                        <div style="flex-basis: 120px; display: flex; flex-direction: column; margin: auto;">
-                            <% if( data.order_state == '주문완료'){ %>
-                                    <a href="/mypage/detailOrder/<%= data.order_num%>"><button class="painting_order_btn" >상세정보</button></a>
-                                    <a href=""><button class="painting_order_btn" >주문취소</button></a>
-                            <%} else if(data.order_state == '배송중'){%>
-                                    <a href=""><button class="painting_order_btn" >배송조회</button></a>
-                                    <a href="/mypage/detailOrder/<%= data.order_num%>"><button class="painting_order_btn" >상세정보</button></a>
-                            <%} else{%>
-                                    <a href="/mypage/detailOrder/<%= data.order_num%>"><button class="painting_order_btn" >상세정보</button></a>
-                            <%}%>
-
+                        <div style="flex-basis: 320px; display: flex; flex-direction: column; margin: auto;">
+                            <span>결제카드번호: <%= orderDetail[0].order_card_num%></span>
+                            <span>배송지 우편번호: <%= orderDetail[0].order_post_num%></span>
+                            <span>메인주소: <%= orderDetail[0].order_post_main%></span>
+                            <span>상세주소: <%= orderDetail[0].order_post_detail%></span>
+                            <span>수령인: <%= orderDetail[0].order_get_user_name%></span>
+                            <span>전화번호: <%= orderDetail[0].order_user_phone%></span>
 
                         </div>
                     </div>
 
                 </div>
                 
-                <%}%>
+                <a href="/mypage/" id="mypage_back_btn">주문목록으로</a>
 
 
 
