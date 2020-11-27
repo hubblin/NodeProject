@@ -110,6 +110,40 @@ class MypageController {
         })
     }
 
+    // 카드 수정
+    async updateCard(req, res, next){
+        pool.getConnection((err, conn)=>{
+            if(err) throw err;
+
+            conn.query('update card set card_num = ? , card_CVC = ?, card_date = ?, card_name = ? where card_num = ?',[
+                req.body.card_num, req.body.card_CVC, req.body.card_date, req.body.card_name, req.params.card_num
+            ], (err)=>{
+                if(err) throw err;
+                conn.release();
+                next();
+            })
+        })
+    }
+
+    // 배송지 수정
+    async updateAddress(req, res, next){
+        pool.getConnection((err, conn)=>{
+            if(err) throw err;
+
+            
+
+            conn.query('update address set adr_post_num = ?, adr_main = ?, adr_detail = ?, adr_get_user_name = ?, adr_user_phone = ?, adr_name = ? where adr_uid = ?',[
+                req.body.post_num, req.body.main_adr, req.body.detail_adr, req.body.user_name, req.body.user_phone, req.body.user_phone, req.body.adr_name, req.params.adr_UID
+            ], (err)=>{
+                if(err) throw err;
+                conn.release();
+                next();
+            })
+        })
+    }
+
+    
+
     // 사용자의 배송지 목록 가져오기
     async getAddress(req, res, next){
         pool.getConnection((err, conn)=>{

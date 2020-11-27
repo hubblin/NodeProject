@@ -101,7 +101,7 @@ router.post('/addReview', multerController.send,function(req, res, next){
 
 
 // 카드 업데이트 post
-router.post('/updateCard/:card_num', function(req, res, next){
+router.post('/updateCard/:card_num', Mypage.updateCard,function(req, res, next){
     res.send(`<script type="text/javascript">
             alert("카드 수정 성공"); 
             location.href='/mypage/myㅊㅁㄱ';
@@ -109,7 +109,7 @@ router.post('/updateCard/:card_num', function(req, res, next){
 })
 
 // 배송지 업데이트 post
-router.post('/updateAddress/:adr_uid', function(req, res, next){
+router.post('/updateAddress/:adr_uid', Mypage.updateAddress,function(req, res, next){
     res.send(`<script type="text/javascript">
             alert("배송지 수정 성공"); 
             location.href='/mypage/myAdr';
