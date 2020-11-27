@@ -174,6 +174,13 @@
         #painting_select{
             display: none;
         }
+        #review_text{
+            padding: 10px;
+            border-color: #FFC000;
+        }
+        #review_text:focus{
+            outline: none;
+        }
     </style>
 
 </head>
@@ -277,7 +284,8 @@
                         </div>
 
                         <div class="adr_input">
-                            <input type="text" id="review_text" name="review_text" placeholder="리뷰내용">
+                            
+                            <textarea name="review_text" id="review_text" cols="75" rows="5" placeholder="리뷰내용을 적어주세요" style="resize: none;"></textarea>
                             <br>
                             <span class="warning_msg" id="warning_card_name">리뷰를 입력하세요</span>
                         </div>

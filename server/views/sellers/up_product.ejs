@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='/stylesheets/sidenav.css' />
-    <script src="/javascripts/ckeditor.js"></script>
+    <!-- <script src="/javascripts/ckeditor.js"></script> -->
+    <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
     <title>Document</title>
     <style>
         .product_con {
@@ -326,38 +327,43 @@
                         <div class="content_area">
                             <div class="container">
 
-                                <div class="group">
-                                    <input id="name" type="text" required name="product_name">
-                                    <span class="highlight"></span>
-                                    <span class="bar"></span>
-                                    <label>제품명</label>
-                                </div>
-                                <div class="group">
-                                    <input id="price" type="number" required name="product_price">
-                                    <span class="highlight"></span>
-                                    <span class="bar"></span>
-                                    <label>제품가격</label>
-                                </div>
-                                <div class="group">
-                                    <input id="stock" type="number" required name="product_stock">
-                                    <span class="highlight"></span>
-                                    <span class="bar"></span>
-                                    <label>재고량</label>
-                                </div>
-                                <input id="img" type="file" name="file" style="border-bottom: none;" />
-                                <select id="category" name="category"
-                                    style="width: 100%; margin-top: 30px; margin-bottom: 30px; height: 30px; font-size: 18px;">
-                                    <option value="1">파우치</option>
-                                    <option value="2">케이스</option>
-                                    <option value="3">의류</option>
-                                </select>
-                                <textarea id="editor">
-                                    <p>상품에 대한 설명을 적어주세요</p>
-                                </textarea>
+                                <form action="/seller/upProduct" method="post" id="testform" enctype="multipart/form-data">
+                                    <div class="group">
+                                        <input id="name" type="text" required name="product_name">
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>제품명</label>
+                                    </div>
+                                    <div class="group">
+                                        <input id="price" type="number" required name="product_price">
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>제품가격</label>
+                                    </div>
+                                    <div class="group">
+                                        <input id="stock" type="number" required name="product_stock">
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>재고량</label>
+                                    </div>
+                                    <input id="imgtest" type="file" name="file" style="border-bottom: none;" />
+                                
+                                    <select id="category" name="category"
+                                        style="width: 100%; margin-top: 30px; margin-bottom: 30px; height: 30px; font-size: 18px;">
+                                        <option value="1">파우치</option>
+                                        <option value="2">케이스</option>
+                                        <option value="3">의류</option>
+                                    </select>
+                                    <textarea id="editor">
+                                        <p>상품에 대한 설명을 적어주세요</p>
+                                    </textarea>
+                                    
+                                
                                 <script>
 
                                 </script>
-                                <input type="submit" style="border-bottom: none; margin-top: 30px;" onclick="UP()" />
+                                <input type="button" style="border-bottom: none; margin-top: 30px;" value="상품등록" onclick="UP()" />
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -368,55 +374,40 @@
 </body>
 
 </html>
+<script>
+    CKEDITOR.replace('editor')
+</script>
 
 <script>
-    var myEditor;
+    // var myEditor;
 
-    ClassicEditor
-        .create(document.querySelector('#editor'))
-        .then(editor => {
-            myEditor = editor;
-        })
-        .catch(error => {
-            console.error(error);
-        });
+    // ClassicEditor
+    //     .create(document.querySelector('#editor'))
+    //     .then(editor => {
+    //         myEditor = editor;
+    //     })
+    //     .catch(error => {
+    //         console.error(error);
+    //     });
 
     function UP() {
 
-        var form = document.createElement('form');
-        form.setAttribute('method', 'post');
-        form.setAttribute('enctype','multipart/form-data');
-        form.setAttribute('action', '/seller/upProduct');
-        document.charset = "utf-8";
+        console.log('121233');
 
-        console.log(CKEDITOR.instances.content.getData());
+        var form = document.getElementById('testform');
 
-        var hiddennum = document.createElement('input');
-        var hiddenname = document.createElement('input');
-        var hiddenprice = document.createElement('input');
-        var hiddenstock = document.createElement('input');
-        var hiddencategory = document.createElement('input');
-        var hiddendetail = document.createElement('input');
-        hiddennum.setAttribute('type', 'hidden');
-        hiddennum.setAttribute('name', 'product_num');
-        hiddennum.setAttribute('value', document.getElementById('name').value);
-        hiddenname.setAttribute('type', 'hidden');
-        hiddenname.setAttribute('name', 'product_num');
-        hiddenname.setAttribute('value', document.getElementById('price').value);
-        hiddenprice.setAttribute('type', 'hidden');
-        hiddenprice.setAttribute('name', 'product_num');
-        hiddenprice.setAttribute('value', document.getElementById('stock').value);
-        hiddenstock.setAttribute('type', 'hidden');
-        hiddenstock.setAttribute('name', 'product_num');
-        hiddenstock.setAttribute('value', document.getElementById('img').value);
-        hiddencategory.setAttribute('type', 'hidden');
-        hiddencategory.setAttribute('name', 'product_num');
-        hiddencategory.setAttribute('value', document.getElementById('category').value);
-        hiddendetail.setAttribute('type', 'hidden');
-        hiddendetail.setAttribute('name', 'product_num');
-        hiddendetail.setAttribute('value', CKEDITOR.instances.content.getData());
-        form.appendChild(hiddenField);
-        document.body.appendChild(form);
+        var data = CKEDITOR.instances.editor.getData();
+
+        console.log(data);
+
+        var editor = document.createElement('input');
+        editor.setAttribute('type', 'hidden');
+        editor.setAttribute('name', 'editor');
+        editor.setAttribute('value', document.getElementById('editor').value);
+
+        
+        form.appendChild(editor);
+        
         form.submit();
     }
 </script>
