@@ -4,6 +4,8 @@ var router = express.Router();
 const sellerController = require('../controller/sellerController');
 const Seller = new sellerController();
 
+const imageMulterController = require('../controller/imageMulterController');
+
 
 router.get('/', function(req, res, next) {
     res.render('seller');
@@ -13,9 +15,12 @@ router.get('/upProduct', function(req,res){
     res.render('sellers/up_product');
 })
 
-router.post ('/upProduct',function(req,res){
+router.post ('/upProduct',imageMulterController.send, Seller.addProduct,function(req,res){
     console.log(req.body);
-    res.render('sellers/up_product');
+    res.send(`<script type="text/javascript">
+              alert("등록 성공"); 
+                location.href='/seller';
+          </script>`)
 })
 
 router.get('/checkProduct',Seller.getProductList , function(req,res){

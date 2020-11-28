@@ -16,6 +16,7 @@ const upload = multer({
 //Seller.getProductList
 
 class sellerController{
+    
     async getProductList(req, res, next){
         pool.getConnection((err, conn)=>{
             if(err) throw err;
@@ -35,7 +36,30 @@ class sellerController{
     async addProduct(req,res,next){
         pool.getConnection((err,conn)=>{
             if(err) throw err;
+
+            console.log('여긴 호균 컨트롤러 ',req.file);
+
             
+            if(req.file){
+                conn.query('insert into product values(?,?,?,?,?,?,?,?,?)',[
+                    null, 3, req.body.product_name, req.body.product_price, req.body.product_stock, req.body.editor, req.file.filename, req.session.user.company_num, 0
+                ], (err)=>{
+                    if(err) throw err;
+    
+                    conn.release();
+                    next();
+                })
+            }
+            else{
+                conn.query('insert into product values(?,?,?,?,?,?,?,?,?)',[
+                    null, 3, req.body.product_name, req.body.product_price, req.body.product_stock, req.body.editor, 'none', req.session.user.company_num, 0
+                ], (err)=>{
+                    if(err) throw err;
+    
+                    conn.release();
+                    next();
+                })
+            }
         })
     }
 

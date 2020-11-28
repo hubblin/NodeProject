@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mypage</title>
+
+    <link rel='stylesheet' href='/stylesheets/default.css' />
+    <link rel='stylesheet' href='/stylesheets/navstyle.css' />
+    <link rel="stylesheet" href="/stylesheets/mypage/mypage_subnav.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <style>
+        .mypage_body {
+            width: 1500px;
+            height: auto;
+
+            margin: 0 auto;
+            margin-top: 100px;
+
+        }
+
+        #title {
+            display: flex;
+            height: 100px;
+        }
+
+        #title div {
+            color: white;
+        }
+
+        #my_main {
+            text-align: center;
+            line-height: 100px;
+            font-size: 25px;
+            border-right: 1px solid white;
+        }
+
+        #my_order_count {
+            border-right: 1px solid white;
+        }
+
+        .count div {
+            margin: 10px;
+        }
+
+        .count_content {
+            margin: 0 auto;
+        }
+
+        #tbody {
+            display: flex;
+
+        }
+
+        .meue_list {
+            margin: 10px;
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+
+        .meue_list li {
+            margin: 5px;
+            margin-top: 20px;
+            font-size: 15px;
+        }
+
+        .mypage_content {
+            width: 1304px;
+            margin: 0 auto;
+        }
+
+
+        .painting_order_content {
+            margin: 50px;
+            padding: 50px;
+            height: auto;
+            border: 1px solid rgb(216, 216, 216);
+            border-radius: 50px;
+            box-shadow: 2.5px 2.5px 0.2em rgb(216, 216, 216);
+
+        }
+
+        .painting_order_product {
+            margin-bottom: 20px;
+            width: 610px;
+            padding: 30px;
+            height: auto;
+            border: 1px solid rgb(216, 216, 216);
+            border-radius: 25px;
+            box-shadow: 2.5px 2.5px 0.2em rgb(216, 216, 216);
+            display: flex;
+            flex-direction: column;
+        }
+
+        #adr_add_body {
+            margin: 0 auto;
+            width: 610px;
+        }
+
+        .adr_input {
+            margin-bottom: 40px;
+        }
+
+        .adr_input input {
+            width: 500px;
+            height: 30px;
+            font-size: 15px;
+            border: none;
+            border-bottom: solid 1px #ffC000;
+        }
+
+        .adr_input input:focus {
+            outline: none;
+        }
+
+        .adr_input input:focus::placeholder {
+            color: transparent;
+        }
+
+        #find_adr_btn {
+            width: 100px;
+            color: white;
+            font-weight: 800;
+            background-color: #ffC000;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #add_adr_btn {
+            width: 670px;
+            border: none;
+            color: white;
+            font-weight: 800;
+            font-size: large;
+            border-radius: 5px;
+            background-color: #ffC000;
+            height: 50px;
+        }
+
+        .warning_msg {
+            display: none;
+            font-size: 15px;
+            color: red;
+        }
+
+        #select_order_method{
+            text-align: center;
+            margin: 15px;
+            display: flex;
+            flex-direction: row;
+        }
+        #select_order_method #custom_make {
+            flex-basis: 270px;
+            margin-right: 40px;
+            padding-bottom: 5px;
+            border-bottom: 3px solid #ffc000;
+        }
+
+        #select_order_method #painting_make {
+            flex-basis: 270px;
+            padding-bottom: 5px;
+            border-bottom: none;
+        }
+        .reivew_row{
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        #custom_select{
+            display: inline;
+        }
+        #painting_select{
+            display: none;
+        }
+        #review_text{
+            padding: 10px;
+            border-color: #FFC000;
+        }
+        #review_text:focus{
+            outline: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <%- include("../../head/nav",{name:name}) %>
+
+    <div class="mypage_body">
+        <div id="title">
+            <div id="my_main" style="flex-basis: 175px; background-color: #FFBF00;">
+                <span>mypage</span>
+            </div>
+            <div id="my_order_count" class="count" style="flex-basis: 662.5px; background-color: #F7D358;">
+                <div>주문</div>
+                <div class="count_content">
+                    <span style="font-size: 35px;"><%= paintingCount%></span><span>건</span>
+                </div>
+            </div>
+            <div id="my_custom_count" class="count" style="flex-basis: 662.5px; background-color: #F7D358;">
+                <div>커스텀 제작</div>
+                <div class="count_content">
+                    <span style="font-size: 35px;"><%= customCount%></span><span>건</span>
+                </div>
+            </div>
+        </div>
+        <div id="tbody">
+            <div class="mypage_nav" style="flex-basis: 175px; height: 400px; background-color: #F5ECCE;">
+
+                <div class="meue_list">나의 주문
+                    <div>
+                        <ul>
+                            <li><a href="/mypage" id="painting">페인팅 주문 목록</a></li>
+                            <li><a href="/mypage/custom_order" id="custom">커스텀 주문 목록</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="meue_list"> 나의 정보
+                    <div>
+                        <ul>
+                            <li> <a href="/mypage/myCard" id="card">결제카드 정보</a> </li>
+                            <li><a href="/mypage/myAdr" id="adr">배송지 정보</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="meue_list">
+                    <a href="/mypage/reviewList" id="review" style="font-weight: bold; color: #c99700;">내가 작성한 리뷰</a>
+                </div>
+
+                <% if(company){%>
+                    <div class="meue_list">
+                        <a href="">업체메뉴</a>
+                    </div>
+                <%}%>
+
+            </div>
+
+            <div class="mypage_content" style="flex-basis:1304px; height: auto;">
+
+                <form action="/mypage/addReview" method="post" enctype="multipart/form-data">
+
+                <div id="adr_add_body">
+                    <h1 style="margin: 20px;">리뷰 추가</h1>
+                    
+
+                    <div class="painting_order_product">
+
+                        <div id="select_order_method">
+                            <div id="custom_make">커스텀 제작</div>
+                            <div id="painting_make">페인팅 제작</div>
+                        </div>
+
+                        <div class="reivew_row">상품
+                            <select name="custom" id="custom_select">
+                                <option value="0" selected>선택안함</option>
+                                <% for(var i =0; i<custom_list.length; i++){%>
+                                    <option value="<%= custom_list[i].c_product_num%>"><%= custom_list[i].c_product_name%></option>
+                                <%}%>
+                                
+                            </select>
+                            <select name="painting" id="painting_select">
+                                <option value="0" selected>선택안함</option>
+                                <% for(var i =0; i<product_list.length; i++){%>
+                                    <option value="<%= product_list[i].product_num%>"><%= product_list[i].product_name%></option>
+                                <%}%>
+                                
+                            </select>
+                        </div>
+
+                        <div class="reivew_row">점수
+                            <select name="give_score" id="">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+
+                        <div class="adr_input">
+                            
+                            <textarea name="review_text" id="review_text" cols="75" rows="5" placeholder="리뷰내용을 적어주세요" style="resize: none;"></textarea>
+                            <br>
+                            <span class="warning_msg" id="warning_card_name">리뷰를 입력하세요</span>
+                        </div>
+
+                       <div class="reivew_row">
+                            <input type="file" id="card_name" name="review_img">
+                            <br>
+                        </div>
+
+                    </div>
+                    <input type="submit" id="add_adr_btn" value="리뷰 작성 완료" >
+                </div>
+                
+            </form>
+
+            </div>
+
+
+
+
+
+
+        </div>
+    </div>
+
+    <script>
+       $('#custom_make').click((e)=>{
+        $('#custom_make').css({
+            "border-bottom":"3px solid #ffc000"
+        })
+
+        $('#painting_make').css({
+            "border-bottom":"none"
+        })
+
+        $('#custom_select').css({
+            "display":"inline"
+        })
+
+        $('#painting_select').css({
+            "display":"none"
+        })
+
+       })
+
+       $('#painting_make').click((e)=>{
+        $('#custom_make').css({
+            "border-bottom":"none"
+        })
+
+        $('#painting_make').css({
+            "border-bottom":"3px solid #ffc000"
+        })
+
+        $('#custom_select').css({
+            "display":"none"
+        })
+
+        $('#painting_select').css({
+            "display":"inline"
+        })
+       })
+    </script>
+
+
+
+</body>
+
+</html>
+
+<script type="text/javascript">
+    function setsub() {
+        var sublnb = document.getElementById("sublnb");
+        sublnb.style.display = "block";
+        sublnb.style.opacity = "1";
+        sublnb.style.visibility = "visible";
+    }
+
+    function outsub() {
+        var sublnb = document.getElementById("sublnb");
+        sublnb.style.display = "none"
+        sublnb.style.opacity = "0";
+        sublnb.style.visibility = "hidden";
+    }
+
+    function lsub() {
+        var looksub = document.getElementById("sublnb");
+        sublnb.style.display = "block";
+        sublnb.style.opacity = "1";
+        sublnb.style.visibility = "visible";
+    }
+
+    function loutsub() {
+        var looksub = document.getElementById("sublnb");
+        sublnb.style.display = "none";
+        sublnb.style.opacity = "0";
+        sublnb.style.visibility = "hidden";
+    }
+
+    function setsub2() {
+        var sublnb2 = document.getElementById("sublnb2");
+        sublnb2.style.display = "block";
+        sublnb2.style.opacity = "1";
+        sublnb2.style.visibility = "visible";
+    }
+
+    function outsub2() {
+        var sublnb2 = document.getElementById("sublnb2");
+        sublnb2.style.display = "none";
+        sublnb2.style.opacity = "0";
+        sublnb2.style.visibility = "hidden";
+    }
+
+    function lsub2() {
+        var sublnb2 = document.getElementById("sublnb2");
+        sublnb2.style.display = "block";
+        sublnb2.style.opacity = "1";
+        sublnb2.style.visibility = "visible";
+    }
+
+    function loutsub2() {
+        var sublnb2 = document.getElementById("sublnb2");
+        sublnb2.style.display = "none";
+        sublnb2.style.opacity = "0";
+        sublnb2.style.visibility = "hidden";
+    }
+</script>
