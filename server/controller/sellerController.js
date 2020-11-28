@@ -16,6 +16,47 @@ const upload = multer({
 //Seller.getProductList
 
 class sellerController{
+
+    // 카테고리 정보 가져오기
+    async getCategoryInfo(req, res, next){
+        pool.getConnection((err, conn)=>{
+            conn.query('select * from category',(err, category_info)=>{
+                if(err) throw err;
+                
+                req.category_info = category_info;
+                conn.release();
+                next();
+            })
+        })
+    }
+
+    // 카테고리 상세 정보 가져오기
+    async getCategoryDetail(req, res, next){
+        pool.getConnection((err, conn)=>{
+            conn.query('select * from category_detail_list where cate_category_num =?',[
+                req.body.category_num
+            ], (err, cateDetail)=>{
+                if(err) throw err;
+
+                req.cateDetail = cateDetail;
+                conn.release();
+                next();
+            })
+        })
+    }
+    async getDetailDetailCategoryInfo(req, res, next){
+        pool.getConnection((err, conn)=>{
+            conn.query('select * from cate_detail_detail_list where fk_detail_list_num = ?',[
+                req.body.cate_category_num
+            ], (err, detail_detail)=>{
+                if(err) throw err;
+
+                req.detail_detail = detail_detail;
+                conn.release();
+                next();
+            })
+        })
+    }
     
     async getProductList(req, res, next){
         pool.getConnection((err, conn)=>{
@@ -41,8 +82,8 @@ class sellerController{
 
             
             if(req.file){
-                conn.query('insert into product values(?,?,?,?,?,?,?,?,?)',[
-                    null, 3, req.body.product_name, req.body.product_price, req.body.product_stock, req.body.editor, req.file.filename, req.session.user.company_num, 0
+                conn.query('insert into product values(?,?,?,?,?,?,?,?,?,?,?)',[
+                    null, req.body.category, req.body.category_detail, req.body.category_detail_detail, req.body.product_name, req.body.product_price, req.body.product_stock, req.body.editor, req.file.filename, req.session.user.company_num, 0
                 ], (err)=>{
                     if(err) throw err;
     
@@ -51,8 +92,8 @@ class sellerController{
                 })
             }
             else{
-                conn.query('insert into product values(?,?,?,?,?,?,?,?,?)',[
-                    null, 3, req.body.product_name, req.body.product_price, req.body.product_stock, req.body.editor, 'none', req.session.user.company_num, 0
+                conn.query('insert into product values(?,?,?,?,?,?,?,?,?,?,?)',[
+                    null,req.body.category, req.body.category_detail, req.body.category_detail_detail, req.body.product_name, req.body.product_price, req.body.product_stock, req.body.editor, 'none', req.session.user.company_num, 0
                 ], (err)=>{
                     if(err) throw err;
     

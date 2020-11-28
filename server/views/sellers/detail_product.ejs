@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='/stylesheets/sidenav.css' />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
     <title>Document</title>
     <style>
         .product_con{
@@ -249,9 +251,21 @@
                                 </div>
                             </div>
                             <div style="margin-top: 20px; font-weight: bolder;">상세 내용</div>
-                            <div class="detail_content_of_product">
-                                <%= pd[0].product_detail %>
+                            <div class="detail_content_of_product" id="product_detail_content">
+                                <!-- <%= pd[0].product_detail %> -->
+                                
                             </div>
+                            <script>
+
+                                function htmlDecode(input) {
+                                    var doc = new DOMParser().parseFromString(input, "text/html");
+                                    return doc.documentElement.textContent;
+                                }
+                                
+                                var product_detail_content = document.getElementById("product_detail_content");
+
+                                product_detail_content.innerHTML = htmlDecode(`<%= pd[0].product_detail %>`);
+                            </script>
                         </div>
                     </div>
                 </div>
