@@ -11,8 +11,8 @@ router.get('/', function(req, res, next) {
     res.render('seller');
 });
 
-router.get('/upProduct', function(req,res){
-    res.render('sellers/up_product');
+router.get('/upProduct',Seller.getCategoryInfo, function(req,res){
+    res.render('sellers/up_product', {category:req.category_info});
 })
 
 router.post ('/upProduct',imageMulterController.send, Seller.addProduct,function(req,res){
@@ -21,6 +21,15 @@ router.post ('/upProduct',imageMulterController.send, Seller.addProduct,function
               alert("등록 성공"); 
                 location.href='/seller';
           </script>`)
+})
+
+// 카테고리 상세 리스트 들고오기
+router.post('/selectCategoryDetail', Seller.getCategoryDetail,function(req, res, next){
+    res.json(req.cateDetail);
+
+})
+router.post('/more_detail_category', Seller.getDetailDetailCategoryInfo, function(req, res, next){
+    res.json(req.detail_detail);
 })
 
 router.get('/checkProduct',Seller.getProductList , function(req,res){
