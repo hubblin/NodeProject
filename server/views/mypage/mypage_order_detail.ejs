@@ -155,9 +155,9 @@
                 </div>
             </div>
             <div id="my_custom_count" class="count" style="flex-basis: 662.5px; background-color: #F7D358;">
-                <div>커스텀 제작</div>
+                <div></div>
                 <div class="count_content">
-                    <span style="font-size: 35px;"><%= customCount%></span><span>건</span>
+                    <span style="font-size: 35px;"></span><span></span>
                 </div>
             </div>
         </div>
@@ -169,7 +169,7 @@
                         <ul>
                             <li style="font-weight: bold;"><a href="/mypage" id="painting" style=" color: #c99700; ">페인팅
                                     주문 목록</a></li>
-                            <li><a href="/mypage/custom_order" id="custom">커스텀 주문 목록</a></li>
+                            
                         </ul>
                     </div>
 
@@ -205,7 +205,11 @@
 
                     <div class="painting_order_product">
                         <div id="img" style="flex-basis: 250px;">
-                            페인팅 이미지
+                            <% if( orderDetail[0].order_paint_img != 'none'){ %>
+                                <img src="<%= orderDetail[0].order_paint_img%>" alt=""  height="150">
+                            <%}else{%>
+                                이미지 없음
+                            <%}%>
                         </div>
                         <div id="info"
                             style="flex-basis: 300px; display: flex; flex-direction: column; margin: auto 10px auto 0px">

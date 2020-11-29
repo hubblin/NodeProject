@@ -52,8 +52,15 @@ class OrderController {
                 req.body.order_paint_img, req.body.order_product_num
             ],(err, row)=>{
                 if(err) throw err;
-                conn.release();
-                next();
+                
+                conn.query('update product set product_stock = product_stock - ? where product_num = ?',[
+                    req.body.order_product_count, req.body.order_product_num
+                ], (err)=>{
+                    if(err) throw err;
+
+                    conn.release();
+                    next();
+                })
             })
         })
     }
