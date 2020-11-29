@@ -40,10 +40,11 @@
             <%- include("./head/sidenavclothes")%>
         </div>
         <div class="product_main">
-            <a href="/order">
+            <% for(var j=0; j<clothProduct.length; j++){%>
+            <a href="/order/<%= clothProduct[j].product_num %>">
                 <div class="cards">
                     <div class="img-size">
-                        <img src="../../images/main_page/스폰지.jpg">
+                        <img src="../../images/products/<%= clothProduct[j].product_img_path %>">
                         <div class="pop_btn">
                             <div class="cards_btn">go to create</div>
                             <div class="bar"></div>
@@ -52,96 +53,12 @@
                     </div>
 
                     <div class="container">
-                        <p class="title">민무늬 파우치</p>
-                        <p class="price">15,000~</p>
+                        <p class="title"><%= clothProduct[j].product_name %></p>
+                        <p class="price"><%= clothProduct[j].product_price %></p>
                     </div>
                 </div>
             </a>
-            <a href="#a">
-                <div class="cards">
-                    <div class="img-size">
-                        <img src="../images/main_page/스폰지.jpg">
-                        <div class="pop_btn">
-                            <div class="cards_btn">go to create</div>
-                            <div class="bar"></div>
-                            <div class="rot_bar"></div>
-                        </div>
-                    </div>
-
-                    <div class="container">
-                        <p class="title">민무늬 파우치</p>
-                        <p class="price">15,000~</p>
-                    </div>
-                </div>
-            </a>
-            <a href="#a">
-                <div class="cards">
-                    <div class="img-size">
-                        <img src="../images/main_page/스폰지.jpg">
-                        <div class="pop_btn">
-                            <div class="cards_btn">go to create</div>
-                            <div class="bar"></div>
-                            <div class="rot_bar"></div>
-                        </div>
-                    </div>
-
-                    <div class="container">
-                        <p class="title">민무늬 파우치</p>
-                        <p class="price">15,000~</p>
-                    </div>
-                </div>
-            </a>
-            <a href="#a">
-                <div class="cards">
-                    <div class="img-size">
-                        <img src="../images/main_page/스폰지.jpg">
-                        <div class="pop_btn">
-                            <div class="cards_btn">go to create</div>
-                            <div class="bar"></div>
-                            <div class="rot_bar"></div>
-                        </div>
-                    </div>
-
-                    <div class="container">
-                        <p class="title">민무늬 파우치</p>
-                        <p class="price">15,000~</p>
-                    </div>
-                </div>
-            </a>
-            <a href="#a">
-                <div class="cards">
-                    <div class="img-size">
-                        <img src="../images/main_page/스폰지.jpg">
-                        <div class="pop_btn">
-                            <div class="cards_btn">go to create</div>
-                            <div class="bar"></div>
-                            <div class="rot_bar"></div>
-                        </div>
-                    </div>
-
-                    <div class="container">
-                        <p class="title">민무늬 파우치</p>
-                        <p class="price">15,000~</p>
-                    </div>
-                </div>
-            </a>
-            <a href="#a">
-                <div class="cards">
-                    <div class="img-size">
-                        <img src="../images/main_page/스폰지.jpg">
-                        <div class="pop_btn">
-                            <div class="cards_btn">go to create</div>
-                            <div class="bar"></div>
-                            <div class="rot_bar"></div>
-                        </div>
-                    </div>
-
-                    <div class="container">
-                        <p class="title">민무늬 파우치</p>
-                        <p class="price">15,000~</p>
-                    </div>
-                </div>
-            </a>
+            <% } %>
         </div>
     </div>
 </body>

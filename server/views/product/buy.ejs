@@ -83,7 +83,7 @@
 
     <div class="last_image">
         <!--이부분 제품마다 다르게 수정 필요-->
-        <img class="pruduct_img" src="../../images/products/아이폰케이스.png">
+        <img class="pruduct_img" src="../../images/products/<%= spd[0].product_img_path %>">
         <div class="canvas_div">
             <canvas class="can" id="c" width="250px" height="280px"></canvas>
         </div>
@@ -203,8 +203,9 @@
                     <div class="order_man_position">
                         <h3>결제 카드</h3>
                         <select name="" id="select_card" onchange="changeCardInfo()">
-                            <% for(var i =0; i<user_card.length; i++){%> <option value="<%= i%>" <% if(i == 0){%>
-                                selected <%}%>>카드이름: <%= user_card[i].card_name%></option> <%}%>
+                            <% for(var i =0; i<user_card.length; i++){%>
+                            <option value="<%= i%>" <% if(i == 0){%> selected
+                                <%}%>>카드이름: <%= user_card[i].card_name%></option> <%}%>
                         </select>
                     </div>
                 </div>
@@ -232,16 +233,20 @@
 
     <div class="pay_button_area">
         <div class="pay_button">
-            <a href="/order/finish">결제하기</a>
+            <a onclick="payMoney()"\>결제하기</a>
         </div>
     </div>
     
+
+    <script>
+
+    </script>
 
 
     <script>
 
         // 페이지 로드 될때 값 미리 띄어 놓기
-        function select_box_change(){
+        function select_box_change() {
             var select_card = document.getElementById("select_card");
 
             var selected_card = select_card.options[select_card.selectedIndex].value;
@@ -254,17 +259,17 @@
             var card_arr1 = []
             var card_arr2 = []
             var card_arr3 = []
-            
 
-            "<% for(var j of user_card){%>" 
-                card_arr1.push("<%= j.card_num%>") 
-                card_arr2.push("<%= j.card_CVC%>")
-                card_arr3.push("<%= j.card_date%>") 
+
+            "<% for(var j of user_card){%>"
+            card_arr1.push("<%= j.card_num%>")
+            card_arr2.push("<%= j.card_CVC%>")
+            card_arr3.push("<%= j.card_date%>")
             "<%}%>"
 
-            card_num.innerHTML=card_arr1[selected_card]
-            card_CVC.innerHTML=card_arr2[selected_card]
-            card_date.innerHTML=card_arr3[selected_card]
+            card_num.innerHTML = card_arr1[selected_card]
+            card_CVC.innerHTML = card_arr2[selected_card]
+            card_date.innerHTML = card_arr3[selected_card]
 
             var user_name = document.getElementById('get_user_name');
             var user_phone = document.getElementById("get_user_phone");
@@ -276,7 +281,7 @@
 
             var select_address = select.options[select.selectedIndex].value;
 
-           
+
 
             var adr_arr1 = []
             var adr_arr2 = []
@@ -284,26 +289,26 @@
             var adr_arr4 = []
             var adr_arr5 = []
 
-            "<% for(var j of user_address){%>" 
-                adr_arr1.push("<%= j.adr_get_user_name%>")
-                adr_arr2.push("<%= j.adr_user_phone%>") 
-                adr_arr3.push("<%= j.adr_post_num%>")
-                adr_arr4.push("<%= j.adr_main%>") 
-                adr_arr5.push("<%= j.adr_detail%>") 
+            "<% for(var j of user_address){%>"
+            adr_arr1.push("<%= j.adr_get_user_name%>")
+            adr_arr2.push("<%= j.adr_user_phone%>")
+            adr_arr3.push("<%= j.adr_post_num%>")
+            adr_arr4.push("<%= j.adr_main%>")
+            adr_arr5.push("<%= j.adr_detail%>")
             "<%}%>"
 
-            
 
-            user_name.innerHTML=adr_arr1[select_address]
-            user_phone.innerHTML=adr_arr2[select_address]
-            post_num.innerHTML=adr_arr3[select_address]
-            address_main.innerHTML=adr_arr4[select_address]
-            address_detail.innerHTML=adr_arr5[select_address]
+
+            user_name.innerHTML = adr_arr1[select_address]
+            user_phone.innerHTML = adr_arr2[select_address]
+            post_num.innerHTML = adr_arr3[select_address]
+            address_main.innerHTML = adr_arr4[select_address]
+            address_detail.innerHTML = adr_arr5[select_address]
 
         }
 
-         // select 카드 정보 바꾸는거
-        function changeCardInfo(){
+        // select 카드 정보 바꾸는거
+        function changeCardInfo() {
             var select_card = document.getElementById("select_card");
 
             var selected_card = select_card.options[select_card.selectedIndex].value;
@@ -317,21 +322,21 @@
             var card_arr2 = []
             var card_arr3 = []
 
-            "<% for(var j of user_card){%>" 
-            card_arr1.push("<%= j.card_num%>") 
+            "<% for(var j of user_card){%>"
+            card_arr1.push("<%= j.card_num%>")
             card_arr2.push("<%= j.card_CVC%>")
-                                
-            card_arr3.push("<%= j.card_date%>") 
-                                "<%}%>"
 
-            card_num.innerHTML=card_arr1[selected_card]
-            card_CVC.innerHTML=card_arr2[selected_card]
-            card_date.innerHTML=card_arr3[selected_card]
+            card_arr3.push("<%= j.card_date%>")
+            "<%}%>"
+
+            card_num.innerHTML = card_arr1[selected_card]
+            card_CVC.innerHTML = card_arr2[selected_card]
+            card_date.innerHTML = card_arr3[selected_card]
         }
 
 
         // select 배송지 정보 바꾸는거
-        function changeAddressInfo(){
+        function changeAddressInfo() {
             var user_name = document.getElementById('get_user_name');
             var user_phone = document.getElementById("get_user_phone");
             var post_num = document.getElementById("get_user_post_num");
@@ -342,7 +347,7 @@
 
             var select_address = select.options[select.selectedIndex].value;
 
-           
+
 
             var adr_arr1 = []
             var adr_arr2 = []
@@ -350,21 +355,21 @@
             var adr_arr4 = []
             var adr_arr5 = []
 
-            "<% for(var j of user_address){%>" 
+            "<% for(var j of user_address){%>"
             adr_arr1.push("<%= j.adr_get_user_name%>")
-                                adr_arr2.push("<%= j.adr_user_phone%>") 
-                                adr_arr3.push("<%= j.adr_post_num%>")
-                                adr_arr4.push("<%= j.adr_main%>") 
-                                adr_arr5.push("<%= j.adr_detail%>") 
-                                "<%}%>"
+            adr_arr2.push("<%= j.adr_user_phone%>")
+            adr_arr3.push("<%= j.adr_post_num%>")
+            adr_arr4.push("<%= j.adr_main%>")
+            adr_arr5.push("<%= j.adr_detail%>")
+            "<%}%>"
 
-            
 
-            user_name.innerHTML=adr_arr1[select_address]
-            user_phone.innerHTML=adr_arr2[select_address]
-            post_num.innerHTML=adr_arr3[select_address]
-            address_main.innerHTML=adr_arr4[select_address]
-            address_detail.innerHTML=adr_arr5[select_address]
+
+            user_name.innerHTML = adr_arr1[select_address]
+            user_phone.innerHTML = adr_arr2[select_address]
+            post_num.innerHTML = adr_arr3[select_address]
+            address_main.innerHTML = adr_arr4[select_address]
+            address_detail.innerHTML = adr_arr5[select_address]
         }
     </script>
 </body>
@@ -375,7 +380,7 @@
 <script>
     var canvas = new fabric.Canvas('c');
     const canvCenter = canvas.getCenter();
-    fabric.Image.fromURL('<%= imageurl %>', function(img){
+    fabric.Image.fromURL('<%= imageurl %>', function (img) {
         img.set({
             left: canvCenter.left,
             top: canvCenter.top,
@@ -387,5 +392,81 @@
         canvas.add(img);
     });
 
-    
+    function payMoney() {
+        var form = document.createElement('form');
+        form.setAttribute('method', 'post');
+        form.setAttribute('action', '/order/order_buy');
+        document.charset = "utf-8";
+
+        var hiddenField2 = document.createElement('input');
+        var hiddenField4 = document.createElement('input');
+        var hiddenField5 = document.createElement('input');
+        var hiddenField6 = document.createElement('input');
+        var hiddenField7 = document.createElement('input');
+        var hiddenField8 = document.createElement('input');
+        var hiddenField9 = document.createElement('input');
+        var hiddenField10 = document.createElement('input');
+        var hiddenField11 = document.createElement('input');
+        var hiddenField12 = document.createElement('input');
+        var hiddenField13 = document.createElement('input');
+        var hiddenField14 = document.createElement('input');
+        var hiddenField15 = document.createElement('input');
+
+
+        hiddenField2.setAttribute('type', 'hidden');
+        hiddenField2.setAttribute('name', 'order_state');
+        hiddenField2.setAttribute('value','상품준비중')
+        hiddenField4.setAttribute('type', 'hidden');
+        hiddenField4.setAttribute('name', 'order_money');
+        hiddenField4.setAttribute('value',document.getElementById('total_pay').innerText)
+        hiddenField5.setAttribute('type', 'hidden');
+        hiddenField5.setAttribute('name', 'order_card_num');
+        hiddenField5.setAttribute('value',document.getElementById('user_card_num').innerText)
+        hiddenField6.setAttribute('type', 'hidden');
+        hiddenField6.setAttribute('name', 'order_card_date');
+        hiddenField6.setAttribute('value',document.getElementById('user_card_date').innerText)
+        hiddenField7.setAttribute('type', 'hidden');
+        hiddenField7.setAttribute('name', 'order_card_CVC');
+        hiddenField7.setAttribute('value',document.getElementById('user_card_CVC').innerText)
+        hiddenField8.setAttribute('type', 'hidden');
+        hiddenField8.setAttribute('name', 'order_post_num');
+        hiddenField8.setAttribute('value',document.getElementById('get_user_post_num').innerText)
+        hiddenField9.setAttribute('type', 'hidden');
+        hiddenField9.setAttribute('name', 'order_post_main');
+        hiddenField9.setAttribute('value',document.getElementById('get_main_address').innerText)
+        hiddenField10.setAttribute('type', 'hidden');
+        hiddenField10.setAttribute('name', 'order_post_detail');
+        hiddenField10.setAttribute('value',document.getElementById('get_detail_address').innerText)
+        hiddenField11.setAttribute('type', 'hidden');
+        hiddenField11.setAttribute('name', 'order_get_user_name');
+        hiddenField11.setAttribute('value',document.getElementById('get_user_name').innerText)
+        hiddenField12.setAttribute('type', 'hidden');
+        hiddenField12.setAttribute('name', 'order_user_phone');
+        hiddenField12.setAttribute('value',document.getElementById('get_user_phone').innerText)
+        hiddenField13.setAttribute('type', 'hidden');
+        hiddenField13.setAttribute('name', 'order_product_count');
+        hiddenField13.setAttribute('value',document.getElementById('number').value)
+        hiddenField14.setAttribute('type', 'hidden');
+        hiddenField14.setAttribute('name', 'order_paint_img');
+        hiddenField14.setAttribute('value', canvas.toDataURL());
+        hiddenField15.setAttribute('type', 'hidden');
+        hiddenField15.setAttribute('name', 'order_product_num');
+        hiddenField15.setAttribute('value',`<%= spd[0].product_num %>`)
+        form.appendChild(hiddenField2);
+        form.appendChild(hiddenField4);
+        form.appendChild(hiddenField5);
+        form.appendChild(hiddenField6);
+        form.appendChild(hiddenField7);
+        form.appendChild(hiddenField8);
+        form.appendChild(hiddenField9);
+        form.appendChild(hiddenField10);
+        form.appendChild(hiddenField11);
+        form.appendChild(hiddenField12);
+        form.appendChild(hiddenField13);
+        form.appendChild(hiddenField14);
+        form.appendChild(hiddenField15);
+
+        document.body.appendChild(form);
+        form.submit();
+    }
 </script>

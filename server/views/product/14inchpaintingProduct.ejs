@@ -37,14 +37,36 @@
     <%- include("../head/nav",{name:name}) %>
     <div class="product_contents">
         <div class="product_nav">
-            <%- include("./head/sidenavcase")%>
+            <div class="menu">
+                <div style="font-size: 25px; font-weight: bold;">파우치</div>
+                <li class="menu-item">
+                    <div class="btn">
+                        노트북 파우치
+                        <button id="dropdown_btn" onclick="slidedown()"><img src="/images/font/down.png"/></button>
+                    </div>
+                    <div class="menu-item__sub" id="sub_drop">
+                        <a  href="/product/15inchpainting">15인치</a>
+                        <a class="thisPage" href="/product/14inchpainting">14인치</a>
+                    </div>
+                </li>
+                <li class="menu-item">
+                    <div class="btn">
+                        테블릿 파우치
+                        <button id="dropdown_btn2" onclick="slidedown2()"><img src="/images/font/down.png"/></button>
+                    </div>
+                    <div class="menu-item__sub" id="sub_drop2">
+                        <a href="/product/11inchpainting">11인치</a>
+                        <a href="/product/10inchpainting">10인치</a>
+                    </div>
+                </li>
+            </div>
         </div>
         <div class="product_main">
-            <% for(var j=0; j<caseProduct.length; j++){%>
-            <a href="/order/<%= caseProduct[j].product_num %>">
+            <% for(var j=0; j<bagProduct.length; j++){%>
+            <a href="/order/<%= bagProduct[j].product_num %>">
                 <div class="cards">
                     <div class="img-size">
-                        <img src="../../images/products/<%= caseProduct[j].product_img_path %>">
+                        <img src="../../images/products/<%= bagProduct[j].product_img_path %>">
                         <div class="pop_btn">
                             <div class="cards_btn">go to create</div>
                             <div class="bar"></div>
@@ -53,8 +75,8 @@
                     </div>
 
                     <div class="container">
-                        <p class="title"><%= caseProduct[j].product_name %></p>
-                        <p class="price"><%= caseProduct[j].product_price %></p>
+                        <p class="title"><%= bagProduct[j].product_name %></p>
+                        <p class="price"><%= bagProduct[j].product_price %></p>
                     </div>
                 </div>
             </a>
@@ -64,6 +86,32 @@
 </body>
 
 </html>
+
+<script type="text/javascript">
+    var dropdown =  document.getElementById("dropdown_btn");
+    var dropdown2 = document.getElementById("dropdown_btn2");
+    var drop = document.getElementById('sub_drop');
+    var drop2 = document.getElementById('sub_drop2');
+    function slidedown(){
+        if(drop.classList[1]=='sub_drop'){
+            drop.classList.remove('sub_drop');
+            dropdown.classList.remove('rotate');
+        }else{
+            drop.classList.add('sub_drop');
+            dropdown.classList.add('rotate');
+        }
+    }
+    function slidedown2(){
+        if(drop2.classList[1]=='sub_drop2'){
+            drop2.classList.remove('sub_drop2');
+            dropdown2.classList.remove('rotate2');
+        }else{
+            drop2.classList.add('sub_drop2');
+            dropdown2.classList.add('rotate2');
+        }
+    }
+
+</script>
 
 
 <script type="text/javascript">
