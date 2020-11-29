@@ -14,15 +14,24 @@ router.get('/', function(req, res) {
     }
 });
 
+
+router.get('/:product_num',Order.getOrder,function(req,res){
+    if(req.session.user){
+        res.render('product/order',{name:req.session.user.name, spd: req.spd});
+    }
+    else{
+        res.render('product/order',{name:false, spd:req.spd});
+    }
+})
+
 //여기 거쳐서
 router.post('/temp_buy', function(req,res){
     // req.session.imageurl = req.body.imageurl;
     // res.redirect('/order/buy');
-
     if(req.session.user){
         console.log('로그인 함');
         req.session.imageurl = req.body.imageurl;
-        res.redirect('/order/buy');
+        res.redirect('/order/buy/'+req.body.product);
     }
     else{
         console.log('로그인 안함');
@@ -34,9 +43,9 @@ router.post('/temp_buy', function(req,res){
 })
 
 //여기로 온다
-router.get('/buy', Order.getAddress_cardInfo,function(req,res){
+router.get('/buy/:product_num',Order.getOrder, Order.getAddress_cardInfo,function(req,res){
     if(req.session.user){
-        res.render('product/buy',{name:req.session.user.name, imageurl : req.session.imageurl, phone:req.session.user.phone, user_address:req.user_address, user_card:req.user_card});
+        res.render('product/buy',{name:req.session.user.name, imageurl : req.session.imageurl, phone:req.session.user.phone, user_address:req.user_address, user_card:req.user_card, spd: req.spd});
     }
     else{
         res.send(`<script type="text/javascript">
@@ -46,6 +55,9 @@ router.get('/buy', Order.getAddress_cardInfo,function(req,res){
     }
 
 })
+
+
+
 
 router.post('/order_buy', function(req, res, next){
     console.log('주문성공');

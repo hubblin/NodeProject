@@ -41,7 +41,7 @@
         </div>
         <div class="product_main">
             <% for(var j=0; j<clothProduct.length; j++){%>
-            <a href="/order">
+            <a href="/order/<%= clothProduct[j].product_num %>">
                 <div class="cards">
                     <div class="img-size">
                         <img src="../../images/products/<%= clothProduct[j].product_img_path %>">
