@@ -17,10 +17,82 @@ const upload = multer({
 
 class sellerController{
 
+    // 확인안한 새로운 주문 목록 가져오기
+    async getNewOrderList(req, res, next){
+        pool.getConnection((err ,conn)=>{
+            if(err) throw err;
+
+            conn.query('select * from product_order, product where order_product_num in (select product_num from product where product_company_num = ?) and order_state = ? and product_order.order_product_num = product.product_num order by product_order.order_date desc',[
+                req.session.user.company_num, '주문완료'
+            ], (err, newOrderList)=>{
+                if(err) throw err;
+
+                req.newOrderList = newOrderList;
+                conn.release();
+                next();
+            })
+        })
+    }
+
+    // 업체 자신에게 들어온 주문 목록 전부 가져오기 최근 순서대로 정렬
+    async getOrderListCompany(req, res, next){
+        pool.getConnection((err, conn)=>{
+            if(err) throw err;
+
+            conn.query('select * from product_order, product where order_product_num in (select product_num from product where product_company_num = ?) and product_order.order_product_num = product.product_num order by product_order.order_date desc',[
+                req.session.user.company_num
+            ],
+            (err, company_orderList)=>{
+                if(err) throw err;
+
+                req.company_orderList = company_orderList;
+
+                conn.release();
+                next();
+            })
+        })
+    }
+
+    // 주문 확인하는거
+    async updateOrderCheck(req, res, next){
+        pool.getConnection((err, conn)=>{
+            if(err) throw err;
+
+            conn.query('update product_order set order_state = ? where order_num = ?',[
+                 '상품준비중',req.body.orderNum
+            ], (err)=>{
+                if(err) throw err;
+                
+                req.checkResult = 'ok'
+                conn.release();
+                next();
+            })
+        })
+    }
+
+    // 상세주문 정보 가져오기
+    async getDetailOrder(req, res, next){
+        pool.getConnection((err, conn)=>{
+            if(err) throw err;
+
+            conn.query('select * from product_order, product where order_num = ? and product_order.order_product_num = product.product_num',[
+                req.params.orderNum
+            ], (err, order_detail_com)=>{
+                if(err) throw err;
+
+                req.order_detail_com = order_detail_com;
+                conn.release();
+                next();
+            })
+        })
+    }
+
     // 카테고리 정보 가져오기
     async getCategoryInfo(req, res, next){
         pool.getConnection((err, conn)=>{
-            conn.query('select * from category',(err, category_info)=>{
+            conn.query('select * from category where custom_YN = ?',[
+                'N'
+            ],(err, category_info)=>{
                 if(err) throw err;
                 
                 req.category_info = category_info;
@@ -52,6 +124,21 @@ class sellerController{
                 if(err) throw err;
 
                 req.detail_detail = detail_detail;
+                conn.release();
+                next();
+            })
+        })
+    }
+
+    // 주문상태변경
+    async updateOrderState(req, res, next){
+        pool.getConnection((err, conn)=>{
+            conn.query('update product_order set order_state = ? where order_num = ?',[
+                req.body.state, req.body.orderNum
+            ], (err)=>{
+                if(err) throw err;
+
+                req.updateOrderState = 'ok';
                 conn.release();
                 next();
             })

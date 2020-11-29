@@ -76,6 +76,38 @@
             font-size: 20px;
             height: 25px;
         }
+        
+        #all_order_list_table{
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+        th, td {
+            padding: 5px;
+            text-align: left;
+            
+        }
+
+        td{
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        #all_order_list_table thead{
+            border: 3px solid #ffc000;
+            font-weight: bold;
+        }
+        
+        tbody tr:nth-child(even)  { background-color: rgb(236, 236, 236); }
+        #all_order_list_table tbody tr{
+            cursor: pointer;
+        }
+        #all_order_list_table tbody tr:hover {
+            background: #ddd;
+        
+        }
     </style>
 </head>
 <body>
@@ -104,8 +136,8 @@
                             <button id="dropdown_btn2" onclick="slidedown2()"><img src="/images/font/down.png"/></button>
                         </div>
                         <div class="menu-item__sub" id="sub_drop2">
-                            <a class="thisPage" href="/seller/order_check_product">주문 확인</a>
-                            <a href="/seller/order_product">주문 상태</a>
+                            <a href="/seller/order_check_product">주문목록</a>
+                            <!-- <a href="/seller/order_product">주문 상태</a> -->
                         </div>
                     </li>
                     <li class="menu-item">
@@ -146,7 +178,27 @@
             <div class="product_main">
                 <div class="content_title">주문 확인<div></div></div>
                 <div class="check_new_order">
-
+                    <table id="all_order_list_table">
+                        <thead>
+                            <td>주문번호</td>
+                            <td>주문일자</td>
+                            <td>주문자</td>
+                            <td>제품이름</td>
+                            <td>주문상태</td>
+                        </thead>
+                       
+                        <tbody>
+                            <% for(var data of orderList){%>
+                                <tr onclick="location.href='/seller/order_product/<%= data.order_num %>'">
+                                    <td><%= data.order_num%></td>
+                                    <td><%= data.order_date%></td>
+                                    <td><%= data.order_user_id%></td>
+                                    <td><%= data.product_name%></td>
+                                    <td><%= data.order_state%></td>
+                                </tr>
+                            <%}%>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

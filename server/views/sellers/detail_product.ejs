@@ -173,8 +173,8 @@
                             <button id="dropdown_btn2" onclick="slidedown2()"><img src="/images/font/down.png"/></button>
                         </div>
                         <div class="menu-item__sub" id="sub_drop2">
-                            <a href="/seller/order_check_product">주문 확인</a>
-                            <a href="/seller/order_product">주문 상태</a>
+                            <a href="/seller/order_check_product">주문목록</a>
+                            <!-- <a href="/seller/order_product">주문 상태</a> -->
                         </div>
                     </li>
                     <li class="menu-item">
@@ -247,6 +247,7 @@
                                                 <p style="float: left;"><%= pd[0].product_stock %></p>
                                             </div>
                                         </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -255,6 +256,9 @@
                                 <!-- <%= pd[0].product_detail %> -->
                                 
                             </div>
+
+                            <br>
+
                             <script>
 
                                 function htmlDecode(input) {

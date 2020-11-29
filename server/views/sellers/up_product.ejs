@@ -292,8 +292,8 @@
                                     src="/images/font/down.png" /></button>
                         </div>
                         <div class="menu-item__sub" id="sub_drop2">
-                            <a href="/seller/order_check_product">주문 확인</a>
-                            <a href="/seller/order_product">주문 상태</a>
+                            <a href="/seller/order_check_product">주문목록</a>
+                            <!-- <a href="/seller/order_product">주문 상태</a> -->
                         </div>
                     </li>
                     <li class="menu-item">
@@ -464,6 +464,7 @@
                     option.setAttribute('value', data.detail_list_num);
                     option.innerHTML = data.name;
                     category_detail_detail.appendChild(option);
+                    console.log(data.name);
                 }
                 
             }
@@ -490,20 +491,24 @@
 
         console.log('121233');
 
-        var form = document.getElementById('testform');
+        console.log($("#category option:selected").val())
+        console.log($("#category_detail option:selected").val())
+        console.log($("#category_detail_detail option:selected").val())
 
-        var data = CKEDITOR.instances.editor.getData();
+        // var form = document.getElementById('testform');
 
-        console.log(data);
+        // var data = CKEDITOR.instances.editor.getData();
 
-        var editor = document.createElement('input');
-        editor.setAttribute('type', 'hidden');
-        editor.setAttribute('name', 'editor');
-        editor.setAttribute('value', data);
+        // console.log(data);
+
+        // var editor = document.createElement('input');
+        // editor.setAttribute('type', 'hidden');
+        // editor.setAttribute('name', 'editor');
+        // editor.setAttribute('value', data);
 
         
-        form.appendChild(editor);
+        // form.appendChild(editor);
         
-        form.submit();
+        // form.submit();
     }
 </script>
