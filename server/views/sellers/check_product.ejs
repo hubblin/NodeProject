@@ -207,15 +207,27 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <% for(var j of p_list){%>
-                                    <tr onclick="location.href='/seller/detail/<%= j.product_num %>'">
-                                        <td><%= j.product_num %></td>
-                                        <td><%= j.product_name %></td>
-                                        <td><%= j.product_price %></td>
-                                        <td><%= j.product_stock %></td>
-                                        <td><%= j.product_detail %></td>
+                                    <% for(var j=0; j<p_list.length; j++){%>
+                                    <tr onclick="location.href='/seller/detail/<%= p_list[j].product_num %>'">
+                                        <td><%= p_list[j].product_num %></td>
+                                        <td><%= p_list[j].product_name %></td>
+                                        <td><%= p_list[j].product_price %></td>
+                                        <td><%= p_list[j].product_stock %></td>
+                                        <td id="product_detail_content<%= j%>"></td>
+                                        <script>
+                                            function htmlDecode(input) {
+                                                var doc = new DOMParser().parseFromString(input, "text/html");
+                                                return doc.documentElement.textContent;
+                                            }
+                                
+                                            var product_detail_content = document.getElementById("product_detail_content<%= j%>");
+
+                                            product_detail_content.innerHTML = htmlDecode(`<%= p_list[j].product_detail %>`);
+                                        </script>
                                     </tr>
                                     <% }%>
+
+                                    
 
                                 </tbody>
                             </table>

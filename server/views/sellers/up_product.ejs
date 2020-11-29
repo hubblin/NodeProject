@@ -7,6 +7,10 @@
     <link rel='stylesheet' href='/stylesheets/sidenav.css' />
     <!-- <script src="/javascripts/ckeditor.js"></script> -->
     <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
     <title>Document</title>
     <style>
         .product_con {
@@ -250,6 +254,14 @@
             min-height: 550px;
             max-height: 550px;
         }
+
+        #category_detail{
+            width: 100%; margin-top: 30px; margin-bottom: 10px; height: 30px; font-size: 18px;
+            
+        }
+        #category_detail_detail{
+            width: 100%; margin-top: 30px; margin-bottom: 30px; height: 30px; font-size: 18px;
+        }
     </style>
 </head>
 
@@ -348,14 +360,17 @@
                                     </div>
                                     <input id="imgtest" type="file" name="file" style="border-bottom: none;" />
                                 
-                                    <select id="category" name="category"
-                                        style="width: 100%; margin-top: 30px; margin-bottom: 30px; height: 30px; font-size: 18px;">
-                                        <option value="1">파우치</option>
-                                        <option value="2">케이스</option>
-                                        <option value="3">의류</option>
+                                    <select id="category" name="category" onchange="getCategoryDetail()"
+                                        style="width: 100%; margin-top: 30px; margin-bottom: 10px; height: 30px; font-size: 18px;">
+                                        <% for(var data of category){%>
+                                            <option value="<%= data.category_num%>"><%= data.category_name%></option>
+                                        <%}%>
                                     </select>
-                                    <textarea id="editor">
-                                        <p>상품에 대한 설명을 적어주세요</p>
+
+                                    <select name="category_detail" id="category_detail" onchange="getDetailDetail()"></select>
+                                    <select name="category_detail_detail" id="category_detail_detail"></select>
+                                    <textarea id="editor" placeholder="상품에 대한 설명을 적어주세요">
+                                        
                                     </textarea>
                                     
                                 
@@ -376,6 +391,87 @@
 </html>
 <script>
     CKEDITOR.replace('editor')
+</script>
+
+<script>
+
+    // 카테고리 선택시 상세정보 가져오기
+    function getCategoryDetail(){
+        var category_detail = document.getElementById("category_detail");
+        
+        $("#category_detail").empty();
+        $("#category_detail_detail").empty();
+
+        console.log('누름');
+        var URL = "http://localhost:3000/seller/selectCategoryDetail"
+        console.log($("#category option:selected").val())
+        sendTest(URL, $("#category option:selected").val())
+        async function sendTest(url, data){
+            var data = {'category_num': data};
+
+            var dataInfo = {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers:{
+                    "Content-Type" : "application/json"
+                }
+            };
+
+            const reqURL = await fetch(url, dataInfo);
+            const result = await reqURL.json();
+
+            if(result){
+                for(var data of result){
+                    var option = document.createElement('option');
+                    option.setAttribute('value', data.cate_de_num);
+                    option.innerHTML = data.cate_de_name;
+                    category_detail.appendChild(option);
+                }
+                
+            }
+            else{
+                console.log("값없거나 연결 실패?")
+            }
+        }
+    }
+
+    function getDetailDetail(){
+
+        var category_detail_detail = document.getElementById("category_detail_detail");
+
+        $("#category_detail_detail").empty();
+
+        var URL = "http://localhost:3000/seller/more_detail_category"
+        console.log($("#category_detail option:selected").val())
+        sendTest(URL, $("#category_detail option:selected").val())
+        async function sendTest(url, data){
+            var data = {'cate_category_num': data};
+
+            var dataInfo = {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers:{
+                    "Content-Type" : "application/json"
+                }
+            };
+
+            const reqURL = await fetch(url, dataInfo);
+            const result = await reqURL.json();
+
+            if(result){
+                for(var data of result){
+                    var option = document.createElement('option');
+                    option.setAttribute('value', data.detail_list_num);
+                    option.innerHTML = data.name;
+                    category_detail_detail.appendChild(option);
+                }
+                
+            }
+            else{
+                console.log("값없거나 연결 실패?")
+            }
+        }
+    }
 </script>
 
 <script>
@@ -403,7 +499,7 @@
         var editor = document.createElement('input');
         editor.setAttribute('type', 'hidden');
         editor.setAttribute('name', 'editor');
-        editor.setAttribute('value', document.getElementById('editor').value);
+        editor.setAttribute('value', data);
 
         
         form.appendChild(editor);
