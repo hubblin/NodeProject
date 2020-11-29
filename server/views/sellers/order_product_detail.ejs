@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/sidenav.css' />
+    <script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        .product_con {
+            width: 1500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .product_contents {
+            margin-top: 100px;
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+            width: 1164px;
+        }
+
+        .product_contents .product_nav {
+            float: left;
+            width: 200px;
+        }
+
+        .product_contents .product_main {
+            float: right;
+            /* border: 1px solid black; */
+            width: 934px;
+            height: 2200px;
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        .check_new_order {
+            width: 100%;
+            height: 600px;
+            box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .check__delivery {
+            width: 100%;
+            height: 600px;
+            box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        a:link,
+        a:hover,
+        a:active {
+            text-decoration: none;
+        }
+
+
+        .seller_title {
+            width: 1500px;
+            margin: 0 auto;
+            height: 60px;
+            position: relative;
+
+        }
+
+        .seller_title a {
+            display: block;
+            width: 40px;
+            height: 48px;
+            color: transparent;
+            background: url('/images/logo.png') no-repeat;
+            background-size: 40px 48px;
+            margin: 0 auto;
+        }
+
+        .bottom_line {
+            position: absolute;
+            width: 1400px;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 2px;
+            background: #CCC;
+            bottom: 0;
+        }
+
+        .content_title {
+            font-size: 20px;
+            height: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="seller_title">
+        <a href="/seller" >업체 페이지</a>
+        <div class="bottom_line"></div>
+    </div>
+    <div class="product_con">
+        <div class="product_contents">
+            <div class="product_nav">
+                <div class="menu">
+                    <div style="font-size: 25px; font-weight: bold;">관리하기</div>
+                    <li class="menu-item">
+                        <div class="btn select">
+                            상품관리
+                            <button id="dropdown_btn" onclick="slidedown()"><img src="/images/font/down.png" /></button>
+                        </div>
+                        <div class="menu-item__sub " id="sub_drop">
+                            <a href="/seller/upProduct">상품 등록</a>
+                            <a href="checkProduct">상품 확인</a>
+                        </div>
+                    </li>
+                    <li class="menu-item">
+                        <div class="btn">
+                            주문관리
+                            <button id="dropdown_btn2" onclick="slidedown2()"><img
+                                    src="/images/font/down.png" /></button>
+                        </div>
+                        <div class="menu-item__sub" id="sub_drop2">
+                            <a href="/seller/order_check_product">주문목록</a>
+                            <!-- <a href="/seller/order_product">주문 상태</a> -->
+                        </div>
+                    </li>
+                    <li class="menu-item">
+                        <div class="btn">
+                            <a href="/users/sign_out">로그아웃</a>
+                        </div>
+                    </li>
+
+                </div>
+
+
+                <script type="text/javascript">
+                    var dropdown = document.getElementById("dropdown_btn");
+                    var dropdown2 = document.getElementById("dropdown_btn2");
+                    var drop = document.getElementById('sub_drop');
+                    var drop2 = document.getElementById('sub_drop2');
+
+                    function slidedown() {
+                        if (drop.classList[1] == 'sub_drop') {
+                            drop.classList.remove('sub_drop');
+                            dropdown.classList.remove('rotate');
+                        } else {
+                            drop.classList.add('sub_drop');
+                            dropdown.classList.add('rotate');
+                        }
+                    }
+
+                    function slidedown2() {
+                        if (drop2.classList[1] == 'sub_drop2') {
+                            drop2.classList.remove('sub_drop2');
+                            dropdown2.classList.remove('rotate2');
+                        } else {
+                            drop2.classList.add('sub_drop2');
+                            dropdown2.classList.add('rotate2');
+                        }
+                    }
+                </script>
+            </div>
+            <div class="product_main">
+                <div class="content_title">주문 상세정보<div></div>
+                </div>
+                <div class="check_new_order" style="padding: 20px;">
+                    
+                    <div style="display: flex; flex-direction: row;">
+                        <div style="flex-basis: 400px;">
+                            <% if(order_detail_com[0].order_paint_img != 'none'){%>
+                                <img src="" alt="" width="300" height="300">
+                            <%}%>
+                            이미지 없음
+                        </div>
+                        <div style="display: flex; flex-direction: column; margin-left: 100px;">
+                            <span>주문번호 : <%= order_detail_com[0].order_num%></span>
+                            <span>주문자 : <%= order_detail_com[0].order_user_id%></span>
+                            <span>주문상태 : <%= order_detail_com[0].order_state%></span>
+                            <span>주문날짜 : <%= order_detail_com[0].order_date%></span>
+                            <span>총 금액 : <%= order_detail_com[0].order_money%></span>
+                            <span>주문갯수 : <%= order_detail_com[0].order_product_count%></span>
+                            <br>
+                            <span>주문상품 : <%= order_detail_com[0].product_name%></span>
+                        </div>
+                        
+                    </div>
+                    <br>
+                    <div style="margin: 25px; margin-top: 100px;">
+                        <div>
+                            <h3>결제카드정보</h3>
+                            <div style="display: flex; flex-direction: row;">
+                                <div style="display: flex; flex-direction: column; flex-basis: 470px;">
+                                    <span>카드번호 : <%= order_detail_com[0].order_card_num%></span>
+                                    <span>카드CVC : <%= order_detail_com[0].order_card_CVC%></span>
+                                </div>
+                                <span>카드유효기간 : <%= order_detail_com[0].order_card_date%></span>
+                            </div>
+                            <br>
+                            <br>
+                            <h3>배송지정보</h3>
+                            <div style="display: flex; flex-direction: row;">
+                                <div style="display: flex; flex-direction: column; flex-basis: 470px;">
+                                    <span>우편번호 : <%= order_detail_com[0].order_post_num%></span>
+                                    <span>메인주소 : <%= order_detail_com[0].order_post_main%></span>
+                                    <span>상세주소 : <%= order_detail_com[0].order_post_detail%></span>
+                                </div>
+                                <div style="display: flex; flex-direction: column;">
+                                    <span>수령인 : <%= order_detail_com[0].order_get_user_name%></span>
+                                    <span>전화번호 : <%= order_detail_com[0].order_user_phone%></span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div style="float: right; margin-top: 20px;">
+                            <select name="" id="select_order_state">
+                                <option value="상품준비중">상품준비중</option>
+                                <option value="배송시작">배송시작</option>
+                            </select>
+                            <button onclick="changeOrderState(`<%= order_detail_com[0].order_num%>`)">주문상태변경</button>
+                            <a href="/seller/order_check_product">목록으로</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function changeOrderState(orderNum){
+        var select_order_state = document.getElementById("select_order_state");
+
+        var select_values = select_order_state.options[select_order_state.selectedIndex].value;
+
+        var orderNum = orderNum;
+
+        var URL = "http://localhost:3000/seller/updateOrderState";
+
+        updateState(URL, orderNum, select_values)
+
+        async function updateState(URL, orderNum, select_values){
+            var data = {
+                'orderNum': orderNum,
+                'state': select_values
+            };
+
+            var dataInfo = {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers:{
+                    "Content-Type" : "application/json"
+                }
+            };
+
+            const reqURL = await fetch(URL, dataInfo);
+            const result = await reqURL.json();
+
+            if(result){
+                if(result.result == 'ok'){
+                    alert('주문상태변경성공');
+                    window.location.reload();
+                }
+            }
+        }
+    }
+</script>
