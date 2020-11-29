@@ -63,7 +63,7 @@
         </div>
         <div class="product_main">
             <% for(var j=0; j<bagProduct.length; j++){%>
-            <a href="/order">
+            <a href="/order/<%= bagProduct[j].product_num %>">
                 <div class="cards">
                     <div class="img-size">
                         <img src="../../images/products/<%= bagProduct[j].product_img_path %>">

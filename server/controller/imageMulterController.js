@@ -10,7 +10,6 @@ const storage = multer.diskStorage({
     cb(null, 'public/images/products/')
   },
   filename: function (req, file, cb) {
-    console.log(Date.now() + '-' + file.originalname);
     cb(null, Date.now() + '-' + file.originalname)
   }
 })
@@ -21,8 +20,6 @@ const upload = multer({
 
 module.exports.send = (req, res, next) =>{
     upload.single('file')(req, res, ()=>{
-        console.log('여긴 imgmulter ',req.file);
-
         next();
     })
 }

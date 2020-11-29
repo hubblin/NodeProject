@@ -26,6 +26,17 @@ class OrderController {
         })
     }
 
+    async getOrder(req,res, next){
+        pool.getConnection((err, conn)=>{
+            if(err) throw err;
+            conn.query(`SELECT * FROM product WHERE product_num = "${req.params.product_num}"`, (err, sprod)=>{
+                if(err) throw err;
+                conn.release();
+                req.spd = sprod;
+                next();
+            })
+        })
+    }
 }
 
 module.exports = OrderController
