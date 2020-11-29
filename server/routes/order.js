@@ -15,6 +15,15 @@ router.get('/', function(req, res) {
 });
 
 
+router.get('/finish', function(req,res){
+    res.render('product/finish');
+})
+
+router.post('/order_buy',Order.SaveOrder, function(req, res, next){
+    console.log(req.body);
+    res.redirect('/order/finish');
+})
+
 router.get('/:product_num',Order.getOrder,function(req,res){
     if(req.session.user){
         res.render('product/order',{name:req.session.user.name, spd: req.spd});
@@ -59,10 +68,6 @@ router.get('/buy/:product_num',Order.getOrder, Order.getAddress_cardInfo,functio
 
 
 
-router.post('/order_buy', function(req, res, next){
-    console.log('주문성공');
-    res.redirect('/order/finish');
-})
 
 
 
@@ -77,11 +82,6 @@ router.get('/makingbuy', function(req,res){
 
 })
 
-
-
-router.get('/finish', function(req,res){
-    res.render('product/finish');
-})
 
 
 module.exports = router;
