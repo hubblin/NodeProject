@@ -233,8 +233,8 @@ class MypageController {
         pool.getConnection((err, conn) => {
             if (err) throw err;
 
-            conn.query('select * from product where product_num in (select order_product_num from product_order where not order_product_num in (select review_product_num from product_review where review_user_id = ?))', [
-                req.session.user.id
+            conn.query('select * from product where product_num in (select order_product_num from product_order where not order_product_num in (select review_product_num from product_review where review_user_id = ?) and order_user_id = ?);', [
+                req.session.user.id,req.session.user.id
             ], (err, product_list) => {
                 if (err) throw err;
 

@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='/stylesheets/sidenav.css' />
+    <script
+    src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
     <title>Document</title>
     <style>
         .product_con{
@@ -76,6 +80,39 @@
             font-size: 20px;
             height: 25px;
         }
+        #new_order_list_table{
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+        th, td {
+            padding: 5px;
+            text-align: left;
+            
+        }
+
+        td{
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        #new_order_list_table thead{
+            border: 3px solid #ffc000;
+            font-weight: bold;
+        }
+        
+        tbody tr:nth-child(even)  { background-color: rgb(236, 236, 236); }
+        #new_order_list_table tbody tr{
+            cursor: pointer;
+        }
+        #new_order_list_table tbody tr:hover {
+            background: #ddd;
+        
+        }
+        
+        
     </style>
 </head>
 <body>
@@ -104,8 +141,8 @@
                             <button id="dropdown_btn2" onclick="slidedown2()"><img src="/images/font/down.png"/></button>
                         </div>
                         <div class="menu-item__sub" id="sub_drop2">
-                            <a href="/seller/order_check_product">주문 확인</a>
-                            <a href="/seller/order_product">주문 상태</a>
+                            <a href="/seller/order_check_product">주문목록</a>
+                            <!-- <a href="/seller/order_product">주문 상태</a> -->
                         </div>
                     </li>
                     <li class="menu-item">
@@ -144,16 +181,74 @@
                 </script>
             </div>
             <div class="product_main">
-                <div class="content_title">새 주문<div></div></div>
+                <div class="content_title">새 주문
+                    <div>
+                    </div>
+                </div>
                 <div class="check_new_order">
 
+                    <table id="new_order_list_table">
+                        <thead>
+                            <td>주문번호</td>
+                            <td>주문일자</td>
+                            <td>주문자</td>
+                            <td>제품이름</td>
+                            <td>주문금액</td>
+                        </thead>
+                        <tbody>
+                            <% for(var data of newOrderList){%>
+                                <tr onclick="okay('<%= data.order_num%>')">
+                                    <td><%= data.order_num%></td>
+                                    <td><%= data.order_date%></td>
+                                    <td><%= data.order_user_id%></td>
+                                    <td><%= data.product_num%></td>
+                                    <td><%= data.order_money%></td>
+                                </tr>
+                                
+                            <%}%>
+                            
+                        </tbody>
+                    </table>
+
                 </div>
-                <div class="content_title" style="margin-top: 20px;">판매량<div></div></div>
+                <!-- <div class="content_title" style="margin-top: 20px;">판매량<div></div></div>
                 <div class="check__delivery">
                     
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
 </body>
 </html>
+<script>
+    function okay(orderNum){
+        console.log(orderNum)
+
+        var URL = 'http://localhost:3000/seller/checkOrder';
+        sendNewOrderCheck(URL, orderNum)
+
+        async function sendNewOrderCheck(URL, orderNum){
+            var data = {'orderNum': orderNum};
+
+            var dataInfo = {
+                method:"POST",
+                body: JSON.stringify(data),
+                headers:{
+                    "Content-Type" : "application/json"
+                }
+            };
+
+            const reqURL = await fetch(URL, dataInfo);
+            const result = await reqURL.json();
+
+            if(result){
+                console.log(result.result)
+                if(result.result = 'ok'){
+                    
+                    alert('주문확인성공');
+                    window.location.reload();
+                }
+            }
+        }
+    }
+</script>
