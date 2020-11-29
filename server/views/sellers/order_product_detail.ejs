@@ -173,9 +173,11 @@
                     <div style="display: flex; flex-direction: row;">
                         <div style="flex-basis: 400px;">
                             <% if(order_detail_com[0].order_paint_img != 'none'){%>
-                                <img src="" alt="" width="300" height="300">
+                                <img src="<%= order_detail_com[0].order_paint_img%>" alt="" height="150">
+                            <%} else{%>
+                                이미지 없음
                             <%}%>
-                            이미지 없음
+                           
                         </div>
                         <div style="display: flex; flex-direction: column; margin-left: 100px;">
                             <span>주문번호 : <%= order_detail_com[0].order_num%></span>
