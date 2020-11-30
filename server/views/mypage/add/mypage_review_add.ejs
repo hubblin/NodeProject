@@ -172,7 +172,7 @@
             display: inline;
         }
         #painting_select{
-            display: none;
+            display: inline;
         }
         #review_text{
             padding: 10px;
@@ -200,9 +200,9 @@
                 </div>
             </div>
             <div id="my_custom_count" class="count" style="flex-basis: 662.5px; background-color: #F7D358;">
-                <div>커스텀 제작</div>
+                <div></div>
                 <div class="count_content">
-                    <span style="font-size: 35px;"><%= customCount%></span><span>건</span>
+                    <span style="font-size: 35px;"></span><span></span>
                 </div>
             </div>
         </div>
@@ -213,7 +213,7 @@
                     <div>
                         <ul>
                             <li><a href="/mypage" id="painting">페인팅 주문 목록</a></li>
-                            <li><a href="/mypage/custom_order" id="custom">커스텀 주문 목록</a></li>
+                            
                         </ul>
                     </div>
 
@@ -252,18 +252,18 @@
                     <div class="painting_order_product">
 
                         <div id="select_order_method">
-                            <div id="custom_make">커스텀 제작</div>
-                            <div id="painting_make">페인팅 제작</div>
+                            <!-- <div id="custom_make">커스텀 제작</div>
+                            <div id="painting_make">페인팅 제작</div> -->
                         </div>
 
-                        <div class="reivew_row">상품
-                            <select name="custom" id="custom_select">
+                        <div class="reivew_row">
+                            <!-- <select name="custom" id="custom_select">
                                 <option value="0" selected>선택안함</option>
                                 <% for(var i =0; i<custom_list.length; i++){%>
                                     <option value="<%= custom_list[i].c_product_num%>"><%= custom_list[i].c_product_name%></option>
                                 <%}%>
                                 
-                            </select>
+                            </select> --> 상품 이름
                             <select name="painting" id="painting_select">
                                 <option value="0" selected>선택안함</option>
                                 <% for(var i =0; i<product_list.length; i++){%>
@@ -312,42 +312,7 @@
     </div>
 
     <script>
-       $('#custom_make').click((e)=>{
-        $('#custom_make').css({
-            "border-bottom":"3px solid #ffc000"
-        })
-
-        $('#painting_make').css({
-            "border-bottom":"none"
-        })
-
-        $('#custom_select').css({
-            "display":"inline"
-        })
-
-        $('#painting_select').css({
-            "display":"none"
-        })
-
-       })
-
-       $('#painting_make').click((e)=>{
-        $('#custom_make').css({
-            "border-bottom":"none"
-        })
-
-        $('#painting_make').css({
-            "border-bottom":"3px solid #ffc000"
-        })
-
-        $('#custom_select').css({
-            "display":"none"
-        })
-
-        $('#painting_select').css({
-            "display":"inline"
-        })
-       })
+       
     </script>
 
 
