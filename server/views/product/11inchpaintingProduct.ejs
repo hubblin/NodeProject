@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CS</title>
+    <link rel='stylesheet' href='/stylesheets/default.css' />
+    <link rel='stylesheet' href='/stylesheets/select/select1.css' />
+    <link rel='stylesheet' href='/stylesheets/sidenav.css' />
+    <link rel='stylesheet' href='/stylesheets/product_card.css' />
+    <style>
+        .product_contents {
+            margin-top: 100px;
+            display: block;
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+            width: 1164px;
+        }
+
+        .product_contents .product_nav {
+            float: left;
+            width: 200px;
+        }
+
+        .product_contents .product_main {
+            float: right;
+
+            width: 932px;
+            height: 2200px;
+            margin-left: 32px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include("../head/nav",{name:name}) %>
+    <div class="product_contents">
+        <div class="product_nav">
+            <div class="menu">
+                <div style="font-size: 25px; font-weight: bold;">파우치</div>
+                <li class="menu-item">
+                    <div class="btn">
+                        노트북 파우치
+                        <button id="dropdown_btn" onclick="slidedown()"><img src="/images/font/down.png"/></button>
+                    </div>
+                    <div class="menu-item__sub" id="sub_drop">
+                        <a href="/product/15inchpainting">15인치</a>
+                        <a href="/product/14inchpainting">14인치</a>
+                    </div>
+                </li>
+                <li class="menu-item">
+                    <div class="btn">
+                        테블릿 파우치
+                        <button id="dropdown_btn2" onclick="slidedown2()"><img src="/images/font/down.png"/></button>
+                    </div>
+                    <div class="menu-item__sub" id="sub_drop2">
+                        <a class="thisPage" href="/product/11inchpainting">11인치</a>
+                        <a href="/product/10inchpainting">10인치</a>
+                    </div>
+                </li>
+            </div>
+        </div>
+        <div class="product_main">
+            <% for(var j=0; j<bagProduct.length; j++){%>
+            <a href="/order/<%= bagProduct[j].product_num %>">
+                <div class="cards">
+                    <div class="img-size">
+                        <img src="../../images/products/<%= bagProduct[j].product_img_path %>">
+                        <div class="pop_btn">
+                            <div class="cards_btn">go to create</div>
+                            <div class="bar"></div>
+                            <div class="rot_bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <p class="title"><%= bagProduct[j].product_name %></p>
+                        <p class="price"><%= bagProduct[j].product_price %></p>
+                    </div>
+                </div>
+            </a>
+            <% } %>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script type="text/javascript">
+    var dropdown =  document.getElementById("dropdown_btn");
+    var dropdown2 = document.getElementById("dropdown_btn2");
+    var drop = document.getElementById('sub_drop');
+    var drop2 = document.getElementById('sub_drop2');
+    function slidedown(){
+        if(drop.classList[1]=='sub_drop'){
+            drop.classList.remove('sub_drop');
+            dropdown.classList.remove('rotate');
+        }else{
+            drop.classList.add('sub_drop');
+            dropdown.classList.add('rotate');
+        }
+    }
+    function slidedown2(){
+        if(drop2.classList[1]=='sub_drop2'){
+            drop2.classList.remove('sub_drop2');
+            dropdown2.classList.remove('rotate2');
+        }else{
+            drop2.classList.add('sub_drop2');
+            dropdown2.classList.add('rotate2');
+        }
+    }
+
+</script>
+
+
+<script type="text/javascript">
+
+    function setsub2() {
+        var sublnb = document.getElementById("sublnb");
+        sublnb.style.display = "none"
+        sublnb.style.opacity = "0";
+        sublnb.style.visibility = "hidden";
+        var sublnb2 = document.getElementById("sublnb2");
+        sublnb2.style.display = "block";
+        sublnb2.style.opacity = "1";
+        sublnb2.style.visibility = "visible";
+    }
+    function outsub2() {
+        var sublnb = document.getElementById("sublnb");
+        sublnb.style.display = "block"
+        sublnb.style.opacity = "1";
+        sublnb.style.visibility = "visible";
+        var sublnb2 = document.getElementById("sublnb2");
+        sublnb2.style.display = "none";
+        sublnb2.style.opacity = "0";
+        sublnb2.style.visibility = "hidden";
+    }
+    function lsub2() {
+        var sublnb = document.getElementById("sublnb");
+        sublnb.style.display = "none"
+        sublnb.style.opacity = "0";
+        sublnb.style.visibility = "hidden";
+        var sublnb2 = document.getElementById("sublnb2");
+        sublnb2.style.display = "block";
+        sublnb2.style.opacity = "1";
+        sublnb2.style.visibility = "visible";
+    }
+    function loutsub2() {
+        var sublnb = document.getElementById("sublnb");
+        sublnb.style.display = "block"
+        sublnb.style.opacity = "1";
+        sublnb.style.visibility = "visible";
+        var sublnb2 = document.getElementById("sublnb2");
+        sublnb2.style.display = "none";
+        sublnb2.style.opacity = "0";
+        sublnb2.style.visibility = "hidden";
+    }
+    function setsub() {
+
+    }
+    function outsub() {
+
+    }
+    function lsub() {
+
+    }
+    function loutsub() {
+
+    }
+</script>

@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session');
 
+
 //라우트 추가되면 여기에 넣기
 var indexRouter = require('./server/routes/index');
 var usersRouter = require('./server/routes/users');
@@ -13,6 +14,7 @@ var reviewRouter = require('./server/routes/review');
 var orderRouter = require('./server/routes/order');
 var mypageRouter = require('./server/routes/mypage');
 var companyRouter = require('./server/routes/company');
+var sellerRouter = require('./server/routes/seller');
 
 var app = express();
 
@@ -50,6 +52,7 @@ app.use('/review', reviewRouter);
 app.use('/order', orderRouter);
 app.use('/mypage', mypageRouter);
 app.use('/company', companyRouter);
+app.use('/seller', sellerRouter);
 
 
 // catch 404 and forward to error handler
