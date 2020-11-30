@@ -495,20 +495,20 @@
         console.log($("#category_detail option:selected").val())
         console.log($("#category_detail_detail option:selected").val())
 
-        // var form = document.getElementById('testform');
+        var form = document.getElementById('testform');
 
-        // var data = CKEDITOR.instances.editor.getData();
+        var data = CKEDITOR.instances.editor.getData();
 
-        // console.log(data);
+        console.log(data);
 
-        // var editor = document.createElement('input');
-        // editor.setAttribute('type', 'hidden');
-        // editor.setAttribute('name', 'editor');
-        // editor.setAttribute('value', data);
+        var editor = document.createElement('input');
+        editor.setAttribute('type', 'hidden');
+        editor.setAttribute('name', 'editor');
+        editor.setAttribute('value', data);
 
         
-        // form.appendChild(editor);
+        form.appendChild(editor);
         
-        // form.submit();
+        form.submit();
     }
 </script>
