@@ -108,6 +108,12 @@
             background: #ddd;
         
         }
+
+        .move_page_btn{
+            flex-basis: 450px;
+            text-align: center;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -187,7 +193,7 @@
                             <td>주문상태</td>
                         </thead>
                        
-                        <tbody>
+                        <tbody id="order_list_tbody">
                             <% for(var data of orderList){%>
                                 <tr onclick="location.href='/seller/order_product/<%= data.order_num %>'">
                                     <td><%= data.order_num%></td>
@@ -200,8 +206,24 @@
                         </tbody>
                     </table>
                 </div>
+                <div style="display: flex; flex-direction: row; margin-top: 20px;">
+                    <div class="move_page_btn" onclick="previous_page()"><이전페이지</div><div class="move_page_btn" onclick="next_page()">다음페이지></div>
+                </div>
             </div>
         </div>
     </div>
 </body>
 </html>
+
+<script>
+    // 다음 페이지로
+    function next_page(){
+        console.log(1)
+    }
+
+
+    // 이전 페이지로
+    function previous_page(){
+        console.log(2)
+    }
+</script>
