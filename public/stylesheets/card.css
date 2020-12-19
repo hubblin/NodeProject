@@ -1,7 +1,7 @@
 .product_area{
     display:block;
     position: relative;
-    height: 800px;
+    height: 500px;
 }
 
 .product_area_mini{
@@ -29,8 +29,8 @@
 }
 
 .card{
-    width: 200px;
-    height: 260px;
+    width: 350px;
+    height: 410px;
     padding: 2rem 1rem;
     margin:0px 30px;
     background: #fff;
@@ -92,7 +92,7 @@
 
 .card .info p{
     letter-spacing: 1px;
-    font-size: 15px;
+    font-size: 20px;
     margin-top:8px;
     margin-bottom: 20px;
 }
@@ -103,7 +103,7 @@
     padding: 0.5rem 1rem;
     background: #fff;
     color: #000;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     transition: 0.4s ease-in-out;
@@ -130,6 +130,7 @@
 }
 
 .card_title_area{
+    margin-top: 100px;
     position: relative;
     height: 80px;
 }
