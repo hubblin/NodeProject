@@ -5,6 +5,7 @@
     <title>CS</title>
     <link rel='stylesheet' href='/stylesheets/default.css' />
     <link rel='stylesheet' href='/stylesheets/navstyle.css' />
+    
     <script src='/javascripts/fabric_min.js'></script>
     <script type="text/javascript">
 
@@ -56,9 +57,36 @@
             sublnb2.style.opacity = "0";
             sublnb2.style.visibility = "hidden";
         }
-    
+
     </script>
     <style>
+        .review_content {
+            position: relative;
+            display: block;
+            margin-top: 30px;
+            width: 1500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+        .product_detail_content{
+            position: relative;
+            display: block;
+            margin-top: 30px;
+            width: 1500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .big_contents {
+            position: relative;
+            width: 1500px;
+            height: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .contents {
             margin-top: 100px;
             display: block;
@@ -95,8 +123,8 @@
             box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.5);
         }
 
-        .button_area{
-            position : relative;
+        .button_area {
+            position: relative;
             width: 100%;
             height: 50px;
             background: #ffde7a;
@@ -111,7 +139,7 @@
             transform: translateY(-45%);
         }
 
-        .all_btn li{
+        .all_btn li {
             display: inline-block;
         }
 
@@ -124,58 +152,66 @@
             width: 45px;
         }
 
-        .float_btn:hover{
+        .float_btn:hover {
             background: rgb(172, 172, 172);
         }
 
-        .add_text_btn{
-            color: transparent; 
+        .add_text_btn {
+            color: transparent;
             background: url('../images/order_img/글버튼.png') no-repeat;
             background-size: 45px 30px;
         }
-        .rec_btn{
-            color: transparent; 
+
+        .rec_btn {
+            color: transparent;
             background: url('../images/order_img/네모버튼.png') no-repeat;
             background-size: 45px 30px;
         }
-        .tri_btn{
-            color: transparent; 
+
+        .tri_btn {
+            color: transparent;
             background: url('../images/order_img/세모버튼.png') no-repeat;
             background-size: 45px 30px;
         }
-        .round_btn{
-            color: transparent; 
+
+        .round_btn {
+            color: transparent;
             background: url('../images/order_img/원버튼.png') no-repeat;
             background-size: 45px 30px;
         }
-        #select_mode{
-            color: transparent; 
+
+        #select_mode {
+            color: transparent;
             background: url('../images/order_img/선택버튼.png') no-repeat;
             background-size: 45px 30px;
         }
-        .remove_text_btn{
-            color: transparent; 
+
+        .remove_text_btn {
+            color: transparent;
             background: url('../images/order_img/지우기버튼.png') no-repeat;
             background-size: 45px 30px;
         }
 
-        .back_btn{
-            color: transparent; 
+        .back_btn {
+            color: transparent;
             background: url('../images/order_img/뒤로버튼.png') no-repeat;
             background-size: 45px 30px;
         }
-        .front_btn{
-            color: transparent; 
+
+        .front_btn {
+            color: transparent;
             background: url('../images/order_img/앞으로버튼.png') no-repeat;
             background-size: 45px 30px;
         }
-        .go_back_btn{
-            color: transparent; 
+
+        .go_back_btn {
+            color: transparent;
             background: url('../images/order_img/맨뒤로버튼.png') no-repeat;
             background-size: 45px 30px;
         }
-        .go_front_btn{
-            color: transparent; 
+
+        .go_front_btn {
+            color: transparent;
             background: url('../images/order_img/맨앞으로버튼.png') no-repeat;
             background-size: 45px 30px;
         }
@@ -198,7 +234,7 @@
             line-height: 30px;
             display: block;
             cursor: pointer;
-            color: transparent; 
+            color: transparent;
             background: url('../images/order_img/사진버튼.png') no-repeat;
             background-size: 45px 30px;
         }
@@ -212,13 +248,13 @@
         }
 
 
-        .order_pro{
+        .order_pro {
             position: relative;
             width: 100%;
             height: 100%;
         }
 
-        .order_line{
+        .order_line {
             width: 100%;
             height: 2px;
             background: #CCC;
@@ -242,7 +278,7 @@
             pointer-events: none;
         }
 
-        #third{
+        #third {
             opacity: 0;
             width: 380px;
             height: 97%;
@@ -251,7 +287,7 @@
             pointer-events: none;
         }
 
-        #rect{
+        #rect {
             opacity: 0;
             width: 380px;
             height: 97%;
@@ -260,21 +296,22 @@
             pointer-events: none;
         }
 
-        .d_bottom_btn{
+        .d_bottom_btn {
             position: absolute;
             bottom: 0;
             width: 100%;
             background: #ffc000;
             height: 45px;
         }
-        .d_temp{
+
+        .d_temp {
             position: relative;
             width: 100%;
             height: 100%;
-            
+
         }
 
-        .d_bottom_btn .d_temp a{
+        .d_bottom_btn .d_temp a {
             color: white;
             cursor: pointer;
             position: absolute;
@@ -285,7 +322,7 @@
             transform: translateY(-50%);
         }
 
-        .go_back_product{
+        .go_back_product {
             background: rgb(168, 168, 168);
             width: 80px;
             height: 30px;
@@ -294,7 +331,8 @@
             margin-top: 10px;
             margin-bottom: 10px;
         }
-        .go_back_product a{
+
+        .go_back_product a {
             position: absolute;
             width: 100%;
             text-align: center;
@@ -303,165 +341,182 @@
             color: white;
             font-style: bolder;
         }
-
     </style>
 </head>
 
 <body>
     <%- include("../head/nav") %>
-    <div class="contents">
-        
-        <div class="custom_cont" id="custom_cont">
-            <div class="button_area">
-                <div class="all_btn">
-                    <li>
-                        <div class="float_btn">
-                            <label for="select_pic">사진추가</label>
-                            <input name="select_pic" type="file" class="add_picture" id="imgLoader"/>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="float_btn">
-                            <a class="add_text_btn" for="add_text_btn" onclick="addText()">글추가</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="float_btn">
-                            <a class="rec_btn"  onclick="addrec()">네모</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="float_btn">
-                            <a class="tri_btn"  onclick="addtri()">세모</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="float_btn">
-                            <a class="round_btn" onclick="addCircle()">원</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="float_btn">
-                            <a class="back_btn" onclick="send_to_back()">뒤로보내기</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="float_btn">
-                            <a class="front_btn" onclick="bring_to_front()">앞으로보내기</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="float_btn">
-                            <a class="go_back_btn" onclick="send_back()">맨뒤로보내기</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="float_btn">
-                            <a class="go_front_btn" onclick="bring_front()">맨앞으로보내기</a>
-                        </div>
-                    </li>
+        <div class="big_contents">
 
-                    <li>
-                        <div class="float_btn">
-                            <a id="select_mode" for="add_text_btn" onclick="Selection_Mode()">선택하기</a>
-                        </div>
-                    </li>
+            <div class="contents">
 
-                    <li>
-                        <div class="float_btn">
-                            <a class="remove_text_btn" onclick="delete_obj()">삭제</a>
+                <div class="custom_cont" id="custom_cont">
+                    <div class="button_area">
+                        <div class="all_btn">
+                            <li>
+                                <div class="float_btn">
+                                    <label for="select_pic">사진추가</label>
+                                    <input name="select_pic" type="file" class="add_picture" id="imgLoader" />
+                                </div>
+                            </li>
+                            <li>
+                                <div class="float_btn">
+                                    <a class="add_text_btn" for="add_text_btn" onclick="addText()">글추가</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="float_btn">
+                                    <a class="rec_btn" onclick="addrec()">네모</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="float_btn">
+                                    <a class="tri_btn" onclick="addtri()">세모</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="float_btn">
+                                    <a class="round_btn" onclick="addCircle()">원</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="float_btn">
+                                    <a class="back_btn" onclick="send_to_back()">뒤로보내기</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="float_btn">
+                                    <a class="front_btn" onclick="bring_to_front()">앞으로보내기</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="float_btn">
+                                    <a class="go_back_btn" onclick="send_back()">맨뒤로보내기</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="float_btn">
+                                    <a class="go_front_btn" onclick="bring_front()">맨앞으로보내기</a>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="float_btn">
+                                    <a id="select_mode" for="add_text_btn" onclick="Selection_Mode()">선택하기</a>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="float_btn">
+                                    <a class="remove_text_btn" onclick="delete_obj()">삭제</a>
+                                </div>
+                            </li>
                         </div>
-                    </li>
+                    </div>
+                    <div class="canvas_case">
+                        <canvas id="c" width="615px" height="635px"></canvas>
+                    </div>
                 </div>
-            </div>
-            <div class="canvas_case">
-                <canvas id="c" width="615px" height="635px"></canvas>
-            </div>
-        </div>
 
-        <!--여기가 주문 부분-->
-        <div class="sale_cont">
-            <div id="first">
-                <div class="order_pro">
-                    <h3><%= spd[0].product_name %></h3>
-                    <div class="order_line"></div>
-                    <div>가격 : <sapn><%= spd[0].product_price %></sapn>원~</div>
+                <!--여기가 주문 부분-->
+                <div class="sale_cont">
+                    <div id="first">
+                        <div class="order_pro">
+                            <h3>
+                                <%= spd[0].product_name %>
+                            </h3>
+                            <div class="order_line"></div>
+                            <div>가격 : <sapn>
+                                    <%= spd[0].product_price %>
+                                </sapn>원~</div>
 
-                    <div class="go_back_product"><a href="/product/painting">상품 변경</a></div>
-                    <img class="product_img" src="../../images/products/<%= spd[0].product_img_path %>" style="width: 100%;"/>
-                        <div class="d_bottom_btn">
-                            <div class="d_temp">
-                                <a class="d_order_btn" onclick="order()">주문하기</a>
+                            <div class="go_back_product"><a href="/product/painting">상품 변경</a></div>
+                            <img class="product_img" src="../../images/products/<%= spd[0].product_img_path %>"
+                                style="width: 100%;" />
+                            <div class="d_bottom_btn">
+                                <div class="d_temp">
+                                    <a class="d_order_btn" onclick="order()">주문하기</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--여기까지가 주문하기 부분-->
+
+                    <div id="second">
+                        <div class="option">
+                            <strong>Option</strong>
+                            <div class="block">
+                                <label for="fontWeight" class="opt-title">TextStyle</label>
+                                <input id="weight_con" class="style_con" type="range" name="fontWeight" min="100"
+                                    max="900" value="100" step="100" />
+                            </div>
+                            <div class="block">
+                                <label for="mainColor" class="opt-title">Text Color</label>
+                                <input id="fill" class="color_con" type="color" name="mainColor">
+                            </div>
+                            <div class="block">
+                                <label for="opacitys" class="opt-title">Opacity</label>
+                                <input id="opa_con" class="style_con" type="range" name="opacitys" min="0.1" max="1"
+                                    step="0.1" />
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="third">
+                        <div class="option">
+                            <strong>Drwaing Option</strong>
+                            <div class="block">
+                                <label for="line_weight">굵기</label>
+                                <input id="line_weight" type="range" name="line_weight" min="0" max="100" value="3" />
+                            </div>
+                            <div class="block">
+                                <label for="LineColor" class="opt-title">색</label>
+                                <input id="line_Color" class="color_con" type="color" name="LineColor">
+                            </div>
+                            <div class="block">
+                                <label for="line_mode" class="opt-title">그리기 스타일</label>
+                                <select class="borders" id="line_mode" name="line_mode">
+                                    <option value="Pencil">Pencil</option>
+                                    <option value="Circle">Circle</option>
+                                    <option value="Spray">Spray</option>
+                                </select>
                             </div>
                         </div>
+                    </div>
+                    <div id="rect">
+                        <div class="option">
+                            <strong>Drwaing Option</strong>
+                            <div class="block">
+                                <label for="RectColor" class="opt-title">색</label>
+                                <input id="rect_Color" class="color_con" type="color" name="RectColor">
+                            </div>
+                            <div class="block">
+                                <label for="opacitys" class="opt-title">투명도</label>
+                                <input id="rect_opa" class="style_con" type="range" name="opacitys" min="0.1" max="1"
+                                    step="0.1" />
+                            </div>
 
-                </div>
-            </div>
-            <!--여기까지가 주문하기 부분-->
-
-            <div id="second">
-                <div class="option">
-                    <strong>Option</strong>
-                    <div class="block">
-                        <label for="fontWeight" class="opt-title">TextStyle</label>
-                        <input id="weight_con" class="style_con" type="range" name="fontWeight" min="100" max="900"
-                            value="100" step="100" />
-                    </div>
-                    <div class="block">
-                        <label for="mainColor" class="opt-title">Text Color</label>
-                        <input id="fill" class="color_con" type="color" name="mainColor">
-                    </div>
-                    <div class="block">
-                        <label for="opacitys" class="opt-title">Opacity</label>
-                        <input id="opa_con" class="style_con" type="range" name="opacitys" min="0.1" max="1" 
-                            step="0.1" />
-                    </div>
-
-                </div>
-            </div> 
-            <div id="third">
-                <div class="option">
-                    <strong>Drwaing Option</strong>
-                    <div class="block">
-                        <label for="line_weight">굵기</label>
-                        <input id="line_weight" type="range" name="line_weight" min="0" max="100" value="3"/>
-                    </div>
-                    <div class="block">
-                        <label for="LineColor" class="opt-title">색</label>
-                        <input id="line_Color" class="color_con" type="color" name="LineColor" >
-                    </div>
-                    <div class="block">
-                        <label for="line_mode" class="opt-title">그리기 스타일</label>
-                        <select class="borders" id="line_mode" name="line_mode">
-                            <option value="Pencil">Pencil</option>
-                            <option value="Circle">Circle</option>
-                            <option value="Spray">Spray</option>
-                        </select>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div id="rect">
-                <div class="option">
-                    <strong>Drwaing Option</strong>
-                    <div class="block">
-                        <label for="RectColor" class="opt-title">색</label>
-                        <input id="rect_Color" class="color_con" type="color" name="RectColor" >
-                    </div>
-                    <div class="block">
-                        <label for="opacitys" class="opt-title">투명도</label>
-                        <input id="rect_opa" class="style_con" type="range" name="opacitys" min="0.1" max="1" 
-                            step="0.1" />
-                    </div>
 
-                </div>
-            </div>
         </div>
-    </div>
+
+        <div class="product_detail_content">
+            <%- include("./order_product_detail")%>
+        </div>
+
+        <div class="review_content">
+            <%- include("./order_review")%>
+        </div>
+
 </body>
 
 </html>
 <script>
-    
+
     var canvas = new fabric.Canvas('c');
     canvas.freeDrawingBrush.width = 3;
     //텍스트 더하기
@@ -479,12 +534,12 @@
     }
 
     //사각형 추가
-    function addrec(){
+    function addrec() {
         const canvCenter = canvas.getCenter();
         var rectangle = new fabric.Rect({
-            width: 100, 
-            height: 70, 
-            fill: '#FFC000', 
+            width: 100,
+            height: 70,
+            fill: '#FFC000',
             left: canvCenter.left,
             top: canvCenter.top,
             originX: 'center',
@@ -494,12 +549,12 @@
     }
 
     //삼각형 추가
-    function addtri(){
+    function addtri() {
         const canvCenter = canvas.getCenter();
         var rectangle = new fabric.Triangle({
-            width: 100, 
-            height: 75, 
-            fill: '#FFC000', 
+            width: 100,
+            height: 75,
+            fill: '#FFC000',
             left: canvCenter.left,
             top: canvCenter.top,
             originX: 'center',
@@ -509,11 +564,11 @@
     }
 
     //원 추가
-    function addCircle(){
+    function addCircle() {
         const canvCenter = canvas.getCenter();
         var rectangle = new fabric.Circle({
             radius: 50,
-            fill: '#FFC000', 
+            fill: '#FFC000',
             left: canvCenter.left,
             top: canvCenter.top,
             originX: 'center',
@@ -526,12 +581,12 @@
     document.getElementById('imgLoader').onchange = function handleImage(e) {
         const canvCenter = canvas.getCenter();
         var reader = new FileReader();
-        reader.onload = function (event) { 
+        reader.onload = function (event) {
             var imgObj = new Image();
             imgObj.src = event.target.result;
             imgObj.onload = function () {
                 // start fabricJS stuff
-                
+
                 var image = new fabric.Image(imgObj);
                 image.set({
                     left: canvCenter.left,
@@ -543,24 +598,24 @@
                 image.scaleToHeight(100);
                 image.scaleToWidth(200);
                 canvas.add(image);
-                
+
                 // end fabricJS stuff
             }
-            
+
         }
         reader.readAsDataURL(e.target.files[0]);
     }
 
     function delete_obj() {
         var activeObject = canvas.getActiveObject();
-        if(activeObject != null){
-            if(confirm('정말로 삭제하시겠습니까?\n(삭제된 요소는 복구되지 않습니다.)')){
-                if(activeObject._objects){
+        if (activeObject != null) {
+            if (confirm('정말로 삭제하시겠습니까?\n(삭제된 요소는 복구되지 않습니다.)')) {
+                if (activeObject._objects) {
                     var objectsInGroup = activeObject.getObjects();
-                    objectsInGroup.forEach(function(objects){
+                    objectsInGroup.forEach(function (objects) {
                         canvas.remove(objects);
                     })
-                }else{
+                } else {
                     canvas.remove(activeObject);
                 }
             }
@@ -568,13 +623,13 @@
     }
 
     //드로잉 조작 부분
-    document.getElementById("line_weight").onchange = function() {
+    document.getElementById("line_weight").onchange = function () {
         canvas.freeDrawingBrush.width = parseInt(this.value, 10) || 1;
     };
 
 
-    document.getElementById("line_Color").onchange = function() {
-    var brush = canvas.freeDrawingBrush;
+    document.getElementById("line_Color").onchange = function () {
+        var brush = canvas.freeDrawingBrush;
         brush.color = this.value;
         if (brush.getPatternSrc) {
             brush.source = brush.getPatternSrc.call(brush);
@@ -582,25 +637,25 @@
     };
 
 
-    document.getElementById("line_mode").onchange = function() {
+    document.getElementById("line_mode").onchange = function () {
 
 
         canvas.freeDrawingBrush = new fabric[this.value + 'Brush'](canvas);
 
         if (canvas.freeDrawingBrush) {
-        var brush = canvas.freeDrawingBrush;
-        brush.color = drawingColorEl.value;
-        if (brush.getPatternSrc) {
-            brush.source = brush.getPatternSrc.call(brush);
-        }
-        brush.width = parseInt(drawingLineWidthEl.value, 10) || 1;
-        brush.shadow = new fabric.Shadow({
-            blur: parseInt(drawingShadowWidth.value, 10) || 0,
-            offsetX: 0,
-            offsetY: 0,
-            affectStroke: true,
-            color: drawingShadowColorEl.value,
-        });
+            var brush = canvas.freeDrawingBrush;
+            brush.color = drawingColorEl.value;
+            if (brush.getPatternSrc) {
+                brush.source = brush.getPatternSrc.call(brush);
+            }
+            brush.width = parseInt(drawingLineWidthEl.value, 10) || 1;
+            brush.shadow = new fabric.Shadow({
+                blur: parseInt(drawingShadowWidth.value, 10) || 0,
+                offsetX: 0,
+                offsetY: 0,
+                affectStroke: true,
+                color: drawingShadowColorEl.value,
+            });
         }
     };
     //여기까지 드로잉
@@ -608,14 +663,14 @@
     function Selection_Mode() {
         canvas.isDrawingMode = !canvas.isDrawingMode;
         console.log(canvas.freeDrawingBrush.width);
-        if(canvas.isDrawingMode){
+        if (canvas.isDrawingMode) {
             document.getElementById("select_mode").innerHTML = '그리기';
             document.getElementById("select_mode").style.color = 'transparent';
             document.getElementById("select_mode").style.background = `url('../images/order_img/그리기.png') no-repeat`;
             document.getElementById("select_mode").style.backgroundSize = ' 45px 30px';
             let aa = document.getElementById('first');
             let bb = document.getElementById('second');
-            let cc= document.getElementById('third')
+            let cc = document.getElementById('third')
             aa.style.opacity = "0";
             aa.style.visibility = "none";
             bb.style.opacity = "0";
@@ -625,15 +680,15 @@
             cc.style.visibility = "visible";
             cc.style.pointerEvents = "auto";
 
-            
-        }else{
+
+        } else {
             document.getElementById("select_mode").innerHTML = '선택하기';
             document.getElementById("select_mode").style.color = 'transparent';
             document.getElementById("select_mode").style.background = `url('../images/order_img/선택버튼.png') no-repeat`;
             document.getElementById("select_mode").style.backgroundSize = ' 45px 30px';
             let aa = document.getElementById('first');
             let bb = document.getElementById('second');
-            let cc= document.getElementById('third')
+            let cc = document.getElementById('third')
             aa.style.opacity = "1";
             aa.style.visibility = "visible";
             bb.style.opacity = "0";
@@ -649,28 +704,28 @@
 
     //텍스트 조작 부분  
     function fillText(property) {
-        
+
         var activeObject = canvas.getActiveObject();
         document.getElementById(property).value = activeObject.fill;
-        document.getElementById(property).oninput = function() {
+        document.getElementById(property).oninput = function () {
             activeObject.set("fill", this.value);
             canvas.requestRenderAll();
         };
     }
 
-    function opaText(property){
+    function opaText(property) {
         var activeObject = canvas.getActiveObject();
         document.getElementById(property).value = activeObject.opacity;
-        document.getElementById(property).oninput = function() {
-        activeObject.set("opacity", this.value);
-        canvas.requestRenderAll();
+        document.getElementById(property).oninput = function () {
+            activeObject.set("opacity", this.value);
+            canvas.requestRenderAll();
         };
     }
 
     function borderText(property) {
         var activeObject = canvas.getActiveObject();
         document.getElementById(property).value = activeObject.fontWeight;
-        document.getElementById(property).oninput = function() {
+        document.getElementById(property).oninput = function () {
             activeObject.set("fontWeight", this.value);
             canvas.requestRenderAll();
         };
@@ -684,20 +739,20 @@
 
 
     //색
-    function rect_fill(property){
+    function rect_fill(property) {
         var activeObject = canvas.getActiveObject();
         document.getElementById(property).value = activeObject.fill;
-        document.getElementById(property).oninput = function(){
+        document.getElementById(property).oninput = function () {
             activeObject.set("fill", this.value);
             canvas.requestRenderAll();
         }
     }
 
     //투명도
-    function rect_opa(property){
+    function rect_opa(property) {
         var activeObject = canvas.getActiveObject();
         document.getElementById(property).value = activeObject.opacity;
-        document.getElementById(property).oninput = function(){
+        document.getElementById(property).oninput = function () {
             activeObject.set("opacity", this.value);
             canvas.requestRenderAll();
         }
@@ -705,24 +760,24 @@
     //여기까지 사각형 조작 함수
 
     //맨뒤로 보내기
-    function send_back(){
+    function send_back() {
         var activeObject = canvas.getActiveObject();
         activeObject.sendToBack();
     }
 
     //맨 앞으로 가지고 오기
-    function bring_front(){
+    function bring_front() {
         var activeObject = canvas.getActiveObject();
         activeObject.bringToFront();
     }
 
     //
-    function bring_to_front(){
+    function bring_to_front() {
         var activeObject = canvas.getActiveObject();
         activeObject.bringForward();
     }
 
-    function send_to_back(){
+    function send_to_back() {
         var activeObject = canvas.getActiveObject();
         activeObject.sendBackwards();
     }
@@ -735,8 +790,8 @@
         if (e.target && !canvas.isDrawingMode) {
             let temp = document.getElementById("select_mode");
             temp.style.pointerEvents = "none";
-            
-            if(e.target.type == 'textbox'){
+
+            if (e.target.type == 'textbox') {
                 aa.style.opacity = "0";
                 aa.style.visibility = "none";
                 bb.style.opacity = "1";
@@ -752,7 +807,7 @@
                 opaText('opa_con');
                 borderText('weight_con');
             }
-            else if(e.target.type == 'rect' || e.target.type == 'triangle' || e.target.type == 'circle'){
+            else if (e.target.type == 'rect' || e.target.type == 'triangle' || e.target.type == 'circle') {
                 console.log(e.target);
                 aa.style.opacity = "0";
                 aa.style.visibility = "none";
@@ -772,7 +827,7 @@
         else {
             let temp = document.getElementById("select_mode");
             temp.style.pointerEvents = "auto";
-            if(canvas.isDrawingMode){
+            if (canvas.isDrawingMode) {
                 aa.style.opacity = "0";
                 aa.style.visibility = "none";
                 bb.style.opacity = "0";
@@ -785,7 +840,7 @@
                 dd.style.visibility = "none";
                 dd.style.pointerEvents = "none";
             }
-            else{
+            else {
                 aa.style.opacity = "1";
                 aa.style.visibility = "visible";
                 bb.style.opacity = "0";
@@ -802,11 +857,11 @@
     })
 
 
-    function order(){
+    function order() {
         var form = document.createElement('form');
         form.setAttribute('method', 'post');
         form.setAttribute('action', '/order/temp_buy');
-        document.charset="utf-8";
+        document.charset = "utf-8";
 
         var hiddenField = document.createElement('input');
         var hiddenField2 = document.createElement('input');

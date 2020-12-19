@@ -26,10 +26,10 @@ router.post('/order_buy',Order.SaveOrder, function(req, res, next){
 
 router.get('/:product_num',Order.getOrder,function(req,res){
     if(req.session.user){
-        res.render('product/order',{name:req.session.user.name, spd: req.spd});
+        res.render('product/order',{name:req.session.user.name, spd: req.spd, spd_review: req.spd_review});
     }
     else{
-        res.render('product/order',{name:false, spd:req.spd});
+        res.render('product/order',{name:false, spd:req.spd, spd_review: req.spd_review});
     }
 })
 

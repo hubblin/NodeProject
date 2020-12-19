@@ -32,14 +32,20 @@ class OrderController {
     async getOrder(req,res, next){
         pool.getConnection((err, conn)=>{
             if(err) throw err;
-            conn.query(`SELECT * FROM product WHERE product_num = "${req.params.product_num}"`, (err, sprod)=>{
+            conn.query(`SELECT * FROM product WHERE product_num = "${req.params.product_num}" `, (err, sprod)=>{
                 if(err) throw err;
-                conn.release();
                 req.spd = sprod;
-                next();
+                conn.query(`SELECT * FROM product_review WHERE review_product_num = "${req.params.product_num}"`, (err, sreview)=>{
+                    if(err) throw err;
+                    conn.release();
+                    req.spd_review = sreview;
+                    next();
+                })
+                
             })
         })
     }
+
 
     async SaveOrder(req,res, next){
         

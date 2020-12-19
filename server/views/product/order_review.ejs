@@ -1,0 +1,61 @@
+<link rel='stylesheet' href='/stylesheets/order_review.css' />
+
+<div class="product_review">
+    <div class="product_review_title">
+        상품 리뷰 정보<span class="review_header_s">(<%= spd_review.length %>)</span>
+        <a href="/review">리뷰로 가기</a>
+    </div>
+    <div class="product_review_headline"></div>
+    <div class="product_review_detail">
+        <% if(spd_review.length == 0){ %>
+            <p class="product_not">등록된 상품평이 없습니다.</p>
+        <% }else{ %>
+            <div class="product_reviews">
+                <% for(var i = 0; i<spd_review.length; i++) {%>
+                    <div id="review_info">
+                        <div class="item">
+                            <img class="review_product_img" id="product_img<%= i%>"
+                            src="../images/products/<%= spd[0].product_img_path%>"></img>
+                            <script>
+                                var product_img = document.getElementById('product_img<%= i%>');
+                                if('<%= spd_review[i].product_img_path%>' == 'none'){
+                                    product_img.src = "../images/main_page/브라이언.jpg";
+                                }
+                            </script>
+                        </div>
+        
+                        <div class="item" id="item_list">
+                            <span><%= spd_review[i].product_name%></span>
+                            <span>별점
+                                <div class="star_space">
+                                    <div id="score<%= i%>" style="width: 100%;"></div>
+                                </div>
+                                <script>
+                                    var score = document.getElementById('score<%= i%>');
+                                    score.style.width = '<%= spd_review[i].pro_score*20%>%'
+                                </script>
+                                <span><%=  spd_review[i].pro_review_date%></span>
+                                <span><%=  spd_review[i].review_user_id%></span>
+                            </span>
+                            <span><%=  spd_review[i].pro_review_content%></span>
+                        </div>
+        
+                        <div class="item">
+                            <% if(spd_review[i].pro_img_path == 'none'){%>
+
+                            <%}else{%>
+                                <img class="review_user_img" id="review_img<%= i%>" 
+                            src="../images/review/<%= spd_review[i].pro_img_path%>" ></img>
+                            <%}%>
+
+                        </div>
+        
+                    </div>
+        
+                    <hr>
+        
+                    <%}%>
+            </div>
+        <% } %>
+    </div>
+</div>

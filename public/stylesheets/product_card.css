@@ -69,3 +69,12 @@
     background-color: #FFF;
     transform: rotate(45deg);
 }
+
+.cards .container p{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    width: 190px;
+    margin-left: 3px;
+}
