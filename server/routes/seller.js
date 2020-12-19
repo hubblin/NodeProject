@@ -48,12 +48,15 @@ router.post('/updateOrderState',Seller.updateOrderState, function(req, res, next
     res.send(state);
 } )
 
-router.get('/checkProduct',Seller.getProductList , function(req,res){
-    res.render('sellers/check_product', {p_list : req.p_num});
+router.get('/checkProduct/:product_list_seq',Seller.getProductList , function(req,res){
+    res.render('sellers/check_product', {p_list : req.p_num, total_len: req.total_list_len, list_seq: req.params.product_list_seq});
 })
 
-router.get('/order_check_product', Seller.getOrderListCompany,function(req,res){
-    res.render('sellers/order_check_product', {orderList: req.company_orderList});
+router.get('/order_check_product/:list_seq', Seller.getOrderListCompany,function(req,res){
+
+    
+
+    res.render('sellers/order_check_product', {orderList: req.company_orderList, list_seq:req.params.list_seq, total_len: req.total_order_count});
 })
 
 // 주문 상세정보 렌더링 

@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='/stylesheets/sidenav.css' />
     <title>Document</title>
     <style>
-        .product_con{
+        .product_con {
             width: 1500px;
             margin-left: auto;
             margin-right: auto;
@@ -29,56 +30,58 @@
             float: right;
             /* border: 1px solid black; */
             width: 934px;
-            height: 1250px;
+            
             margin-left: 30px;
             margin-bottom: 20px;
         }
-        .check_new_order{
-            position: relative;
+
+        .check_new_order {
             width: 100%;
-            height: 1200px;
+            height: auto;
+            margin: 5px;
+            margin-top: 15px;
+            padding: 5px;
             box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.5);
         }
-         
-        .check_area{
-            position: absolute;
-            width: 98%;
-            height: 98%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
 
-        .content_area{
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        .check__delivery{
+        .check__delivery {
             width: 100%;
             height: 600px;
             box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.5);
         }
 
-        a{color:#000;text-decoration: none;}
-        a:link, a:hover, a:active{text-decoration: none;}
+        a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        a:link,
+        a:hover,
+        a:active {
+            text-decoration: none;
+        }
 
 
-        .seller_title{
+        .seller_title {
             width: 1500px;
             margin: 0 auto;
             height: 60px;
             position: relative;
+
         }
 
-        .seller_title a{
-            display: block; width: 40px; height: 48px; color: transparent; background: url('../images/logo.png') no-repeat;
-            background-size: 40px 48px; margin: 0 auto;
+        .seller_title a {
+            display: block;
+            width: 40px;
+            height: 48px;
+            color: transparent;
+            background: url('/images/logo.png') no-repeat;
+            background-size: 40px 48px;
+            margin: 0 auto;
         }
 
-        .bottom_line{
-            position:absolute;
+        .bottom_line {
+            position: absolute;
             width: 1400px;
             left: 50%;
             transform: translateX(-50%);
@@ -87,45 +90,88 @@
             bottom: 0;
         }
 
-        .content_title{
+        .content_title {
             font-size: 20px;
-            height: 40px;
-            position: relative;
+            height: 25px;
         }
 
-
-        .fixed_headers {
+        #all_order_list_table {
             width: 100%;
             table-layout: fixed;
             border-collapse: collapse;
             margin: 0 auto;
         }
 
-        th, td {
+        th,
+        td {
             padding: 5px;
-            text-align: left;
-            
+            height: 70px;
+
+            text-align: center;
+
         }
 
-        td{
+        td {
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
         }
-        .fixed_headers thead{
+
+        #all_order_list_table thead {
             border: 3px solid #ffc000;
+            font-weight: bold;
         }
-        
-        tbody tr:nth-child(even)  { background-color: rgb(236, 236, 236); }
-        .fixed_headers tbody tr{
+
+        tbody tr:nth-child(even) {
+            background-color: rgb(236, 236, 236);
+        }
+
+        #all_order_list_table tbody tr {
+            
             cursor: pointer;
         }
-        .fixed_headers tbody tr:hover {
+
+        #all_order_list_table tbody tr:hover {
             background: #ddd;
-        
+
+        }
+
+        .page_move_body{
+            display: flex; 
+            flex-direction: row; 
+            margin-top: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .previous_page{
+            flex-basis: 150px;
+        }
+
+        .next_page{
+            flex-basis: 150px;
+        }
+
+        .page_move_btn {
+            cursor: pointer;
+            text-align: center;
+        }
+
+        #previous_btn {
+            margin-right: auto;
+        }
+
+        #next_btn {
+            margin-left: auto;
+        }
+        .page_num{
+            font-size: 20px;
+            margin-right: 5px;
+            margin-left: 5px;
         }
     </style>
 </head>
+
 <body>
     <div class="seller_title">
         <a href="/seller">업체 페이지</a>
@@ -139,20 +185,21 @@
                     <li class="menu-item">
                         <div class="btn select">
                             상품관리
-                            <button id="dropdown_btn" onclick="slidedown()"><img src="/images/font/down.png"/></button>
+                            <button id="dropdown_btn" onclick="slidedown()"><img src="/images/font/down.png" /></button>
                         </div>
                         <div class="menu-item__sub " id="sub_drop">
-                            <a  href="/seller/upProduct">상품 등록</a>
-                            <a class="thisPage" href="checkProduct">상품 확인</a>
+                            <a href="/seller/upProduct">상품 등록</a>
+                            <a class="thisPage" href="/seller/checkProduct/0">상품 확인</a>
                         </div>
                     </li>
                     <li class="menu-item">
                         <div class="btn">
                             주문관리
-                            <button id="dropdown_btn2" onclick="slidedown2()"><img src="/images/font/down.png"/></button>
+                            <button id="dropdown_btn2" onclick="slidedown2()"><img
+                                    src="/images/font/down.png" /></button>
                         </div>
                         <div class="menu-item__sub" id="sub_drop2">
-                            <a href="/seller/order_check_product">주문목록</a>
+                            <a href="/seller/order_check_product/0">주문목록</a>
                             <!-- <a href="/seller/order_product">주문 상태</a> -->
                         </div>
                     </li>
@@ -163,80 +210,168 @@
                     </li>
 
                 </div>
-                
-                
+
+
                 <script type="text/javascript">
-                    var dropdown =  document.getElementById("dropdown_btn");
+                    var dropdown = document.getElementById("dropdown_btn");
                     var dropdown2 = document.getElementById("dropdown_btn2");
                     var drop = document.getElementById('sub_drop');
                     var drop2 = document.getElementById('sub_drop2');
-                    function slidedown(){
-                        if(drop.classList[1]=='sub_drop'){
+
+                    function slidedown() {
+                        if (drop.classList[1] == 'sub_drop') {
                             drop.classList.remove('sub_drop');
                             dropdown.classList.remove('rotate');
-                        }else{
+                        } else {
                             drop.classList.add('sub_drop');
                             dropdown.classList.add('rotate');
                         }
                     }
-                    function slidedown2(){
-                        if(drop2.classList[1]=='sub_drop2'){
+
+                    function slidedown2() {
+                        if (drop2.classList[1] == 'sub_drop2') {
                             drop2.classList.remove('sub_drop2');
                             dropdown2.classList.remove('rotate2');
-                        }else{
+                        } else {
                             drop2.classList.add('sub_drop2');
                             dropdown2.classList.add('rotate2');
                         }
                     }
-                
                 </script>
             </div>
             <div class="product_main">
-                <div class="content_title">내 상품 확인<div></div></div>
+                <div class="content_title">내 상품 확인<div></div>
+                </div>
                 <div class="check_new_order">
-                    <div class="check_area">
-                        <div class="content_area">
-                            <table class="fixed_headers">
-                                <thead>
-                                    <tr>
-                                        <th>제품번호</th>
-                                        <th>제품이름</th>
-                                        <th>제품가격</th>
-                                        <th>재고량</th>
-                                        <th>제품상세</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <% for(var j=0; j<p_list.length; j++){%>
-                                    <tr onclick="location.href='/seller/detail/<%= p_list[j].product_num %>'">
-                                        <td><%= p_list[j].product_num %></td>
-                                        <td><%= p_list[j].product_name %></td>
-                                        <td><%= p_list[j].product_price %></td>
-                                        <td><%= p_list[j].product_stock %></td>
-                                        <td id="product_detail_content<%= j%>"></td>
-                                        <script>
-                                            function htmlDecode(input) {
-                                                var doc = new DOMParser().parseFromString(input, "text/html");
-                                                return doc.documentElement.textContent;
-                                            }
-                                
-                                            var product_detail_content = document.getElementById("product_detail_content<%= j%>");
+                    <table id="all_order_list_table">
+                        <thead>
+                            <td>제품번호</td>
+                            <td>제품이름</td>
+                            <td>제품가격</td>
+                            <td>재고량</td>
+                            <td>제품상세</td>
+                        </thead>
 
-                                            product_detail_content.innerHTML = htmlDecode(`<%= p_list[j].product_detail %>`);
-                                        </script>
-                                    </tr>
-                                    <% }%>
+                        <tbody id="order_list_tbody">
+                            <% for(var data of p_list){%>
+                                <tr onclick="location.href='/seller/detail/<%= data.product_num %>'">
+                                <td><%= data.product_num%></td>
+                                <td><%= data.product_name%></td>
+                                <td><%= data.product_price%></td>
+                                <td><%= data.product_stock%></td>
+                                <td><%- data.product_detail%></td>
+                            </tr>
+                            <%}%>
+                        </tbody>
+                    </table>
+                </div>
+                
 
-                                    
+                <div class="page_move_body">
+                    <div class="previous_page" style="display: flex; flex-direction: row;">
+                        <div class="page_move_btn" style="margin-right: 20px;" onclick="move_first_page(`<%= list_seq%>`)"><<</div>
+                    <div class="page_move_btn" id="previous_btn" onclick="previous_page(`<%= list_seq%>`)"><</div>
+                    </div>
+                    
+                    <div>
 
-                                </tbody>
-                            </table>
+                       
+                        <% var page = parseInt((parseInt(list_seq)+10)/10)%>
+                    
+
+                    
+
+                        <!-- <% for(var i= page, j=0; j<3; j++, i++){%>
+                            <% if(i>Math.ceil(total_len/10)) { break }%>
+                            <% if(list_seq == 10*i-10){%>
+                                <a href="/seller/checkProduct/<%= 10*i-10%>"><span class="page_num" style="font-weight: bold;"><%= i%></span></a>
+                            <%} else{%>
+                                <a href="/seller/checkProduct/<%= 10*i-10%>"><span class="page_num"><%= i%></span></a>
+                            <%}%>
                             
-                        </div>
+                        <%}%> -->
+
+                        <% for(var i = 1 + (6 * parseInt(page/6)), j = 0; j < 5; j++, i++) { %>
+                            <% if(i>Math.ceil(total_len/10)) { break }%>
+                            <% if(list_seq == 10*i-10){%>
+                                <a href="/seller/checkProduct/<%= 10*i-10%>"><span class="page_num" style="font-weight: bold;"><%= i%></span></a>
+                            <%} else{%>
+                                <a href="/seller/checkProduct/<%= 10*i-10%>"><span class="page_num"><%= i%></span></a>
+                            <%}%>
+
+                        <% } %>
+                        
+
+
+                        
+                    </div>
+                    
+                    <div class="next_page" style="display: flex; flex-direction: row;">
+                        <div class="page_move_btn" id="next_btn" onclick="next_page(`<%= list_seq%>`, `<%= total_len%>`)">></div>
+                    <div class="page_move_btn"  style="margin-left: 20px;" onclick="move_last_page(`<%= list_seq%>`, `<%= total_len%>`)">>></div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
 </body>
+
 </html>
+
+<script>
+    // 다음 페이지로
+    function next_page(list_seq, orderList_len) {
+
+        console.log(list_seq)
+        var next_num = parseInt(list_seq) + 10
+        console.log(next_num)
+        console.log(orderList_len)
+        if (next_num > parseInt(orderList_len)) {
+            alert('마지막 페이지 입니다.')
+        } else {
+            location.href = "/seller/checkProduct/" + next_num;
+        }
+
+
+    }
+
+    // 마지막 페이지로
+    function move_last_page(list_seq, orderList_len){
+
+        var next_num =0
+        for(; next_num<parseInt(orderList_len)-10;){
+            next_num+=10
+        }
+        
+        if (next_num == parseInt(list_seq)) {
+            alert('마지막 페이지 입니다.')
+        } else {
+            location.href = "/seller/checkProduct/" + next_num;
+        }
+
+    }
+
+
+    // 이전 페이지로
+    function previous_page(list_seq) {
+        console.log(list_seq)
+        var previous_num = parseInt(list_seq) - 10
+        if (previous_num < 0) {
+            alert('첫 페이지 입니다.')
+        } else {
+            location.href = "/seller/checkProduct/" + previous_num;
+        }
+
+    }
+
+    // 첫 페이지로
+    function move_first_page(list_seq){
+        var previous_num = 0
+        if (previous_num == parseInt(list_seq)) {
+            alert('첫 페이지 입니다.')
+        } else {
+            location.href = "/seller/checkProduct/" + previous_num;
+        }
+    }
+</script>
