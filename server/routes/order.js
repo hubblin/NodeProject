@@ -15,13 +15,20 @@ router.get('/', function(req, res) {
 });
 
 
+//감사합니다. 화면
 router.get('/finish', function(req,res){
     res.render('product/finish');
 })
 
-router.post('/order_buy',Order.SaveOrder, function(req, res, next){
-    console.log(req.body);
-    res.redirect('/order/finish');
+router.post('/order_buy', Order.SaveOrder, function(req, res, next){
+    res.redirect('/order/buy_check/' + req.order_num);
+})
+
+//감사합니다 하기전에 구매 내역 안내 해주기
+router.get('/buy_check/:order_num',Order.getOrder_data, function(req, res){
+    console.log(req.prd)
+    console.log(req.ord)
+    res.render('product/buy_check', {name:req.session.user.name, order_data:req.ord, p_data: req.prd});
 })
 
 router.get('/:product_num',Order.getOrder,function(req,res){
@@ -64,8 +71,6 @@ router.get('/buy/:product_num',Order.getOrder, Order.getAddress_cardInfo,functio
     }
 
 })
-
-
 
 
 
