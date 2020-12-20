@@ -28,6 +28,22 @@ class OrderController {
 
         })
     }
+    async getOrder_data(req,res,next){
+        pool.getConnection((err, conn)=>{
+            if(err) throw err;
+            conn.query(`SELECT * FROM product_order WHERE order_num = "${req.params.order_num}"`,(err, ordata)=>{
+                if(err) throw err;
+                req.ord = ordata;
+                conn.query(`SELECT * FROM product WHERE product_num = "${ordata[0].order_product_num}"`, (err, pdata)=>{
+                    if(err) throw err;
+                    conn.release();
+                    req.prd = pdata;
+                    next();
+                })
+
+            })
+        })
+    }
 
     async getOrder(req,res, next){
         pool.getConnection((err, conn)=>{
@@ -63,9 +79,15 @@ class OrderController {
                     req.body.order_product_count, req.body.order_product_num
                 ], (err)=>{
                     if(err) throw err;
+                    conn.query(`SELECT order_num FROM product_order WHERE order_date ="${nowTime}"`, (err, order_num)=>{
+                        if(err) throw err;
+                        conn.release();
 
-                    conn.release();
-                    next();
+                        req.order_num = order_num[0].order_num;
+
+                        next();
+                    })
+
                 })
             })
         })

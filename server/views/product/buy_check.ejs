@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel='stylesheet' href='/stylesheets/default.css' />
+    <link rel='stylesheet' href='/stylesheets/navstyle.css' />
+    <link rel='stylesheet' href='/stylesheets/buycheckStyle.css' />
+
+
+    <script type="text/javascript">
+        function setsub() {
+            var sublnb = document.getElementById("sublnb");
+            sublnb.style.display = "block";
+            sublnb.style.opacity = "1";
+            sublnb.style.visibility = "visible";
+        }
+
+        function outsub() {
+            var sublnb = document.getElementById("sublnb");
+            sublnb.style.display = "none"
+            sublnb.style.opacity = "0";
+            sublnb.style.visibility = "hidden";
+        }
+
+        function lsub() {
+            var looksub = document.getElementById("sublnb");
+            sublnb.style.display = "block";
+            sublnb.style.opacity = "1";
+            sublnb.style.visibility = "visible";
+        }
+
+        function loutsub() {
+            var looksub = document.getElementById("sublnb");
+            sublnb.style.display = "none";
+            sublnb.style.opacity = "0";
+            sublnb.style.visibility = "hidden";
+        }
+
+        function setsub2() {
+            var sublnb2 = document.getElementById("sublnb2");
+            sublnb2.style.display = "block";
+            sublnb2.style.opacity = "1";
+            sublnb2.style.visibility = "visible";
+        }
+
+        function outsub2() {
+            var sublnb2 = document.getElementById("sublnb2");
+            sublnb2.style.display = "none";
+            sublnb2.style.opacity = "0";
+            sublnb2.style.visibility = "hidden";
+        }
+
+        function lsub2() {
+            var sublnb2 = document.getElementById("sublnb2");
+            sublnb2.style.display = "block";
+            sublnb2.style.opacity = "1";
+            sublnb2.style.visibility = "visible";
+        }
+
+        function loutsub2() {
+            var sublnb2 = document.getElementById("sublnb2");
+            sublnb2.style.display = "none";
+            sublnb2.style.opacity = "0";
+            sublnb2.style.visibility = "hidden";
+        }
+    </script>
+</head>
+<body onload="select_box_change()">
+    <%- include("../head/nav") %>
+    <div class="title">
+        <h1>주문/결제</h1>
+        <div class="order_state"><span class="before">주문결제</span> <span class="middle_state">></span> <span class="done">주문완료</span></div>
+    </div>
+    <div class="state_title">
+        <p class="main_check">결제가 정상적으로 완료되었습니다.</p>
+        <p class="main_sub_check">주문 내역을 확인해 주세요</p>
+    </div>
+    <div class="order_product_info_title">
+        <p>상품 주문 정보</p>
+    </div>
+    <div class="order_product_info_body">
+        <div class="order_product_info">
+            <p><span>제품명: </span><%= p_data[0].product_name %></p>
+            <p><span>선택 수량: </span><%= order_data[0].order_product_count %></p>
+            <p><span>결제 금액: </span><%= order_data[0].order_money %></p>
+        </div>
+    </div>
+
+    <div class="order_product_info_title">
+        <p>상품 배송 정보</p>
+    </div>
+    <div class="order_product_info_body">
+        <div class="order_product_info">
+            <p><span>배송지 주소: </span><%= order_data[0].order_post_main %></p>
+            <p><span>배송지 상세 주소: </span><%= order_data[0].order_post_detail %></p>
+            <p><span>수령인: </span><%= order_data[0].order_get_user_name %></p>
+        </div>
+    </div>
+    <div class="check_btn_area">
+        <div class="check_btn">
+            <a href="/order/finish">확인</a>
+        </div>
+    </div>
+</body>
+</html>
