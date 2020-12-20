@@ -335,20 +335,27 @@
             hidden3.setAttribute('value', detail_adr);
 
             var hidden4 = document.createElement('input');
-            hidden3.setAttribute('type', 'hidden');
-            hidden3.setAttribute('name', 'user_name');
-            hidden3.setAttribute('value', user_name);
+            hidden4.setAttribute('type', 'hidden');
+            hidden4.setAttribute('name', 'user_name');
+            hidden4.setAttribute('value', user_name);
 
             var hidden5 = document.createElement('input');
-            hidden3.setAttribute('type', 'hidden');
-            hidden3.setAttribute('name', 'user_phone');
-            hidden3.setAttribute('value', user_phone);
+            hidden5.setAttribute('type', 'hidden');
+            hidden5.setAttribute('name', 'user_phone');
+            hidden5.setAttribute('value', user_phone);
 
             var hidden6 = document.createElement('input');
-            hidden3.setAttribute('type', 'hidden');
-            hidden3.setAttribute('name', 'adr_name');
-            hidden3.setAttribute('value', adr_name);
+            hidden6.setAttribute('type', 'hidden');
+            hidden6.setAttribute('name', 'adr_name');
+            hidden6.setAttribute('value', adr_name);
 
+
+            console.log(post_num)
+            console.log(main_adr)
+            console.log(detail_adr)
+            console.log(user_name)
+            console.log(user_phone)
+            console.log(adr_name)
 
             form.appendChild(hidden1);
             form.appendChild(hidden2);
