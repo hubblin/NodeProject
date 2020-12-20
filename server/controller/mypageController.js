@@ -12,6 +12,8 @@ class MypageController {
         pool.getConnection((err, conn) => {
             if (err) throw err;
 
+            
+
             conn.query('insert into address values(?,?,?,?,?,?,?,?)', [
                 null, req.body.post_num, req.body.main_adr, req.body.detail_adr, req.session.user.id, req.body.user_name, req.body.user_phone, req.body.adr_name
             ], (err) => {
@@ -20,6 +22,8 @@ class MypageController {
                 conn.release();
                 next();
             })
+
+            
         })
     }
 
@@ -235,15 +239,12 @@ class MypageController {
             ], (err, product_list) => {
                 if (err) throw err;
 
-                conn.query('select * from custom_product', (err, custom_product_list) => {
-                    if (err) throw err;
-
-                    req.custom_product_list = custom_product_list;
+               
                     req.product_list = product_list;
                     conn.release();
                     next();
 
-                })
+              
             })
         })
     }

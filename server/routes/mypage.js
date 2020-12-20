@@ -16,7 +16,7 @@ router.get('/', Mypage.getOrderList,function (req, res, next) {
 // 마이페이지 페인팅 오더 상세정보 렌더링
 router.get('/detailOrder/:order_num', Mypage.getOrderDetail,function(req, res, next){
     res.render('mypage/mypage_order_detail',{
-        name: req.session.user.name, company:req.session.user.company_num, orderDetail: req.orderDetail, paintingCount:req.session.user.paintingCount, customCount:req.session.user.customCount
+        name: req.session.user.name, company:req.session.user.company_num, orderDetail: req.orderDetail, paintingCount:req.session.user.paintingCount
     })
 })
 
@@ -27,7 +27,7 @@ router.get('/detailOrder/:order_num', Mypage.getOrderDetail,function(req, res, n
 router.get('/myCard', Mypage.getCard,function (req, res, next) {
     res.render('mypage/mypage_myCard', {
         name: req.session.user.name,
-        card:req.card, company:req.session.user.company_num, paintingCount:req.session.user.paintingCount, customCount:req.session.user.customCount
+        card:req.card, company:req.session.user.company_num, paintingCount:req.session.user.paintingCount
     })
 })
 
@@ -35,42 +35,42 @@ router.get('/myCard', Mypage.getCard,function (req, res, next) {
 router.get('/myAdr', Mypage.getAddress,function (req, res, next) {
     res.render('mypage/mypage_myAdress', {
         name: req.session.user.name,
-        address: req.address, company:req.session.user.company_num, paintingCount:req.session.user.paintingCount, customCount:req.session.user.customCount
+        address: req.address, company:req.session.user.company_num, paintingCount:req.session.user.paintingCount
     })
 })
 
 // 마이페이지 사용자가 적은 리뷰 목록 렌더링
 router.get('/reviewList', Mypage.getMyReviewList,function (req, res, next) {
     res.render('mypage/mypage_reviewList', {
-        name: req.session.user.name, company:req.session.user.company_num, myReviewList: req.myReviewList, paintingCount:req.session.user.paintingCount, customCount:req.session.user.customCount
+        name: req.session.user.name, company:req.session.user.company_num, myReviewList: req.myReviewList, paintingCount:req.session.user.paintingCount
     })
 })
 
 // 마이페이지 주소 추가 페이지 렌더링
 router.get('/addAdr', function (req, res, next) {
     res.render('mypage/add/mypage_Adress_add', {
-        name: req.session.user.name, company:req.session.user.company_num, paintingCount:req.session.user.paintingCount, customCount:req.session.user.customCount
+        name: req.session.user.name, company:req.session.user.company_num, paintingCount:req.session.user.paintingCount
     })
 })
 
 // 마이페이지 카드 추가 페이지 렌더링
 router.get('/addCard', function(req, res, next){
     res.render('mypage/add/mypage_Card_add', {
-        name: req.session.user.name, company:req.session.user.company_num, paintingCount:req.session.user.paintingCount, customCount:req.session.user.customCount
+        name: req.session.user.name, company:req.session.user.company_num, paintingCount:req.session.user.paintingCount
     })
 })
 
 // 마이페이지 리뷰 추가 페이지 렌더링
 router.get('/addReview', Mypage.getProductList,function(req, res, next){
     res.render('mypage/add/mypage_review_add', {
-        name: req.session.user.name, company:req.session.user.company_num, custom_list: req.custom_product_list, product_list: req.product_list, paintingCount:req.session.user.paintingCount, customCount:req.session.user.customCount
+        name: req.session.user.name, company:req.session.user.company_num,  product_list: req.product_list, paintingCount:req.session.user.paintingCount
     })
 })
 
 // 마이페이지 카드 정보 수정 페이지 렌더링
 router.get('/updateCard/:card_num', Mypage.getTagetCard,function(req, res, next){
     res.render('mypage/update/mypage_card_update', {
-        name:req.session.user.name, company:req.session.user.company_num, card:req.tagetCard, paintingCount:req.session.user.paintingCount, customCount:req.session.user.customCount
+        name:req.session.user.name, company:req.session.user.company_num, card:req.tagetCard, paintingCount:req.session.user.paintingCount
     })
 })
 
