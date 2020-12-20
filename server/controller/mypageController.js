@@ -192,18 +192,15 @@ class MypageController {
                 ], (err, order_count) => {
                     if (err) throw err;
 
-                    conn.query('SELECT count(*) as custom_order_count from custom_order where not c_order_state = ? and custom_order.user_user_id = ?;', [
-                        '배송완료', req.session.user.id
-                    ], (err, custom_order_count) => {
-                        if (err) throw err;
 
-                        req.session.user.paintingCount = order_count[0].order_count
-                        req.session.user.customCount = custom_order_count[0].custom_order_count
 
-                        req.orderList = order_list;
-                        conn.release();
-                        next();
-                    })
+                    req.session.user.paintingCount = order_count[0].order_count
+
+
+                    req.orderList = order_list;
+                    conn.release();
+                    next();
+
                 })
 
             })
@@ -234,7 +231,7 @@ class MypageController {
             if (err) throw err;
 
             conn.query('select * from product where product_num in (select order_product_num from product_order where not order_product_num in (select review_product_num from product_review where review_user_id = ?) and order_user_id = ?);', [
-                req.session.user.id,req.session.user.id
+                req.session.user.id, req.session.user.id
             ], (err, product_list) => {
                 if (err) throw err;
 
@@ -268,14 +265,14 @@ class MypageController {
     }
 
     // 커스텀제품 주문정보 가져오기
-    async getCustomOrderList(req, res, next){
-        pool.getConnection((err, conn)=>{
-            if(err) throw err;
+    async getCustomOrderList(req, res, next) {
+        pool.getConnection((err, conn) => {
+            if (err) throw err;
 
-            conn.query('select * from custom_order, custom_product where custom_order.user_user_id = ? and custom_order.c_custom_product_num = custom_product.c_product_num',[
+            conn.query('select * from custom_order, custom_product where custom_order.user_user_id = ? and custom_order.c_custom_product_num = custom_product.c_product_num', [
                 req.session.user.id
-            ], (err, custom_order_list)=>{
-                if(err) throw err;
+            ], (err, custom_order_list) => {
+                if (err) throw err;
 
                 req.customOrderList = custom_order_list
 
@@ -285,24 +282,24 @@ class MypageController {
         })
     }
 
-    async getCustomDetail(req, res, next){
-        pool.getConnection((err, conn)=>{
-            if(err) throw err;
+    async getCustomDetail(req, res, next) {
+        pool.getConnection((err, conn) => {
+            if (err) throw err;
 
-            conn.query('select * from custom_order, custom_product where custom_order_num = ?',[
+            conn.query('select * from custom_order, custom_product where custom_order_num = ?', [
                 req.params.custom_order_num
-            ], (err, custom_info)=>{
-                if(err) throw err;
+            ], (err, custom_info) => {
+                if (err) throw err;
 
-                conn.query('select * from custom_order_detail where detail_custom_order_num = ?',[
+                conn.query('select * from custom_order_detail where detail_custom_order_num = ?', [
                     req.params.custom_order_num
-                ], (err, custom_detail_info)=>{
-                    if(err) throw err;
+                ], (err, custom_detail_info) => {
+                    if (err) throw err;
 
                     req.customInfo = custom_info;
                     req.customDeatilInfo = custom_detail_info;
 
-                    
+
                     conn.release();
                     next();
                 })
@@ -312,14 +309,14 @@ class MypageController {
 
 
     // 상세주문 정보 가져오기
-    async getOrderDetail(req, res, next){
-        pool.getConnection((err, conn)=>{
-            if(err) throw err;
+    async getOrderDetail(req, res, next) {
+        pool.getConnection((err, conn) => {
+            if (err) throw err;
 
-            conn.query('SELECT * FROM product_order, product where product_order.order_num  = ? and product_order.order_product_num = product.product_num',[
+            conn.query('SELECT * FROM product_order, product where product_order.order_num  = ? and product_order.order_product_num = product.product_num', [
                 req.params.order_num
-            ], (err, order_detail_list)=>{
-                if(err) throw err;
+            ], (err, order_detail_list) => {
+                if (err) throw err;
 
                 req.orderDetail = order_detail_list;
 

@@ -9,7 +9,7 @@ const multerController = require('../controller/multerController');
 // 마이페이지 메인화면 렌더링(페인팅 오더 목록)
 router.get('/', Mypage.getOrderList,function (req, res, next) {
     res.render('mypage/mypage_main', {
-        name: req.session.user.name, company:req.session.user.company_num, orderList:req.orderList, paintingCount:req.session.user.paintingCount, customCount:req.session.user.customCount
+        name: req.session.user.name, company:req.session.user.company_num, orderList:req.orderList, paintingCount:req.session.user.paintingCount
     });
 })
 
@@ -20,19 +20,8 @@ router.get('/detailOrder/:order_num', Mypage.getOrderDetail,function(req, res, n
     })
 })
 
-// 마이페이지 커스텀 오더 목록 렌더링
-router.get('/custom_order', Mypage.getCustomOrderList,function (req, res, next) {
-    res.render('mypage/mypage_custom_order', {
-        name: req.session.user.name, company:req.session.user.company_num, customOrderList: req.customOrderList,paintingCount:req.session.user.paintingCount, customCount:req.session.user.customCount
-    })
-})
 
-// 마이페이지 커스텀 오더 상세정보 렌더링
-router.get('/customOrder/detail/:custom_order_num', Mypage.getCustomDetail,function(req, res, next){
-    res.render('mypage/mypage_custom_order_detail',{
-        name: req.session.user.name, company:req.session.user.company_num, customInfo: req.customInfo, customDeatilInfo: req.customDeatilInfo,paintingCount:req.session.user.paintingCount, customCount:req.session.user.customCount
-    })
-})
+
 
 // 마이페이지 사용자 카드 목록 렌더링
 router.get('/myCard', Mypage.getCard,function (req, res, next) {
