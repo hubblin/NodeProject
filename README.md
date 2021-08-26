@@ -17,13 +17,13 @@
 ---
 
 ### 1. 시스템 구성도
-<img src="readme_Img/구성도.PNG" width="330px"></img>
+<img src="readme_Img/구성도.PNG" width="400px"></img>
 * 프론트엔드의 경우 HTML, CSS, JS, jQuery를 사용
 * 백엔드 서버의 경우 Node.js의 Express를 사용하여 개발
 * 데이터베이스의 경우 AWS의 RDS를 사용
 
 ### 2.데이터베이스 설계
-
+<img src="readme_Img/erd.jpg" width="400px"></img>
 
 ### 3. 기능 소개
 * 회원
